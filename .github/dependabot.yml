@@ -43,9 +43,6 @@ updates:
       - dependency-name: org.mybatis.spring.boot:mybatis-spring-boot-starter
         versions:
           - ">= 3"
-      - dependency-name: org.mybatis:mybatis-spring
-        versions:
-          - ">= 3"
       - dependency-name: org.springdoc:springdoc-openapi
         versions:
           - ">= 2"
