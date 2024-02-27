@@ -1,0 +1,43 @@
+server.port: 8443
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: eureka-api
+          uri: http://${eureka:eureka}:8761
+          predicates:
+            - Path=/eureka/api/{segment}
+          filters:
+            - SetPath=/eureka/{segment}
+
+        - id: eureka-web-start
+          uri: http://${eureka:eureka}:8761
+          predicates:
+            - Path=/eureka/web
+          filters:
+            - SetPath=/
+
+        - id: eureka-web-other
+          uri: http://${eureka:eureka}:8761
+          predicates:
+            - Path=/eureka/**
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+
+        - id: config-file
+          uri: ${spring.cloud.config.uri}
+          predicates:
+            - Path=/config/**
+          filters:
+            - RewritePath=/config/(?<segment>.*), /$\{segment}
+
+
+management.endpoint.gateway.enabled: true
+
+

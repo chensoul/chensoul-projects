@@ -1,0 +1,14 @@
+server:
+  port: 5100
+
+spring.security:
+  user:
+    name: admin
+    password: 123456
+
+spring.boot.admin:
+  discovery:
+    ignored-services:
+      - monitor
+  ui:
+    title: ${spring.application.name}

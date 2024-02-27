@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <packaging>pom</packaging>
+  <parent>
+    <groupId>com.chensoul</groupId>
+    <artifactId>chensoul-cloud</artifactId>
+    <version>${revision}</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>chensoul-spring-boot-starter</artifactId>
+  <version>${revision}</version>
+
+  <modules>
+    <module>chensoul-core-spring-boot-starter</module>
+    <module>chensoul-audit-spring-boot-starter</module>
+    <module>chensoul-redis-spring-boot-starter</module>
+    <module>chensoul-websocket-spring-boot-starter</module>
+    <module>chensoul-openfeign-spring-boot-starter</module>
+    <module>chensoul-loadbalancer-spring-boot-starter</module>
+    <module>chensoul-oauth2-spring-boot-starter</module>
+    <module>chensoul-mybatis-spring-boot-starter</module>
+  </modules>
+</project>

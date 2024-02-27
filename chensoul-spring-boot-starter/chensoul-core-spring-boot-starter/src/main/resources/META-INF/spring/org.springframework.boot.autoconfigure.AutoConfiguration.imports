@@ -1,0 +1,6 @@
+com.chensoul.configuration.async.AsyncConfiguration
+com.chensoul.configuration.jackson.JacksonConfiguration
+com.chensoul.configuration.web.WebMvcConfiguration
+com.chensoul.configuration.web.ErrorConfiguration
+com.chensoul.configuration.web.SecurityConfiguration
+com.chensoul.configuration.logging.LoggingConfiguration

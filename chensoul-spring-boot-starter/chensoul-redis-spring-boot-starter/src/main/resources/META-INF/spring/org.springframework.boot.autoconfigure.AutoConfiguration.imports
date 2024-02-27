@@ -1,0 +1,2 @@
+com.chensoul.redis.RedisTemplateConfiguration
+com.chensoul.redis.RedisCacheManagerConfiguration
