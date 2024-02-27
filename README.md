@@ -86,18 +86,17 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 
 ### 环境搭建
 
-- Git: https://git-scm.com/downloads
-- OrbStack: https://orbstack.dev/
-- Java: https://adoptium.net/installation
-- curl: https://curl.haxx.se/download.html
-- jq: https://stedolan.github.io/jq/download/
-- Spring Boot
-  CLI: https://docs.spring.io/spring-boot/docs/3.0.4/reference/html/getting-started.html#getting-started.installing.cli
-- Siege: https://github.com/JoeDog/siege#where-is-it
-- Helm: https://helm.sh/docs/intro/install/
-- kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
-- Minikube: https://minikube.sigs.k8s.io/docs/start/
-- Istioctl: https://istio.io/latest/docs/setup/getting-started/#download
+- [Git](https://git-scm.com/downloads)
+- [OrbStack](https://orbstack.dev/)
+- [Java](https://www.azul.com/downloads/#zulu)
+- [Curl](https://curl.haxx.se/download.html)
+- [Jq](https://stedolan.github.io/jq/download/)
+- [Spring Boot CLI](https://docs.spring.io/spring-boot/docs/3.0.4/reference/html/getting-started.html#getting-started.installing.cli)
+- [Siege](https://github.com/JoeDog/siege#where-is-it)
+- [Helm](https://helm.sh/docs/intro/install/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
+- [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+- [Istioctl](https://istio.io/latest/docs/setup/getting-started/#download)
 
 安装软件：
 
@@ -106,7 +105,7 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 
 brew tap spring-io/tap && \
 brew tap homebrew/cask-versions && \
-brew install --cask temurin17 && \
+brew install zulu21 && \
 brew install jq && \
 brew install spring-boot && \
 brew install helm && \
