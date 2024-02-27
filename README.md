@@ -7,7 +7,7 @@
 
 ### 特性
 
-- 主体框架：采用Spring Boot 2.7.18、Spring Cloud 2021.0.9、Spring Cloud Alibaba 2021.0.5.0版本进行系统设计。
+- 主体框架：采用Spring Boot 2.7.18、Spring Cloud 2021.0.9、Spring Cloud Alibaba 2021.0.6.0版本进行系统设计。
 - 统一注册：支持 Nacos 作为注册中心，实现多配置、分群组、分命名空间、多业务模块的注册和发现功能。
 - 统一认证：统一 Oauth2 认证协议，并支持自定义 grant_type 实现手机验证码登录。
 - 业务监控：利用 Spring Boot Admin 来监控各个独立微服务运行状态。
@@ -21,17 +21,37 @@
 - 分布式定时器：采用 XxlJob 实现多个微服务分布式任务调度。
 - 微服务网关：采用 Spring Gateway 实现流量配置动态化、API 管理和路由、负载均衡和容错、解决跨域问题、鉴权、限流、熔断等等。
 
-### 开发环境
+### 技术选型
 
-| 组件          | 用途  	  |              版本号              |
-|:------------|:------:|:-----------------------------:|
-| Maven       |  依赖管理  |            3.0.4以上            |
-| Java        | 编译运行项目 | 1.8以上（推荐8u161以后的版本，否则要装JCE插件） |
-| MySQL       |  数据库   |              8.x              |
-| Redis     	 | 缓存组件 	 |              7.x              |
-| RabbitMQ    | 消息中间件  |            3.7.15             |
-| Kafka       | 消息中间件  |             2.2.0
-| Lua         |  限流脚本  |             5.3.5             |
+Spring Cloud每个业务领域都有多个可供选择的组件，这里也列出了微服务章节中将要用到的组件+中间件的技术选型，这也是当前主流的选型。
+
+| 内容    |         技术选型          |
+|:------|:---------------------:|
+| 服务网关  |        Gateway        |
+| 服务治理  |        Eureka         |
+| 负载均衡  |        Ribbon         |
+| 服务调用  |         Feign         |
+| 服务容错  |       Sentinel        |
+| 消息总线  |    Bus + RabbitMQ     |
+| 调用链追踪 | Sleuth + Zipkin + ELK |
+| 消息驱动  |   Stream + RabbitMQ   |
+| 流控    |       Sentinel        |
+
+
+## 快速开始
+
+### 环境说明
+
+| 组件       |   用途   |              版本号              |
+|:---------|:------:|:-----------------------------:|
+| Java     | 编译运行项目 | 1.8以上（推荐8u161以后的版本，否则要装JCE插件） |
+| Maven    |  依赖管理  |            3.8.0以上            |
+| MySQL    |  数据库   |              8.x              |
+| Redis    |  缓存组件  |              7.x              |
+| RabbitMQ | 消息中间件  |            3.7.15             |
+| Kafka    | 消息中间件  |             2.2.0             |
+| Lua      |  限流脚本  |             5.3.5             |
+
 
 ### 依赖版本
 
@@ -39,7 +59,7 @@
 |------------------------------------------------------------------------------------------------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | [spring-boot](https://github.com/spring-projects/spring-boot)                                        | 2.7.18        | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2.&metadataUrl=https://s01.oss.sonatype.org/content/repositories/releases/org/springframework/boot/spring-boot-dependencies/maven-metadata.xml">                        | 限制 Spring Boot 2.x                                                                                                             |
 | [spring-cloud](https://github.com/spring-cloud)                                                      | 2021.0.9      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2021&metadataUrl=https://s01.oss.sonatype.org/content/repositories/releases/org/springframework/cloud/spring-cloud-dependencies/maven-metadata.xml">                    | 限制 Spring Boot 2.x                                                                                                             |
-| [spring-cloud-alibaba](https://github.com/alibaba/spring-cloud-alibaba)                              | 2021.0.5.0    | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2021.0&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/alibaba/cloud/spring-cloud-alibaba-dependencies/maven-metadata.xml">                      | 限制 Spring Boot 2.x，<a href="https://github.com/alibaba/spring-cloud-alibaba/blob/2022.x/README-zh.md">Spring Cloud Alibaba</a> |
+| [spring-cloud-alibaba](https://github.com/alibaba/spring-cloud-alibaba)                              | 2021.0.6.0    | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2021.0&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/alibaba/cloud/spring-cloud-alibaba-dependencies/maven-metadata.xml">                      | 限制 Spring Boot 2.x，<a href="https://github.com/alibaba/spring-cloud-alibaba/blob/2022.x/README-zh.md">Spring Cloud Alibaba</a> |
 | [spring-boot-admin](https://github.com/codecentric/spring-boot-admin)                                | 2.7.15        | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2.&metadataUrl=https://oss.sonatype.org/content/repositories/releases/de/codecentric/spring-boot-admin-dependencies/maven-metadata.xml">                                | 限制 Spring Boot 2.x                                                                                                             |
 | [spring-security-oauth2-autoconfigure](https://github.com/spring-attic/spring-security-oauth2-boot/) | 2.6.8         | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2.&metadataUrl=https://oss.sonatype.org/content/repositories/releases/org/springframework/security/oauth/boot/spring-security-oauth2-autoconfigure/maven-metadata.xml"> | 限制 Spring Boot 2.x                                                                                                             |
 | [spring-security-oauth2](https://github.com/spring-attic/spring-security-oauth)                      | 2.5.2.RELEASE | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2.&metadataUrl=https://repo1.maven.org/maven2/org/springframework/security/oauth/spring-security-oauth2/maven-metadata.xml">                                            | 限制 Spring Boot 2.x                                                                                                             |
@@ -49,108 +69,97 @@
 | [springdoc](https://github.com/springdoc)                                                            | 1.7.0         | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/org/springdoc/springdoc-openapi-ui/maven-metadata.xml">                                                            | 用于生成 API doc，支持从 javadoc 中获取字段注释                                                                                               |
 | [xxl-job](https://github.com/xuxueli/xxl-job)                                                        | 2.4.0         | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/xuxueli/xxl-job/maven-metadata.xml">                                                                           | 分布式任务调度平台XXL-JOB                                                                                                               |
 
-## 本地快速启动
+### 默认端口和用户名密码
 
-### 1. 设置环境变量
+| 模块                    | 模块名称      | 服务名                   | 端口    | 用户名/密码       |
+|-----------------------|-----------|-----------------------|-------|--------------|
+| Nacos                 | 注册中心、配置中心 | nacos                 | 8848  | nacos/123456 |
+| Eureka                | 注册中心      | eureka                | 8761  |              |
+| MySQL                 | 数据库       | mysql                 | 3306  | root/123456  |
+| Redis                 | 数据库       | redis                 | 6379  | 123456       |
+| ActiveMQ              | 队列        | activemq              | 11111 | admin/123456 |
+| gateway               | 网关        | gateway               | 8443  |              |
+| monitor               | 监控        | monitor               | 5100  |              |
+| xxljob                | XXLJob    | xxljob                | 5200  |              |
+| sentinel              | sentinel  | sentinel              | 5300  |              |
+| chensoul-auth-service | 授权        | chensoul-auth-service | 6666  |              |
 
-```bash
-MYSQL_ROOT_PASSWORD=123456
-REDIS_PASSWORD=123456
-MQ_PASSWORD=admin
-```
+### 环境搭建
 
-### 2. 安装基础服务
+- Git: https://git-scm.com/downloads
+- OrbStack: https://orbstack.dev/
+- Java: https://adoptium.net/installation
+- curl: https://curl.haxx.se/download.html
+- jq: https://stedolan.github.io/jq/download/
+- Spring Boot
+  CLI: https://docs.spring.io/spring-boot/docs/3.0.4/reference/html/getting-started.html#getting-started.installing.cli
+- Siege: https://github.com/JoeDog/siege#where-is-it
+- Helm: https://helm.sh/docs/intro/install/
+- kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
+- Minikube: https://minikube.sigs.k8s.io/docs/start/
+- Istioctl: https://istio.io/latest/docs/setup/getting-started/#download
 
-#### 基于 docker 安装：
-
-mysql:
-
-```bash
-docker run \
-  -d \
-  --restart always \
-  --privileged=true \
-  --name mysql8 \
-  -v /etc/localtime:/etc/localtime \
-  -p 3306:3306 \
-  -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD \
-  -e MYSQL_ALLOW_EMPTY_PASSWORD=true\
-  mysql:8 \
-  --log-bin=mysql-bin \
-  --server-id=1 \
-  --binlog_expire_logs_seconds=1209600 \
-  --character-set-server=utf8mb4 \
-  --collation-server=utf8mb4_general_ci
-```
-
-redis:
+安装软件：
 
 ```bash
-docker run \
-  -d \
-  --restart always \
-  --privileged=true \
-  --name redis \
-  -v /etc/localtime:/etc/localtime \
-  -p 6379:6379 \
-  redis:7 \
-  --requirepass $REDIS_PASSWORD \
-  --appendonly yes
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew tap spring-io/tap && \
+brew tap homebrew/cask-versions && \
+brew install --cask temurin17 && \
+brew install jq && \
+brew install spring-boot && \
+brew install helm && \
+brew install siege && \
+brew install orbstack
+
+echo 'export JAVA_HOME=$(/usr/libexec/java_home -v8)' >> ~/.bash_profile
+source ~/.bash_profile
 ```
 
-activemq:
+验证版本：
 
 ```bash
-docker run \
-  -d \
-  --restart always \
-  --name activemq \
-  -p 61616:61616 \
-  -p 8161:8161 \
-  symptoma/activemq:latest
+git version && \
+docker version -f json | jq -r .Client.Version && \
+java -version 2>&1 | grep "openjdk version" && \
+curl --version | grep "curl" | sed 's/(.*//' && \
+jq --version && \
+spring --version && \
+siege --version 2>&1 | grep SIEGE && \
+helm version --short && \
+kubectl version --client -o json | jq -r .clientVersion.gitVersion && \
+minikube version | grep "minikube" && \
+istioctl version --remote=false
 ```
 
-### 2. 配置本地 hosts 文件
+### 1. 配置本地 hosts 文件
 
 ```bash
-127.0.0.1 chensoul-auth
-127.0.0.1 chensoul-gateway
-127.0.0.1 chensoul-registry
-127.0.0.1 chensoul-xxljob
-127.0.0.1 chensoul-mysql
-127.0.0.1 chensoul-redis
-127.0.0.1 chensoul-mq
+127.0.0.1 mysql
+127.0.0.1 mysql-master
+127.0.0.1 mysql-slave
+
+127.0.0.1 redis
+127.0.0.1 rabbitmq
+127.0.0.1 activemq
+
+127.0.0.1 config-file
+127.0.0.1 nacos
+127.0.0.1 eureka
+127.0.0.1 gateway
+127.0.0.1 zipkin
 ```
 
-## 端口
+### 2. 启动服务
 
-| 模块                | 模块名称          | 服务名               | 端口    | 用户名/密码 |
-|-------------------|---------------|-------------------|-------|--------|
-| Nacos             | 注册、配置中心       | chensoul-registry | 8848  |        |
-| MySQL             | 数据库           | chensoul-mysql    | 3306  |        |
-| Redis             | 数据库           | chensoul-redis    | 6379  |        |
-| ActiveMQ          | 队列            | chensoul-mq       | 11111 |        |
-| chensoul-gateway  | 网关            | chensoul-gateway  | 9999  |        |
-| chensoul-auth     | 授权            | chensoul-auth     | 6666  |        |
-| chensoul-upms     | 用户            | chensoul-upms     | 6100  |        |
-| chensoul-task     | 任务            | chensoul-task     | 6200  |        |
-| chensoul-msg      | 消息            | chensoul-msg      | 6300  |        |
-| chensoul-flows    | 任务流程          | chensoul-flows    | 6400  |        |
-| chensoul-monitor  | 监控            | chensoul-monitor  | 5100  |        |
-| chensoul-xxljob   | XXL Job Admin | chensoul-xxljob   | 5200  |        |
-| chensoul-sentinel | sentinel      | chensoul-sentinel | 5300  |        |
+```bash
+mvn clean package -DskipTests=true && docker-compose build && docker-compose up -d
 
-## TODO
+docker ps --format {{.Names}}
+```
 
-- syslog
-- 模块移出：redis、mybatis-plus
-- oauth2 server
-- springdoc
-- WebSocket
-- k8s
+## 参考资料
 
-### 原则
+- [Microservices with Spring Boot 3 and Spring Cloud](https://github.com/PacktPublishing/Microservices-with-Spring-Boot-and-Spring-Cloud-Third-Edition)
 
-- 知道每一行代码的作用
-- 编写单元测试
-- 不要重复造轮子
