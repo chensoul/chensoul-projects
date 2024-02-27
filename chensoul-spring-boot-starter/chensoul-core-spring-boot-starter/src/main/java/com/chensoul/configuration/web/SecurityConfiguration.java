@@ -1,6 +1,6 @@
 package com.chensoul.configuration.web;
 
-import com.chensoul.boot.properties.MainProperties;
+import com.chensoul.boot.properties.CoreProperties;
 import com.chensoul.boot.properties.audit.AuditEngineProperties;
 import com.chensoul.boot.properties.web.ClientProperties;
 import com.chensoul.spring.client.ClientInfoOptions;
@@ -28,12 +28,12 @@ import org.springframework.web.servlet.DispatcherServlet;
 @AutoConfiguration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnClass({Servlet.class, DispatcherServlet.class})
-@EnableConfigurationProperties(MainProperties.class)
+@EnableConfigurationProperties(CoreProperties.class)
 public class SecurityConfiguration {
     @Bean
     @ConditionalOnMissingBean(name = "clientInfoThreadLocalFilter")
     public FilterRegistrationBean<ClientInfoThreadLocalFilter> clientInfoThreadLocalFilter(
-        final MainProperties properties) {
+        final CoreProperties properties) {
         final FilterRegistrationBean bean = new FilterRegistrationBean<ClientInfoThreadLocalFilter>();
         final AuditEngineProperties audit = properties.getAudit().getEngine();
         final ClientInfoOptions options = ClientInfoOptions.builder()
@@ -53,7 +53,7 @@ public class SecurityConfiguration {
     @Bean
     @ConditionalOnMissingBean(name = "clientInfoRemoteAddrFilter")
     public FilterRegistrationBean<ClientInfoRemoteAddrFilter> clientInfoRemoteAddrFilter(
-        final MainProperties properties) {
+        final CoreProperties properties) {
         final FilterRegistrationBean bean = new FilterRegistrationBean();
         final ClientProperties clientProperties = properties.getServer().getClient();
         final ClientInfoRemoteAddrFilter filter = new ClientInfoRemoteAddrFilter();

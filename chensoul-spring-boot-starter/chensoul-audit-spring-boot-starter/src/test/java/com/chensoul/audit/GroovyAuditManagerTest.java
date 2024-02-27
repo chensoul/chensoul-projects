@@ -1,6 +1,6 @@
 package com.chensoul.audit;
 
-import com.chensoul.boot.properties.MainProperties;
+import com.chensoul.boot.properties.CoreProperties;
 import com.chensoul.spring.client.ClientInfo;
 import com.chensoul.util.Maps;
 import java.time.Clock;
@@ -24,7 +24,7 @@ import org.springframework.boot.test.context.SpringBootTest;
         "chensoul.audit.groovy.enabled=true",
         "chensoul.audit.groovy.template.location=classpath:/GroovyAudit.groovy"
     })
-@EnableConfigurationProperties(MainProperties.class)
+@EnableConfigurationProperties(CoreProperties.class)
 class GroovyAuditManagerTest {
     @Autowired
     private AuditManager auditManager;

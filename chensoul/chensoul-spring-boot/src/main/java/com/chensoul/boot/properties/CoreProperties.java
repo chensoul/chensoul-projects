@@ -21,7 +21,7 @@ import org.springframework.validation.annotation.Validated;
 @Setter
 @Accessors(chain = true)
 @Validated
-public class MainProperties {
+public class CoreProperties {
     @NestedConfigurationProperty
     private AuditProperties audit = new AuditProperties();
 

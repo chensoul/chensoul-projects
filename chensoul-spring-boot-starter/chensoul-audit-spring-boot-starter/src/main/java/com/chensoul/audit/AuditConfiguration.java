@@ -13,7 +13,7 @@ import com.chensoul.audit.support.DefaultAuditResolverRegistry;
 import com.chensoul.audit.support.FilteredAuditManager;
 import com.chensoul.audit.support.GroovyAuditManager;
 import com.chensoul.audit.support.Slf4jAuditManager;
-import com.chensoul.boot.properties.MainProperties;
+import com.chensoul.boot.properties.CoreProperties;
 import com.chensoul.boot.properties.audit.AuditEngineProperties;
 import com.chensoul.boot.properties.audit.AuditSlf4jProperties;
 import com.chensoul.util.function.FunctionUtils;
@@ -44,7 +44,7 @@ import org.springframework.util.StringUtils;
  * This is {@link AuditConfiguration}.
  */
 @EnableAspectJAutoProxy(proxyTargetClass = false)
-@EnableConfigurationProperties(MainProperties.class)
+@EnableConfigurationProperties(CoreProperties.class)
 @AutoConfiguration
 @ConditionalOnProperty(name = "chensoul.audit.engine.enabled", havingValue = "true", matchIfMissing = true)
 public class AuditConfiguration {
@@ -61,7 +61,7 @@ public class AuditConfiguration {
         final ClientInfoResolver clientInfoResolver,
         final AuditResolverRegistry auditResolverRegistry,
         final AuditManager auditManager,
-        final MainProperties properties) {
+        final CoreProperties properties) {
 
         final AuditEngineProperties audit = properties.getAudit().getEngine();
         final AuditAspect aspect = new AuditAspect(
@@ -80,7 +80,7 @@ public class AuditConfiguration {
     @ConditionalOnMissingBean
     protected AuditManager auditManager(
         final AuditManagerRegistry auditManagerRegistry,
-        final MainProperties properties) {
+        final CoreProperties properties) {
         final AuditEngineProperties audit = properties.getAudit().getEngine();
         final AuditManager auditManager = new FilteredAuditManager(
             auditManagerRegistry.getAuditManagers(),
@@ -152,7 +152,7 @@ public class AuditConfiguration {
         @Bean
         @ConditionalOnMissingBean(name = "slf4jAuditManagerRegistryConfigurer")
         @ConditionalOnProperty(name = "chensoul.audit.slf4j.enabled", havingValue = "true", matchIfMissing = true)
-        public AuditManagerRegistryConfigurer slf4jAuditManagerRegistryConfigurer(final MainProperties properties) {
+        public AuditManagerRegistryConfigurer slf4jAuditManagerRegistryConfigurer(final CoreProperties properties) {
             return auditManagerRegistry -> {
                 final AuditSlf4jProperties slf4j = properties.getAudit().getSlf4j();
                 final Slf4jAuditManager manager = new Slf4jAuditManager();
@@ -173,7 +173,7 @@ public class AuditConfiguration {
         @ConditionalOnProperty(name = "chensoul.audit.groovy.enabled", havingValue = "true", matchIfMissing = false)
         public AuditManagerRegistryConfigurer groovyAuditManagerRegistryConfigurer(
             final ConfigurableApplicationContext applicationContext,
-            final MainProperties properties) {
+            final CoreProperties properties) {
 
             return auditManagerRegistry -> FunctionUtils.doAndHandle(__ -> {
                 final File templateFile = properties.getAudit().getGroovy().getTemplate().getLocation().getFile();

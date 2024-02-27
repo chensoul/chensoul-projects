@@ -1,7 +1,7 @@
 package com.chensoul.configuration.logging;
 
 import ch.qos.logback.classic.LoggerContext;
-import com.chensoul.boot.properties.MainProperties;
+import com.chensoul.boot.properties.CoreProperties;
 import com.chensoul.boot.properties.logging.LogstashProperties;
 import static com.chensoul.configuration.logging.LogbackUtils.addContextListener;
 import static com.chensoul.configuration.logging.LogbackUtils.addJsonConsoleAppender;
@@ -20,13 +20,13 @@ import org.springframework.core.env.Environment;
  */
 @EnableAspectJAutoProxy(exposeProxy = true)
 @AutoConfiguration
-@EnableConfigurationProperties(MainProperties.class)
+@EnableConfigurationProperties(CoreProperties.class)
 public class LoggingConfiguration {
     /**
      * @param env
-     * @param mainProperties
+     * @param coreProperties
      */
-    public LoggingConfiguration(final Environment env, final MainProperties mainProperties) {
+    public LoggingConfiguration(final Environment env, final CoreProperties coreProperties) {
         final LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 
         final Map<String, String> map = new HashMap<>();
@@ -34,16 +34,16 @@ public class LoggingConfiguration {
         map.put("app_port", env.getProperty("server.port", "8080"));
         final String customFields = JsonUtils.toJson(map);
 
-        final LogstashProperties logstashProperties = mainProperties.getLogging().getLogstash();
+        final LogstashProperties logstashProperties = coreProperties.getLogging().getLogstash();
 
-        if (mainProperties.getLogging().isUseJsonFormat()) {
+        if (coreProperties.getLogging().isUseJsonFormat()) {
             addJsonConsoleAppender(context, customFields);
         }
         if (logstashProperties.isEnabled()) {
             addLogstashTcpSocketAppender(context, customFields, logstashProperties);
         }
-        if (mainProperties.getLogging().isUseJsonFormat() || logstashProperties.isEnabled()) {
-            addContextListener(context, customFields, mainProperties.getLogging());
+        if (coreProperties.getLogging().isUseJsonFormat() || logstashProperties.isEnabled()) {
+            addContextListener(context, customFields, coreProperties.getLogging());
         }
     }
 }

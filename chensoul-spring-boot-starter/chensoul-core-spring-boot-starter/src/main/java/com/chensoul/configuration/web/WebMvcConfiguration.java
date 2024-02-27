@@ -1,6 +1,6 @@
 package com.chensoul.configuration.web;
 
-import com.chensoul.boot.properties.MainProperties;
+import com.chensoul.boot.properties.CoreProperties;
 import static com.chensoul.configuration.Constants.SPRING_PROFILE_PRODUCTION;
 import com.chensoul.configuration.web.filter.CachingHttpHeadersFilter;
 import java.nio.charset.StandardCharsets;
@@ -40,7 +40,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 @AutoConfigureBefore(WebMvcAutoConfiguration.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@EnableConfigurationProperties(MainProperties.class)
+@EnableConfigurationProperties(CoreProperties.class)
 public class WebMvcConfiguration implements WebMvcConfigurer {
     public static final String LOCALE_PARAM_NAME = "lang";
 
@@ -107,7 +107,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      */
     @Bean
     @Profile(SPRING_PROFILE_PRODUCTION)
-    public CachingHttpHeadersFilter cachingHttpHeadersFilter(final MainProperties properties) {
+    public CachingHttpHeadersFilter cachingHttpHeadersFilter(final CoreProperties properties) {
         // Use a cache filter that only match selected paths
         return new CachingHttpHeadersFilter(TimeUnit.DAYS.toMillis(properties.getServer().getClient().getHttpProperties().getTimeToLiveInDays()));
     }
