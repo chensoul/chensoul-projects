@@ -1,13 +1,11 @@
 # chensoul-cloud
 
-一个基于 Spring Boot2、Spring Cloud 2021 & Alibaba、OAuth2、Mybatis Plus、ActiveMQ、XxlJob、Docker
-等前沿技术搭建的微服务SASS多租户RBAC权限后端管理系统。
+基于 Jdk 1.8、SpringBoot 2.7.18、SpringCloud 2021.0.9 和 Spring Cloud Alibaba 2021.0.6.0 且采用前后端分离的微服务多租户体系架构。
 
 ## 项目介绍
 
 ### 特性
 
-- 主体框架：采用Spring Boot 2.7.18、Spring Cloud 2021.0.9、Spring Cloud Alibaba 2021.0.6.0版本进行系统设计。
 - 统一注册：支持 Nacos 作为注册中心，实现多配置、分群组、分命名空间、多业务模块的注册和发现功能。
 - 统一认证：统一 Oauth2 认证协议，并支持自定义 grant_type 实现手机验证码登录。
 - 业务监控：利用 Spring Boot Admin 来监控各个独立微服务运行状态。
