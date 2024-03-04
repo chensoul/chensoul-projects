@@ -38,6 +38,8 @@
 
     <module>microservice/chensoul-auth</module>
 
+    <module>monolith/user</module>
+
     <module>samples</module>
   </modules>
 
