@@ -9,7 +9,7 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <artifactId>user</artifactId>
+  <artifactId>user-samples</artifactId>
 
   <dependencies>
     <dependency>

@@ -1,6 +1,5 @@
 package com.alibaba.csp.sentinel.dashboard.datasource.entity.gateway;
 
-import com.alibaba.csp.sentinel.adapter.gateway.common.rule.GatewayParamFlowItem;
 import java.util.Objects;
 
 /**

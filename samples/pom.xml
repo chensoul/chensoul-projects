@@ -17,7 +17,6 @@
 
   <modules>
     <module>audit-samples</module>
-    <module>user</module>
-
+    <module>user-samples</module>
   </modules>
 </project>
