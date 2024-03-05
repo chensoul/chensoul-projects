@@ -136,7 +136,7 @@ public class CookieRetrievingCookieGenerator extends CookieGenerator implements 
                     .distinct()
                     .filter(StringUtils::isNotBlank)
                     .forEach(path -> {
-                        val crm = new Cookie(cookie.getName(), cookie.getValue());
+                        val crm = new Cookie(cookie.getName(), removeSpecial(cookie.getValue()));
                         crm.setMaxAge(0);
                         crm.setPath(path);
                         crm.setSecure(cookie.getSecure());
@@ -144,6 +144,10 @@ public class CookieRetrievingCookieGenerator extends CookieGenerator implements 
                         log.debug("Removing cookie [{}] with path [{}] and [{}]", crm.getName(), crm.getPath(), crm.getValue());
                         response.addCookie(crm);
                     })));
+    }
+
+    private static String removeSpecial(String str) {
+        return str.replaceAll("[^a-zA-Z ]", "");
     }
 
     protected Cookie addCookieHeaderToResponse(final Cookie cookie,
