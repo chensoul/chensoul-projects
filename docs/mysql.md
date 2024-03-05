@@ -3,7 +3,7 @@
 ## 启动数据库
 
 ```bash
-docker-compose -f docker-compose.yml -p foodie-cloud up -d mysql-master mysql-slave
+docker compose -f docker compose.yml -p foodie-cloud up -d mysql-master mysql-slave
 ```
 
 ## 配置主从复制
@@ -96,7 +96,7 @@ spring.shardingsphere:
 增加下面配置，允许 bean 覆盖：
 
 ```yml
-spring:  
+spring:
   main:
     allow-bean-definition-overriding: true
 ```

@@ -150,12 +150,12 @@ echo "SKIP_CB_TESTS=${SKIP_CB_TESTS}"
 if [[ $@ == *"start"* ]]
 then
   echo "Package and build docker image..."
-  mvn clean package -DskipTest && docker-compose build
+  mvn clean package -DskipTest && docker compose build
   echo "Restarting the test environment..."
-  echo "$ docker-compose down --remove-orphans"
-  docker-compose down --remove-orphans
-  echo "$ docker-compose up -d"
-  docker-compose up -d
+  echo "$ docker compose down --remove-orphans"
+  docker compose down --remove-orphans
+  echo "$ docker compose up -d"
+  docker compose up -d
   docker ps --format {{.Names}}
 fi
 
@@ -204,8 +204,8 @@ fi
 if [[ $@ == *"stop"* ]]
 then
     echo "We are done, stopping the test environment..."
-    echo "$ docker-compose down"
-    docker-compose down
+    echo "$ docker compose down"
+    docker compose down
 fi
 
 echo "End, all tests OK:" `date`

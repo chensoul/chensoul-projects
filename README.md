@@ -141,7 +141,7 @@ istioctl version --remote=false
 ### 2. 启动服务
 
 ```bash
-mvn clean package -DskipTests=true && docker-compose build && docker-compose up -d
+mvn clean package -DskipTests=true && docker compose build && docker compose up -d
 
 docker ps --format {{.Names}}
 ```
