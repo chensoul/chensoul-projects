@@ -20,7 +20,7 @@
     </dependency>
     <dependency>
       <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-core-spring-boot-starter</artifactId>
+      <artifactId>chensoul-web-spring-boot-starter</artifactId>
       <version>${revision}</version>
     </dependency>
     <dependency>

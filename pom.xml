@@ -25,22 +25,17 @@
 
   <modules>
     <module>chensoul</module>
-    <module>chensoul-dependencies</module>
-    <module>chensoul-spring-boot-starter</module>
+    <module>chensoul-spring-boot</module>
 
     <module>platform/config-file</module>
     <module>platform/eureka</module>
     <module>platform/gateway</module>
     <module>platform/nacos</module>
     <module>platform/admin-server</module>
-    <!--    <module>platform/sentinel</module>-->
     <module>platform/xxljob</module>
-
     <module>microservice/chensoul-auth</module>
-
-    <module>monolith/user</module>
-
     <module>samples</module>
+    <module>chensoul-spring-cloud</module>
   </modules>
 
   <scm>

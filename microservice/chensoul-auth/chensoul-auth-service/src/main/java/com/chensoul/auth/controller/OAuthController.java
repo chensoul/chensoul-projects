@@ -16,11 +16,11 @@
 //import org.springframework.lang.Nullable;
 //import org.springframework.security.oauth2.common.OAuth2AccessToken;
 //import org.springframework.security.oauth2.authentication.endpoint.TokenEndpoint;
-//import org.springframework.web.HttpRequestMethodNotSupportedException;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.webmvc.HttpRequestMethodNotSupportedException;
+//import org.springframework.webmvc.bind.annotation.PostMapping;
+//import org.springframework.webmvc.bind.annotation.RequestMapping;
+//import org.springframework.webmvc.bind.annotation.RequestParam;
+//import org.springframework.webmvc.bind.annotation.RestController;
 //
 ///**
 // * Rewrite {@link TokenEndpoint} resource password encrypt

@@ -1,0 +1,3 @@
+com.chensoul.spring.boot.mybatis.configuration.EncryptorConfiguration
+com.chensoul.spring.boot.mybatis.configuration.MybatisPlusConfiguration
+com.chensoul.spring.boot.mybatis.configuration.FeignTenantConfiguration

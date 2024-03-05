@@ -1,6 +1,6 @@
 package com.chensoul.auth.domain.account;
 
-import com.chensoul.mybatis.entity.CommonEntity;
+import com.chensoul.spring.boot.mybatis.entity.CommonEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

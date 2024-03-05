@@ -1,6 +1,6 @@
 package com.chensoul.auth;
 
-import com.chensoul.openfeign.annotation.EnableCustomFeignClients;
+import com.chensoul.spring.cloud.openfeign.annotation.EnableCustomFeignClients;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

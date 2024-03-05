@@ -10,7 +10,7 @@
 //import org.springframework.security.oauth2.authentication.token.TokenStore;
 //import org.springframework.security.oauth2.authentication.token.store.JwtClaimsSetVerifier;
 //import org.springframework.security.oauth2.authentication.token.store.JwtTokenStore;
-//import org.springframework.web.client.RestTemplate;
+//import org.springframework.webmvc.client.RestTemplate;
 //
 ///**
 // * Support load balance jwk TokenStore implementation
