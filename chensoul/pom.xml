@@ -17,12 +17,10 @@
   <modules>
     <module>chensoul-dependencies</module>
     <module>chensoul-core</module>
-    <module>chensoul-audit</module>
     <module>chensoul-test</module>
     <module>chensoul-jackson</module>
     <module>chensoul-validation</module>
     <module>chensoul-crypto</module>
-    <module>chensoul-mybatis</module>
     <module>chensoul-oauth2</module>
     <module>chensoul-groovy</module>
     <module>chensoul-spring</module>

@@ -25,6 +25,8 @@
 
   <modules>
     <module>chensoul</module>
+    <module>chensoul-audit</module>
+
     <module>chensoul-spring-boot</module>
 
     <module>platform/config-file</module>
@@ -36,6 +38,8 @@
     <module>microservice/chensoul-auth</module>
     <module>samples</module>
     <module>chensoul-spring-cloud</module>
+    <module>chensoul-redis</module>
+    <module>chensoul-mybatis</module>
   </modules>
 
   <scm>

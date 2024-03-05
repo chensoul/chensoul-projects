@@ -2,7 +2,7 @@ package com.chensoul.auth.domain.account.model;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.chensoul.auth.domain.role.Role;
-import com.chensoul.spring.boot.mybatis.entity.CommonEntity;
+import com.chensoul.mybatis.spring.boot.entity.CommonEntity;
 import java.util.Collection;
 import java.util.List;
 import lombok.Getter;

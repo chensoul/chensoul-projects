@@ -17,10 +17,7 @@
     <module>chensoul-spring-boot-common</module>
     <module>chensoul-spring-boot-dependencies</module>
     <module>chensoul-web-spring-boot-starter</module>
-    <module>chensoul-audit-spring-boot-starter</module>
-    <module>chensoul-redis-spring-boot-starter</module>
     <module>chensoul-websocket-spring-boot-starter</module>
     <module>chensoul-oauth2-spring-boot-starter</module>
-    <module>chensoul-mybatis-spring-boot-starter</module>
   </modules>
 </project>

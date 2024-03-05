@@ -1,6 +1,6 @@
 package com.chensoul.examples;
 
-import com.chensoul.spring.boot.audit.Audit;
+import com.chensoul.audit.Audit;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;

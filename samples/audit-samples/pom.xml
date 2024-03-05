@@ -10,7 +10,9 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>audit-samples</artifactId>
+  <version>${revision}</version>
 
   <dependencies>
     <dependency>

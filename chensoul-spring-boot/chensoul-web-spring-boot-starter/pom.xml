@@ -19,7 +19,7 @@
     </dependency>
     <dependency>
       <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-mybatis</artifactId>
+      <artifactId>chensoul-mybatis-common</artifactId>
       <version>${revision}</version>
     </dependency>
     <dependency>

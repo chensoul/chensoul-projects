@@ -23,11 +23,6 @@
       </dependency>
       <dependency>
         <groupId>com.chensoul</groupId>
-        <artifactId>chensoul-audit</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.chensoul</groupId>
         <artifactId>chensoul-crypto</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -59,11 +54,6 @@
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-oauth2</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.chensoul</groupId>
-        <artifactId>chensoul-mybatis</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
