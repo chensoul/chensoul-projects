@@ -168,10 +168,10 @@ services:
     ports:
       - "6006:6006"
 
-  monitor:
+  admin-server:
     build:
-      context: platform/monitor
-    image: monitor
+      context: platform/admin-server
+    image: admin-server
     restart: always
     env_file:
       - .env

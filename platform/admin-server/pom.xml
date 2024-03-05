@@ -9,7 +9,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>monitor</artifactId>
+  <artifactId>admin-server</artifactId>
 
   <dependencies>
     <dependency>

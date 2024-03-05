@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * job lose-monitor instance
+ * job lose-adminserver instance
  *
  * @author xuxueli 2015-9-1 18:05:56
  */
@@ -32,7 +32,7 @@ public class JobCompleteHelper {
         return instance;
     }
 
-    // ---------------------- monitor ----------------------
+    // ---------------------- adminserver ----------------------
 
     private ThreadPoolExecutor callbackThreadPool = null;
 
@@ -58,7 +58,7 @@ public class JobCompleteHelper {
             }
         });
 
-        // for monitor
+        // for adminserver
         monitorThread = new Thread(new Runnable() {
 
             @Override
@@ -73,7 +73,7 @@ public class JobCompleteHelper {
                     }
                 }
 
-                // monitor
+                // adminserver
                 while (!toStop) {
                     try {
                         // 任务结果丢失处理：调度记录停留在 "运行中" 状态超过10min，且对应执行器心跳注册失败不在线，则将本地调度主动标记失败；
@@ -97,7 +97,7 @@ public class JobCompleteHelper {
                         }
                     } catch (Exception e) {
                         if (!toStop) {
-                            logger.error(">>>>>>>>>>> xxl-job, job fail monitor thread error:{}", e);
+                            logger.error(">>>>>>>>>>> xxl-job, job fail adminserver thread error:{}", e);
                         }
                     }
 

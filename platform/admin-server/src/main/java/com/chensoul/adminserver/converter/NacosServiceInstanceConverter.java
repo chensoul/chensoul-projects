@@ -1,4 +1,4 @@
-package com.chensoul.monitor.converter;
+package com.chensoul.adminserver.converter;
 
 import de.codecentric.boot.admin.server.cloud.discovery.DefaultServiceInstanceConverter;
 import static java.util.Collections.emptyMap;

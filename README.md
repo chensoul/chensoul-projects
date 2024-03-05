@@ -58,19 +58,19 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 
 ### 默认端口和用户名密码
 
-| 模块       | 模块名称      | 服务名                   | 端口         | 用户名/密码       |
-|----------|-----------|-----------------------|------------|--------------|
-| MySQL    | 数据库       | mysql                 | 3306       | root/123456  |
-| Redis    | 数据库       | redis                 | 6379       | 123456       |
-| ActiveMQ | 队列        | activemq              | 61616、8161 |              |
-| RabbitMQ | 队列        | rabbitmq              | 5672、15672 | guest/123456 |
-| Nacos    | 注册中心、配置中心 | nacos                 | 8848       | nacos/123456 |
-| Eureka   | 注册中心      | eureka                | 8761       |              |
-| Gateway  | 网关        | gateway               | 8443       |              |
-| Monitor  | 监控        | monitor               | 5100       |              |
-| Xxljob   | XXLJob    | xxljob                | 5200       |              |
-| Sentinel | sentinel  | sentinel              | 5300       |              |
-| Auth     | 授权        | chensoul-auth-service | 6666       |              |
+| 模块           | 模块名称      | 服务名                   | 端口         | 用户名/密码       |
+|--------------|-----------|-----------------------|------------|--------------|
+| MySQL        | 数据库       | mysql                 | 3306       | root/123456  |
+| Redis        | 数据库       | redis                 | 6379       | 123456       |
+| ActiveMQ     | 队列        | activemq              | 61616、8161 |              |
+| RabbitMQ     | 队列        | rabbitmq              | 5672、15672 | guest/123456 |
+| Nacos        | 注册中心、配置中心 | nacos                 | 8848       | nacos/123456 |
+| Eureka       | 注册中心      | eureka                | 8761       |              |
+| Gateway      | 网关        | gateway               | 8443       |              |
+| Admin Server | 监控        | admin-server          | 5100       |              |
+| Xxljob       | XXLJob    | xxljob                | 5200       |              |
+| Sentinel     | sentinel  | sentinel              | 5300       |              |
+| Auth         | 授权        | chensoul-auth-service | 6666       |              |
 
 ### 环境搭建
 

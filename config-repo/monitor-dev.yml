@@ -9,6 +9,6 @@ spring.security:
 spring.boot.admin:
   discovery:
     ignored-services:
-      - monitor
+      - adminserver
   ui:
     title: ${spring.application.name}

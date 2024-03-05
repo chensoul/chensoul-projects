@@ -32,7 +32,7 @@
     <module>platform/eureka</module>
     <module>platform/gateway</module>
     <module>platform/nacos</module>
-    <module>platform/monitor</module>
+    <module>platform/admin-server</module>
     <!--    <module>platform/sentinel</module>-->
     <module>platform/xxljob</module>
 

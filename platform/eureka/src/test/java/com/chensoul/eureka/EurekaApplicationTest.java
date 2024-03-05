@@ -5,12 +5,12 @@
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.boot.test.context.SpringBootTest;
-//import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT;
+//import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 //import org.springframework.boot.test.web.client.TestRestTemplate;
 //import org.springframework.http.HttpStatus;
 //import org.springframework.http.ResponseEntity;
 //
-//@SpringBootTest(webEnvironment = DEFINED_PORT, properties = {"server.port=8761", "spring.cloud.config.enabled=false"})
+//@SpringBootTest(webEnvironment = RANDOM_PORT, properties = {"spring.cloud.config.enabled=false"})
 //class EurekaApplicationTest {
 //    @Autowired
 //    private TestRestTemplate testRestTemplate;

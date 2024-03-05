@@ -36,7 +36,7 @@ public class EmailJobAlarm implements JobAlarm {
     public boolean doAlarm(XxlJobInfo info, XxlJobLog jobLog) {
         boolean alarmResult = true;
 
-        // send monitor email
+        // send adminserver email
         if (info != null && info.getAlarmEmail() != null && info.getAlarmEmail().trim().length() > 0) {
 
             // alarmContent

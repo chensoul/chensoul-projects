@@ -57,10 +57,10 @@
 // // init i18n
 // initI18n();
 //
-// // admin registry monitor run
+// // admin registry adminserver run
 // JobRegistryMonitorHelper.getInstance().start();
 //
-// // admin monitor run
+// // admin adminserver run
 // JobFailMonitorHelper.getInstance().start();
 //
 // // admin-server
@@ -77,7 +77,7 @@
 // // admin registry stop
 // JobRegistryMonitorHelper.getInstance().toStop();
 //
-// // admin monitor stop
+// // admin adminserver stop
 // JobFailMonitorHelper.getInstance().toStop();
 //
 // // admin-server
