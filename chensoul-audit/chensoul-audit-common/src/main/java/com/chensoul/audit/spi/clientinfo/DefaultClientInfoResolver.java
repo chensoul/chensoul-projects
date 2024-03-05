@@ -1,9 +1,9 @@
 package com.chensoul.audit.spi.clientinfo;
 
 import com.chensoul.audit.spi.ClientInfoResolver;
-import com.chensoul.spring.util.HttpRequestUtils;
 import com.chensoul.spring.client.ClientInfo;
 import com.chensoul.spring.client.ClientInfoHolder;
+import com.chensoul.spring.util.HttpRequestUtils;
 import org.aspectj.lang.JoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

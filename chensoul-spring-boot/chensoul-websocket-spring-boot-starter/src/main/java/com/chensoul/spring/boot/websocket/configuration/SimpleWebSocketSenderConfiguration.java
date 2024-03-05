@@ -1,7 +1,7 @@
 package com.chensoul.spring.boot.websocket.configuration;
 
-import com.chensoul.spring.boot.websocket.service.UserSessionManager;
 import com.chensoul.spring.boot.websocket.properties.WebSocketProperties;
+import com.chensoul.spring.boot.websocket.service.UserSessionManager;
 import com.chensoul.spring.boot.websocket.service.impl.InMemoryUserSessionManager;
 import com.chensoul.spring.boot.websocket.service.impl.SimpleWebSocketClusterMessageSender;
 import com.chensoul.spring.boot.websocket.service.impl.SimpleWebSocketMessageSender;

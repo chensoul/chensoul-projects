@@ -1,11 +1,11 @@
 package com.chensoul.spring.boot.web.webmvc.cookie.gen;
 
+import com.chensoul.lang.function.FunctionUtils;
 import com.chensoul.spring.boot.web.webmvc.cookie.CasCookieBuilder;
 import com.chensoul.spring.boot.web.webmvc.cookie.CookieGenerationContext;
 import com.chensoul.spring.boot.web.webmvc.cookie.CookieValueManager;
 import com.chensoul.spring.boot.web.webmvc.cookie.InvalidCookieException;
-import com.chensoul.util.function.FunctionUtils;
-import com.chensoul.util.logging.LoggingUtils;
+import com.chensoul.util.StringUtils;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
@@ -15,10 +15,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.util.CookieGenerator;
 
 /**
@@ -62,7 +60,7 @@ public class CookieRetrievingCookieGenerator extends CookieGenerator implements 
     }
 
     @Override
-    protected Cookie createCookie(@NonNull final String cookieValue) {
+    protected Cookie createCookie(final String cookieValue) {
         val cookie = super.createCookie(cookieValue);
         cookie.setPath(this.cleanCookiePath(cookie.getPath()));
         return cookie;
@@ -119,7 +117,7 @@ public class CookieRetrievingCookieGenerator extends CookieGenerator implements 
                 .map(ck -> this.casCookieValueManager.obtainCookieValue(ck, request))
                 .orElse(null);
         } catch (final Exception e) {
-            LoggingUtils.warn(log, e);
+            log.error("Error retrieving cookie [{}]", this.getCookieName(), e);
         }
         return null;
     }
@@ -136,7 +134,7 @@ public class CookieRetrievingCookieGenerator extends CookieGenerator implements 
                     .distinct()
                     .filter(StringUtils::isNotBlank)
                     .forEach(path -> {
-                        val crm = new Cookie(cookie.getName(), removeSpecial(cookie.getValue()));
+                        Cookie crm = new Cookie(cookie.getName(), removeSpecial(cookie.getValue()));
                         crm.setMaxAge(0);
                         crm.setPath(path);
                         crm.setSecure(cookie.getSecure());
@@ -188,7 +186,7 @@ public class CookieRetrievingCookieGenerator extends CookieGenerator implements 
     private String cleanCookiePath(final String givenPath) {
         return FunctionUtils.doIf(StringUtils.isBlank(this.cookieGenerationContext.getPath()),
             () -> {
-                val path = StringUtils.removeEndIgnoreCase(StringUtils.defaultIfBlank(givenPath, CookieGenerator.DEFAULT_COOKIE_PATH), "/");
+                String path = StringUtils.removeEndIgnoreCase(StringUtils.defaultIfBlank(givenPath, CookieGenerator.DEFAULT_COOKIE_PATH), "/");
                 return StringUtils.defaultIfBlank(path, "/");
             },
             () -> StringUtils.defaultIfBlank(givenPath, CookieGenerator.DEFAULT_COOKIE_PATH)).get();

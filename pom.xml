@@ -76,7 +76,6 @@
     <easy-captcha.version>1.6.2</easy-captcha.version>
     <commons-lang3.version>3.14.0</commons-lang3.version>
     <commons-io.version>2.15.1</commons-io.version>
-    <commons-collections.version>3.2.2</commons-collections.version>
   </properties>
 
   <dependencyManagement>
@@ -169,11 +168,6 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-collections</groupId>
-        <artifactId>commons-collections</artifactId>
-        <version>${commons-collections.version}</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>

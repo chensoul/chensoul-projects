@@ -1,7 +1,6 @@
 package com.chensoul.groovy.scripting;
 
-import com.chensoul.util.concurrent.TryReentrantLock;
-import com.chensoul.util.logging.LoggingUtils;
+import com.chensoul.concurrent.TryReentrantLock;
 import groovy.lang.Binding;
 import groovy.lang.GroovyRuntimeException;
 import groovy.lang.Script;
@@ -9,9 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * TODO
@@ -21,6 +20,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 @Getter
 @Slf4j
+@ToString(of = "script")
 @RequiredArgsConstructor
 public class GroovyShellScript implements ExecutableScript {
     private static final ThreadLocal<Map<String, Object>> BINDING_THREAD_LOCAL = new ThreadLocal<>();
@@ -58,7 +58,7 @@ public class GroovyShellScript implements ExecutableScript {
                 log.debug("Groovy script [{}] returns result [{}]", this, result);
                 return result;
             } catch (final GroovyRuntimeException e) {
-                LoggingUtils.error(log, e);
+                log.error("Groovy script [{}] execution error", this, e);
             } finally {
                 BINDING_THREAD_LOCAL.remove();
                 if (groovyScript != null) {
@@ -81,10 +81,4 @@ public class GroovyShellScript implements ExecutableScript {
         BINDING_THREAD_LOCAL.set(new HashMap<>(args));
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-            .append("script", script)
-            .toString();
-    }
 }

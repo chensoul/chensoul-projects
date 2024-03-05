@@ -1,12 +1,11 @@
 package com.chensoul.groovy.scripting;
 
-import com.github.benmanes.caffeine.cache.Cache;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
+import com.chensoul.concurrent.TryReentrantLock;
 import com.chensoul.spring.support.SpringExpressionLanguageValueResolver;
 import com.chensoul.spring.support.bean.Beans;
 import com.chensoul.spring.util.ResourceUtils;
-import com.chensoul.util.concurrent.TryReentrantLock;
-import com.chensoul.util.logging.LoggingUtils;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -103,7 +102,7 @@ public class GroovyScriptResourceCacheManager implements ScriptResourceCacheMana
                 put(cacheKey, script);
                 log.trace("Cached groovy script [{}] for key [{}]", script, cacheKey);
             } catch (final Exception e) {
-                LoggingUtils.error(log, e);
+                log.error("Failed to resolve groovy script [{}] for key [{}]", scriptResource, cacheKey, e);
             }
         }
         return script;

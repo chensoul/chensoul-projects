@@ -1,5 +1,6 @@
 package com.chensoul.spring.support;
 
+import com.chensoul.collection.ArrayUtils;
 import com.chensoul.exception.SystemException;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -7,7 +8,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.function.Consumer;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;

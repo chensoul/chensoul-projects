@@ -1,6 +1,7 @@
 package com.chensoul.crypto;
 
-import org.apache.commons.lang3.ArrayUtils;
+
+import com.chensoul.collection.ArrayUtils;
 
 /**
  * This is {@link EncodableCipher}.

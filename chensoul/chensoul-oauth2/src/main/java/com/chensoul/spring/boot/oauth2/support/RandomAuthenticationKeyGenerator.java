@@ -1,7 +1,7 @@
 package com.chensoul.spring.boot.oauth2.support;
 
+import com.chensoul.util.RandomStringUtils;
 import java.util.Map;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.oauth2.provider.token.DefaultAuthenticationKeyGenerator;
 
 /**

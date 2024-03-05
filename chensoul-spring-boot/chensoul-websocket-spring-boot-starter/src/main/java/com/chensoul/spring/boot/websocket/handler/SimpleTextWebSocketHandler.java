@@ -1,7 +1,7 @@
 package com.chensoul.spring.boot.websocket.handler;
 
-import com.chensoul.spring.boot.websocket.service.WebSocketMessageSender;
 import com.chensoul.spring.boot.websocket.interceptor.SimpleWebSocketHandshakeInterceptor;
+import com.chensoul.spring.boot.websocket.service.WebSocketMessageSender;
 import com.chensoul.spring.boot.websocket.util.MicrometerHelper;
 import java.io.IOException;
 import java.security.Principal;

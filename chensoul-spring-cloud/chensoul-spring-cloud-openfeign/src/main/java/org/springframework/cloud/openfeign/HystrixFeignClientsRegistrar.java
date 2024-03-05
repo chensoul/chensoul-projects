@@ -16,7 +16,6 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.core.type.AnnotationMetadata;
-import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
 
 /**
@@ -167,8 +166,8 @@ public class HystrixFeignClientsRegistrar implements ImportBeanDefinitionRegistr
         return FeignClientsRegistrar.getPath(path);
     }
 
-    @Nullable
-    private String getQualifier(@Nullable Map<String, Object> client) {
+
+    private String getQualifier(Map<String, Object> client) {
         if (client == null) {
             return null;
         }
@@ -179,8 +178,8 @@ public class HystrixFeignClientsRegistrar implements ImportBeanDefinitionRegistr
         return null;
     }
 
-    @Nullable
-    private String getClientName(@Nullable Map<String, Object> client) {
+
+    private String getClientName(Map<String, Object> client) {
         if (client == null) {
             return null;
         }

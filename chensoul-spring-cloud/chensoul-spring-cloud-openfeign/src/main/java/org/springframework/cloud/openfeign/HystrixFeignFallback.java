@@ -1,8 +1,8 @@
 package org.springframework.cloud.openfeign;
 
-import com.chensoul.constant.ResultCode;
 import com.chensoul.jackson.utils.JsonUtils;
 import com.chensoul.util.R;
+import com.chensoul.util.ResultCode;
 import com.fasterxml.jackson.core.type.TypeReference;
 import feign.FeignException;
 import java.lang.reflect.Method;
@@ -13,7 +13,6 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
-import org.springframework.lang.Nullable;
 
 /**
  * fallback 代理处理
@@ -26,7 +25,7 @@ public class HystrixFeignFallback<T> implements MethodInterceptor {
     private final String targetName;
     private final Throwable cause;
 
-    @Nullable
+
     @Override
     @SneakyThrows
     public Object intercept(final Object o, final Method method, final Object[] objects, final MethodProxy methodProxy) {

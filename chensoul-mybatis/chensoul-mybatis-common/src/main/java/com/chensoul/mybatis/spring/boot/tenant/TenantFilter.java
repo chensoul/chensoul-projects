@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
@@ -17,12 +17,23 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Slf4j
 public class TenantFilter extends OncePerRequestFilter {
 
+    public static String extractTenantId(HttpServletRequest request) {
+        if (request == null) {
+            return null;
+        }
+        String tenantId = request.getHeader(HEADER_TENANT_ID);
+        if (!StringUtils.hasText(tenantId)) {
+            tenantId = request.getParameter(HEADER_TENANT_ID);
+        }
+        return tenantId;
+    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
         String tenantId = extractTenantId(httpServletRequest);
 
-        if (StringUtils.isBlank(tenantId)) {
+        if (!StringUtils.hasText(tenantId)) {
             tenantId = NULL;
         }
 
@@ -36,17 +47,6 @@ public class TenantFilter extends OncePerRequestFilter {
         } finally {
             TenantContextHolder.clear();
         }
-    }
-
-    public static String extractTenantId(HttpServletRequest request) {
-        if (request == null) {
-            return null;
-        }
-        String tenantId = request.getHeader(HEADER_TENANT_ID);
-        if (StringUtils.isBlank(tenantId)) {
-            tenantId = request.getParameter(HEADER_TENANT_ID);
-        }
-        return tenantId;
     }
 
 }

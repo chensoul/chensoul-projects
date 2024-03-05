@@ -1,5 +1,6 @@
 package com.chensoul.spring.boot.web.webmvc.cookie;
 
+import com.chensoul.util.StringUtils;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +9,6 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.With;
 import lombok.experimental.SuperBuilder;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * This is {@link CookieGenerationContext}.

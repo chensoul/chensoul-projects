@@ -1,10 +1,10 @@
 package com.chensoul.groovy.scripting;
 
+import com.chensoul.concurrent.TryReentrantLock;
+import com.chensoul.lang.function.CheckedConsumer;
+import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.spring.util.ResourceUtils;
 import com.chensoul.spring.util.io.FileWatcherService;
-import com.chensoul.util.concurrent.TryReentrantLock;
-import com.chensoul.util.function.CheckedConsumer;
-import com.chensoul.util.function.FunctionUtils;
 import groovy.lang.GroovyObject;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,13 +39,13 @@ public class WatchableGroovyScript implements ExecutableScript {
         this.resource = script;
         if (ResourceUtils.doesResourceExist(script)) {
             if (ResourceUtils.isFile(script) && enableWatcher) {
-                watcherService = FunctionUtils.doUnchecked(
+                watcherService = CheckedSupplier.unchecked(
                     () -> new FileWatcherService(script.getFile(),
                         CheckedConsumer.unchecked(file -> {
                             log.debug("Reloading script at [{}]", file);
                             compileScriptResource(script);
                             log.info("Reloaded script at [{}]", file);
-                        })));
+                        }))).get();
                 watcherService.start(script.getFilename());
             }
             compileScriptResource(script);

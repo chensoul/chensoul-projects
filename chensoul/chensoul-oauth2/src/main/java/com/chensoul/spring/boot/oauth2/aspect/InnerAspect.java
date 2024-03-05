@@ -1,11 +1,11 @@
 package com.chensoul.spring.boot.oauth2.aspect;
 
 import com.chensoul.spring.boot.oauth2.Inner;
+import com.chensoul.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

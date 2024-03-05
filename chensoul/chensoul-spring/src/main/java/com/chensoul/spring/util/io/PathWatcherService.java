@@ -1,7 +1,9 @@
 package com.chensoul.spring.util.io;
 
-import com.chensoul.util.function.CheckedConsumer;
-import com.chensoul.util.function.FunctionUtils;
+import com.chensoul.lang.function.CheckedConsumer;
+import com.chensoul.lang.function.CheckedSupplier;
+import com.chensoul.util.BooleanUtils;
+import com.chensoul.util.StringUtils;
 import java.io.File;
 import java.nio.file.ClosedWatchServiceException;
 import java.nio.file.Path;
@@ -18,8 +20,6 @@ import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.DisposableBean;
 
 /**
@@ -43,10 +43,10 @@ public class PathWatcherService implements WatcherService, Runnable, DisposableB
 
     public PathWatcherService(final File watchablePath, final Consumer<File> onModify) {
         this(watchablePath.toPath(),
-                __ -> {
-                }, onModify,
-                __ -> {
-                });
+            __ -> {
+            }, onModify,
+            __ -> {
+            });
     }
 
     public PathWatcherService(final Path watchablePath, final Consumer<File> onCreate,
@@ -105,14 +105,14 @@ public class PathWatcherService implements WatcherService, Runnable, DisposableB
 
     protected void handleEvent(final WatchKey key) {
         key.pollEvents().forEach(CheckedConsumer.unchecked(event -> {
-            val eventName = event.kind().name();
+            String eventName = event.kind().name();
 
-            val ev = (WatchEvent<Path>) event;
-            val filename = ev.context();
+            WatchEvent<Path> ev = (WatchEvent<Path>) event;
+            Path filename = ev.context();
 
-            val parent = (Path) key.watchable();
-            val fullPath = parent.resolve(filename);
-            val file = fullPath.toFile();
+            Path parent = (Path) key.watchable();
+            Path fullPath = parent.resolve(filename);
+            File file = fullPath.toFile();
 
             log.trace("Detected event [{}] on file [{}]", eventName, file);
             if (eventName.equals(ENTRY_CREATE.name()) && file.exists()) {
@@ -131,10 +131,10 @@ public class PathWatcherService implements WatcherService, Runnable, DisposableB
     }
 
     protected void initializeWatchService(final Path watchablePath) {
-        this.watchService = FunctionUtils.doUnchecked(() -> watchablePath.getFileSystem().newWatchService());
+        this.watchService = CheckedSupplier.unchecked(() -> watchablePath.getFileSystem().newWatchService()).get();
         log.debug("Created watcher for events of type [{}]", Arrays.stream(KINDS)
-                .map(WatchEvent.Kind::name)
-                .collect(Collectors.joining(",")));
-        FunctionUtils.doUnchecked(__ -> watchablePath.register(Objects.requireNonNull(this.watchService), KINDS));
+            .map(WatchEvent.Kind::name)
+            .collect(Collectors.joining(",")));
+        CheckedConsumer.unchecked(__ -> watchablePath.register(Objects.requireNonNull(this.watchService), KINDS));
     }
 }

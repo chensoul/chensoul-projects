@@ -2,7 +2,6 @@ package com.chensoul.audit;
 
 import com.chensoul.spring.boot.common.properties.CoreProperties;
 import com.chensoul.spring.client.ClientInfo;
-import com.chensoul.util.Maps;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.UUID;

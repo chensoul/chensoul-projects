@@ -1,11 +1,11 @@
 package com.chensoul.crypto.support;
 
-import com.chensoul.util.gen.HexRandomStringGenerator;
+import com.chensoul.generator.HexRandomStringGenerator;
+import com.chensoul.util.BooleanUtils;
+import com.chensoul.util.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.Crypt;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
@@ -68,7 +68,7 @@ public class GlibcCryptPasswordEncoder implements PasswordEncoder {
             log.debug("Encoded password uses algorithm [{}]", providedSalt.charAt(1));
         }
         String encodedRawPassword = Crypt.crypt(rawPassword.toString(), providedSalt);
-        Boolean matched = StringUtils.equals(encodedRawPassword, encodedPassword);
+        Boolean matched = StringUtils.equalsIgnoreCase(encodedRawPassword, encodedPassword);
         String msg = String.format("Provided password does %smatch the encoded password",
             BooleanUtils.toString(matched, StringUtils.EMPTY, "not "));
         log.debug(msg);

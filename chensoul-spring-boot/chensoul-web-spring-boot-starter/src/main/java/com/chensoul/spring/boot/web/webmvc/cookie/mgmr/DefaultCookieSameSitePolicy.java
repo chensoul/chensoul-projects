@@ -1,11 +1,10 @@
 package com.chensoul.spring.boot.web.webmvc.cookie.mgmr;
 
+import com.chensoul.groovy.scripting.WatchableGroovyScript;
+import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.spring.boot.web.webmvc.cookie.CookieGenerationContext;
 import com.chensoul.spring.boot.web.webmvc.cookie.CookieSameSitePolicy;
-import com.chensoul.groovy.scripting.WatchableGroovyScript;
 import com.chensoul.spring.util.ResourceUtils;
-import com.chensoul.util.function.CheckedSupplier;
-import com.chensoul.util.function.FunctionUtils;
 import java.util.Locale;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
@@ -63,13 +62,13 @@ public class DefaultCookieSameSitePolicy implements CookieSameSitePolicy {
 
     protected static Optional<String> buildSameSitePolicyFromScript(final HttpServletRequest request, final HttpServletResponse response,
                                                                     final CookieGenerationContext cookieGenerationContext) {
-        return FunctionUtils.doUnchecked(() -> {
+        return CheckedSupplier.unchecked(() -> {
             val sameSitePolicy = cookieGenerationContext.getSameSitePolicy();
             val resource = ResourceUtils.getResourceFrom(sameSitePolicy);
             try (val groovyResource = new WatchableGroovyScript(resource, false)) {
                 return Optional.ofNullable(groovyResource.execute(
-                        new Object[]{request, response, cookieGenerationContext, log}, String.class));
+                    new Object[]{request, response, cookieGenerationContext, log}, String.class));
             }
-        });
+        }).get();
     }
 }

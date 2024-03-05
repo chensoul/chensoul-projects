@@ -1,8 +1,9 @@
 package com.chensoul.spring.client;
 
 import static com.chensoul.constant.StringPool.EMPTY;
+import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.spring.util.HttpRequestUtils;
-import com.chensoul.util.function.CheckedSupplier;
+import com.chensoul.util.StringUtils;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.util.Collections;
@@ -16,7 +17,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.util.HtmlUtils;
 
 @EqualsAndHashCode(callSuper = false)

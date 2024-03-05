@@ -1,9 +1,9 @@
 package com.chensoul.spring.boot.websocket.configuration;
 
 import com.chensoul.spring.boot.websocket.handler.StompWebSocketHandshakeHandler;
-import com.chensoul.spring.boot.websocket.service.WebSocketMessageSender;
 import com.chensoul.spring.boot.websocket.interceptor.StompWebSocketChannelInterceptor;
 import com.chensoul.spring.boot.websocket.properties.WebSocketProperties;
+import com.chensoul.spring.boot.websocket.service.WebSocketMessageSender;
 import com.chensoul.spring.boot.websocket.service.impl.StompWebSocketClusterMessageSender;
 import com.chensoul.spring.boot.websocket.service.impl.StompWebSocketMessageSender;
 import java.util.List;

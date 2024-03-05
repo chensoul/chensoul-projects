@@ -1,7 +1,7 @@
 package com.chensoul.crypto.util;
 
-import com.chensoul.util.date.DateTimeUtils;
-import com.chensoul.util.function.FunctionUtils;
+import com.chensoul.date.DateTimeUtils;
+import com.chensoul.lang.function.CheckedSupplier;
 import java.io.InputStream;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509CRL;
@@ -10,8 +10,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import lombok.experimental.UtilityClass;
 import lombok.val;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.cryptacular.util.CertUtil;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.InputStreamSource;
@@ -74,24 +72,11 @@ public class CertUtils {
     }
 
     /**
-     * Creates a unique and human-readable representation of the given certificate.
-     *
-     * @param cert Certificate.
-     * @return String representation of a certificate that includes the subject and serial number.
-     */
-    public static String toString(final X509Certificate cert) {
-        return new ToStringBuilder(cert, ToStringStyle.NO_CLASS_NAME_STYLE)
-                .append("subjectDn", cert.getSubjectDN())
-                .append("serialNumber", cert.getSerialNumber())
-                .build();
-    }
-
-    /**
      * Gets a certificate factory for creating X.509 artifacts.
      *
      * @return X509 certificate factory.
      */
     public static CertificateFactory getCertificateFactory() {
-        return FunctionUtils.doUnchecked(() -> CertificateFactory.getInstance(X509_CERTIFICATE_TYPE));
+        return CheckedSupplier.unchecked(() -> CertificateFactory.getInstance(X509_CERTIFICATE_TYPE)).get();
     }
 }

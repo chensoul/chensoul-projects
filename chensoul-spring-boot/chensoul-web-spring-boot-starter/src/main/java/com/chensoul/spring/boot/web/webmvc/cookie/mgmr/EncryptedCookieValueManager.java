@@ -1,8 +1,9 @@
 package com.chensoul.spring.boot.web.webmvc.cookie.mgmr;
 
+import com.chensoul.crypto.CipherExecutor;
 import com.chensoul.spring.boot.web.webmvc.cookie.CookieSameSitePolicy;
 import com.chensoul.spring.boot.web.webmvc.cookie.CookieValueManager;
-import com.chensoul.crypto.CipherExecutor;
+import com.chensoul.util.StringUtils;
 import java.io.Serializable;
 import javax.servlet.http.HttpServletRequest;
 import lombok.Getter;
@@ -10,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * Provides basic encryption/decryption resource for cookie values.

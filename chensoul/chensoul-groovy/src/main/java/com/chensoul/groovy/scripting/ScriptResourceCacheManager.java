@@ -1,5 +1,6 @@
 package com.chensoul.groovy.scripting;
 
+import com.chensoul.constant.StringPool;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.nio.charset.StandardCharsets;
 import java.util.Set;
@@ -22,7 +23,7 @@ public interface ScriptResourceCacheManager<K extends String, V extends Executab
      * @return the key
      */
     static String computeKey(final String... keys) {
-        String rawKey = String.join(":", keys);
+        String rawKey = String.join(StringPool.COLON, keys);
         return DigestUtils.md5DigestAsHex(rawKey.getBytes(StandardCharsets.UTF_8));
     }
 

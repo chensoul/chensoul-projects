@@ -1,9 +1,10 @@
 package com.chensoul.groovy.scripting;
 
+import com.chensoul.collection.ArrayUtils;
+import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.spring.util.ResourceUtils;
 import com.chensoul.util.RegexUtils;
-import com.chensoul.util.function.FunctionUtils;
-import com.chensoul.util.logging.LoggingUtils;
+import com.chensoul.util.StringUtils;
 import groovy.lang.Binding;
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
@@ -19,12 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;
 import org.codehaus.groovy.control.customizers.ImportCustomizer;
@@ -39,8 +37,7 @@ import org.springframework.core.io.Resource;
  */
 
 @Slf4j
-@UtilityClass
-public class ScriptingUtils {
+public abstract class ScriptingUtils {
     /**
      * System property to indicate groovy compilation must be static.
      */
@@ -212,7 +209,7 @@ public class ScriptingUtils {
             val result = script.run();
             return getGroovyScriptExecutionResultOrThrow(clazz, result);
         } catch (final Exception e) {
-            LoggingUtils.error(log, e);
+            log.error("Could not execute the groovy script", e);
         }
         return null;
     }
@@ -230,7 +227,7 @@ public class ScriptingUtils {
     public static <T> T executeGroovyScript(final Resource groovyScript,
                                             final Object[] args, final Class<T> clazz,
                                             final boolean failOnError) {
-        return FunctionUtils.doUnchecked(() -> executeGroovyScript(groovyScript, "run", args, clazz, failOnError));
+        return CheckedSupplier.unchecked(() -> executeGroovyScript(groovyScript, "run", args, clazz, failOnError)).get();
     }
 
     /**
@@ -308,7 +305,7 @@ public class ScriptingUtils {
             if (failOnError) {
                 throw new RuntimeException(e);
             }
-            LoggingUtils.error(log, e);
+            log.error("Could not execute the Groovy script at [{}] with method name [{}]", groovyScript, methodName, e);
         }
         return null;
     }
@@ -345,7 +342,7 @@ public class ScriptingUtils {
             if (cause instanceof MissingMethodException) {
                 log.debug(cause.getMessage(), cause);
             } else {
-                LoggingUtils.error(log, cause);
+                log.error("Could not execute the Groovy script", cause);
             }
         }
         return null;
@@ -396,7 +393,7 @@ public class ScriptingUtils {
             if (failOnError) {
                 throw new RuntimeException(e);
             }
-            LoggingUtils.error(log, e);
+            log.error("Could not parse the Groovy script at [{}]", groovyScript, e);
         }
         return null;
     }
@@ -410,7 +407,7 @@ public class ScriptingUtils {
         return new GroovyClassLoader(ScriptingUtils.class.getClassLoader(), GROOVY_COMPILER_CONFIG);
     }
 
-    private Class loadGroovyClass(final Resource groovyScript,
+    private static Class loadGroovyClass(final Resource groovyScript,
                                   final GroovyClassLoader loader) throws IOException {
         if (ResourceUtils.isJarResource(groovyScript)) {
             try (val groovyReader = new BufferedReader(new InputStreamReader(groovyScript.getInputStream(), StandardCharsets.UTF_8))) {
@@ -441,7 +438,7 @@ public class ScriptingUtils {
             if (failOnError) {
                 throw e;
             }
-            LoggingUtils.error(log, e);
+            log.error("Could not execute the Groovy script at [{}]", groovyScript, e);
         }
         return null;
     }
@@ -500,7 +497,7 @@ public class ScriptingUtils {
                 return (T) result;
             }
         } catch (final Exception e) {
-            LoggingUtils.error(log, e);
+            log.error("Could not execute the Groovy script at [{}]", resource, e);
         }
         return null;
     }

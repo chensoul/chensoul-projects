@@ -1,5 +1,11 @@
 package com.chensoul.audit.spring.boot;
 
+import com.chensoul.audit.AuditAspect;
+import com.chensoul.audit.AuditManager;
+import com.chensoul.audit.AuditManagerRegistry;
+import com.chensoul.audit.AuditManagerRegistryConfigurer;
+import com.chensoul.audit.AuditResolverRegistry;
+import com.chensoul.audit.AuditResolverRegistryConfigurer;
 import com.chensoul.audit.spi.ClientInfoResolver;
 import com.chensoul.audit.spi.action.DefaultAuditActionResolver;
 import com.chensoul.audit.spi.clientinfo.DefaultClientInfoResolver;
@@ -13,12 +19,12 @@ import com.chensoul.audit.support.DefaultAuditResolverRegistry;
 import com.chensoul.audit.support.FilteredAuditManager;
 import com.chensoul.audit.support.GroovyAuditManager;
 import com.chensoul.audit.support.Slf4jAuditManager;
+import com.chensoul.lang.function.FunctionUtils;
 import com.chensoul.spring.boot.common.properties.CoreProperties;
 import com.chensoul.spring.boot.common.properties.audit.AuditEngineProperties;
 import com.chensoul.spring.boot.common.properties.audit.AuditSlf4jProperties;
-import com.chensoul.util.function.FunctionUtils;
-import com.chensoul.util.text.DefaultMessageSanitizer;
-import com.chensoul.util.text.MessageSanitizer;
+import com.chensoul.text.DefaultMessageSanitizer;
+import com.chensoul.text.MessageSanitizer;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;

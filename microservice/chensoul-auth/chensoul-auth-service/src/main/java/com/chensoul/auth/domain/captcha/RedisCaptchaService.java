@@ -1,8 +1,8 @@
 package com.chensoul.auth.domain.captcha;
 
 import com.chensoul.auth.infrastructure.oauth2.AuthProperties;
+import com.chensoul.net.InetAddressUtils;
 import com.chensoul.spring.util.HttpRequestUtils;
-import com.chensoul.util.InetAddressUtils;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletRequest;

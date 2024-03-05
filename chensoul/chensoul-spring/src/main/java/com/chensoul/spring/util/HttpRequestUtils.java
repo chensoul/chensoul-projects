@@ -1,8 +1,10 @@
 package com.chensoul.spring.util;
 
-import static com.chensoul.constant.StringPool.ASTERISK_TREE;
-import com.chensoul.util.InetAddressUtils;
-import com.chensoul.util.logging.LoggingUtils;
+import com.chensoul.collection.ArrayUtils;
+import static com.chensoul.constant.SymbolConstants.STAR_THREE;
+import com.chensoul.net.InetAddressUtils;
+import com.chensoul.util.StringUtils;
+import static com.chensoul.util.StringUtils.EMPTY;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
@@ -20,8 +22,6 @@ import javax.servlet.http.HttpSession;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -66,18 +66,22 @@ public class HttpRequestUtils {
      */
     @SuppressWarnings("JdkObsolete")
     public static Map<String, String> getRequestHeaders(final HttpServletRequest request) {
-        val headers = new LinkedHashMap<String, Object>();
+        Map<String, Object> headers = new LinkedHashMap();
         if (request != null) {
             val headerNames = request.getHeaderNames();
             if (headerNames != null) {
                 while (headerNames.hasMoreElements()) {
-                    val headerName = headerNames.nextElement();
-                    val headerValue = StringUtils.stripToEmpty(request.getHeader(headerName));
+                    String headerName = headerNames.nextElement();
+                    Object headerValue = stripToEmpty(request.getHeader(headerName));
                     headers.put(headerName, headerValue);
                 }
             }
         }
         return (Map) headers;
+    }
+
+    public static String stripToEmpty(final String str) {
+        return str == null ? EMPTY : str.trim();
     }
 
     /**
@@ -125,7 +129,7 @@ public class HttpRequestUtils {
             connection.setRequestMethod(HttpMethod.HEAD.name());
             return HttpStatus.valueOf(connection.getResponseCode());
         } catch (final Exception e) {
-            LoggingUtils.error(log, e);
+            log.error("Could not ping URL [{}]: [{}]", location, e.getMessage());
         }
         return HttpStatus.SERVICE_UNAVAILABLE;
 
@@ -138,7 +142,7 @@ public class HttpRequestUtils {
      * @return the full request url
      */
     public static String getFullRequestUrl(final HttpServletRequest request) {
-        return request.getRequestURL() + (request.getQueryString() != null ? '?' + request.getQueryString() : StringUtils.EMPTY);
+        return request.getRequestURL() + (request.getQueryString() != null ? '?' + request.getQueryString() : EMPTY);
     }
 
     /**
@@ -218,7 +222,7 @@ public class HttpRequestUtils {
         Map<String, String> result = new HashMap<>();
         headers.toSingleValueMap().forEach((k, v) -> {
             if (predicate != null && predicate.test(k)) {
-                result.put(k, ASTERISK_TREE);
+                result.put(k, STAR_THREE);
             } else {
                 result.put(k, v);
             }
@@ -236,7 +240,7 @@ public class HttpRequestUtils {
         Map<String, Object> result = new HashMap<>();
         paramMap.forEach((k, v) -> {
             if (predicate != null && predicate.test(k)) {
-                result.put(k, ASTERISK_TREE);
+                result.put(k, STAR_THREE);
             } else {
                 result.put(k, v.length > 1 ? v : v[0]);
             }

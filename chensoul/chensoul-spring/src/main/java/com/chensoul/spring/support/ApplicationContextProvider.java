@@ -1,6 +1,6 @@
 package com.chensoul.spring.support;
 
-import com.chensoul.util.function.FunctionUtils;
+import com.chensoul.lang.function.FunctionUtils;
 import java.util.Optional;
 import lombok.val;
 import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;

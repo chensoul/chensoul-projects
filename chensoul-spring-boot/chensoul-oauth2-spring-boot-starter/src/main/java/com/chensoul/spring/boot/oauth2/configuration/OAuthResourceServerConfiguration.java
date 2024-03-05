@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceS
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.lang.Nullable;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -41,7 +40,7 @@ public class OAuthResourceServerConfiguration {
         private final AuthenticationEntryPoint authenticationEntryPoint;
         private final PermitUrlProperties properties;
 
-        @Nullable
+
         private final RestTemplate restTemplate;
 
         @Override

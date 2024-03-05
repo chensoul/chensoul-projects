@@ -2,6 +2,7 @@ package com.chensoul.spring.boot.oauth2.configuration;
 
 import com.chensoul.spring.boot.oauth2.Inner;
 import com.chensoul.spring.support.SpringContextHolder;
+import com.chensoul.util.RegexUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RegExUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -69,7 +69,7 @@ public class PermitUrlProperties implements InitializingBean {
                 info.getPathPatternsCondition().getPatterns()
                     .forEach(pathPattern -> info.getMethodsCondition().getMethods()
                         .forEach(requestMethod -> temp.add(
-                            new Url().setMethod(HttpMethod.resolve(requestMethod.name())).setUrl(RegExUtils.replaceAll(pathPattern.getPatternString(), PATTERN, "*")))));
+                            new Url().setMethod(HttpMethod.resolve(requestMethod.name())).setUrl(RegexUtils.replaceAll(pathPattern.getPatternString(), PATTERN, "*")))));
             }
         }
 
@@ -87,7 +87,7 @@ public class PermitUrlProperties implements InitializingBean {
                 if (info.getPatternsCondition() != null) {
                     info.getPatternsCondition().getPatterns().forEach(url -> info.getMethodsCondition().getMethods()
                         .forEach(requestMethod -> innerUrls.add(new Url().setMethod(HttpMethod.resolve(requestMethod.name()))
-                            .setUrl(RegExUtils.replaceAll(url, PATTERN, "*")))
+                            .setUrl(RegexUtils.replaceAll(url, PATTERN, "*")))
                         ));
                 }
             }

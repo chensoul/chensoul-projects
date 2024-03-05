@@ -1,7 +1,7 @@
 package com.chensoul.redis.spring.boot.support;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.chensoul.jackson.support.JacksonObjectMapperFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;

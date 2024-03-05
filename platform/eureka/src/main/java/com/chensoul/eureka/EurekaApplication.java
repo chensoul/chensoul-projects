@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * TODO
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 1.0.0
+ * @since 0.0.1
  */
 @EnableEurekaServer
 @SpringBootApplication

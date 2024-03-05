@@ -1,12 +1,12 @@
 package com.chensoul.mybatis.spring.boot.configuration;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import static com.chensoul.mybatis.spring.boot.MybatisConstants.HEADER_TENANT_ID;
 import com.chensoul.mybatis.spring.boot.tenant.TenantContextHolder;
 import com.chensoul.mybatis.spring.boot.tenant.TenantFilter;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.request.RequestAttributes;

@@ -8,7 +8,6 @@ import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
-import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
 
 /**
@@ -32,7 +31,7 @@ public class CustomRedisCacheManager extends RedisCacheManager {
     }
 
     @Override
-    protected RedisCache createRedisCache(String name, @Nullable RedisCacheConfiguration cacheConfig) {
+    protected RedisCache createRedisCache(String name, RedisCacheConfiguration cacheConfig) {
         if (StringUtils.isEmpty(name) || !name.contains(SPLIT_FLAG)) {
             return super.createRedisCache(name, cacheConfig);
         }

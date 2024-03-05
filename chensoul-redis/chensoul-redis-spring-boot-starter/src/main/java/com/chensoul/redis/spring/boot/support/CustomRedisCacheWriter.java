@@ -15,7 +15,6 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStringCommands.SetOption;
 import org.springframework.data.redis.core.types.Expiration;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
 /**
@@ -78,7 +77,7 @@ public class CustomRedisCacheWriter implements RedisCacheWriter {
      * @param ttl
      * @return
      */
-    private static boolean shouldExpireWithin(@Nullable Duration ttl) {
+    private static boolean shouldExpireWithin(Duration ttl) {
         return ttl != null && !ttl.isZero() && !ttl.isNegative();
     }
 
@@ -91,7 +90,7 @@ public class CustomRedisCacheWriter implements RedisCacheWriter {
     }
 
     @Override
-    public void put(String name, byte[] key, byte[] value, @Nullable Duration ttl) {
+    public void put(String name, byte[] key, byte[] value, Duration ttl) {
         Assert.notNull(name, "Name must not be null!");
         Assert.notNull(key, "Key must not be null!");
         Assert.notNull(value, "Value must not be null!");
@@ -126,7 +125,7 @@ public class CustomRedisCacheWriter implements RedisCacheWriter {
     }
 
     @Override
-    public byte[] putIfAbsent(String name, byte[] key, byte[] value, @Nullable Duration ttl) {
+    public byte[] putIfAbsent(String name, byte[] key, byte[] value, Duration ttl) {
 
         Assert.notNull(name, "Name must not be null!");
         Assert.notNull(key, "Key must not be null!");

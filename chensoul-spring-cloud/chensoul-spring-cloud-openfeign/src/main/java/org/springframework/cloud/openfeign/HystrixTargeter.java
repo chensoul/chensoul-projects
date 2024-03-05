@@ -5,7 +5,6 @@ import feign.Target;
 import feign.hystrix.FallbackFactory;
 import feign.hystrix.HystrixFeign;
 import feign.hystrix.SetterFactory;
-import org.springframework.lang.Nullable;
 
 /**
  * 注入默认的 fallbackFactory
@@ -68,7 +67,7 @@ class HystrixTargeter implements Targeter {
         return (T) fallbackInstance;
     }
 
-    @Nullable
+
     private <T> T getOptional(String feignClientName, FeignContext context, Class<T> beanType) {
         return context.getInstance(feignClientName, beanType);
     }

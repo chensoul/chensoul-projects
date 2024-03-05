@@ -1,7 +1,7 @@
 package com.chensoul.spring.boot.common.properties.audit;
 
-import com.chensoul.spring.boot.common.properties.quartz.SchedulingProperties;
 import com.chensoul.spring.boot.common.properties.jpa.AbstractJpaProperties;
+import com.chensoul.spring.boot.common.properties.quartz.SchedulingProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

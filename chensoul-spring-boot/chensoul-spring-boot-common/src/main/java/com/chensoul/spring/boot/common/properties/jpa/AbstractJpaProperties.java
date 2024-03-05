@@ -1,12 +1,12 @@
 package com.chensoul.spring.boot.common.properties.jpa;
 
+import com.chensoul.util.StringUtils;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 /**

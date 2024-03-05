@@ -1,10 +1,10 @@
 package com.chensoul.spring.boot.oauth2.support.accesstoken;
 
+import com.chensoul.date.DatePattern;
+import com.chensoul.date.DateTimeUtils;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import com.chensoul.util.date.DatePattern;
-import com.chensoul.util.date.DateTimeUtils;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

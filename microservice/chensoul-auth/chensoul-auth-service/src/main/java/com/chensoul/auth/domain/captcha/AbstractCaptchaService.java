@@ -1,6 +1,7 @@
 package com.chensoul.auth.domain.captcha;
 
 import com.chensoul.exception.SystemException;
+import com.chensoul.util.StringUtils;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.Cleanup;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.FastByteArrayOutputStream;
 
 /**

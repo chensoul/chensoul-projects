@@ -48,7 +48,7 @@ public class ClusterConfigService {
                 .thenCompose(v -> sentinelApiClient.modifyClusterMode(ip, port, ClusterStateManager.CLUSTER_CLIENT));
     }
 
-    private boolean notClientRequestValid(/* @NonNull */ ClusterClientModifyRequest request) {
+    private boolean notClientRequestValid(/*  */ ClusterClientModifyRequest request) {
         ClusterClientConfig config = request.getClientConfig();
         return config == null || StringUtil.isEmpty(config.getServerHost()) || config.getServerPort() == null
                || config.getServerPort() <= 0 || config.getRequestTimeout() == null || config.getRequestTimeout() <= 0;

@@ -1,10 +1,10 @@
 package com.chensoul.spring.util;
 
+import com.chensoul.lang.function.CheckedConsumer;
+import com.chensoul.lang.function.CheckedSupplier;
+import com.chensoul.lang.function.FunctionUtils;
 import com.chensoul.util.RegexUtils;
-import com.chensoul.util.function.CheckedConsumer;
-import com.chensoul.util.function.CheckedSupplier;
-import com.chensoul.util.function.FunctionUtils;
-import com.chensoul.util.logging.LoggingUtils;
+import com.chensoul.util.StringUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,7 +27,6 @@ import lombok.val;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.input.ReaderInputStream;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.AbstractResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -89,7 +88,7 @@ public class ResourceUtils {
                 return doesResourceExist(res);
             }
         } catch (final Exception e) {
-            LoggingUtils.warn(log, e);
+            log.error("Error reading resource [{}]: [{}]", resource, e.getMessage(), e);
         }
         return false;
     }

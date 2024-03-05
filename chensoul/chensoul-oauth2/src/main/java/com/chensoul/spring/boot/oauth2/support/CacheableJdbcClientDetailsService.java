@@ -4,10 +4,10 @@ package com.chensoul.spring.boot.oauth2.support;
 
 import com.chensoul.jackson.utils.JsonUtils;
 import com.chensoul.spring.boot.oauth2.constants.SecurityConstants;
+import com.chensoul.util.StringUtils;
 import java.util.List;
 import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.oauth2.common.exceptions.InvalidClientException;

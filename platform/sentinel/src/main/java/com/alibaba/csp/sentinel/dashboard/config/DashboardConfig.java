@@ -2,7 +2,7 @@ package com.alibaba.csp.sentinel.dashboard.config;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import org.apache.commons.lang3.StringUtils;
+import com.chensoul.util.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.lang.NonNull;
 
@@ -57,7 +57,7 @@ public class DashboardConfig {
 
     private static final ConcurrentMap<String, Object> cacheMap = new ConcurrentHashMap<>();
 
-    @NonNull
+
     private static String getConfig(String name) {
         // env
         String val = System.getenv(name);

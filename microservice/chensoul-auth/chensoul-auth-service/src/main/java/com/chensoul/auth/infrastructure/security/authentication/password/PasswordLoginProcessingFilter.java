@@ -1,10 +1,10 @@
 package com.chensoul.auth.infrastructure.security.authentication.password;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import static com.chensoul.auth.infrastructure.security.configuration.LoginProperties.PASSWORD_LOGIN_URL;
 import com.chensoul.auth.infrastructure.security.support.CustomWebAuthenticationDetails;
 import com.chensoul.auth.model.PasswordLoginRequest;
-import com.chensoul.util.InetAddressUtils;
+import com.chensoul.net.InetAddressUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -1,11 +1,11 @@
 package com.chensoul.spring.boot.oauth2.support;
 
 import com.chensoul.spring.boot.oauth2.util.SecurityUtils;
+import com.chensoul.util.StringUtils;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.PatternMatchUtils;
 
 /**

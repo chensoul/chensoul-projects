@@ -1,7 +1,7 @@
 package com.chensoul.auth.domain.account;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.chensoul.mybatis.spring.boot.entity.CommonEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

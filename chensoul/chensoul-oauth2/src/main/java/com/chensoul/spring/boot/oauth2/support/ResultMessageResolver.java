@@ -1,10 +1,10 @@
 package com.chensoul.spring.boot.oauth2.support;
 
-import com.chensoul.constant.ResultCode;
+import com.chensoul.util.ExceptionUtils;
 import com.chensoul.util.R;
+import com.chensoul.util.ResultCode;
 import java.util.Locale;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.security.access.AccessDeniedException;

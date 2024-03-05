@@ -1,12 +1,12 @@
 package com.chensoul.spring.boot.web.logging;
 
 import ch.qos.logback.classic.LoggerContext;
+import com.chensoul.jackson.utils.JsonUtils;
 import com.chensoul.spring.boot.common.properties.CoreProperties;
 import com.chensoul.spring.boot.common.properties.logging.LogstashProperties;
 import static com.chensoul.spring.boot.web.logging.LogbackUtils.addContextListener;
 import static com.chensoul.spring.boot.web.logging.LogbackUtils.addJsonConsoleAppender;
 import static com.chensoul.spring.boot.web.logging.LogbackUtils.addLogstashTcpSocketAppender;
-import com.chensoul.jackson.utils.JsonUtils;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.LoggerFactory;

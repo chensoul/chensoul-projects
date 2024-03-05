@@ -1,8 +1,8 @@
 package com.chensoul.audit.support;
 
+import com.chensoul.audit.AuditResolverRegistry;
 import com.chensoul.audit.spi.AuditActionResolver;
 import com.chensoul.audit.spi.AuditResourceResolver;
-import com.chensoul.audit.AuditResolverRegistry;
 import com.chensoul.audit.spi.PrincipalResolver;
 import java.util.LinkedHashMap;
 import java.util.Map;

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Global Exception Handler
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 1.0.0
+ * @since 0.0.1
  */
 @ControllerAdvice(annotations = {RestController.class, Controller.class})
 @ResponseBody
