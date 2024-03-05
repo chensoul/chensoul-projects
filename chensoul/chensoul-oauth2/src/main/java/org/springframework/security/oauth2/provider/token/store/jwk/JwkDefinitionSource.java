@@ -19,7 +19,7 @@
 //import org.springframework.security.jwt.crypto.sign.EllipticCurveVerifier;
 //import org.springframework.security.jwt.crypto.sign.RsaVerifier;
 //import org.springframework.security.jwt.crypto.sign.SignatureVerifier;
-//import org.springframework.web.client.RestTemplate;
+//import org.springframework.webmvc.client.RestTemplate;
 //
 ///**
 // * A source for JSON Web Key(s) (JWK) that is solely responsible for fetching (and caching)

@@ -1,7 +1,7 @@
 package com.chensoul.spring.client;
 
-import com.chensoul.constant.ResultCode;
-import com.chensoul.util.function.FunctionUtils;
+import com.chensoul.lang.function.CheckedConsumer;
+import com.chensoul.util.ResultCode;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
@@ -85,7 +85,7 @@ public class ClientInfoRemoteAddrFilter extends OncePerRequestFilter {
     }
 
     private void sendErrorWhenNotHttp(HttpServletResponse response) throws IOException {
-        FunctionUtils.doUnchecked(__ -> {
+        CheckedConsumer.unchecked(__ -> {
             MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
             jsonConverter.setPrettyPrint(true);
             MediaType jsonMimeType = MediaType.APPLICATION_JSON;

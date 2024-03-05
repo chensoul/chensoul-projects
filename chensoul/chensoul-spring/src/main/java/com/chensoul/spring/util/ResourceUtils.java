@@ -1,10 +1,10 @@
 package com.chensoul.spring.util;
 
+import com.chensoul.lang.function.CheckedConsumer;
+import com.chensoul.lang.function.CheckedSupplier;
+import com.chensoul.lang.function.FunctionUtils;
 import com.chensoul.util.RegexUtils;
-import com.chensoul.util.function.CheckedConsumer;
-import com.chensoul.util.function.CheckedSupplier;
-import com.chensoul.util.function.FunctionUtils;
-import com.chensoul.util.logging.LoggingUtils;
+import com.chensoul.util.StringUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,9 +15,11 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +27,6 @@ import lombok.val;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.input.ReaderInputStream;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.AbstractResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -33,6 +34,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternUtils;
 import static org.springframework.util.ResourceUtils.CLASSPATH_URL_PREFIX;
 import static org.springframework.util.ResourceUtils.FILE_URL_PREFIX;
@@ -82,11 +84,11 @@ public class ResourceUtils {
     public static boolean doesResourceExist(final String resource, final ResourceLoader resourceLoader) {
         try {
             if (StringUtils.isNotBlank(resource)) {
-                val res = resourceLoader.getResource(resource);
+                Resource res = resourceLoader.getResource(resource);
                 return doesResourceExist(res);
             }
         } catch (final Exception e) {
-            LoggingUtils.warn(log, e);
+            log.error("Error reading resource [{}]: [{}]", resource, e.getMessage(), e);
         }
         return false;
     }
@@ -108,7 +110,7 @@ public class ResourceUtils {
             if (res.isFile() && FileUtils.isDirectory(res.getFile())) {
                 return true;
             }
-            try (val input = res.getInputStream()) {
+            try (InputStream input = res.getInputStream()) {
                 IOUtils.read(input, new byte[1]);
                 return res.contentLength() > 0;
             }
@@ -129,7 +131,7 @@ public class ResourceUtils {
      */
     public static boolean doesResourceExist(final String location) {
         try {
-            val resource = getResourceFrom(location);
+            Resource resource = getResourceFrom(location);
             return doesResourceExist(resource);
         } catch (final Exception e) {
             log.trace(e.getMessage());
@@ -234,15 +236,19 @@ public class ResourceUtils {
 
             URL url = extractUrlFromResource(resource);
             File file = getFile(StringUtils.substringBefore(url.toExternalForm(), "/!"));
+            if (!file.toPath().normalize().startsWith(file.toPath())) {
+                throw new Exception("Bad zip entry");
+            }
+
             log.trace("Processing file [{}]", file);
-            try (val jFile = new JarFile(file)) {
-                val e = jFile.entries();
+            try (JarFile jFile = new JarFile(file)) {
+                Enumeration<JarEntry> e = jFile.entries();
                 while (e.hasMoreElements()) {
-                    val entry = e.nextElement();
-                    val name = entry.getName();
+                    JarEntry entry = e.nextElement();
+                    String name = entry.getName();
                     log.trace("Comparing [{}] against [{}] and pattern [{}]", name, resource.getFilename(), containsName);
                     if (name.contains(resource.getFilename()) && RegexUtils.find(containsName, name)) {
-                        try (val stream = jFile.getInputStream(entry)) {
+                        try (InputStream stream = jFile.getInputStream(entry)) {
                             File copyDestination = destination;
                             if (isDirectory) {
                                 val entryFileName = new File(name);
@@ -263,7 +269,7 @@ public class ResourceUtils {
     }
 
     private static URL extractUrlFromResource(final Resource resource) throws IOException {
-        val nestedUrl = StringUtils.replace(resource.getURL().toExternalForm(), "nested:", FILE_URL_PREFIX);
+        String nestedUrl = StringUtils.replace(resource.getURL().toExternalForm(), "nested:", FILE_URL_PREFIX);
         return extractArchiveURL(new URL(nestedUrl));
     }
 
@@ -277,8 +283,8 @@ public class ResourceUtils {
      */
     public static InputStreamResource buildInputStreamResourceFrom(final String value, final String description) {
         return CheckedSupplier.unchecked(() -> {
-            val reader = new StringReader(value);
-            val is = ReaderInputStream.builder().setReader(reader).setCharset(StandardCharsets.UTF_8).get();
+            StringReader reader = new StringReader(value);
+            InputStream is = ReaderInputStream.builder().setReader(reader).setCharset(StandardCharsets.UTF_8).get();
             return new InputStreamResource(is, description);
         }).get();
     }
@@ -346,9 +352,9 @@ public class ResourceUtils {
      * @throws Throwable the throwable
      */
     public static Resource toFileSystemResource(final File artifact) throws Throwable {
-        val canonicalPath = CheckedSupplier.unchecked(artifact::getCanonicalPath).get();
+        String canonicalPath = CheckedSupplier.unchecked(artifact::getCanonicalPath).get();
         FunctionUtils.throwIf(artifact.exists() && !artifact.canRead(),
-                () -> new IllegalArgumentException("Resource " + canonicalPath + " is not readable."));
+            () -> new IllegalArgumentException("Resource " + canonicalPath + " is not readable."));
         return new FileSystemResource(artifact);
     }
 
@@ -361,9 +367,9 @@ public class ResourceUtils {
      */
     public static void exportResources(final ResourceLoader resourceLoader, final File parent,
                                        final List<String> locationPatterns) {
-        val resourcePatternResolver = ResourcePatternUtils.getResourcePatternResolver(resourceLoader);
+        ResourcePatternResolver resourcePatternResolver = ResourcePatternUtils.getResourcePatternResolver(resourceLoader);
         locationPatterns.forEach(pattern -> {
-            val resources = CheckedSupplier.unchecked(() -> resourcePatternResolver.getResources(pattern)).get();
+            Resource[] resources = CheckedSupplier.unchecked(() -> resourcePatternResolver.getResources(pattern)).get();
             Arrays.stream(resources).forEach(resource -> exportClasspathResourceToFile(parent, resource));
         });
     }

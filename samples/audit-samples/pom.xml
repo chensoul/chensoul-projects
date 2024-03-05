@@ -10,7 +10,9 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>audit-samples</artifactId>
+  <version>${revision}</version>
 
   <dependencies>
     <dependency>
@@ -20,7 +22,7 @@
     </dependency>
     <dependency>
       <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-core-spring-boot-starter</artifactId>
+      <artifactId>chensoul-web-spring-boot-starter</artifactId>
       <version>${revision}</version>
     </dependency>
     <dependency>

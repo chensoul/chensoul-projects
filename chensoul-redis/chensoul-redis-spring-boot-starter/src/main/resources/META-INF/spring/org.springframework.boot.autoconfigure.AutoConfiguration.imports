@@ -1,0 +1,2 @@
+com.chensoul.redis.spring.boot.RedisTemplateConfiguration
+com.chensoul.redis.spring.boot.RedisCacheManagerConfiguration

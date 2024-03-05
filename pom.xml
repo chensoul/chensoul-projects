@@ -25,22 +25,21 @@
 
   <modules>
     <module>chensoul</module>
-    <module>chensoul-dependencies</module>
-    <module>chensoul-spring-boot-starter</module>
+    <module>chensoul-audit</module>
+
+    <module>chensoul-spring-boot</module>
 
     <module>platform/config-file</module>
     <module>platform/eureka</module>
     <module>platform/gateway</module>
     <module>platform/nacos</module>
     <module>platform/admin-server</module>
-    <!--    <module>platform/sentinel</module>-->
     <module>platform/xxljob</module>
-
     <module>microservice/chensoul-auth</module>
-
-    <module>monolith/user</module>
-
     <module>samples</module>
+    <module>chensoul-spring-cloud</module>
+    <module>chensoul-redis</module>
+    <module>chensoul-mybatis</module>
   </modules>
 
   <scm>
@@ -77,7 +76,6 @@
     <easy-captcha.version>1.6.2</easy-captcha.version>
     <commons-lang3.version>3.14.0</commons-lang3.version>
     <commons-io.version>2.15.1</commons-io.version>
-    <commons-collections.version>3.2.2</commons-collections.version>
   </properties>
 
   <dependencyManagement>
@@ -170,11 +168,6 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-collections</groupId>
-        <artifactId>commons-collections</artifactId>
-        <version>${commons-collections.version}</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>

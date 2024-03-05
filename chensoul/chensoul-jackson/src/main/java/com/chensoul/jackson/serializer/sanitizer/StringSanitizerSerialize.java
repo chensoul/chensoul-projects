@@ -1,11 +1,11 @@
 package com.chensoul.jackson.serializer.sanitizer;
 
+import com.chensoul.text.Sanitizers;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
-import com.chensoul.util.text.Sanitizers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;

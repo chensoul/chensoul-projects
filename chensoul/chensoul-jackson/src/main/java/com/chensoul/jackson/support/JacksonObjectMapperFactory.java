@@ -1,5 +1,9 @@
 package com.chensoul.jackson.support;
 
+import com.chensoul.jackson.JacksonObjectMapperCustomizer;
+import com.chensoul.lang.function.CheckedSupplier;
+import com.chensoul.spring.support.SpringExpressionLanguageValueResolver;
+import com.chensoul.util.StringUtils;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -21,9 +25,6 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import com.chensoul.jackson.JacksonObjectMapperCustomizer;
-import com.chensoul.spring.support.SpringExpressionLanguageValueResolver;
-import com.chensoul.util.function.FunctionUtils;
 import java.net.URI;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -36,7 +37,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import lombok.val;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 
@@ -81,17 +81,17 @@ public class JacksonObjectMapperFactory {
      * @param objectMapper       the mapper
      */
     public static void configure(
-            final ConfigurableApplicationContext applicationContext,
-            final ObjectMapper objectMapper) {
+        final ConfigurableApplicationContext applicationContext,
+        final ObjectMapper objectMapper) {
         objectMapper.registerModule(new JavaTimeModule());
         ArrayList<JacksonObjectMapperCustomizer> serializers = new ArrayList<>(applicationContext.getBeansOfType(JacksonObjectMapperCustomizer.class).values());
         AnnotationAwareOrderComparator.sort(serializers);
 
         Map injectedValues = (Map) serializers
-                .stream()
-                .map(JacksonObjectMapperCustomizer::getInjectableValues)
-                .flatMap(entry -> entry.entrySet().stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            .stream()
+            .map(JacksonObjectMapperCustomizer::getInjectableValues)
+            .flatMap(entry -> entry.entrySet().stream())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         objectMapper.setInjectableValues(new JacksonInjectableValueSupplier(() -> injectedValues));
     }
 
@@ -113,36 +113,36 @@ public class JacksonObjectMapperFactory {
      */
     protected ObjectMapper initialize(final MapperBuilder<?, ?> mapper) {
         val obm = mapper
-                .defaultLocale(Locale.CHINA)
-                .defaultTimeZone(TimeZone.getTimeZone(ZoneId.systemDefault()))
-                .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
-                .configure(SerializationFeature.WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED, isSingleArrayElementUnwrapped())
-                .configure(MapperFeature.DEFAULT_VIEW_INCLUSION, isDefaultViewInclusion())
-                .configure(MapperFeature.USE_WRAPPER_NAME_AS_PROPERTY_NAME, isUseWrapperNameAsProperty())
-                .configure(JsonWriteFeature.QUOTE_FIELD_NAMES.mappedFeature(), isQuoteFieldNames())
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, isFailOnUnknownProperties())
-                .configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true)
-                .configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, false)
-                .configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, isSingleValueAsArray())
-                .configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, isQuoteFieldNames())
-                .configure(JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS.mappedFeature(), isAllowUnescapedControlChars())
-                .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, isWriteDatesAsTimestamps())
-                .disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE)
-                .build();
+            .defaultLocale(Locale.CHINA)
+            .defaultTimeZone(TimeZone.getTimeZone(ZoneId.systemDefault()))
+            .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
+            .configure(SerializationFeature.WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED, isSingleArrayElementUnwrapped())
+            .configure(MapperFeature.DEFAULT_VIEW_INCLUSION, isDefaultViewInclusion())
+            .configure(MapperFeature.USE_WRAPPER_NAME_AS_PROPERTY_NAME, isUseWrapperNameAsProperty())
+            .configure(JsonWriteFeature.QUOTE_FIELD_NAMES.mappedFeature(), isQuoteFieldNames())
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, isFailOnUnknownProperties())
+            .configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true)
+            .configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, false)
+            .configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, isSingleValueAsArray())
+            .configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, isQuoteFieldNames())
+            .configure(JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS.mappedFeature(), isAllowUnescapedControlChars())
+            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, isWriteDatesAsTimestamps())
+            .disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE)
+            .build();
 
         obm.setInjectableValues(new JacksonInjectableValueSupplier(this::getInjectableValues))
-                .setSerializationInclusion(JsonInclude.Include.NON_DEFAULT)
-                .setVisibility(PropertyAccessor.SETTER, JsonAutoDetect.Visibility.PROTECTED_AND_PUBLIC)
-                .setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.PROTECTED_AND_PUBLIC)
-                .setVisibility(PropertyAccessor.IS_GETTER, JsonAutoDetect.Visibility.PROTECTED_AND_PUBLIC)
-                .findAndRegisterModules()
-                .registerModule(getCasJacksonModule())
-                .registerModule(new CustomJavaTimeModule())
-                .registerModule(new ParameterNamesModule());
+            .setSerializationInclusion(JsonInclude.Include.NON_DEFAULT)
+            .setVisibility(PropertyAccessor.SETTER, JsonAutoDetect.Visibility.PROTECTED_AND_PUBLIC)
+            .setVisibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.PROTECTED_AND_PUBLIC)
+            .setVisibility(PropertyAccessor.IS_GETTER, JsonAutoDetect.Visibility.PROTECTED_AND_PUBLIC)
+            .findAndRegisterModules()
+            .registerModule(getCasJacksonModule())
+            .registerModule(new CustomJavaTimeModule())
+            .registerModule(new ParameterNamesModule());
 
         if (isDefaultTypingEnabled()) {
             obm.activateDefaultTyping(obm.getPolymorphicTypeValidator(),
-                    ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
+                ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
         }
 
         if (minimal) {
@@ -174,10 +174,10 @@ public class JacksonObjectMapperFactory {
 
         @Override
         public URI deserialize(final JsonParser jp, final DeserializationContext ctxt) {
-            return FunctionUtils.doUnchecked(() -> {
+            return CheckedSupplier.unchecked(() -> {
                 val value = SpringExpressionLanguageValueResolver.getInstance().resolve(jp.getText().trim());
                 return StringUtils.isNotBlank(value) ? new URI(value) : null;
-            });
+            }).get();
         }
     }
 }

@@ -1,14 +1,12 @@
 package com.chensoul.crypto.support;
 
-import com.chensoul.util.logging.LoggingUtils;
+import com.chensoul.util.BooleanUtils;
+import com.chensoul.util.StringUtils;
 import java.nio.charset.Charset;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Slf4j
@@ -41,16 +39,17 @@ public class DefaultPasswordEncoder implements PasswordEncoder {
                 encodingCharToUse, encoded);
             return encoded;
         } catch (final Exception e) {
-            LoggingUtils.error(log, e);
+            log.error("Failed to encode the password via algorithm [{}] and character-encoding [{}]", this.encodingAlgorithm,
+                encodingCharToUse);
         }
         return null;
     }
 
     @Override
     public boolean matches(final CharSequence rawPassword, final String encodedPassword) {
-        val encodedRawPassword = StringUtils.isNotBlank(rawPassword) ? this.encode(rawPassword.toString()) : null;
-        val matched = StringUtils.equals(encodedRawPassword, encodedPassword);
-        val msg = String.format("Provided password does%smatch the encoded password",
+        String encodedRawPassword = StringUtils.isNotBlank(rawPassword) ? this.encode(rawPassword.toString()) : null;
+        Boolean matched = StringUtils.equals(encodedRawPassword, encodedPassword);
+        String msg = String.format("Provided password does%smatch the encoded password",
             BooleanUtils.toString(matched, StringUtils.EMPTY, " not "));
         log.debug(msg);
         return matched;

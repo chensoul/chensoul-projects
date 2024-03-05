@@ -11,14 +11,14 @@ spring:
           filters:
             - SetPath=/eureka/{segment}
 
-        - id: eureka-web-start
+        - id: eureka-webmvc-start
           uri: http://${eureka:eureka}:8761
           predicates:
-            - Path=/eureka/web
+            - Path=/eureka/webmvc
           filters:
             - SetPath=/
 
-        - id: eureka-web-other
+        - id: eureka-webmvc-other
           uri: http://${eureka:eureka}:8761
           predicates:
             - Path=/eureka/**

@@ -1,8 +1,8 @@
 package com.chensoul.auth.infrastructure.security.support.handler;
 
-import com.chensoul.constant.ResultCode;
 import com.chensoul.jackson.utils.JsonUtils;
 import com.chensoul.util.R;
+import com.chensoul.util.ResultCode;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

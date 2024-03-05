@@ -35,7 +35,6 @@ public class WebSecurityConfiguration {
                 authorize.anyRequest().authenticated();
             })
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .csrf(csrf -> csrf.disable())
         ;
         return http.build();
     }

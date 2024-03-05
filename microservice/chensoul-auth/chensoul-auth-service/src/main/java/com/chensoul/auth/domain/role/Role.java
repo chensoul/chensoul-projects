@@ -1,6 +1,6 @@
 package com.chensoul.auth.domain.role;
 
-import com.chensoul.mybatis.entity.CommonEntity;
+import com.chensoul.mybatis.spring.boot.entity.CommonEntity;
 import com.chensoul.validation.Insert;
 import com.chensoul.validation.Update;
 import javax.validation.constraints.NotBlank;
@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Length;
  * TODO Comment
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since TODO
+ * @since 0.0.1
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -1,7 +1,8 @@
 package com.chensoul.spring.support.bean;
 
-import com.chensoul.util.function.CheckedConsumer;
-import com.chensoul.util.function.CheckedSupplier;
+import com.chensoul.lang.function.CheckedConsumer;
+import com.chensoul.lang.function.CheckedSupplier;
+import com.chensoul.util.StringUtils;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.Expiry;
@@ -10,8 +11,6 @@ import java.time.Duration;
 import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.springframework.util.StringUtils;
 
 
 /**
@@ -36,9 +35,9 @@ public class Beans {
         if (isInfinitelyDurable(value)) {
             return Duration.ofDays(Integer.MAX_VALUE);
         }
-        if (NumberUtils.isCreatable(value)) {
-            return Duration.ofSeconds(Long.parseLong(value));
-        }
+//        if (NumberUtils.isCreatable(value)) {
+//            return Duration.ofSeconds(Long.parseLong(value));
+//        }
         return Duration.parse(value);
     }
 
@@ -49,7 +48,7 @@ public class Beans {
      * @return true/false
      */
     public static boolean isInfinitelyDurable(final String value) {
-        return "-1".equalsIgnoreCase(value) || !StringUtils.hasText(value) || "INFINITE".equalsIgnoreCase(value);
+        return "-1".equalsIgnoreCase(value) || StringUtils.isEmpty(value) || "INFINITE".equalsIgnoreCase(value);
     }
 
     /**
@@ -59,7 +58,7 @@ public class Beans {
      * @return true/false
      */
     public static boolean isNeverDurable(final String value) {
-        return "0".equalsIgnoreCase(value) || "NEVER".equalsIgnoreCase(value) || !StringUtils.hasText(value);
+        return "0".equalsIgnoreCase(value) || "NEVER".equalsIgnoreCase(value) || StringUtils.isEmpty(value);
     }
 
     /**
@@ -81,7 +80,7 @@ public class Beans {
         val builder = Caffeine.newBuilder()
             .initialCapacity(initialCapacity)
             .maximumSize(cacheSize);
-        if (org.apache.commons.lang3.StringUtils.isNotBlank(duration)) {
+        if (StringUtils.isNotBlank(duration)) {
             builder.expireAfterWrite(newDuration(duration));
         }
         builder.removalListener((key, value, cause) -> {

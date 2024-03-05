@@ -1,6 +1,5 @@
 package com.chensoul.util;
 
-import com.chensoul.constant.ResultCode;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +9,7 @@ import lombok.Getter;
  * Result Object
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 1.0.0
+ * @since 0.0.1
  */
 @Getter
 public class R<T> implements Serializable {

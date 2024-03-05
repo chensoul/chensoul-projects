@@ -1,5 +1,6 @@
 package com.chensoul.spring.scripting;
 
+import com.chensoul.collection.ArrayUtils;
 import com.chensoul.groovy.scripting.GroovyShellScript;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +10,6 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.groovy.util.Maps;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;

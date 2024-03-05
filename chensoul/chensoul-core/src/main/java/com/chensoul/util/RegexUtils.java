@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * RegexUtils
@@ -18,8 +17,7 @@ import org.apache.commons.lang3.StringUtils;
  * @since 0.0.1
  */
 @Slf4j
-@UtilityClass
-public class RegexUtils {
+public abstract class RegexUtils {
 
     /**
      * A pattern match that does not match anything.
@@ -53,9 +51,9 @@ public class RegexUtils {
      */
     public static Pattern concatenate(final Collection<?> requiredValues, final boolean caseInsensitive) {
         val pattern = requiredValues
-                .stream()
-                .map(Object::toString)
-                .collect(Collectors.joining("|", "(", ")"));
+            .stream()
+            .map(Object::toString)
+            .collect(Collectors.joining("|", "(", ")"));
         return createPattern(pattern, caseInsensitive ? Pattern.CASE_INSENSITIVE : 0);
     }
 
@@ -153,9 +151,9 @@ public class RegexUtils {
     public static Optional<String> findFirst(final String pattern, final Collection elements) {
         val compiledPattern = createPattern(pattern);
         return elements
-                .stream()
-                .filter(entry -> find(compiledPattern, entry.toString()))
-                .findFirst();
+            .stream()
+            .filter(entry -> find(compiledPattern, entry.toString()))
+            .findFirst();
     }
 
     /**
@@ -167,9 +165,27 @@ public class RegexUtils {
      */
     public static Optional<String> findFirst(final Collection<String> patterns, final Collection elements) {
         return patterns
-                .stream()
-                .map(RegexUtils::createPattern)
-                .flatMap(compiledPattern -> elements.stream().filter(r -> find(compiledPattern, r.toString())))
-                .findFirst();
+            .stream()
+            .map(RegexUtils::createPattern)
+            .flatMap(compiledPattern -> elements.stream().filter(r -> find(compiledPattern, r.toString())))
+            .findFirst();
+    }
+
+    public static String removeAll(final String text, final Pattern regex) {
+        return replaceAll(text, regex, StringUtils.EMPTY);
+    }
+
+    public static String replaceAll(final String text, final Pattern regex, final String replacement) {
+        if (ObjectUtils.anyNull(text, regex, replacement)) {
+            return text;
+        }
+        return regex.matcher(text).replaceAll(replacement);
+    }
+
+    public static String replaceAll(final String text, final String regex, final String replacement) {
+        if (ObjectUtils.anyNull(text, regex, replacement)) {
+            return text;
+        }
+        return text.replaceAll(regex, replacement);
     }
 }

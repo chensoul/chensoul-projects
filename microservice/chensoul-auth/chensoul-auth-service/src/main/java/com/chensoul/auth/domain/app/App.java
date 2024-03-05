@@ -1,6 +1,6 @@
 package com.chensoul.auth.domain.app;
 
-import com.chensoul.mybatis.entity.CommonEntity;
+import com.chensoul.mybatis.spring.boot.entity.CommonEntity;
 import com.chensoul.validation.Insert;
 import com.chensoul.validation.Update;
 import javax.validation.constraints.NotBlank;

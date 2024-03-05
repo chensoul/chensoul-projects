@@ -8,7 +8,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
  * TODO Comment
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since TODO
+ * @since 0.0.1
  */
 @SpringBootTest(webEnvironment = RANDOM_PORT, properties = {"eureka.client.enabled=false", "spring.cloud.config.enabled=false"})
 class AdminserverApplicationTest {
