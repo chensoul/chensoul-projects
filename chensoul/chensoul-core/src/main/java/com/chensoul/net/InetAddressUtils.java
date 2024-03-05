@@ -129,7 +129,6 @@ public abstract class InetAddressUtils {
         return m.matches();
     }
 
-
     /**
      * Resolves IP address from a hostname.
      */
@@ -190,14 +189,12 @@ public abstract class InetAddressUtils {
         return localAddress;
     }
 
-
     public static String getLocalHostAddress() {
         if (null != localAddress) {
             return localAddress.getHostAddress();
         }
         return null;
     }
-
 
     public static String getLocalHostName() {
         return FunctionUtils.doAndHandle(() -> {

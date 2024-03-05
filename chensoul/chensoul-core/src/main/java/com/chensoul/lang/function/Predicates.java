@@ -7,11 +7,11 @@ import java.util.function.Predicate;
  *
  * @since 0.0.1
  */
-public interface Predicates {
+public abstract class Predicates {
 
-    Predicate[] EMPTY_PREDICATE_ARRAY = new Predicate[0];
+    public static Predicate[] EMPTY_PREDICATE_ARRAY = new Predicate[0];
 
-    static <T> Predicate<T>[] emptyArray() {
+    public static <T> Predicate<T>[] emptyArray() {
         return (Predicate<T>[]) EMPTY_PREDICATE_ARRAY;
     }
 
@@ -21,7 +21,7 @@ public interface Predicates {
      * @param <T> the type to test
      * @return <code>true</code>
      */
-    static <T> Predicate<T> alwaysTrue() {
+    public static <T> Predicate<T> alwaysTrue() {
         return e -> true;
     }
 
@@ -31,7 +31,7 @@ public interface Predicates {
      * @param <T> the type to test
      * @return <code>false</code>
      */
-    static <T> Predicate<T> alwaysFalse() {
+    public static <T> Predicate<T> alwaysFalse() {
         return e -> false;
     }
 
@@ -42,7 +42,7 @@ public interface Predicates {
      * @param <T>        the type to test
      * @return non-null
      */
-    static <T> Predicate<? super T> and(Predicate<? super T>... predicates) {
+    public static <T> Predicate<? super T> and(Predicate<? super T>... predicates) {
         int length = predicates == null ? 0 : predicates.length;
         if (length == 0) {
             return alwaysTrue();
@@ -64,7 +64,7 @@ public interface Predicates {
      * @param <T>        the detected type
      * @return non-null
      */
-    static <T> Predicate<? super T> or(Predicate<? super T>... predicates) {
+    public static <T> Predicate<? super T> or(Predicate<? super T>... predicates) {
         int length = predicates == null ? 0 : predicates.length;
         if (length == 0) {
             return alwaysTrue();

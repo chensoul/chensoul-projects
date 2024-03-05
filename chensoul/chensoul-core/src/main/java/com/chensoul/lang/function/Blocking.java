@@ -69,7 +69,7 @@ import java.util.function.UnaryOperator;
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
  */
-public final class Blocking {
+public abstract class Blocking {
 
     public static Runnable runnable(final Runnable runnable) {
         return () -> supplier(() -> {
