@@ -1,7 +1,8 @@
 package com.chensoul.validation;
 
-import javax.validation.ConstraintViolationException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+
+import javax.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;

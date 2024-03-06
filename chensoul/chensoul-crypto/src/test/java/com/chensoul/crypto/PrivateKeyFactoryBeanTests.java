@@ -1,8 +1,9 @@
 package com.chensoul.crypto;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import com.chensoul.crypto.support.PrivateKeyFactoryBean;
 import java.security.PrivateKey;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;

@@ -1,7 +1,8 @@
 package com.chensoul.mybatis.spring.boot.configuration;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import static com.chensoul.mybatis.spring.boot.MybatisConstants.HEADER_TENANT_ID;
+
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.chensoul.mybatis.spring.boot.tenant.TenantContextHolder;
 import com.chensoul.mybatis.spring.boot.tenant.TenantFilter;
 import feign.RequestInterceptor;

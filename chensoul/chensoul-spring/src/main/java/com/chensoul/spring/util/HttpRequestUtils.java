@@ -1,10 +1,11 @@
 package com.chensoul.spring.util;
 
-import com.chensoul.collection.ArrayUtils;
 import static com.chensoul.constant.SymbolConstants.STAR_THREE;
+import static com.chensoul.util.StringUtils.EMPTY;
+
+import com.chensoul.collection.ArrayUtils;
 import com.chensoul.net.InetAddressUtils;
 import com.chensoul.util.StringUtils;
-import static com.chensoul.util.StringUtils.EMPTY;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;

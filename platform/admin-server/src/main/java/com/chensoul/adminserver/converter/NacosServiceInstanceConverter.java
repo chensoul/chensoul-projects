@@ -1,7 +1,8 @@
 package com.chensoul.adminserver.converter;
 
-import de.codecentric.boot.admin.server.cloud.discovery.DefaultServiceInstanceConverter;
 import static java.util.Collections.emptyMap;
+
+import de.codecentric.boot.admin.server.cloud.discovery.DefaultServiceInstanceConverter;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.cloud.client.ServiceInstance;

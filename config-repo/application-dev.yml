@@ -145,5 +145,5 @@ spring.cloud.sleuth:
 logging:
   level:
     root: INFO
-    org.springframework.security: DEBUG
+    org.springframework.security: INFO
     com.chensoul: DEBUG

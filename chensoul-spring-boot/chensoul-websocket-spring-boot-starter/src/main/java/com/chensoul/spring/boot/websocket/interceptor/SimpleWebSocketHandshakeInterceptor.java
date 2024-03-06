@@ -1,6 +1,7 @@
 package com.chensoul.spring.boot.websocket.interceptor;
 
 import static com.chensoul.constant.StringPool.NULL;
+
 import com.chensoul.spring.util.HttpRequestUtils;
 import com.chensoul.util.StringUtils;
 import java.util.Map;

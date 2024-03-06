@@ -30,16 +30,16 @@ openssl pkcs12 -in private.p12 -nodes -nocerts -out private.key
 
 1. 授权请求URL：
 
-http://127.0.0.1:9000/oauth2/authorize?client_id=messaging-client&redirect_uri=http://127.0.0.1:8081/authorized&response_type=code&scope=message.write
+http://127.0.0.1:9000/oauth2/authorize?client_id=messaging-client&redirect_uri=https://www.baidu.com&response_type=code&scope=message.write
 
 2. 授权码获取Token
 
 ```bash
-CODE=1ZBsaDyI-08LckcY9b4mAKn8Gxr0EfJKkG2uePcHP2Eou9BVxFBBt4cOKNhw9BMh7hMR2B0uRw9raUWnDKLUNDbKumYmHvgfCHGKd2_FE5nWGjg3Rp4KLsDLOwk_UNny
+CODE=9K_dSgaGlqPeIop6dOPwaepG7V9EBlXhlBHYnIzFjxIVGO0PJn10g7-N3XwO8fIJfnWATFil5eYPWC_KdekT1trq29RfBrhNOA9GjlYxpRIrl5WMxM8DJN7TjNSmoZ6h
 
 RESPONSE=$(curl --request POST -s --url http://messaging-client:secret@127.0.0.1:9000/oauth2/token \
     --header 'content-type: multipart/form-data' \
-    --form redirect_uri=http://127.0.0.1:8081/authorized \
+    --form redirect_uri=https://www.baidu.com \
     --form grant_type=authorization_code \
     --form code=$CODE )
 

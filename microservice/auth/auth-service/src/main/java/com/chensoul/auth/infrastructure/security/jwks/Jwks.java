@@ -30,14 +30,14 @@ public final class Jwks {
      * @return {@link JWKSet}
      */
     @SneakyThrows
-    public static JWKSet buildJWKSet(Resource keystoreLocation, String keyPassword) {
+    public static JWKSet buildJWKSet(Resource keystoreLocation, String storePassword) {
         KeyStore keyStore = KeyStore.getInstance("pkcs12");
         try (InputStream fis = keystoreLocation.getInputStream()) {
-            keyStore.load(fis, keyPassword.toCharArray());
+            keyStore.load(fis, storePassword.toCharArray());
             return JWKSet.load(keyStore, new PasswordLookup() {
                 @Override
                 public char[] lookupPassword(String name) {
-                    return keyPassword.toCharArray();
+                    return storePassword.toCharArray();
                 }
             });
         }

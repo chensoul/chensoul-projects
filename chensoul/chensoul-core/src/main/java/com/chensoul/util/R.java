@@ -3,7 +3,8 @@ package com.chensoul.util;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.Getter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Result Object
@@ -11,26 +12,24 @@ import lombok.Getter;
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
  */
-@Getter
+@Data
+@Accessors(chain = true)
 public class R<T> implements Serializable {
     private static final long serialVersionUID = 6551531108468957025L;
 
-    private final int code;
-    private final String message;
-    private final T data;
+    private int code;
+    private String message;
+    private T data;
 
-    private R(final int code, final String message, final T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
+    public R() {
     }
 
     public static <T> R<T> ok() {
-        return new R<>(0, "OK", null);
+        return new R<T>().setCode(0).setMessage("OK");
     }
 
-    public static <T> R<T> ok(final T object) {
-        return new R<>(0, "OK", object);
+    public static <T> R<T> ok(final T data) {
+        return new R<T>().setCode(0).setMessage("OK").setData(data);
     }
 
     public static <T> R<T> error() {
@@ -38,11 +37,11 @@ public class R<T> implements Serializable {
     }
 
     public static <T> R<T> error(final String message) {
-        return error(500, message);
+        return error(ResultCode.SYSTEM_ERROR.getCode(), message);
     }
 
     public static <T> R<T> error(final int code, final String message) {
-        return new R<>(code, message, null);
+        return new R<T>().setCode(code).setMessage(message);
     }
 
     public Map<String, Object> toMap() {

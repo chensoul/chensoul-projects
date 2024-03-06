@@ -1,12 +1,13 @@
 package com.chensoul.crypto;
 
-import com.chensoul.crypto.support.GlibcCryptPasswordEncoder;
-import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import com.chensoul.crypto.support.GlibcCryptPasswordEncoder;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 

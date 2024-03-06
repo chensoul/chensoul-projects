@@ -1,4 +1,4 @@
-package com.chensoul.auth.infrastructure.security.config;
+package com.chensoul.auth.infrastructure.security;
 
 import com.chensoul.auth.infrastructure.security.jwks.Jwks;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -43,8 +43,8 @@ public class AuthorizationServerConfiguration {
     @Value("${spring.security.oauth2.jwk.keystore-location}")
     private Resource keystoreLocation;
 
-    @Value("${spring.security.oauth2.jwk.key-password}")
-    private String keyPassword;
+    @Value("${spring.security.oauth2.jwk.store-password}")
+    private String storePassword;
 
     /**
      * @see <a href="https://docs.spring.io/spring-authorization-server/docs/current/reference/html/protocol-endpoints.html">协议端点的</a> Spring Security 过滤器链。
@@ -84,7 +84,7 @@ public class AuthorizationServerConfiguration {
             .authorizationGrantType(AuthorizationGrantType.IMPLICIT)
             .redirectUri("http://127.0.0.1:8081/login/oauth2/code/messaging-client-oidc")
             .redirectUri("http://127.0.0.1:8081/authorized")
-            .redirectUri("http://127.0.0.1:8081")
+            .redirectUri("https://miao.baidu.com/")
             .scope("message.read")
             .scope("message.write")
             .scope(OidcScopes.PROFILE)
@@ -96,7 +96,7 @@ public class AuthorizationServerConfiguration {
 
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
-        JWKSet jwkSet = Jwks.buildJWKSet(keystoreLocation, keyPassword);
+        JWKSet jwkSet = Jwks.buildJWKSet(keystoreLocation, storePassword);
         return new ImmutableJWKSet<>(jwkSet);
     }
 

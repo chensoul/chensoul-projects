@@ -1,5 +1,13 @@
 package com.chensoul.spring.util;
 
+import static org.springframework.util.ResourceUtils.CLASSPATH_URL_PREFIX;
+import static org.springframework.util.ResourceUtils.FILE_URL_PREFIX;
+import static org.springframework.util.ResourceUtils.JAR_URL_PREFIX;
+import static org.springframework.util.ResourceUtils.URL_PROTOCOL_JAR;
+import static org.springframework.util.ResourceUtils.extractArchiveURL;
+import static org.springframework.util.ResourceUtils.getFile;
+import static org.springframework.util.ResourceUtils.isFileURL;
+
 import com.chensoul.lang.function.CheckedConsumer;
 import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.lang.function.FunctionUtils;
@@ -36,13 +44,6 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternUtils;
-import static org.springframework.util.ResourceUtils.CLASSPATH_URL_PREFIX;
-import static org.springframework.util.ResourceUtils.FILE_URL_PREFIX;
-import static org.springframework.util.ResourceUtils.JAR_URL_PREFIX;
-import static org.springframework.util.ResourceUtils.URL_PROTOCOL_JAR;
-import static org.springframework.util.ResourceUtils.extractArchiveURL;
-import static org.springframework.util.ResourceUtils.getFile;
-import static org.springframework.util.ResourceUtils.isFileURL;
 
 /**
  * Utility class to assist with resource operations.

@@ -1,7 +1,8 @@
 package com.chensoul.mybatis.spring.boot.tenant;
 
-import com.alibaba.ttl.TransmittableThreadLocal;
 import static com.baomidou.mybatisplus.core.toolkit.StringPool.NULL;
+
+import com.alibaba.ttl.TransmittableThreadLocal;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 
 /**

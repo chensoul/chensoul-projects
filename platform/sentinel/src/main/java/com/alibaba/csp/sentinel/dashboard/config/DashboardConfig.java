@@ -1,8 +1,8 @@
 package com.alibaba.csp.sentinel.dashboard.config;
 
+import com.chensoul.util.StringUtils;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import com.chensoul.util.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.lang.NonNull;
 
