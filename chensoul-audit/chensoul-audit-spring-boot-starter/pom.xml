@@ -15,7 +15,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul Audit Spring Boot Starter</name>
+  <name>Chensoul™ Audit Spring Boot Starter</name>
   <description>${project.name}</description>
 
   <dependencies>

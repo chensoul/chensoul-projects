@@ -14,6 +14,9 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
+  <name>Chensoul™</name>
+  <description>${project.name}</description>
+
   <modules>
     <module>chensoul-dependencies</module>
     <module>chensoul-core</module>

@@ -13,7 +13,7 @@
   <artifactId>auth-service</artifactId>
   <version>${revision}</version>
 
-  <name>Auth Service</name>
+  <name>Microservice :: Auth Service</name>
   <description>${project.name}</description>
 
   <dependencies>

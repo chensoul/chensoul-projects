@@ -10,7 +10,12 @@
     <version>${revision}</version>
   </parent>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>chensoul-validation</artifactId>
+  <version>${revision}</version>
+
+  <name>Chensoul™ Validation</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <dependency>

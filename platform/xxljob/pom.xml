@@ -7,9 +7,13 @@
     <version>${revision}</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
+
   <groupId>com.chensoul</groupId>
   <artifactId>xxljob</artifactId>
   <version>${revision}</version>
+
+  <name>Microservice :: Xxljob</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <dependency>

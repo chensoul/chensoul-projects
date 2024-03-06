@@ -14,7 +14,7 @@
   <artifactId>auth-api</artifactId>
   <version>${revision}</version>
 
-  <name>Auth Api</name>
+  <name>Microservice :: Auth Api</name>
   <description>${project.name}</description>
 
   <dependencies>

@@ -14,7 +14,7 @@
   <artifactId>chensoul-spring-boot-common</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul Spring Boot Common</name>
+  <name>Chensoul™ Spring Boot Common</name>
   <description>${project.name}</description>
 
   <dependencies>

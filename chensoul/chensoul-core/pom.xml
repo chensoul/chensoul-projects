@@ -13,7 +13,7 @@
   <artifactId>chensoul-core</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul Core</name>
+  <name>Chensoul™ Core</name>
   <description>${project.name}</description>
 
   <dependencies>

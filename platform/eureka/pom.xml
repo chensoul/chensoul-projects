@@ -10,7 +10,12 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>eureka</artifactId>
+  <version>${revision}</version>
+
+  <name>Microservice :: Eureka</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <dependency>

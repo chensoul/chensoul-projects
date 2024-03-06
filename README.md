@@ -66,8 +66,9 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 | RabbitMQ     | 队列        | rabbitmq     | 5672、15672 | guest/123456 |
 | Nacos        | 注册中心、配置中心 | nacos        | 8848       | nacos/123456 |
 | Eureka       | 注册中心      | eureka       | 8761       |              |
+| Config File  | 配置中心      | config-file  | 8888       | user/123456  |
 | Gateway      | 网关        | gateway      | 8443       |              |
-| Auth         | 授权        | auth-service | 8000       |              |
+| Auth         | 授权服务      | auth-service | 9000       |              |
 | Admin Server | 监控        | admin-server | 5100       |              |
 | Xxljob       | XXLJob    | xxljob       | 5200       |              |
 | Sentinel     | sentinel  | sentinel     | 5300       |              |

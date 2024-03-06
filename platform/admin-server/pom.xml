@@ -8,8 +8,12 @@
     <version>${revision}</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-
+  <groupId>com.chensoul</groupId>
   <artifactId>admin-server</artifactId>
+  <version>${revision}</version>
+
+  <name>Microservice :: Admin Server</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <dependency>

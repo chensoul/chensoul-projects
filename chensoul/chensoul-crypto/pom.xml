@@ -2,51 +2,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.chensoul</groupId>
-        <artifactId>chensoul</artifactId>
-        <relativePath>../pom.xml</relativePath>
-        <version>${revision}</version>
-    </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.chensoul</groupId>
+    <artifactId>chensoul</artifactId>
+    <relativePath>../pom.xml</relativePath>
+    <version>${revision}</version>
+  </parent>
 
-    <artifactId>chensoul-crypto</artifactId>
+  <groupId>com.chensoul</groupId>
+  <artifactId>chensoul-crypto</artifactId>
+  <version>${revision}</version>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.chensoul</groupId>
-            <artifactId>chensoul-core</artifactId>
-            <version>${revision}</version>
-        </dependency>
+  <name>Chensoul™ Crypto</name>
+  <description>${project.name}</description>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
-        </dependency>
+  <dependencies>
+    <dependency>
+      <groupId>com.chensoul</groupId>
+      <artifactId>chensoul-core</artifactId>
+      <version>${revision}</version>
+    </dependency>
 
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk18on</artifactId>
-            <version>1.77</version>
-        </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-crypto</artifactId>
+    </dependency>
 
-        <dependency>
-            <groupId>org.cryptacular</groupId>
-            <artifactId>cryptacular</artifactId>
-            <version>1.2.6</version>
-        </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk18on</artifactId>
+      <version>1.77</version>
+    </dependency>
 
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-        </dependency>
-    </dependencies>
+    <dependency>
+      <groupId>org.cryptacular</groupId>
+      <artifactId>cryptacular</artifactId>
+      <version>1.2.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+    </dependency>
+  </dependencies>
 </project>

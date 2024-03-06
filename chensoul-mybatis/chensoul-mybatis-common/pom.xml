@@ -13,6 +13,9 @@
     <artifactId>chensoul-mybatis-common</artifactId>
     <version>${revision}</version>
 
+  <name>Chensoul™ Mybatis Common</name>
+  <description>${project.name}</description>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

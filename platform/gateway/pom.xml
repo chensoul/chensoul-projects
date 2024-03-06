@@ -10,7 +10,12 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>gateway</artifactId>
+  <version>${revision}</version>
+
+  <name>Microservice :: Gateway</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <dependency>

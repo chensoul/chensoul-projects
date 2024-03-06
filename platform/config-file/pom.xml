@@ -10,14 +10,19 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>config-file</artifactId>
+  <version>${revision}</version>
+
+  <name>Microservice :: Config File</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-config-server</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>

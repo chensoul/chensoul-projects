@@ -14,7 +14,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Auth</name>
+  <name>Microservice :: Auth</name>
   <description>${project.name}</description>
 
   <modules>
