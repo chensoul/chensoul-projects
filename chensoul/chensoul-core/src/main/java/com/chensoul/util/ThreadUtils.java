@@ -1,5 +1,7 @@
 package com.chensoul.util;
 
+import java.time.Duration;
+
 /**
  * ThreadUtils provides utility methods and decorators for {@code Thread} objects.
  *
@@ -24,5 +26,9 @@ public abstract class ThreadUtils {
         } catch (InterruptedException iex) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    public static void sleep(final Duration duration) {
+        sleep(duration.toMillis());
     }
 }

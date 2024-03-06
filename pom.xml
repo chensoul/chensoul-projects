@@ -35,7 +35,7 @@
     <module>platform/nacos</module>
     <module>platform/admin-server</module>
     <module>platform/xxljob</module>
-    <module>microservice/chensoul-auth</module>
+    <module>microservice/auth</module>
     <module>samples</module>
     <module>chensoul-spring-cloud</module>
     <module>chensoul-redis</module>
@@ -59,10 +59,7 @@
     <spring-boot.version>2.7.18</spring-boot.version>
     <spring-cloud.version>2021.0.9</spring-cloud.version>
     <spring-cloud-alibaba.version>2021.0.6.0</spring-cloud-alibaba.version>
-    <spring-security-oauth2-autoconfigure.version>2.6.8</spring-security-oauth2-autoconfigure.version>
-    <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
-    <spring-security-jwt.version>1.1.1.RELEASE</spring-security-jwt.version>
-    <nimbus-jose-jwt.version>9.37.3</nimbus-jose-jwt.version>
+    <spring-security-oauth2-authorization-server.version>0.4.5</spring-security-oauth2-authorization-server.version>
     <spring-boot-admin.version>2.7.15</spring-boot-admin.version>
     <mybatis-plus.version>3.5.5</mybatis-plus.version>
     <mybatis-spring.version>2.1.2</mybatis-spring.version>
@@ -101,18 +98,17 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+      <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-oauth2-authorization-server</artifactId>
+        <version>${spring-security-oauth2-authorization-server.version}</version>
+      </dependency>
+
       <dependency>
         <groupId>de.codecentric</groupId>
         <artifactId>spring-boot-admin-dependencies</artifactId>
         <version>${spring-boot-admin.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-bom</artifactId>
-        <version>${mybatis-plus.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -130,32 +126,12 @@
         <version>${therapi-runtime-javadoc.version}</version>
       </dependency>
 
-      <!--自动装配，依赖了spring-security-oauth2、spring-security-jwt（可选的，使用 spring-security-oauth2 替代） -->
       <dependency>
-        <groupId>org.springframework.security.oauth.boot</groupId>
-        <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-        <version>${spring-security-oauth2-autoconfigure.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.security.oauth</groupId>
-        <artifactId>spring-security-oauth2</artifactId>
-        <version>${spring-security-oauth2.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-jwt</artifactId>
-        <version>${spring-security-jwt.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.nimbusds</groupId>
-        <artifactId>nimbus-jose-jwt</artifactId>
-        <version>${nimbus-jose-jwt.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <version>${spring-boot.version}</version>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-bom</artifactId>
+        <version>${mybatis-plus.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
       <dependency>
@@ -164,11 +140,6 @@
         <version>${redisson.version}</version>
       </dependency>
 
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>${commons-lang3.version}</version>
-      </dependency>
       <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>

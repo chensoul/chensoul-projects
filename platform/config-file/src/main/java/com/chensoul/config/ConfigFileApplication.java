@@ -7,6 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.context.ConfigurableApplicationContext;
 
+/**
+ * Config Application
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 0.0.1
+ */
 @EnableConfigServer
 @SpringBootApplication
 public class ConfigFileApplication {

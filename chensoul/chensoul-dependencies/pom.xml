@@ -33,11 +33,6 @@
       </dependency>
       <dependency>
         <groupId>com.chensoul</groupId>
-        <artifactId>chensoul-test</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.chensoul</groupId>
         <artifactId>chensoul-jackson</artifactId>
         <version>${project.version}</version>
       </dependency>

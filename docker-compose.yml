@@ -158,10 +158,10 @@ services:
     ports:
       - "8443:8443"
 
-  chensoul-auth:
+  auth-service:
     build:
-      context: chensoul-auth/chensoul-auth-service
-    image: chensoul-auth
+      context: auth/auth-service
+    image: auth-service
     restart: always
     env_file:
       - .env

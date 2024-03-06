@@ -129,15 +129,6 @@ resilience4j.retry:
         - java.io.IOException
         - java.util.concurrent.TimeoutException
 
-security:
-  oauth2:
-    client:
-      client-id: client
-      client-secret: secret
-    resource:
-      token-info-uri: http://${auth-service:auth-service}:6666/oauth/check_token
-      prefer-token-info: true
-
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
 
@@ -154,6 +145,5 @@ spring.cloud.sleuth:
 logging:
   level:
     root: INFO
+    org.springframework.security: DEBUG
     com.chensoul: DEBUG
-#    org.springframework.cloud.openfeign: debug
-#    org.springframework.cloud.sleuth: debug

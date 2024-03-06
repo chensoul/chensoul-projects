@@ -16,11 +16,11 @@ categories:
       - 'bug'
       - 'regression'
       - 'kind/bug'
-  - title: '📝 Documentation'
+  - title: '📔 Documentation'
     labels:
       - documentation
       - 'kind/doc'
-  - title: '🧰 Dependency Upgrades'
+  - title: '🔨 Dependency Upgrades'
     labels:
       - chore
       - dependencies

@@ -18,6 +18,5 @@
     <module>chensoul-spring-boot-dependencies</module>
     <module>chensoul-web-spring-boot-starter</module>
     <module>chensoul-websocket-spring-boot-starter</module>
-    <module>chensoul-oauth2-spring-boot-starter</module>
   </modules>
 </project>

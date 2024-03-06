@@ -6,11 +6,11 @@ spring:
 
 spring.cloud.config.server.native.searchLocations: file:${PWD:}/config-repo
 
-spring.security.user.name: ${SPRING_SECURITY_USER_NAME:root}
+spring.security.user.name: ${SPRING_SECURITY_USER_NAME:user}
 spring.security.user.password: ${SPRING_SECURITY_USER_PASSWORD:123456}
 
 encrypt.key: ${ENCRYPT_KEY:my-very-secure-encrypt-key}
 
-management.endpoint.health.show-details: "ALWAYS"
+management.endpoint.health.show-details: ALWAYS
 management.endpoints.web.exposure.include: "*"
 management.endpoint.restart.enabled: true

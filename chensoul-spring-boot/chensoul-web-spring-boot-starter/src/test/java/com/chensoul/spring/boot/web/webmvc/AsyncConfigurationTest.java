@@ -2,9 +2,9 @@ package com.chensoul.spring.boot.web.webmvc;
 
 import com.chensoul.spring.boot.web.async.AsyncConfiguration;
 import com.chensoul.spring.boot.web.logging.LoggingConfiguration;
+import com.chensoul.util.ThreadUtils;
 import java.time.Duration;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ThreadUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ class AsyncConfigurationTest {
 
         asyncService.testScheduledCall();
 
-        ThreadUtils.sleepQuietly(Duration.ofSeconds(5));
+        ThreadUtils.sleep(Duration.ofSeconds(5));
     }
 
 }

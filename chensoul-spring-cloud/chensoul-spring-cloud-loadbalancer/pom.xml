@@ -10,7 +10,12 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>chensoul-spring-cloud-loadbalancer</artifactId>
+  <version>${revision}</version>
+
+  <name>Chensoul Spring Cloud Loadbalancer</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <!-- 仅为了提供：RestTemplate -->
