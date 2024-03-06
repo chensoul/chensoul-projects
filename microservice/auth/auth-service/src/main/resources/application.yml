@@ -20,4 +20,4 @@ spring:
 
 
 spring.security.oauth2.jwk.keystore-location: classpath:mykeystore.jks
-spring.security.oauth2.jwk.keystore-password: mypass
+spring.security.oauth2.jwk.key-password: keypass

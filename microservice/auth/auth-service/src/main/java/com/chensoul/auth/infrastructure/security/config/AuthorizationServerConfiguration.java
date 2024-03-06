@@ -43,8 +43,8 @@ public class AuthorizationServerConfiguration {
     @Value("${spring.security.oauth2.jwk.keystore-location}")
     private Resource keystoreLocation;
 
-    @Value("${spring.security.oauth2.jwk.keystore-password}")
-    private String keystorePassword;
+    @Value("${spring.security.oauth2.jwk.key-password}")
+    private String keyPassword;
 
     /**
      * @see <a href="https://docs.spring.io/spring-authorization-server/docs/current/reference/html/protocol-endpoints.html">协议端点的</a> Spring Security 过滤器链。
@@ -96,7 +96,7 @@ public class AuthorizationServerConfiguration {
 
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
-        JWKSet jwkSet = Jwks.buildJWKSet(keystoreLocation, keystorePassword);
+        JWKSet jwkSet = Jwks.buildJWKSet(keystoreLocation, keyPassword);
         return new ImmutableJWKSet<>(jwkSet);
     }
 
