@@ -20,13 +20,10 @@ describe the broken behaviour and how the changes fix it. If they make an enhanc
 please describe the new functionality and why you believe it's useful. If your pull
 request relates to any existing issues, please reference them by using the issue number
 prefixed with #.
--->
 
-## Describing Your Changes
-
-## Checklist before requesting a review
-
+Checklist before requesting a review
 - [ ] I have performed a self-review of my code
 - [ ] If it is a core feature, I have added thorough tests.
 - [ ] Do we need to implement analytics?
 - [ ] Will this be part of a product update? If yes, please write one phrase about this update.
+-->
