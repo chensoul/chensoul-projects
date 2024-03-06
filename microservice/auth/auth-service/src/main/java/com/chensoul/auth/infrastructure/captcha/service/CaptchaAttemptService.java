@@ -1,6 +1,6 @@
 package com.chensoul.auth.infrastructure.captcha.service;
 
-import com.chensoul.exception.SystemException;
+import com.chensoul.exception.BusinessException;
 import java.time.Duration;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -54,7 +54,7 @@ public class CaptchaAttemptService {
         if (blocked) {
             log.warn("用户【{}】获取验证码超过最大次数，请{}分钟后再试!", key, CAPTCHA_FAIL_LOCK_MINUTES);
 
-            throw new SystemException("获取验证码超过最大次数，请" + CAPTCHA_FAIL_LOCK_MINUTES + "分钟后再试!");
+            throw new BusinessException("获取验证码超过最大次数，请" + CAPTCHA_FAIL_LOCK_MINUTES + "分钟后再试!");
         }
         return false;
     }

@@ -1,7 +1,7 @@
 package com.chensoul.auth.infrastructure.captcha;
 
 import com.chensoul.auth.infrastructure.captcha.service.CaptchaService;
-import com.chensoul.exception.SystemException;
+import com.chensoul.exception.BusinessException;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +20,7 @@ public class CaptchaEndpoint {
     @GetMapping
     public void createCode(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         if (this.captchaService == null) {
-            throw new SystemException("验证码服务未启用");
+            throw new BusinessException("验证码服务未启用");
         }
 
         final byte[] captchaBytes = this.captchaService.generateCode(request, response);

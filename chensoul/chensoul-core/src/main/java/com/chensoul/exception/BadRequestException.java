@@ -1,9 +1,6 @@
 package com.chensoul.exception;
 
 public class BadRequestException extends RuntimeException {
-    public BadRequestException() {
-    }
-
     public BadRequestException(String message) {
         super(message);
     }
@@ -12,7 +9,5 @@ public class BadRequestException extends RuntimeException {
         super(message, cause);
     }
 
-    public BadRequestException(Throwable cause) {
-        super(cause);
-    }
+
 }

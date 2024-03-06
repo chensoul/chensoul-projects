@@ -1,6 +1,6 @@
 package com.chensoul.auth.infrastructure.captcha.service;
 
-import com.chensoul.exception.SystemException;
+import com.chensoul.exception.BusinessException;
 import com.chensoul.util.StringUtils;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
@@ -29,7 +29,7 @@ public abstract class AbstractCaptchaService implements CaptchaService {
     public byte[] generateCode(final HttpServletRequest request, final HttpServletResponse response) {
         final String randStr = request.getParameter(PARAM_RANDOM_STR);
         if (StringUtils.isBlank(randStr)) {
-            throw new SystemException("randStr不能为空");
+            throw new BusinessException("randStr不能为空");
         }
 
         final Captcha captcha = new SpecCaptcha(DEFAULT_IMAGE_WIDTH, DEFAULT_IMAGE_HEIGHT, DEFAULT_IMAGE_LEN);
@@ -51,16 +51,16 @@ public abstract class AbstractCaptchaService implements CaptchaService {
         final String randStr = request.getParameter(PARAM_RANDOM_STR);
 
         if (StringUtils.isBlank(randStr)) {
-            throw new SystemException("randStr不能为空");
+            throw new BusinessException("randStr不能为空");
         }
         if (StringUtils.isBlank(code)) {
-            throw new SystemException("code不能为空");
+            throw new BusinessException("code不能为空");
         }
 
         beforeValidate(request, response);
         if (!validateCode(code, randStr)) {
             onValidateFail(request, code, randStr);
-            throw new SystemException("验证码错误或者已过期");
+            throw new BusinessException("验证码错误或者已过期");
         } else {
             onValidateSuccess(code, randStr);
         }

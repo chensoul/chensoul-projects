@@ -7,18 +7,11 @@ package com.chensoul.exception;
  * @since 0.0.1
  */
 public class RequestNotPermittedException extends RuntimeException {
-    public RequestNotPermittedException() {
-    }
-
-    public RequestNotPermittedException(String message) {
+    public RequestNotPermittedException(final String message) {
         super(message);
     }
 
-    public RequestNotPermittedException(String message, Throwable cause) {
+    public RequestNotPermittedException(final String message, final Throwable cause) {
         super(message, cause);
-    }
-
-    public RequestNotPermittedException(Throwable cause) {
-        super(cause);
     }
 }

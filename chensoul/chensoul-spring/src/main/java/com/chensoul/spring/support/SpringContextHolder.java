@@ -1,7 +1,7 @@
 package com.chensoul.spring.support;
 
 import com.chensoul.collection.ArrayUtils;
-import com.chensoul.exception.SystemException;
+import com.chensoul.exception.BusinessException;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.Locale;
@@ -67,7 +67,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
             factory = beanFactory;
         } else {
             if (!(applicationContext instanceof ConfigurableApplicationContext)) {
-                throw new SystemException("No ConfigurableListableBeanFactory from context!");
+                throw new BusinessException("No ConfigurableListableBeanFactory from context!");
             }
 
             factory = ((ConfigurableApplicationContext) applicationContext).getBeanFactory();
