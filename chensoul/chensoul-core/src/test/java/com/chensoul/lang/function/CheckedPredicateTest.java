@@ -15,12 +15,13 @@
  */
 package com.chensoul.lang.function;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 public class CheckedPredicateTest {
@@ -74,10 +75,7 @@ public class CheckedPredicateTest {
         // Sneaky
         if (e.getCause() == null) {
             assertEquals(message, e.getMessage());
-        }
-
-        // Unchecked
-        else {
+        } else {
             assertEquals(Exception.class, e.getCause().getClass());
             assertEquals(message, e.getCause().getMessage());
         }

@@ -1,10 +1,11 @@
 package com.chensoul.net;
 
-import com.chensoul.collection.CollectionUtils;
-import com.chensoul.constant.StringPool;
 import static com.chensoul.constant.StringPool.LOCAL_HOST;
 import static com.chensoul.constant.StringPool.LOCAL_IP4;
 import static com.chensoul.constant.StringPool.LOCAL_IP6;
+
+import com.chensoul.collection.CollectionUtils;
+import com.chensoul.constant.StringPool;
 import com.chensoul.lang.function.FunctionUtils;
 import com.chensoul.util.StringUtils;
 import java.net.InetAddress;
@@ -39,8 +40,8 @@ public abstract class InetAddressUtils {
     static {
         final List<InetAddress> localAddresses =
             loadInetAddress(address -> address.isSiteLocalAddress()
-                                       && !address.isLoopbackAddress()
-                                       && !address.getHostAddress().contains(":"));
+                && !address.isLoopbackAddress()
+                && !address.getHostAddress().contains(":"));
 
         if (CollectionUtils.isEmpty(localAddresses)) {
             try {
@@ -97,8 +98,8 @@ public abstract class InetAddressUtils {
         int secondPart = Integer.parseInt(ipParts[1]);
 
         return firstPart == 10 ||
-               firstPart == 172 && secondPart >= 16 && secondPart <= 31 ||
-               firstPart == 192 && secondPart == 168;
+            firstPart == 172 && secondPart >= 16 && secondPart <= 31 ||
+            firstPart == 192 && secondPart == 168;
     }
 
     /**

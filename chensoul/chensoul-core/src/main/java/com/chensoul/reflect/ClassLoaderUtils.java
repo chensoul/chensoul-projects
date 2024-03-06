@@ -1,7 +1,8 @@
 package com.chensoul.reflect;
 
-import com.chensoul.lang.function.CheckedSupplier;
 import static com.chensoul.util.ShutdownHookUtils.addShutdownHookCallback;
+
+import com.chensoul.lang.function.CheckedSupplier;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 

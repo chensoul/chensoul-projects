@@ -1,14 +1,15 @@
 package com.chensoul.reflect;
 
 import static com.chensoul.collection.ArrayUtils.EMPTY_CLASS_ARRAY;
+import static com.chensoul.constant.SymbolConstants.LEFT_PARENTHESIS_CHAR;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.unmodifiableList;
+
 import com.chensoul.collection.SetUtils;
 import com.chensoul.constant.SymbolConstants;
-import static com.chensoul.constant.SymbolConstants.LEFT_PARENTHESIS_CHAR;
 import com.chensoul.lang.function.Streams;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.unmodifiableList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,7 @@ public abstract class MethodUtils {
      * @return non-null read-only {@link List}
      */
     public static List<Method> getMethods(Class<?> declaringClass, boolean includeInheritedTypes, boolean publicOnly,
-                                          Predicate<? super Method>... methodsToFilter) {
+        Predicate<? super Method>... methodsToFilter) {
 
         if (declaringClass == null || declaringClass.isPrimitive()) {
             return emptyList();
@@ -345,10 +346,10 @@ public abstract class MethodUtils {
         String methodName = method.getName();
         String declaringClassName = ClassUtils.getTypeName(declaringClass);
         int size = declaringClassName.length() + 1 // '#'
-                   + methodName.length() + 1  // '('
-                   + (parameterCount == 0 ? 0 : parameterCount - 1) // (parameterCount - 1) * ','
-                   + 1  // ')'
-            ;
+            + methodName.length() + 1  // '('
+            + (parameterCount == 0 ? 0 : parameterCount - 1) // (parameterCount - 1) * ','
+            + 1  // ')'
+        ;
 
         for (int i = 0; i < parameterCount; i++) {
             Class<?> parameterType = parameterTypes[i];

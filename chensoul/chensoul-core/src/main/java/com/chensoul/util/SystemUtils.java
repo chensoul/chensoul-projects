@@ -305,7 +305,7 @@ public abstract class SystemUtils {
             return System.getProperty(key, defaultValue);
         } catch (final SecurityException ex) {
             logger.error("Caught a SecurityException reading the system property '{}'; " +
-                         "the SystemUtils property value will be : '{}'", key, defaultValue);
+                "the SystemUtils property value will be : '{}'", key, defaultValue);
             return defaultValue;
         }
     }

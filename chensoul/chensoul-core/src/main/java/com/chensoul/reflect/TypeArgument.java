@@ -27,9 +27,9 @@ public class TypeArgument {
     @Override
     public String toString() {
         return "TypeArgument{" +
-               "type=" + type +
-               ", index=" + index +
-               '}';
+            "type=" + type +
+            ", index=" + index +
+            '}';
     }
 
     public Type getType() {

@@ -2,10 +2,11 @@ package com.chensoul.collection;
 
 import static com.chensoul.collection.ArrayUtils.length;
 import static com.chensoul.collection.CollectionUtils.size;
-import java.util.Collection;
 import static java.util.Collections.emptySet;
 import static java.util.Collections.singleton;
 import static java.util.Collections.unmodifiableSet;
+
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;

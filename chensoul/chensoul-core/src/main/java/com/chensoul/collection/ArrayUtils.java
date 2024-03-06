@@ -1,12 +1,13 @@
 package com.chensoul.collection;
 
 import static com.chensoul.collection.ListUtils.newArrayList;
+import static java.lang.reflect.Array.newInstance;
+import static java.util.Collections.list;
+
 import com.chensoul.util.ObjectUtils;
 import java.lang.reflect.Array;
-import static java.lang.reflect.Array.newInstance;
 import java.lang.reflect.Parameter;
 import java.util.Collection;
-import static java.util.Collections.list;
 import java.util.Enumeration;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;

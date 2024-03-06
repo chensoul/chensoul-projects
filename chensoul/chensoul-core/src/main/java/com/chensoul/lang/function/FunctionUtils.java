@@ -47,8 +47,8 @@ public class FunctionUtils {
      * @return {@link Function}<{@link T}, {@link R}>
      */
     public static <T, R> Function<T, R> doIf(final Predicate<T> predicate,
-                                             final CheckedFunction<T, R> trueFunction,
-                                             final CheckedFunction<T, R> falseFunction) {
+        final CheckedFunction<T, R> trueFunction,
+        final CheckedFunction<T, R> falseFunction) {
         return t -> {
             try {
                 if (predicate.test(t)) {
@@ -76,8 +76,8 @@ public class FunctionUtils {
      * @return the consumer
      */
     public static <T> Consumer<T> doIf(final boolean condition,
-                                       final Consumer<T> trueConsumer,
-                                       final Consumer<T> falseConsumer) {
+        final Consumer<T> trueConsumer,
+        final Consumer<T> falseConsumer) {
         return account -> {
             if (condition) {
                 trueConsumer.accept(account);
@@ -110,8 +110,8 @@ public class FunctionUtils {
      * @return the function
      */
     public static <R> Supplier<R> doIf(final boolean condition,
-                                       final Supplier<R> trueSupplier,
-                                       final Supplier<R> falseSupplier) {
+        final Supplier<R> trueSupplier,
+        final Supplier<R> falseSupplier) {
         return () -> {
             try {
                 if (condition) {
@@ -126,7 +126,7 @@ public class FunctionUtils {
     }
 
     public static <R> Supplier<R> doIf(final boolean condition,
-                                       final Supplier<R> trueSupplier) {
+        final Supplier<R> trueSupplier) {
         return doIf(condition, trueSupplier, () -> null);
     }
 
@@ -139,13 +139,13 @@ public class FunctionUtils {
     }
 
     public static <T, R> Function<T, R> doAndHandle(final CheckedFunction<T, R> function,
-                                                    final CheckedFunction<Throwable, R> errorHandler) {
+        final CheckedFunction<Throwable, R> errorHandler) {
         return doAndHandle(function, errorHandler, null);
     }
 
     public static <T, R> Function<T, R> doAndHandle(final CheckedFunction<T, R> function,
-                                                    final CheckedFunction<Throwable, R> errorHandler,
-                                                    final CheckedConsumer<T> finalConsumer) {
+        final CheckedFunction<Throwable, R> errorHandler,
+        final CheckedConsumer<T> finalConsumer) {
         return t -> {
             try {
                 return function.apply(t);
@@ -169,7 +169,7 @@ public class FunctionUtils {
      * @return the checked consumer
      */
     public static <R> Consumer<R> doAndHandle(final CheckedConsumer<R> function,
-                                              final CheckedFunction<Throwable, R> errorHandler) {
+        final CheckedFunction<Throwable, R> errorHandler) {
         return t -> {
             try {
                 function.accept(t);
@@ -189,7 +189,7 @@ public class FunctionUtils {
      * @return the supplier
      */
     public static <R> Supplier<R> doAndHandle(final CheckedSupplier<R> function,
-                                              final CheckedFunction<Throwable, R> errorHandler) {
+        final CheckedFunction<Throwable, R> errorHandler) {
         return () -> {
             try {
                 return function.get();
@@ -234,7 +234,7 @@ public class FunctionUtils {
      * @throws Throwable the throwable
      */
     public static void throwIf(final boolean condition,
-                               final CheckedSupplier<? extends Throwable> throwable) throws Throwable {
+        final CheckedSupplier<? extends Throwable> throwable) throws Throwable {
         if (condition) {
             throw throwable.get();
         }

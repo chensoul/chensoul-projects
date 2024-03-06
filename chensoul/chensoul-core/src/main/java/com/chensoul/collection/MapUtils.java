@@ -1,9 +1,10 @@
 package com.chensoul.collection;
 
-import java.util.Collection;
 import static java.util.Collections.emptyMap;
 import static java.util.Collections.singletonMap;
 import static java.util.Collections.unmodifiableMap;
+
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -127,7 +128,7 @@ public abstract class MapUtils {
     public static Map ofMap(Object... keyValuePairs) {
         int length = keyValuePairs.length;
         Map map = new HashMap(length / 2, MIN_LOAD_FACTOR);
-        for (int i = 0; i < length; ) {
+        for (int i = 0; i < length;) {
             map.put(keyValuePairs[i++], keyValuePairs[i++]);
         }
         return unmodifiableMap(map);
@@ -186,7 +187,7 @@ public abstract class MapUtils {
      * @return {@link LinkedHashMap}<{@link K}, {@link V}>
      */
     public static <K, V> LinkedHashMap<K, V> newLinkedHashMap(int initialCapacity,
-                                                              float loadFactor) {
+        float loadFactor) {
         return new LinkedHashMap<>(initialCapacity, loadFactor);
     }
 
@@ -197,8 +198,8 @@ public abstract class MapUtils {
      * @return {@link LinkedHashMap}<{@link K}, {@link V}>
      */
     public static <K, V> LinkedHashMap<K, V> newLinkedHashMap(int initialCapacity,
-                                                              float loadFactor,
-                                                              boolean accessOrder) {
+        float loadFactor,
+        boolean accessOrder) {
         return new LinkedHashMap<>(initialCapacity, loadFactor, accessOrder);
     }
 
@@ -231,7 +232,7 @@ public abstract class MapUtils {
      * @return {@link ConcurrentHashMap}<{@link K}, {@link V}>
      */
     public static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap(int initialCapacity,
-                                                                      float loadFactor) {
+        float loadFactor) {
         return new ConcurrentHashMap<>(initialCapacity, loadFactor);
     }
 
@@ -302,7 +303,7 @@ public abstract class MapUtils {
      * @return {@link Map}<{@link K}, {@link V}>
      */
     public static <K, V, E> Map<K, V> toFixedMap(Collection<E> values,
-                                                 Function<E, Map.Entry<K, V>> entryMapper) {
+        Function<E, Map.Entry<K, V>> entryMapper) {
         int size = CollectionUtils.size(values);
         if (size < 1) {
             return emptyMap();

@@ -1,18 +1,19 @@
 package com.chensoul.util;
 
 import static com.chensoul.lang.Prioritized.COMPARATOR;
-import com.chensoul.reflect.ClassLoaderUtils;
-import com.chensoul.reflect.FieldUtils;
 import static java.lang.ClassLoader.getSystemClassLoader;
-import java.lang.reflect.Field;
-import java.util.Collection;
 import static java.util.Collections.emptySet;
 import static java.util.Collections.unmodifiableCollection;
+import static java.util.stream.Collectors.toSet;
+
+import com.chensoul.reflect.ClassLoaderUtils;
+import com.chensoul.reflect.FieldUtils;
+import java.lang.reflect.Field;
+import java.util.Collection;
 import java.util.IdentityHashMap;
 import java.util.Set;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.function.Predicate;
-import static java.util.stream.Collectors.toSet;
 
 /**
  * The utilities class for ShutdownHook

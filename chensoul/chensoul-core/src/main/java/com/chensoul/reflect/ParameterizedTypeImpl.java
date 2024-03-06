@@ -24,8 +24,8 @@ public class ParameterizedTypeImpl implements ParameterizedType {
     private final Type ownerType;
 
     private ParameterizedTypeImpl(Class<?> rawType,
-                                  Type[] actualTypeArguments,
-                                  Type ownerType) {
+        Type[] actualTypeArguments,
+        Type ownerType) {
         this.actualTypeArguments = actualTypeArguments;
         this.rawType = rawType;
         this.ownerType = (ownerType != null) ? ownerType : rawType.getDeclaringClass();
@@ -165,9 +165,9 @@ public class ParameterizedTypeImpl implements ParameterizedType {
 
             return
                 Objects.equals(ownerType, thatOwner) &&
-                Objects.equals(rawType, thatRawType) &&
-                Arrays.equals(actualTypeArguments, // avoid clone
-                    that.getActualTypeArguments());
+                    Objects.equals(rawType, thatRawType) &&
+                    Arrays.equals(actualTypeArguments, // avoid clone
+                        that.getActualTypeArguments());
         } else
             return false;
     }
@@ -175,8 +175,8 @@ public class ParameterizedTypeImpl implements ParameterizedType {
     @Override
     public int hashCode() {
         return Arrays.hashCode(actualTypeArguments) ^
-               Objects.hashCode(ownerType) ^
-               Objects.hashCode(rawType);
+            Objects.hashCode(ownerType) ^
+            Objects.hashCode(rawType);
     }
 
     public String toString() {

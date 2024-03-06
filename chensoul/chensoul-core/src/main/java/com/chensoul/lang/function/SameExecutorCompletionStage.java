@@ -83,13 +83,13 @@ final class SameExecutorCompletionStage<T> implements CompletionStage<T> {
 
     @Override
     public final <U, V> CompletionStage<V> thenCombine(final CompletionStage<? extends U> other,
-                                                       final BiFunction<? super T, ? super U, ? extends V> fn) {
+        final BiFunction<? super T, ? super U, ? extends V> fn) {
         return of(delegate.thenCombine(other, fn), defaultExecutor);
     }
 
     @Override
     public final <U, V> CompletionStage<V> thenCombineAsync(final CompletionStage<? extends U> other,
-                                                            final BiFunction<? super T, ? super U, ? extends V> fn) {
+        final BiFunction<? super T, ? super U, ? extends V> fn) {
         if (defaultExecutor == null) {
             return of(delegate.thenCombineAsync(other, fn), null);
         }
@@ -98,19 +98,19 @@ final class SameExecutorCompletionStage<T> implements CompletionStage<T> {
 
     @Override
     public final <U, V> CompletionStage<V> thenCombineAsync(final CompletionStage<? extends U> other,
-                                                            final BiFunction<? super T, ? super U, ? extends V> fn, final Executor executor) {
+        final BiFunction<? super T, ? super U, ? extends V> fn, final Executor executor) {
         return of(delegate.thenCombineAsync(other, fn, executor), executor);
     }
 
     @Override
     public final <U> CompletionStage<Void> thenAcceptBoth(final CompletionStage<? extends U> other,
-                                                          final BiConsumer<? super T, ? super U> action) {
+        final BiConsumer<? super T, ? super U> action) {
         return of(delegate.thenAcceptBoth(other, action), defaultExecutor);
     }
 
     @Override
     public final <U> CompletionStage<Void> thenAcceptBothAsync(final CompletionStage<? extends U> other,
-                                                               final BiConsumer<? super T, ? super U> action) {
+        final BiConsumer<? super T, ? super U> action) {
         if (defaultExecutor == null) {
             return of(delegate.thenAcceptBothAsync(other, action), null);
         }
@@ -119,7 +119,7 @@ final class SameExecutorCompletionStage<T> implements CompletionStage<T> {
 
     @Override
     public final <U> CompletionStage<Void> thenAcceptBothAsync(final CompletionStage<? extends U> other,
-                                                               final BiConsumer<? super T, ? super U> action, final Executor executor) {
+        final BiConsumer<? super T, ? super U> action, final Executor executor) {
         return of(delegate.thenAcceptBothAsync(other, action, executor), executor);
     }
 
@@ -156,7 +156,7 @@ final class SameExecutorCompletionStage<T> implements CompletionStage<T> {
 
     @Override
     public final <U> CompletionStage<U> applyToEitherAsync(final CompletionStage<? extends T> other, final Function<? super T, U> fn,
-                                                           final Executor executor) {
+        final Executor executor) {
         return of(delegate.applyToEitherAsync(other, fn, executor), executor);
     }
 
@@ -175,7 +175,7 @@ final class SameExecutorCompletionStage<T> implements CompletionStage<T> {
 
     @Override
     public final CompletionStage<Void> acceptEitherAsync(final CompletionStage<? extends T> other, final Consumer<? super T> action,
-                                                         final Executor executor) {
+        final Executor executor) {
         return of(delegate.acceptEitherAsync(other, action, executor), executor);
     }
 
@@ -212,7 +212,7 @@ final class SameExecutorCompletionStage<T> implements CompletionStage<T> {
 
     @Override
     public final <U> CompletionStage<U> thenComposeAsync(final Function<? super T, ? extends CompletionStage<U>> fn,
-                                                         final Executor executor) {
+        final Executor executor) {
         return of(delegate.thenComposeAsync(fn, executor), executor);
     }
 

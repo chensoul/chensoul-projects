@@ -1,6 +1,7 @@
 package com.chensoul.collection;
 
 import static java.util.Collections.emptyEnumeration;
+
 import java.util.Enumeration;
 import java.util.Iterator;
 

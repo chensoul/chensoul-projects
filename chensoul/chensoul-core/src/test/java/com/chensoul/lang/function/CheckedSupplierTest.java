@@ -15,6 +15,10 @@
  */
 package com.chensoul.lang.function;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.DoubleSupplier;
@@ -25,9 +29,6 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
 public class CheckedSupplierTest {
@@ -139,10 +140,7 @@ public class CheckedSupplierTest {
         // Sneaky
         if (e.getCause() == null) {
             assertEquals(message, e.getMessage());
-        }
-
-        // Unchecked
-        else {
+        } else {
             assertEquals(Exception.class, e.getCause().getClass());
             assertEquals(message, e.getCause().getMessage());
         }

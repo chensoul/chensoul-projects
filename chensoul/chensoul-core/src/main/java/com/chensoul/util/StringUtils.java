@@ -1,7 +1,8 @@
 package com.chensoul.util;
 
-import com.chensoul.collection.ArrayUtils;
 import static java.lang.String.valueOf;
+
+import com.chensoul.collection.ArrayUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -104,7 +105,7 @@ public abstract class StringUtils {
     }
 
     static boolean regionMatches(final CharSequence cs, final boolean ignoreCase, final int thisStart,
-                                 final CharSequence substring, final int start, final int length) {
+        final CharSequence substring, final int start, final int length) {
         if (cs instanceof String && substring instanceof String) {
             return ((String) cs).regionMatches(ignoreCase, thisStart, (String) substring, start, length);
         }

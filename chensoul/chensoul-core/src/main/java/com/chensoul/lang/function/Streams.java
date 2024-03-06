@@ -2,11 +2,12 @@ package com.chensoul.lang.function;
 
 import static com.chensoul.lang.function.Predicates.and;
 import static com.chensoul.lang.function.Predicates.or;
+import static java.util.stream.Collectors.toList;
+
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
-import static java.util.stream.Collectors.toList;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 

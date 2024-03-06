@@ -1,8 +1,9 @@
 package com.chensoul.collection;
 
 
-import java.util.ArrayList;
 import static java.util.Collections.unmodifiableList;
+
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.LinkedList;

@@ -89,7 +89,7 @@ public abstract class TreeUtils {
      * @return {@link List}<{@link Tree}<{@link E}>>
      */
     public static <T, E> List<Tree<E>> build(final List<T> list, final E rootId, final TreeNodeConfig treeNodeConfig,
-                                             final NodeParser<T, E> nodeParser) {
+        final NodeParser<T, E> nodeParser) {
         return buildSingle(list, rootId, treeNodeConfig, nodeParser).getChildren();
     }
 
@@ -102,7 +102,7 @@ public abstract class TreeUtils {
      * @return {@link Tree}<{@link E}>
      */
     public static <T, E> Tree<E> buildSingle(final List<T> list, final E rootId, final TreeNodeConfig treeNodeConfig,
-                                             final NodeParser<T, E> nodeParser) {
+        final NodeParser<T, E> nodeParser) {
         return TreeSupplier.of(rootId, treeNodeConfig).append(list, nodeParser).get();
     }
 

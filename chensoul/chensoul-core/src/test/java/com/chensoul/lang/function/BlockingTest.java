@@ -1,10 +1,11 @@
 package com.chensoul.lang.function;
 
+import static org.springframework.test.util.AssertionErrors.assertTrue;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.junit.jupiter.api.Test;
-import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 /**
  *

@@ -1,6 +1,7 @@
 package com.chensoul.lang;
 
 import static java.lang.Integer.compare;
+
 import java.util.Comparator;
 
 /**

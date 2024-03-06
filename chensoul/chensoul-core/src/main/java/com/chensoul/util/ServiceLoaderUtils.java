@@ -1,14 +1,15 @@
 package com.chensoul.util;
 
 import static com.chensoul.collection.ArrayUtils.asArray;
+import static com.chensoul.reflect.ReflectionUtils.toList;
+import static java.lang.Boolean.getBoolean;
+import static java.util.Collections.sort;
+import static java.util.Collections.unmodifiableList;
+
 import com.chensoul.collection.MapUtils;
 import com.chensoul.lang.Prioritized;
 import com.chensoul.reflect.ClassLoaderUtils;
-import static com.chensoul.reflect.ReflectionUtils.toList;
-import static java.lang.Boolean.getBoolean;
 import java.util.Collections;
-import static java.util.Collections.sort;
-import static java.util.Collections.unmodifiableList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;

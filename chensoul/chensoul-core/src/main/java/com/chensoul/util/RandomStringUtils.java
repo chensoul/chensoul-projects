@@ -187,7 +187,7 @@ public abstract class RandomStringUtils {
      * @since 2.0
      */
     public static String random(int count, int start, int end, final boolean letters, final boolean numbers,
-                                final char[] chars, final Random random) {
+        final char[] chars, final Random random) {
         if (count == 0) {
             return StringUtils.EMPTY;
         }
@@ -215,9 +215,9 @@ public abstract class RandomStringUtils {
         final int firstLetterAscii = 65;
 
         if (chars == null && (numbers && end <= zeroDigitAscii
-                              || letters && end <= firstLetterAscii)) {
+            || letters && end <= firstLetterAscii)) {
             throw new IllegalArgumentException("Parameter end (" + end + ") must be greater then (" + zeroDigitAscii + ") for generating digits " +
-                                               "or greater then (" + firstLetterAscii + ") for generating letters.");
+                "or greater then (" + firstLetterAscii + ") for generating letters.");
         }
 
         final StringBuilder builder = new StringBuilder(count);

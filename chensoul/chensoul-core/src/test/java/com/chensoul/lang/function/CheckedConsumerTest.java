@@ -15,14 +15,15 @@
  */
 package com.chensoul.lang.function;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
 import java.util.function.IntConsumer;
 import java.util.function.LongConsumer;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
 public class CheckedConsumerTest {
@@ -124,10 +125,7 @@ public class CheckedConsumerTest {
         // Sneaky
         if (e.getCause() == null) {
             assertEquals(message, e.getMessage());
-        }
-
-        // Unchecked
-        else {
+        } else {
             assertEquals(Exception.class, e.getCause().getClass());
             assertEquals(message, e.getCause().getMessage());
         }

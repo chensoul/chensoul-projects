@@ -47,9 +47,9 @@ public abstract class Sanitizers {
 
     public static String email(final String str) {
         return sensitive(str, s -> StringUtils.substring(s, 0, 1)
-                                   + StringUtils.repeat(StringPool.STAR, s.indexOf("@") - 1)
-                                   + "@"
-                                   + StringUtils.substringAfter(s, StringPool.AT));
+            + StringUtils.repeat(StringPool.STAR, s.indexOf("@") - 1)
+            + "@"
+            + StringUtils.substringAfter(s, StringPool.AT));
     }
 
     private static String sensitive(final String str, final int first, final int last) {
