@@ -26,11 +26,6 @@
       </dependency>
       <dependency>
         <groupId>com.chensoul</groupId>
-        <artifactId>chensoul-crypto</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.chensoul</groupId>
         <artifactId>chensoul-spring</artifactId>
         <version>${project.version}</version>
       </dependency>

@@ -22,7 +22,6 @@
     <module>chensoul-core</module>
     <module>chensoul-jackson</module>
     <module>chensoul-validation</module>
-    <module>chensoul-crypto</module>
     <module>chensoul-groovy</module>
     <module>chensoul-spring</module>
   </modules>

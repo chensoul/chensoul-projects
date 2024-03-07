@@ -22,11 +22,6 @@
       <artifactId>chensoul-core</artifactId>
       <version>${revision}</version>
     </dependency>
-    <dependency>
-      <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-crypto</artifactId>
-      <version>${revision}</version>
-    </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
