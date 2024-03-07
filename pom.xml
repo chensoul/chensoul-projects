@@ -63,8 +63,7 @@
     <spring-boot-admin.version>2.7.15</spring-boot-admin.version>
     <mybatis-plus.version>3.5.5</mybatis-plus.version>
     <mybatis-spring.version>2.1.2</mybatis-spring.version>
-    <springdocs-openapi.version>1.7.0</springdocs-openapi.version>
-    <therapi-runtime-javadoc.version>0.15.0</therapi-runtime-javadoc.version>
+    <springdoc.version>1.7.0</springdoc.version>
     <xxl-job.version>2.4.0</xxl-job.version>
 
     <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
@@ -115,15 +114,23 @@
 
       <dependency>
         <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi</artifactId>
-        <version>${springdocs-openapi.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
+        <artifactId>springdoc-openapi-ui</artifactId>
+        <version>${springdoc.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.github.therapi</groupId>
-        <artifactId>therapi-runtime-javadoc</artifactId>
-        <version>${therapi-runtime-javadoc.version}</version>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-webflux-ui</artifactId>
+        <version>${springdoc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-security</artifactId>
+        <version>${springdoc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-javadoc</artifactId>
+        <version>${springdoc.version}</version>
       </dependency>
 
       <dependency>
@@ -202,7 +209,13 @@
             <execution>
               <goals>
                 <goal>repackage</goal>
+                <goal>build-info</goal>
               </goals>
+              <configuration>
+                <additionalProperties>
+                  <description>${project.description}</description>
+                </additionalProperties>
+              </configuration>
             </execution>
           </executions>
         </plugin>

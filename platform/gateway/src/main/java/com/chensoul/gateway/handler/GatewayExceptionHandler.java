@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.chensoul.gateway;
+package com.chensoul.gateway.handler;
 
 import com.chensoul.jackson.utils.JsonUtils;
 import com.chensoul.util.ExceptionUtils;
@@ -27,6 +27,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.core.io.buffer.DataBufferFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
@@ -41,6 +42,7 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Order(Ordered.HIGHEST_PRECEDENCE)
+@Component
 public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {

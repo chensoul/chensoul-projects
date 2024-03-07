@@ -9,11 +9,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Index Controller
+ */
 @RestController
 @RequestMapping
 public class IndexRestController {
 
-    @GetMapping
+    /**
+     * index
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @GetMapping()
     public R<Map> index(HttpServletRequest request, HttpServletResponse response) {
         return R.ok(MapUtils.of());
     }

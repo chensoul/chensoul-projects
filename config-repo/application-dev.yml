@@ -1,4 +1,12 @@
-#server.port: 6666
+
+management.endpoint.health.show-details: "ALWAYS"
+management.endpoints.web.exposure.include: "*"
+
+# Sharding Sphere 不支持数据库健康检查
+management.health.db.enabled: false
+management.health.circuitbreakers.enabled: true
+management.info.git.enabled: true
+management.info.git.mode: full
 
 spring:
   #  application.name: @artifactId@
@@ -38,8 +46,6 @@ spring.shardingsphere:
   props:
     sql:
       show: true
-# Sharding Sphere 不支持数据库健康检查
-management.health.db.enabled: false
 
 
 spring.redis:
@@ -70,14 +76,12 @@ mybatis-plus:
       id-type: ASSIGN_ID
 
 springdoc:
-  version: '@springdoc.version@'
   swagger-ui:
-    display-request-duration: true
-    groups-order: DESC
-    operations-sorter: method
-    disable-swagger-default-url: true
-    use-root-path: true
-  show-actuator: true
+    oauth:
+      clientId: messaging-client
+      clientSecret: secret
+  oAuthFlow:
+    tokenUrl: ${gateway:http://localhost}:8443/auth/oauth2/token
 
 feign:
   client:
@@ -129,10 +133,7 @@ resilience4j.retry:
         - java.io.IOException
         - java.util.concurrent.TimeoutException
 
-management.endpoint.health.show-details: "ALWAYS"
-management.endpoints.web.exposure.include: "*"
 
-management.health.circuitbreakers.enabled: true
 
 spring.cloud.zipkin:
   base-url: http://${zipkin:zipkin}:9411/
@@ -144,6 +145,7 @@ spring.cloud.sleuth:
 
 logging:
   level:
-    root: INFO
-    org.springframework.security: INFO
     com.chensoul: DEBUG
+    org.apache.coyote.http11.Http11InputBuffer: DEBUG
+    org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: DEBUG
+    org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler: DEBUG

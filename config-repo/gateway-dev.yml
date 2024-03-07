@@ -1,43 +1,54 @@
 server.port: 8443
 
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: eureka-api
-          uri: http://${eureka:eureka}:8761
-          predicates:
-            - Path=/eureka/api/{segment}
-          filters:
-            - SetPath=/eureka/{segment}
-
-        - id: eureka-webmvc-start
-          uri: http://${eureka:eureka}:8761
-          predicates:
-            - Path=/eureka/webmvc
-          filters:
-            - SetPath=/
-
-        - id: eureka-webmvc-other
-          uri: http://${eureka:eureka}:8761
-          predicates:
-            - Path=/eureka/**
-
-        - id: auth-service
-          uri: lb://auth-service
-          predicates:
-            - Path=/auth/**
-          filters:
-            - StripPrefix=1
-
-        - id: config-file
-          uri: ${spring.cloud.config.uri}
-          predicates:
-            - Path=/config/**
-          filters:
-            - RewritePath=/config/(?<segment>.*), /$\{segment}
-
-
 management.endpoint.gateway.enabled: true
 
+spring.cloud.gateway.globalcors:
+  corsConfigurations:
+    '[/**]':
+      allow-credentials: true
+      allowedOrigins:
+        - http://localhost:6543
+        - http://localhost:8761
+      allowedMethods: "GET,POST"
+      allowedHeaders: "*"
 
+spring.cloud.gateway.routes:
+  - id: eureka-api
+    uri: http://${eureka:eureka}:8761
+    predicates:
+      - Path=/eureka/api/{segment}
+    filters:
+      - SetPath=/eureka/{segment}
+
+  - id: eureka-webmvc-start
+    uri: http://${eureka:eureka}:8761
+    predicates:
+      - Path=/eureka/webmvc
+    filters:
+      - SetPath=/
+
+  - id: eureka-webmvc-other
+    uri: http://${eureka:eureka}:8761
+    predicates:
+      - Path=/eureka/**
+
+  - id: auth-service
+    uri: lb://auth-service
+    predicates:
+      - Path=/auth/**
+    filters:
+      - StripPrefix=1
+
+  - id: config-file
+    uri: ${spring.cloud.config.uri}
+    predicates:
+      - Path=/config/**
+    filters:
+      - RewritePath=/config/(?<segment>.*), /$\{segment}
+
+  - id: springdoc-openapi
+    uri: http://localhost:${server.port}
+    predicates:
+      - Path=/v3/api-docs/**
+    filters:
+      - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs

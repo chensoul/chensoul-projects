@@ -26,7 +26,7 @@ class AuthorizationServerSettingsTests {
     @Test
     void local() throws JsonProcessingException {
         ResponseEntity<Map> entity = restTemplate.getForEntity(
-            String.format("http://127.0.0.1:%d/.well-known/oauth-authorization-server", serverPort), Map.class);
+            String.format("http://localhost:%d/.well-known/oauth-authorization-server", serverPort), Map.class);
 
         Assert.isTrue(entity.getStatusCodeValue() == 200, "HTTP 状态码不正常");
 

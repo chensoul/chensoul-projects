@@ -14,7 +14,7 @@
   <version>${revision}</version>
 
   <name>Microservice :: Auth Service</name>
-  <description>${project.name}</description>
+  <description>认证微服务</description>
 
   <dependencies>
     <dependency>
@@ -75,6 +75,19 @@
     <dependency>
       <groupId>com.github.whvcse</groupId>
       <artifactId>easy-captcha</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-javadoc</artifactId>
     </dependency>
 
     <dependency>

@@ -90,7 +90,7 @@ class AuthorizationCodeTests {
         String code = match.get("code");
         log.info("code: {}", code);
 
-        String tokenUrl = String.format("http://127.0.0.1:%d/oauth2/token", serverPort);
+        String tokenUrl = String.format("http://localhost:%d/oauth2/token", serverPort);
 
         ObjectWriter objectWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
 
@@ -102,7 +102,7 @@ class AuthorizationCodeTests {
         RestTemplate restTemplate = new RestTemplate();
         @SuppressWarnings("all")
         ResponseEntity<R> entity = restTemplate.getForEntity(
-            String.format("http://127.0.0.1:%d?access_token=%s", serverPort, accessToken), R.class);
+            String.format("http://localhost:%d?access_token=%s", serverPort, accessToken), R.class);
 
         Assert.isTrue(entity.getStatusCodeValue() == 200, "HTTP 状态码不正常");
 

@@ -166,7 +166,7 @@ services:
     env_file:
       - .env
     ports:
-      - "9000:9000"
+      - "6543:6543"
 
   admin-server:
     build:

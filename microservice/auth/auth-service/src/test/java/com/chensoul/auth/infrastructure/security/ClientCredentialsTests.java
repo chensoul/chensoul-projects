@@ -39,7 +39,7 @@ class ClientCredentialsTests {
         requestBody.put("scope", Collections.singletonList("openid profile message.read message.write"));
         HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(requestBody, httpHeaders);
 
-        Map map = restTemplate.postForObject(String.format("http://127.0.0.1:%d/oauth2/token", serverPort), httpEntity,
+        Map map = restTemplate.postForObject(String.format("http://localhost:%d/oauth2/token", serverPort), httpEntity,
             Map.class);
 
         ObjectWriter objectWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();

@@ -1,5 +1,7 @@
-package com.chensoul.gateway;
+package com.chensoul.gateway.config;
 
+import com.chensoul.gateway.filter.RemoveHeaderGlobalFilter;
+import com.chensoul.gateway.handler.GatewayExceptionHandler;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,15 +25,6 @@ import reactor.core.publisher.Mono;
 @AutoConfigureAfter({GatewayAutoConfiguration.class})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 public class GatewayConfiguration {
-
-    /**
-     * @return
-     */
-    @Bean
-    public RequestGlobalFilter requestGlobalFilter() {
-        return new RequestGlobalFilter();
-    }
-
     /**
      * 根据请求的主机ip地址进行限流,当访问速度过快,拒绝该请求主机
      *
@@ -40,13 +33,5 @@ public class GatewayConfiguration {
     @Bean(value = "remoteAddrKeyResolver")
     public KeyResolver remoteAddrKeyResolver() {
         return exchange -> Mono.just(Objects.requireNonNull(exchange.getRequest().getRemoteAddress()).getAddress().getHostAddress());
-    }
-
-    /**
-     * @return
-     */
-    @Bean
-    public GatewayExceptionHandler globalExceptionHandler() {
-        return new GatewayExceptionHandler();
     }
 }
