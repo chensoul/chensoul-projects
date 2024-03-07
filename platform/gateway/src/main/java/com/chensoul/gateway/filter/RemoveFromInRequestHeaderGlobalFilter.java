@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Component
-public class RemoveHeaderGlobalFilter implements GlobalFilter, Ordered {
+public class RemoveFromInRequestHeaderGlobalFilter implements GlobalFilter, Ordered {
     private static final String HEADER_NAME = "from";
 
     /**

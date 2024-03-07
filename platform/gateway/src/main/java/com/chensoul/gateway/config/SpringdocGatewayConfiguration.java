@@ -7,11 +7,13 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.AbstractSwaggerUiConfigProperties;
+import static org.springdoc.core.Constants.SPRINGDOC_ENABLED;
 import org.springdoc.core.SwaggerUiConfigProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 /**
  * Springdoc Configuration
@@ -22,16 +24,17 @@ import org.springframework.context.annotation.Profile;
  * @since 0.0.1
  */
 @Slf4j
-@Profile("!prod")
-@Configuration
-public class SpringdocConfiguration {
+@Configuration(proxyBeanMethods = false)
+@ConditionalOnProperty(name = SPRINGDOC_ENABLED, matchIfMissing = true)
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
+public class SpringdocGatewayConfiguration {
     public static final String API_DOCS = "/v3/api-docs/";
     public static final String SERVICE_SUFFIX = "-service";
 
     private final SwaggerUiConfigProperties swaggerUiConfigProperties;
     private final RouteDefinitionLocator locator;
 
-    public SpringdocConfiguration(SwaggerUiConfigProperties swaggerUiConfigProperties, RouteDefinitionLocator locator) {
+    public SpringdocGatewayConfiguration(SwaggerUiConfigProperties swaggerUiConfigProperties, RouteDefinitionLocator locator) {
         this.swaggerUiConfigProperties = swaggerUiConfigProperties;
         this.locator = locator;
     }

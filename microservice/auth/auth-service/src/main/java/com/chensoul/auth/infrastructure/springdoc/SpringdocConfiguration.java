@@ -12,11 +12,13 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import java.util.Arrays;
 import java.util.Properties;
+import static org.springdoc.core.Constants.SPRINGDOC_ENABLED;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.lang.Nullable;
 import static org.springframework.security.oauth2.core.AuthorizationGrantType.CLIENT_CREDENTIALS;
@@ -24,9 +26,10 @@ import static org.springframework.security.oauth2.core.AuthorizationGrantType.CL
 /**
  * S
  */
-@Profile("!prod")
-@Configuration
-public class SpringdocConfig {
+@Configuration(proxyBeanMethods = false)
+@ConditionalOnProperty(name = SPRINGDOC_ENABLED, matchIfMissing = true)
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+public class SpringdocConfiguration {
     @Bean
     public OpenAPI customOpenAPI(@Nullable BuildProperties build, Environment env, @Value("${springdoc.oAuthFlow.tokenUrl}") String tokenUrl) {
         if (build == null) {

@@ -29,7 +29,7 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Component
-public class ReplaceApiDocsUrlGlobalFilter implements GlobalFilter, Ordered {
+public class ReplaceUrlInApiDocsGlobalFilter implements GlobalFilter, Ordered {
     private static final Pattern REGEX_PATTERN = Pattern.compile("^/([^/]+)/v3/api-docs$");
 
     private final ObjectMapper objectMapper = new ObjectMapper();
