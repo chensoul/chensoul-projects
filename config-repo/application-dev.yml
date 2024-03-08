@@ -1,4 +1,3 @@
-
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
 
@@ -32,7 +31,7 @@ spring.shardingsphere:
     slave:
       type: com.zaxxer.hikari.HikariDataSource
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/foodie-cloud?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/chensoul-cloud?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
       username: ${MYSQL_USER:root}
       password: ${MYSQL_PASSWORD:123456}
   masterslave:
@@ -81,7 +80,7 @@ springdoc:
       clientId: messaging-client
       clientSecret: secret
   oAuthFlow:
-    tokenUrl: ${gateway:http://localhost}:8443/auth/oauth2/token
+    tokenUrl: ${gateway:gateway}:8443/auth/oauth2/token
 
 feign:
   client:
