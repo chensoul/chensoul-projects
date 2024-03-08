@@ -16,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p>
  * The following components provides an alternative to synchronized locking with {@link ReentrantLock}.
  */
-public class TryReentrantLock {
+public class TryLock {
     private static final int LOCK_TIMEOUT_SECONDS = 3;
 
     private final ReentrantLock lock = new ReentrantLock(true);
@@ -29,9 +29,7 @@ public class TryReentrantLock {
      * @return the boolean
      */
     public boolean tryLock() {
-        return FunctionUtils.doAndHandle(
-            () -> lock.tryLock(LOCK_TIMEOUT_SECONDS, TimeUnit.SECONDS),
-            e -> false).get();
+        return FunctionUtils.tryGet(() -> lock.tryLock(LOCK_TIMEOUT_SECONDS, TimeUnit.SECONDS), e -> false).get();
     }
 
     /**

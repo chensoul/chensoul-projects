@@ -30,11 +30,11 @@ public interface CheckedBiPredicate<T, U> {
     boolean test(T t, U u) throws Throwable;
 
     static <T, U> BiPredicate<T, U> sneaky(CheckedBiPredicate<T, U> predicate) {
-        return unchecked(predicate, FunctionUtils.RETHROW_ALL);
+        return unchecked(predicate, FunctionUtils.SNEAKY_THROW);
     }
 
     static <T, U> BiPredicate<T, U> unchecked(CheckedBiPredicate<T, U> predicate) {
-        return unchecked(predicate, FunctionUtils.THROWABLE_TO_RUNTIME_EXCEPTION);
+        return unchecked(predicate, FunctionUtils.CHECKED_THROW);
     }
 
     static <T, U> BiPredicate<T, U> unchecked(CheckedBiPredicate<T, U> predicate, Consumer<Throwable> handler) {

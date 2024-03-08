@@ -1,6 +1,6 @@
 package com.chensoul.groovy.scripting;
 
-import com.chensoul.concurrent.TryReentrantLock;
+import com.chensoul.concurrent.TryLock;
 import com.chensoul.spring.support.SpringExpressionLanguageValueResolver;
 import com.chensoul.spring.support.bean.Beans;
 import com.chensoul.spring.util.ResourceUtils;
@@ -19,7 +19,7 @@ import org.springframework.core.io.Resource;
  */
 @Slf4j
 public class GroovyScriptResourceCacheManager implements ScriptResourceCacheManager<String, ExecutableScript> {
-    private final TryReentrantLock lock = new TryReentrantLock();
+    private final TryLock lock = new TryLock();
 
     private final Cache<String, ExecutableScript> cache;
 

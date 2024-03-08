@@ -13,20 +13,20 @@ import java.util.function.Consumer;
 public interface CheckedConsumer<T> {
     void accept(T t) throws Throwable;
 
-    default CheckedConsumer<T> andThen(CheckedConsumer<? super T> after) {
-        Objects.requireNonNull(after, "after is null");
-        return (T t) -> {
-            accept(t);
-            after.accept(t);
-        };
-    }
-
     static <T> Consumer<T> sneaky(CheckedConsumer<T> consumer) {
-        return unchecked(consumer, FunctionUtils.RETHROW_ALL);
+        return unchecked(consumer, FunctionUtils.SNEAKY_THROW);
     }
 
     static <T> Consumer<T> unchecked(CheckedConsumer<T> consumer) {
-        return unchecked(consumer, FunctionUtils.THROWABLE_TO_RUNTIME_EXCEPTION);
+        return unchecked(consumer, FunctionUtils.CHECKED_THROW);
+    }
+
+    default CheckedConsumer<T> andThen(CheckedConsumer<? super T> after) {
+        Objects.requireNonNull(after, "after is null");
+        return t -> {
+            accept(t);
+            after.accept(t);
+        };
     }
 
     static <T> Consumer<T> unchecked(CheckedConsumer<T> consumer, Consumer<Throwable> handler) {

@@ -1,15 +1,13 @@
 package com.chensoul.mybatis.spring.boot.tenant;
 
-import static com.baomidou.mybatisplus.core.toolkit.StringPool.NULL;
-
-import com.alibaba.ttl.TransmittableThreadLocal;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-
 /**
+ * Context Holder for TenantId
  *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
  */
-public class TenantContextHolder {
-    private static final ThreadLocal<String> THREAD_LOCAL_TENANT = new TransmittableThreadLocal<>();
+public abstract class TenantContextHolder {
+    private static final ThreadLocal<String> TENANT = new InheritableThreadLocal<>();
 
     /**
      *
@@ -18,37 +16,27 @@ public class TenantContextHolder {
     }
 
     /**
-     * @return
+     * Get TenantId
+     *
+     * @return {@link String}
      */
     public static String getTenantId() {
-        String tenantId = THREAD_LOCAL_TENANT.get();
-
-        if (StringUtils.isBlank(tenantId)) {
-            tenantId = NULL;
-        }
-        return tenantId;
+        return TENANT.get();
     }
 
     /**
+     * Set TenantId
+     *
      * @param tenantId
      */
     public static void setTenantId(String tenantId) {
-        THREAD_LOCAL_TENANT.set(tenantId);
+        TENANT.set(tenantId);
     }
 
     /**
-     *
+     * Clear TenantId
      */
     public static void clear() {
-        THREAD_LOCAL_TENANT.remove();
+        TENANT.remove();
     }
-
-    /**
-     * @param tenantId
-     * @return
-     */
-    public static boolean isValid(String tenantId) {
-        return StringUtils.isNotBlank(tenantId) && !StringUtils.equals(tenantId, NULL);
-    }
-
 }

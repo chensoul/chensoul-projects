@@ -30,11 +30,11 @@ public interface CheckedBiConsumer<T, U> {
     void accept(T t, U u) throws Throwable;
 
     static <T, U> BiConsumer<T, U> sneaky(final CheckedBiConsumer<T, U> consumer) {
-        return unchecked(consumer, FunctionUtils.RETHROW_ALL);
+        return unchecked(consumer, FunctionUtils.SNEAKY_THROW);
     }
 
     static <T, U> BiConsumer<T, U> unchecked(final CheckedBiConsumer<T, U> consumer) {
-        return unchecked(consumer, FunctionUtils.THROWABLE_TO_RUNTIME_EXCEPTION);
+        return unchecked(consumer, FunctionUtils.CHECKED_THROW);
     }
 
     static <T, U> BiConsumer<T, U> unchecked(final CheckedBiConsumer<T, U> consumer, final Consumer<Throwable> handler) {

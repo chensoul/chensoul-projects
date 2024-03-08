@@ -1,16 +1,16 @@
 package com.chensoul.collection;
 
 import static com.chensoul.collection.ListUtils.newArrayList;
-import static java.lang.reflect.Array.newInstance;
-import static java.util.Collections.list;
-
-import com.chensoul.util.ObjectUtils;
 import java.lang.reflect.Array;
+import static java.lang.reflect.Array.newInstance;
 import java.lang.reflect.Parameter;
 import java.util.Collection;
+import static java.util.Collections.list;
 import java.util.Enumeration;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * The utilities class for {@link Array}
@@ -136,6 +136,10 @@ public abstract class ArrayUtils {
         return values;
     }
 
+    public static boolean isArray(final Object object) {
+        return object != null && object.getClass().isArray();
+    }
+
     public static <E> E[] asArray(Enumeration<E> enumeration, Class<?> componentType) {
         return asArray(list(enumeration), componentType);
     }
@@ -155,7 +159,7 @@ public abstract class ArrayUtils {
     public static <E> E[] combine(E one, E... others) {
         int othersLength = length(others);
         Class<?> oneType = one.getClass();
-        boolean oneIsArray = ObjectUtils.isArray(oneType);
+        boolean oneIsArray = isArray(oneType);
 
         if (oneIsArray) {
             return combineArray((E[]) oneType.cast(one), others);
@@ -215,5 +219,13 @@ public abstract class ArrayUtils {
 
     public static <T> void forEach(T[] values, Consumer<T> consumer) {
         forEach(values, (i, e) -> consumer.accept(e));
+    }
+
+    public static boolean anyNull(final Object... values) {
+        return !allNotNull(values);
+    }
+
+    public static boolean allNotNull(final Object... values) {
+        return values != null && Stream.of(values).noneMatch(Objects::isNull);
     }
 }

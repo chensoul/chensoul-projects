@@ -15,20 +15,11 @@
  */
 package com.chensoul.lang.function;
 
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
-
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.DoubleSupplier;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 public class CheckedSupplierTest {
@@ -44,20 +35,12 @@ public class CheckedSupplierTest {
 
         assertSupplier(s1, UncheckedException.class);
         assertSupplier(s2, Exception.class);
-    }
 
-    @Test
-    public void testCheckedSupplierWithCustomHandler() {
-        final CheckedSupplier<Object> supplier = () -> {
-            throw new Exception("object");
-        };
-        final Consumer<Throwable> handler = e -> {
+        Supplier<Object> s3 = CheckedSupplier.unchecked(supplier, e -> {
             throw new IllegalStateException(e);
-        };
+        });
+        assertSupplier(s3, IllegalStateException.class);
 
-        Supplier<Object> alias = CheckedSupplier.unchecked(supplier, handler);
-
-        assertSupplier(alias, IllegalStateException.class);
     }
 
     private <E extends Exception> void assertSupplier(Supplier<Object> test, Class<E> type) {
@@ -73,64 +56,6 @@ public class CheckedSupplierTest {
             Stream.generate(test).findFirst();
         } catch (Exception e) {
             assertException(type, e, "object");
-        }
-    }
-
-    private <E extends Exception> void assertIntSupplier(IntSupplier test, Class<E> type) {
-        assertNotNull(test);
-        try {
-            test.getAsInt();
-            fail();
-        } catch (Exception e) {
-            assertException(type, e, "int");
-        }
-
-        try {
-            IntStream.generate(test).findFirst();
-        } catch (Exception e) {
-            assertException(type, e, "int");
-        }
-    }
-
-    private <E extends Exception> void assertLongSupplier(LongSupplier test, Class<E> type) {
-        assertNotNull(test);
-        try {
-            test.getAsLong();
-            fail();
-        } catch (Exception e) {
-            assertException(type, e, "long");
-        }
-
-        try {
-            LongStream.generate(test).findFirst();
-        } catch (Exception e) {
-            assertException(type, e, "long");
-        }
-    }
-
-    private <E extends Exception> void assertDoubleSupplier(DoubleSupplier test, Class<E> type) {
-        assertNotNull(test);
-        try {
-            test.getAsDouble();
-            fail();
-        } catch (Exception e) {
-            assertException(type, e, "double");
-        }
-
-        try {
-            DoubleStream.generate(test).findFirst();
-        } catch (Exception e) {
-            assertException(type, e, "double");
-        }
-    }
-
-    private <E extends Exception> void assertBooleanSupplier(BooleanSupplier test, Class<E> type) {
-        assertNotNull(test);
-        try {
-            test.getAsBoolean();
-            fail();
-        } catch (Exception e) {
-            assertException(type, e, "boolean");
         }
     }
 

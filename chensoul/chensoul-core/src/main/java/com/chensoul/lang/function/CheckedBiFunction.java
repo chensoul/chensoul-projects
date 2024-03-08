@@ -14,11 +14,11 @@ public interface CheckedBiFunction<T, U, R> {
     R apply(T t, U u) throws Throwable;
 
     static <T, U, R> BiFunction<T, U, R> sneaky(CheckedBiFunction<T, U, R> consumer) {
-        return unchecked(consumer, FunctionUtils.RETHROW_ALL);
+        return unchecked(consumer, FunctionUtils.SNEAKY_THROW);
     }
 
     static <T, U, R> BiFunction<T, U, R> unchecked(CheckedBiFunction<T, U, R> consumer) {
-        return unchecked(consumer, FunctionUtils.THROWABLE_TO_RUNTIME_EXCEPTION);
+        return unchecked(consumer, FunctionUtils.CHECKED_THROW);
     }
 
     static <T, U, R> BiFunction<T, U, R> unchecked(CheckedBiFunction<T, U, R> consumer, Consumer<Throwable> handler) {

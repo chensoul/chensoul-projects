@@ -18,8 +18,6 @@ package com.chensoul.lang.function;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
-
-import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 
 public class CheckedRunnableTest {
@@ -35,20 +33,11 @@ public class CheckedRunnableTest {
 
         assertRunnable(r1, UncheckedException.class);
         assertRunnable(r2, Exception.class);
-    }
 
-    @Test
-    public void testCheckedRunnableWithCustomHandler() {
-        final CheckedRunnable runnable = () -> {
-            throw new Exception("runnable");
-        };
-        final Consumer<Throwable> handler = e -> {
+        Runnable r3 = CheckedRunnable.unchecked(runnable, e -> {
             throw new IllegalStateException(e);
-        };
-
-        Runnable alias = CheckedRunnable.unchecked(runnable, handler);
-
-        assertRunnable(alias, IllegalStateException.class);
+        });
+        assertRunnable(r3, IllegalStateException.class);
     }
 
     private <E extends Exception> void assertRunnable(Runnable test, Class<E> type) {
@@ -79,7 +68,7 @@ public class CheckedRunnableTest {
             () -> {
                 throw new Throwable("runnable");
             },
-            FunctionUtils.RETHROW_ALL
+            FunctionUtils.SNEAKY_THROW
         );
 
         try {

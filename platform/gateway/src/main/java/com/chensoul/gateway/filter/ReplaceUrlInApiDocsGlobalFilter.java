@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
-import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -26,14 +26,33 @@ import reactor.core.publisher.Mono;
 
 /**
  * Replace the url with the gateway loadbalancer url in swagger v3 api docs
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 0.0.1
  */
 @Slf4j
 @Component
-public class ReplaceUrlInApiDocsGlobalFilter implements GlobalFilter, Ordered {
+@Order
+public class ReplaceUrlInApiDocsGlobalFilter implements GlobalFilter {
+    /**
+     * Regex pattern for /xx/v3/api-docs
+     */
     private static final Pattern REGEX_PATTERN = Pattern.compile("^/([^/]+)/v3/api-docs$");
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    /**
+     * Jackson ObjectMapper
+     */
+    private ObjectMapper objectMapper;
 
+    public ReplaceUrlInApiDocsGlobalFilter(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
+    /**
+     * @param exchange
+     * @param chain
+     * @return {@link Mono}<{@link Void}>
+     */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
@@ -90,10 +109,4 @@ public class ReplaceUrlInApiDocsGlobalFilter implements GlobalFilter, Ordered {
 
         return chain.filter(exchange.mutate().response(decorator).build());
     }
-
-    @Override
-    public int getOrder() {
-        return Ordered.HIGHEST_PRECEDENCE;
-    }
-
 }

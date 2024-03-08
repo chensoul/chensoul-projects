@@ -44,6 +44,11 @@ import reactor.core.publisher.Mono;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Component
 public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
+    /**
+     * @param exchange the current exchange
+     * @param ex       the exception to handle
+     * @return
+     */
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
         ServerHttpResponse response = exchange.getResponse();

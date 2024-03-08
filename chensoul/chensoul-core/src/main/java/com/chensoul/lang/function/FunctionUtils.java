@@ -10,16 +10,18 @@ import java.util.function.Supplier;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * A factory class for creating Function objects.
+ * TODO
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
+ * @since 1.0.0
  */
 @Slf4j
 public class FunctionUtils {
-    public static final Consumer<Throwable> RETHROW_ALL = FunctionUtils::sneakyThrow;
+    public static final Consumer<Throwable> SNEAKY_THROW = FunctionUtils::sneakyThrow;
 
-    public static final Consumer<Throwable> THROWABLE_TO_RUNTIME_EXCEPTION = t -> {
+    public static final Consumer<Throwable> CHECKED_THROW = FunctionUtils::checkedThrow;
+
+    public static <E extends Throwable> void checkedThrow(Throwable t) throws E {
         if (t instanceof Error)
             throw (Error) t;
 
@@ -34,10 +36,16 @@ public class FunctionUtils {
         }
 
         throw new UncheckedException(t);
-    };
+    }
 
+    @SuppressWarnings("unchecked")
     public static <E extends Throwable> void sneakyThrow(Throwable throwable) throws E {
         throw (E) throwable;
+    }
+
+    public static <T, R> Function<T, R> doIf(final Predicate<T> predicate,
+                                             final CheckedFunction<T, R> trueFunction) {
+        return doIf(predicate, trueFunction, t -> null);
     }
 
     /**
@@ -57,11 +65,29 @@ public class FunctionUtils {
                 return falseFunction.apply(t);
             } catch (final Throwable e) {
                 log.warn("doIf error", e);
-                try {
-                    return falseFunction.apply(t);
-                } catch (final Throwable ex) {
-                    throw new IllegalArgumentException(ex.getMessage());
+
+                return CheckedFunction.unchecked(falseFunction).apply(t);
+            }
+        };
+    }
+
+    public static <T, R> Function<T, R> doIf(final boolean condition,
+                                             final CheckedFunction<T, R> trueFunction) {
+        return doIf(condition, trueFunction, t -> null);
+    }
+
+    public static <T, R> Function<T, R> doIf(final boolean condition,
+                                             final CheckedFunction<T, R> trueFunction,
+                                             final CheckedFunction<T, R> falseFunction) {
+        return t -> {
+            try {
+                if (condition) {
+                    return trueFunction.apply(t);
                 }
+                return falseFunction.apply(t);
+            } catch (final Throwable e) {
+                log.warn("doIf error", e);
+                return CheckedFunction.unchecked(falseFunction).apply(t);
             }
         };
     }
@@ -75,14 +101,12 @@ public class FunctionUtils {
      * @param falseConsumer
      * @return the consumer
      */
-    public static <T> Consumer<T> doIf(final boolean condition,
-        final Consumer<T> trueConsumer,
-        final Consumer<T> falseConsumer) {
-        return account -> {
+    public static <T> Consumer<T> doIf(final boolean condition, final Consumer<T> trueConsumer, final Consumer<T> falseConsumer) {
+        return t -> {
             if (condition) {
-                trueConsumer.accept(account);
+                trueConsumer.accept(t);
             } else {
-                falseConsumer.accept(account);
+                falseConsumer.accept(t);
             }
         };
     }
@@ -109,9 +133,7 @@ public class FunctionUtils {
      * @param falseSupplier the false function
      * @return the function
      */
-    public static <R> Supplier<R> doIf(final boolean condition,
-        final Supplier<R> trueSupplier,
-        final Supplier<R> falseSupplier) {
+    public static <R> Supplier<R> doIf(final boolean condition, final Supplier<R> trueSupplier, final Supplier<R> falseSupplier) {
         return () -> {
             try {
                 if (condition) {
@@ -125,33 +147,30 @@ public class FunctionUtils {
         };
     }
 
-    public static <R> Supplier<R> doIf(final boolean condition,
-        final Supplier<R> trueSupplier) {
+    public static <R> Supplier<R> doIf(final boolean condition, final Supplier<R> trueSupplier) {
         return doIf(condition, trueSupplier, () -> null);
     }
 
-    public static <R> void doAndHandle(final CheckedConsumer<R> function) {
-        try {
-            function.accept(null);
-        } catch (final Throwable e) {
-            log.warn("doAndHandle error", e);
-        }
+    public static <T, R> Function<T, R> tryApply(final CheckedFunction<T, R> function, final CheckedFunction<Throwable, R> errorHandler) {
+        return tryApply(function, errorHandler, null);
     }
 
-    public static <T, R> Function<T, R> doAndHandle(final CheckedFunction<T, R> function,
-        final CheckedFunction<Throwable, R> errorHandler) {
-        return doAndHandle(function, errorHandler, null);
+    public static <T, R> Function<T, R> tryApply(final CheckedFunction<T, R> function, final CheckedConsumer<T> finalConsumer) {
+        return tryApply(function, null, finalConsumer);
     }
 
-    public static <T, R> Function<T, R> doAndHandle(final CheckedFunction<T, R> function,
-        final CheckedFunction<Throwable, R> errorHandler,
+    public static <T, R> Function<T, R> tryApply(final CheckedFunction<T, R> function, final CheckedFunction<Throwable, R> errorHandler,
         final CheckedConsumer<T> finalConsumer) {
         return t -> {
             try {
                 return function.apply(t);
             } catch (final Throwable e) {
-                log.warn("doAndHandle error", e);
-                return CheckedFunction.unchecked(errorHandler).apply(e);
+                log.warn("tryApply error", e);
+                if (errorHandler != null) {
+                    return CheckedFunction.unchecked(errorHandler).apply(e);
+                }
+                FunctionUtils.checkedThrow(e);
+                return null;
             } finally {
                 if (finalConsumer != null) {
                     CheckedConsumer.unchecked(finalConsumer).accept(t);
@@ -160,42 +179,65 @@ public class FunctionUtils {
         };
     }
 
+
+    public static <R> Consumer<R> tryAccept(final CheckedConsumer<R> consumer, final CheckedFunction<Throwable, R> errorHandler) {
+        return tryAccept(consumer, errorHandler, null);
+    }
+
     /**
      * Do and handle checked consumer.
      *
      * @param <R>          the type parameter
-     * @param function     the function
+     * @param consumer     the consumer
      * @param errorHandler the error handler
      * @return the checked consumer
      */
-    public static <R> Consumer<R> doAndHandle(final CheckedConsumer<R> function,
-        final CheckedFunction<Throwable, R> errorHandler) {
+    public static <R> Consumer<R> tryAccept(final CheckedConsumer<R> consumer, final CheckedFunction<Throwable, R> errorHandler, final CheckedConsumer<R> finalConsumer) {
         return t -> {
             try {
-                function.accept(t);
+                consumer.accept(t);
             } catch (final Throwable e) {
-                log.warn("doAndHandle error", e);
-                CheckedFunction.unchecked(errorHandler).apply(e);
+                log.warn("tryAccept error", e);
+                if (errorHandler != null) {
+                    CheckedFunction.unchecked(errorHandler).apply(e);
+                }
+                FunctionUtils.CHECKED_THROW.accept(e);
+            } finally {
+                if (finalConsumer != null) {
+                    CheckedConsumer.unchecked(finalConsumer).accept(t);
+                }
             }
         };
     }
+
 
     /**
      * Do and handle supplier.
      *
      * @param <R>          the type parameter
-     * @param function     the function
+     * @param supplier     the function
      * @param errorHandler the error handler
      * @return the supplier
      */
-    public static <R> Supplier<R> doAndHandle(final CheckedSupplier<R> function,
-        final CheckedFunction<Throwable, R> errorHandler) {
+    public static <R> Supplier<R> tryGet(final CheckedSupplier<R> supplier, final CheckedFunction<Throwable, R> errorHandler) {
+        return tryGet(supplier, errorHandler, null);
+    }
+
+    public static <R> Supplier<R> tryGet(final CheckedSupplier<R> supplier, final CheckedFunction<Throwable, R> errorHandler, final CheckedConsumer<R> finalConsumer) {
         return () -> {
             try {
-                return function.get();
+                return supplier.get();
             } catch (final Throwable e) {
-                log.warn("doAndHandle error", e);
-                return CheckedFunction.unchecked(errorHandler).apply(e);
+                log.warn("tryGet error", e);
+                if (errorHandler != null) {
+                    return CheckedFunction.unchecked(errorHandler).apply(e);
+                }
+                FunctionUtils.CHECKED_THROW.accept(e);
+                return null;
+            } finally {
+                if (finalConsumer != null) {
+                    CheckedConsumer.unchecked(finalConsumer).accept(null);
+                }
             }
         };
     }

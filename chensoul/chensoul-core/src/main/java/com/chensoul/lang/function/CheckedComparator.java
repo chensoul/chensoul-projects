@@ -33,11 +33,11 @@ public interface CheckedComparator<T> {
     int compare(T o1, T o2) throws Throwable;
 
     static <T> Comparator<T> sneaky(CheckedComparator<T> callable) {
-        return unchecked(callable, FunctionUtils.RETHROW_ALL);
+        return unchecked(callable, FunctionUtils.SNEAKY_THROW);
     }
 
     static <T> Comparator<T> unchecked(CheckedComparator<T> callable) {
-        return unchecked(callable, FunctionUtils.THROWABLE_TO_RUNTIME_EXCEPTION);
+        return unchecked(callable, FunctionUtils.CHECKED_THROW);
     }
 
     static <T> Comparator<T> unchecked(CheckedComparator<T> callable, Consumer<Throwable> handler) {

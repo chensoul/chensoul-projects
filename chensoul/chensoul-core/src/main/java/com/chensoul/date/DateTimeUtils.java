@@ -69,7 +69,7 @@ public abstract class DateTimeUtils {
     public static LocalDateTime localDateTimeOf(final String value) {
         LocalDateTime result = PARSERS
             .stream()
-            .map(parser -> FunctionUtils.doAndHandle(() -> LocalDateTime.parse(value, parser), throwable -> null).get())
+            .map(parser -> FunctionUtils.tryGet(() -> LocalDateTime.parse(value, parser), e -> null).get())
             .filter(Objects::nonNull)
             .findFirst()
             .orElse(null);
@@ -156,7 +156,7 @@ public abstract class DateTimeUtils {
         val parsers = Arrays.asList(DateTimeFormatter.ISO_ZONED_DATE_TIME, DateTimeFormatter.RFC_1123_DATE_TIME);
         return parsers
             .stream()
-            .map(parser -> FunctionUtils.doAndHandle(() -> ZonedDateTime.parse(value, parser), throwable -> null).get())
+            .map(parser -> FunctionUtils.tryGet(() -> ZonedDateTime.parse(value, parser), throwable -> null).get())
             .filter(Objects::nonNull)
             .findFirst()
             .orElse(null);

@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -15,7 +16,8 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Component
-public class RemoveFromInRequestHeaderGlobalFilter implements GlobalFilter, Ordered {
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class RemoveFromInRequestHeaderGlobalFilter implements GlobalFilter {
     private static final String HEADER_NAME = "from";
 
     /**
@@ -32,12 +34,6 @@ public class RemoveFromInRequestHeaderGlobalFilter implements GlobalFilter, Orde
                     httpHeaders.remove(HEADER_NAME);
                 }
             }).build();
-        return chain.filter(exchange.mutate()
-            .request(request.mutate().build()).build());
-    }
-
-    @Override
-    public int getOrder() {
-        return Ordered.HIGHEST_PRECEDENCE;
+        return chain.filter(exchange.mutate().request(request.mutate().build()).build());
     }
 }

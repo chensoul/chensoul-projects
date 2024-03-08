@@ -1,13 +1,10 @@
 package com.chensoul.reflect;
 
 
+import com.chensoul.collection.ArrayUtils;
 import static com.chensoul.collection.ArrayUtils.EMPTY_CLASS_ARRAY;
 import static com.chensoul.reflect.ClassUtils.isPrimitive;
 import static com.chensoul.reflect.ClassUtils.isSimpleType;
-import static java.util.Arrays.asList;
-import static java.util.Collections.unmodifiableSet;
-
-import com.chensoul.collection.ArrayUtils;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.lang.reflect.Array;
@@ -18,7 +15,9 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import static java.util.Arrays.asList;
 import java.util.Collections;
+import static java.util.Collections.unmodifiableSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -486,7 +485,9 @@ public abstract class ReflectionUtils {
 
         try {
             beanInfo = Introspector.getBeanInfo(beanClass);
-            propertyValue = (T) Stream.of(beanInfo.getMethodDescriptors()).filter(methodDescriptor -> methodName.equals(methodDescriptor.getName())).findFirst().map(method -> {
+            propertyValue = (T) Stream.of(beanInfo.getMethodDescriptors())
+                .filter(methodDescriptor -> methodName.equals(methodDescriptor.getName()))
+                .findFirst().map(method -> {
                 try {
                     return method.getMethod().invoke(bean);
                 } catch (Exception e) {

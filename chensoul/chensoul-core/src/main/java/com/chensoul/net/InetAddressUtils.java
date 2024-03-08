@@ -1,11 +1,10 @@
 package com.chensoul.net;
 
+import com.chensoul.collection.CollectionUtils;
+import com.chensoul.constant.StringPool;
 import static com.chensoul.constant.StringPool.LOCAL_HOST;
 import static com.chensoul.constant.StringPool.LOCAL_IP4;
 import static com.chensoul.constant.StringPool.LOCAL_IP6;
-
-import com.chensoul.collection.CollectionUtils;
-import com.chensoul.constant.StringPool;
 import com.chensoul.lang.function.FunctionUtils;
 import com.chensoul.util.StringUtils;
 import java.net.InetAddress;
@@ -148,13 +147,13 @@ public abstract class InetAddressUtils {
     }
 
     public static InetAddress getByUrl(final String urlAddr) {
-        return FunctionUtils.doAndHandle(() -> {
-            URL url = new URI(urlAddr).toURL();
+        return FunctionUtils.tryApply((String u) -> {
+            URL url = new URI(u).toURL();
             return InetAddress.getAllByName(url.getHost())[0];
         }, e -> {
             log.trace("Host name could not be determined automatically.", e);
             return null;
-        }).get();
+        }).apply(urlAddr);
     }
 
     /**
@@ -198,7 +197,7 @@ public abstract class InetAddressUtils {
     }
 
     public static String getLocalHostName() {
-        return FunctionUtils.doAndHandle(() -> {
+        return FunctionUtils.tryGet(() -> {
             String hostName = localAddress.getHostName();
             int index = hostName.indexOf('.');
             if (index > 0) {

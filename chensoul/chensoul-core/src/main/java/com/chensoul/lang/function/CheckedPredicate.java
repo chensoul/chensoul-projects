@@ -29,11 +29,11 @@ public interface CheckedPredicate<T> {
     }
 
     static <T> Predicate<T> sneaky(CheckedPredicate predicate) {
-        return unchecked(predicate, FunctionUtils.RETHROW_ALL);
+        return unchecked(predicate, FunctionUtils.SNEAKY_THROW);
     }
 
     static <T> Predicate<T> unchecked(CheckedPredicate predicate) {
-        return unchecked(predicate, FunctionUtils.THROWABLE_TO_RUNTIME_EXCEPTION);
+        return unchecked(predicate, FunctionUtils.CHECKED_THROW);
     }
 
     static <T> Predicate<T> unchecked(CheckedPredicate predicate, Consumer<Throwable> handler) {

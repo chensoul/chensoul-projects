@@ -1,12 +1,12 @@
 package com.chensoul.util;
 
+import com.chensoul.collection.ArrayUtils;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
-import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 
@@ -176,14 +176,14 @@ public abstract class RegexUtils {
     }
 
     public static String replaceAll(final String text, final Pattern regex, final String replacement) {
-        if (ObjectUtils.anyNull(text, regex, replacement)) {
+        if (ArrayUtils.anyNull(text, regex, replacement)) {
             return text;
         }
         return regex.matcher(text).replaceAll(replacement);
     }
 
     public static String replaceAll(final String text, final String regex, final String replacement) {
-        if (ObjectUtils.anyNull(text, regex, replacement)) {
+        if (ArrayUtils.anyNull(text, regex, replacement)) {
             return text;
         }
         return text.replaceAll(regex, replacement);

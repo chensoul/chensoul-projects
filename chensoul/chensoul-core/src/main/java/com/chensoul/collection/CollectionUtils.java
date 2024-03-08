@@ -1,7 +1,6 @@
 package com.chensoul.collection;
 
 import static com.chensoul.collection.ArrayUtils.length;
-
 import java.util.AbstractSet;
 import java.util.Collection;
 import java.util.Collections;
@@ -113,9 +112,7 @@ public abstract class CollectionUtils {
      * @return the effected count after added
      */
     public static <T> int addAll(Collection<T> collection, T... values) {
-
         int size = length(values);
-
         if (size < 1) {
             return 0;
         }

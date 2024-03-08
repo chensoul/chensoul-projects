@@ -20,11 +20,11 @@ public interface CheckedSupplier<T> {
     }
 
     static <T> Supplier<T> sneaky(CheckedSupplier<T> supplier) {
-        return unchecked(supplier, FunctionUtils.RETHROW_ALL);
+        return unchecked(supplier, FunctionUtils.SNEAKY_THROW);
     }
 
     static <T> Supplier<T> unchecked(CheckedSupplier<T> supplier) {
-        return unchecked(supplier, FunctionUtils.THROWABLE_TO_RUNTIME_EXCEPTION);
+        return unchecked(supplier, FunctionUtils.CHECKED_THROW);
     }
 
     static <T> Supplier<T> unchecked(CheckedSupplier<T> supplier, Consumer<Throwable> handler) {

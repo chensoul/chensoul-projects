@@ -22,11 +22,11 @@ public interface CheckedRunnable {
     }
 
     static Runnable sneaky(CheckedRunnable runnable) {
-        return unchecked(runnable, FunctionUtils.RETHROW_ALL);
+        return unchecked(runnable, FunctionUtils.SNEAKY_THROW);
     }
 
     static Runnable unchecked(CheckedRunnable runnable) {
-        return unchecked(runnable, FunctionUtils.THROWABLE_TO_RUNTIME_EXCEPTION);
+        return unchecked(runnable, FunctionUtils.CHECKED_THROW);
     }
 
     static Runnable unchecked(CheckedRunnable runnable, Consumer<Throwable> handler) {

@@ -66,12 +66,11 @@
     <springdoc.version>1.7.0</springdoc.version>
     <xxl-job.version>2.4.0</xxl-job.version>
 
-    <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
     <redisson.version>3.27.1</redisson.version>
     <feign.version>11.8</feign.version>
     <easy-captcha.version>1.6.2</easy-captcha.version>
-    <commons-lang3.version>3.14.0</commons-lang3.version>
     <commons-io.version>2.15.1</commons-io.version>
+    <jsr305.version>3.0.1</jsr305.version>
   </properties>
 
   <dependencyManagement>
@@ -159,16 +158,17 @@
         <version>${xxl-job.version}</version>
       </dependency>
 
-      <dependency>
-        <groupId>com.alibaba</groupId>
-        <artifactId>transmittable-thread-local</artifactId>
-        <version>${transmittable-thread-local.version}</version>
-      </dependency>
 
       <dependency>
         <groupId>com.github.whvcse</groupId>
         <artifactId>easy-captcha</artifactId>
         <version>${easy-captcha.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.code.findbugs</groupId>
+        <artifactId>jsr305</artifactId>
+        <version>${jsr305.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

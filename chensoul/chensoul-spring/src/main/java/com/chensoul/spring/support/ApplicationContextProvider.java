@@ -113,7 +113,7 @@ public class ApplicationContextProvider implements ApplicationContextAware {
      * @return the bean
      */
     public static <T> Optional<T> getBean(final ApplicationContext applicationContext, final String name, final Class<T> clazz) {
-        return FunctionUtils.doAndHandle(() -> {
+        return FunctionUtils.tryGet(() -> {
             if (applicationContext != null && applicationContext.containsBean(name)) {
                 return Optional.of(applicationContext.getBean(name, clazz));
             }
