@@ -66,7 +66,7 @@
     <spring-boot-admin.version>2.7.15</spring-boot-admin.version>
     <mybatis-plus.version>3.5.5</mybatis-plus.version>
     <mybatis-spring.version>2.1.2</mybatis-spring.version>
-    <springdocs-openapi.version>1.7.0</springdocs-openapi.version>
+    <springdocs-openapi.version>1.8.0</springdocs-openapi.version>
     <therapi-runtime-javadoc.version>0.15.0</therapi-runtime-javadoc.version>
     <xxl-job.version>2.4.0</xxl-job.version>
 
