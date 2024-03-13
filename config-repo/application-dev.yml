@@ -1,18 +1,11 @@
 server.error.include-message: always
 
-
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
-
-# Sharding Sphere 不支持数据库健康检查
-management.health.db.enabled: false
-management.health.circuitbreakers.enabled: true
 management.info.git.enabled: true
 management.info.git.mode: full
 
-spring:
-  #  application.name: @artifactId@
-  main:
+spring.main:
     allow-bean-definition-overriding: true
 
 #spring.datasource:
@@ -51,6 +44,9 @@ spring.shardingsphere:
   props:
     sql:
       show: true
+# Sharding Sphere 不支持数据库健康检查
+management.health.db.enabled: false
+
 
 spring.redis:
   port: 6379
@@ -59,18 +55,18 @@ spring.redis:
   password: 123456
 
 eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka:eureka}:8761/eureka/
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     # 客户端向注册中心发送心跳的时间间隔，默认30秒
     leaseRenewalIntervalInSeconds: 5
     #注册中心在收到客户端心跳之后，等待下一次心跳的超时时间，如果在这个时间内没有收到下次心跳，则移除该客户端。默认90秒
-    leaseExpirationDurationInSeconds: 30
-  client:
-    service-url:
-      defaultZone: http://${eureka:eureka}:8761/eureka/
-    initialInstanceInfoReplicationIntervalSeconds: 5
-    registryFetchIntervalSeconds: 5
+    leaseExpirationDurationInSeconds: 5
 
 mybatis-plus:
   configuration:
@@ -137,7 +133,7 @@ resilience4j.retry:
         - java.io.IOException
         - java.util.concurrent.TimeoutException
 
-
+management.health.circuitbreakers.enabled: true
 
 spring.cloud.zipkin:
   base-url: http://${zipkin:zipkin}:9411/

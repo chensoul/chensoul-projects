@@ -7,7 +7,7 @@ spring.cloud.gateway.globalcors:
     '[/**]':
       allow-credentials: true
       allowedOrigins:
-        - http://localhost:6543
+        - http://localhost:9999
         - http://localhost:8761
       allowedMethods: "GET,POST"
       allowedHeaders: "*"
@@ -39,7 +39,7 @@ spring.cloud.gateway.routes:
     filters:
       - StripPrefix=1
 
-  - id: config-file
+  - id: config-server
     uri: ${spring.cloud.config.uri}
     predicates:
       - Path=/config/**

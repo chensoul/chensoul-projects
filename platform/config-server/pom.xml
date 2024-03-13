@@ -11,7 +11,7 @@
   </parent>
 
   <groupId>com.chensoul</groupId>
-  <artifactId>config-file</artifactId>
+  <artifactId>config-server</artifactId>
   <version>${revision}</version>
 
   <name>Microservice :: Config File</name>

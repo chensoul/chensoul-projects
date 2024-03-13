@@ -188,10 +188,10 @@ services:
   #    ports:
   #      - "5200:5200"
 
-  config-file:
+  config-server:
     build:
-      context: platform/config-file
-    image: chensoul/config-file
+      context: platform/config-server
+    image: chensoul/config-server
     restart: always
     env_file:
       - .env
@@ -208,4 +208,4 @@ services:
     env_file:
       - .env
     ports:
-      - "6543:6543"
+      - "9999:9999"

@@ -8,6 +8,6 @@ ENV TZ=Asia/Shanghai
 WORKDIR application
 COPY --from=builder extracted/dependencies/ extracted/snapshot-dependencies/ extracted/spring-boot-loader/ extracted/application/ ./
 
-EXPOSE 6543
+EXPOSE 9999
 
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]

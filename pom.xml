@@ -31,7 +31,7 @@
     <module>chensoul-spring-boot</module>
     <module>chensoul-spring-cloud</module>
 
-    <module>platform/config-file</module>
+    <module>platform/config-server</module>
     <module>platform/eureka</module>
     <module>platform/gateway</module>
     <module>platform/nacos</module>
@@ -158,7 +158,6 @@
         <version>${xxl-job.version}</version>
       </dependency>
 
-
       <dependency>
         <groupId>com.github.whvcse</groupId>
         <artifactId>easy-captcha</artifactId>
@@ -199,12 +198,6 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${spring-boot.version}</version>
-          <configuration>
-            <!--
-            Enable the line below to have remote debugging of your application on port 5005
-            <jvmArguments>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments>
-            -->
-          </configuration>
           <executions>
             <execution>
               <goals>

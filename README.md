@@ -58,20 +58,20 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 
 ### 默认端口和用户名密码
 
-| 模块           | 模块名称      | 服务名          | 端口         | 用户名/密码       |
-|--------------|-----------|--------------|------------|--------------|
-| MySQL        | 数据库       | mysql        | 3306       | root/123456  |
-| Redis        | 数据库       | redis        | 6379       | 123456       |
-| ActiveMQ     | 队列        | activemq     | 61616、8161 |              |
-| RabbitMQ     | 队列        | rabbitmq     | 5672、15672 | guest/123456 |
-| Nacos        | 注册中心、配置中心 | nacos        | 8848       | nacos/123456 |
-| Eureka       | 注册中心      | eureka       | 8761       |              |
-| Config File  | 配置中心      | config-file  | 8888       | user/123456  |
-| Gateway      | 网关        | gateway      | 8443       |              |
-| Auth         | 授权服务      | auth-service | 6543       |              |
-| Admin Server | 监控        | admin-server | 5100       |              |
-| Xxljob       | XXLJob    | xxljob       | 5200       |              |
-| Sentinel     | sentinel  | sentinel     | 5300       |              |
+| 模块            | 模块名称      | 服务名           | 端口         | 用户名/密码       |
+|---------------|-----------|---------------|------------|--------------|
+| MySQL         | 数据库       | mysql         | 3306       | root/123456  |
+| Redis         | 数据库       | redis         | 6379       | 123456       |
+| ActiveMQ      | 队列        | activemq      | 61616、8161 |              |
+| RabbitMQ      | 队列        | rabbitmq      | 5672、15672 | guest/123456 |
+| Nacos         | 注册中心、配置中心 | nacos         | 8848       | nacos/123456 |
+| Eureka        | 注册中心      | eureka        | 8761       |              |
+| Config Server | 配置中心      | config-server | 8888       | user/123456  |
+| Gateway       | 网关        | gateway       | 8443       |              |
+| Auth          | 授权服务      | auth-service  | 9999       |              |
+| Admin Server  | 监控        | admin-server  | 5100       |              |
+| Xxljob        | XXLJob    | xxljob        | 5200       |              |
+| Sentinel      | sentinel  | sentinel      | 5300       |              |
 
 ### 环境搭建
 
@@ -132,7 +132,7 @@ istioctl version --remote=false
 127.0.0.1 rabbitmq
 127.0.0.1 activemq
 
-127.0.0.1 config-file
+127.0.0.1 config-server
 127.0.0.1 nacos
 127.0.0.1 eureka
 127.0.0.1 gateway
