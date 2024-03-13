@@ -62,12 +62,10 @@
     <spring-security-oauth2-authorization-server.version>0.4.5</spring-security-oauth2-authorization-server.version>
     <spring-boot-admin.version>2.7.15</spring-boot-admin.version>
     <mybatis-plus.version>3.5.5</mybatis-plus.version>
-    <mybatis-spring.version>2.1.2</mybatis-spring.version>
-    <springdoc.version>1.7.0</springdoc.version>
+    <springdoc.version>1.8.0</springdoc.version>
+    <therapi-runtime-javadoc.version>0.15.0</therapi-runtime-javadoc.version>
     <xxl-job.version>2.4.0</xxl-job.version>
-
-    <redisson.version>3.27.1</redisson.version>
-    <feign.version>11.8</feign.version>
+    <redisson.version>3.27.2</redisson.version>
     <easy-captcha.version>1.6.2</easy-captcha.version>
     <commons-io.version>2.15.1</commons-io.version>
     <jsr305.version>3.0.1</jsr305.version>
@@ -222,30 +220,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>dev</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <profiles.active>dev</profiles.active>
-      </properties>
-    </profile>
-
-    <profile>
-      <id>test</id>
-      <properties>
-        <profiles.active>test</profiles.active>
-      </properties>
-    </profile>
-
-    <profile>
-      <id>prod</id>
-      <properties>
-        <profiles.active>prod</profiles.active>
-      </properties>
-    </profile>
-  </profiles>
 </project>
