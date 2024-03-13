@@ -1,5 +1,8 @@
 server.port: 6543
 
+# springdoc OpenAPI 使用反向代理的地址
+server.forward-headers-strategy: framework
+
 spring:
   main:
     allow-bean-definition-overriding: true

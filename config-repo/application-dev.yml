@@ -1,3 +1,6 @@
+server.error.include-message: always
+
+
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
 
@@ -13,10 +16,13 @@ spring:
     allow-bean-definition-overriding: true
 
 #spring.datasource:
-#  url: jdbc:mysql://${MYSQL_HOST:mysql}:3306/chensoul-cloud?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+#  url: jdbc:mysql://${MYSQL_HOST:mysql}:3306/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
 #  driver-class-name: com.mysql.cj.jdbc.Driver
 #  username: ${MYSQL_USER:root}
 #  password: ${MYSQL_PASSWORD:123456}
+#  type: com.zaxxer.hikari.HikariDataSource
+#  hikari:
+#    connection-test-query: 'SELECT 1'
 
 spring.shardingsphere:
   datasource:
@@ -25,13 +31,13 @@ spring.shardingsphere:
     master:
       type: com.zaxxer.hikari.HikariDataSource
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbcUrl: jdbc:mysql://${mysql-master:mysql-master}:3307/chensoul-cloud?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      jdbcUrl: jdbc:mysql://${mysql-master:mysql-master}:3307/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
       username: ${MYSQL_USER:root}
       password: ${MYSQL_PASSWORD:123456}
     slave:
       type: com.zaxxer.hikari.HikariDataSource
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/chensoul-cloud?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
       username: ${MYSQL_USER:root}
       password: ${MYSQL_PASSWORD:123456}
   masterslave:
@@ -45,7 +51,6 @@ spring.shardingsphere:
   props:
     sql:
       show: true
-
 
 spring.redis:
   port: 6379

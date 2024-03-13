@@ -26,8 +26,10 @@
   <modules>
     <module>chensoul</module>
     <module>chensoul-audit</module>
-
+    <module>chensoul-redis</module>
+    <module>chensoul-mybatis</module>
     <module>chensoul-spring-boot</module>
+    <module>chensoul-spring-cloud</module>
 
     <module>platform/config-file</module>
     <module>platform/eureka</module>
@@ -35,11 +37,9 @@
     <module>platform/nacos</module>
     <module>platform/admin-server</module>
     <module>platform/xxljob</module>
+
     <module>microservice/auth</module>
     <module>samples</module>
-    <module>chensoul-spring-cloud</module>
-    <module>chensoul-redis</module>
-    <module>chensoul-mybatis</module>
   </modules>
 
   <scm>
