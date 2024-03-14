@@ -11,8 +11,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
-            // Disable CRCF to allow POST to /encrypt and /decrypt endpoins
-            .csrf().disable()
             .authorizeRequests()
             .anyRequest().authenticated()
             .and()
