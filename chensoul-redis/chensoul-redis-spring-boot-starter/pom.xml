@@ -13,7 +13,7 @@
   <artifactId>chensoul-redis-spring-boot-starter</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Redis Spring Boot Starter</name>
+  <name>Chensoul :: Redis Spring Boot Starter</name>
   <description>${project.name}</description>
 
   <dependencies>

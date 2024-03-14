@@ -14,7 +14,7 @@
   <artifactId>chensoul-spring-cloud-loadbalancer</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Spring Cloud Loadbalancer</name>
+  <name>Chensoul :: Spring Cloud Loadbalancer</name>
   <description>${project.name}</description>
 
   <dependencies>

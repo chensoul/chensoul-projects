@@ -14,7 +14,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul™ Spring Boot Dependencies</name>
+  <name>Chensoul :: Spring Boot Dependencies</name>
   <description>${project.name}</description>
 
   <dependencyManagement>

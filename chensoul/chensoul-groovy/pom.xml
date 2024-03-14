@@ -14,7 +14,7 @@
   <artifactId>chensoul-groovy</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Groovy</name>
+  <name>Chensoul :: Groovy</name>
   <description>${project.name}</description>
 
   <dependencies>

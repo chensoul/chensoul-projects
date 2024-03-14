@@ -14,7 +14,7 @@
   <artifactId>chensoul-validation</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Validation</name>
+  <name>Chensoul :: Validation</name>
   <description>${project.name}</description>
 
   <dependencies>

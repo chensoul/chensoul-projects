@@ -14,7 +14,7 @@
   <artifactId>chensoul-websocket-spring-boot-starter</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Websocket Spring Boot Starter</name>
+  <name>Chensoul :: Websocket Spring Boot Starter</name>
   <description>${project.name}</description>
 
   <dependencies>

@@ -13,7 +13,7 @@
   <artifactId>chensoul-web-spring-boot-starter</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Web Spring Boot Starter</name>
+  <name>Chensoul :: Web Spring Boot Starter</name>
   <description>${project.name}</description>
 
   <dependencies>

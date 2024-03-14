@@ -13,7 +13,7 @@
   <artifactId>chensoul-mybatis-common</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Mybatis Common</name>
+  <name>Chensoul :: Mybatis Common</name>
   <description>${project.name}</description>
 
   <dependencies>

@@ -12,12 +12,7 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  schedule:
-    - cron: '43 5 * * *'
+  - push
 
 jobs:
   analyze:
@@ -32,7 +27,6 @@ jobs:
     permissions:
       # required for all workflows
       security-events: write
-
       # only required for workflows in private repositories
       actions: read
       contents: read
@@ -61,7 +55,6 @@ jobs:
 
           # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
           # queries: security-extended,security-and-quality
-
 
       # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
       # If this step fails, then you should remove it and run the build manually (see below)

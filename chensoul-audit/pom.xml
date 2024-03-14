@@ -15,7 +15,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul™ Audit</name>
+  <name>Chensoul :: Audit</name>
   <description>${project.name}</description>
 
   <modules>

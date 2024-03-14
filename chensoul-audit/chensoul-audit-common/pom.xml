@@ -13,7 +13,7 @@
   <artifactId>chensoul-audit-common</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Audit Common</name>
+  <name>Chensoul :: Audit Common</name>
   <description>${project.name}</description>
 
   <dependencies>

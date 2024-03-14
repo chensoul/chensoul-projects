@@ -14,7 +14,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul™ Cloud</name>
+  <name>Chensoul :: Cloud</name>
   <description>${project.name}</description>
   <url>https://blog.chensoul.cc</url>
   <inceptionYear>2023</inceptionYear>

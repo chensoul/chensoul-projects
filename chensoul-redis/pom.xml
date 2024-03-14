@@ -13,11 +13,12 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul™ Redis</name>
+  <name>Chensoul :: Redis</name>
   <description>${project.name}</description>
 
   <modules>
     <module>chensoul-redis-common</module>
     <module>chensoul-redis-spring-boot-starter</module>
   </modules>
+
 </project>

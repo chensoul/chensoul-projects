@@ -13,7 +13,7 @@
   <artifactId>chensoul-spring-cloud-openfeign</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Spring Cloud OpenFeign</name>
+  <name>Chensoul :: Spring Cloud OpenFeign</name>
   <description>${project.name}</description>
 
   <dependencies>

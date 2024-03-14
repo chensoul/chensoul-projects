@@ -14,7 +14,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul™ Spring Cloud</name>
+  <name>Chensoul :: Spring Cloud</name>
   <description>${project.name}</description>
 
   <modules>
