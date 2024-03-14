@@ -43,7 +43,7 @@ public class FilteredAuditManager implements AuditManager, ApplicationEventPubli
             auditManagers.forEach(mgr -> mgr.record(ctx));
 
             if (applicationEventPublisher != null) {
-                //TODO filter headers
+                //TODO support headers
                 AuditApplicationEvent auditEvent = new AuditApplicationEvent(ctx.getUsername(),
                         ctx.getApplication(),
                         ctx.getUsername(),

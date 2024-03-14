@@ -59,7 +59,7 @@ mysql -uroot -p123456
 
 ```yml
 #spring.datasource:
-#  url: jdbc:mysql://${mysql:mysql}:3306/chensoul-cloud?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+#  url: jdbc:mysql://localhost:3306/chensoul-cloud?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
 #  driver-class-name: com.mysql.cj.jdbc.Driver
 #  username: chensoul
 #  password: chensoul

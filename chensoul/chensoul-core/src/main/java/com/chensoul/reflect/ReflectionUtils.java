@@ -145,7 +145,6 @@ public abstract class ReflectionUtils {
      *
      * @param invocationFrame invocation frame
      * @return Class name under specified invocation frame
-     * @throws IndexOutOfBoundsException If the <code>invocation Frame<code> value is negative or exceeds the actual level
      * @see Thread#getStackTrace()
      */
 
@@ -215,7 +214,7 @@ public abstract class ReflectionUtils {
 
     /**
      * Get caller class
-     * <p/>
+
      * For instance,
      * <pre>
      *     package com.acme;
@@ -228,7 +227,6 @@ public abstract class ReflectionUtils {
      * </pre>
      *
      * @return Get caller class
-     * @throws IllegalStateException If the caller class cannot be found
      */
 
     public static Class<?> getCallerClass() throws IllegalStateException {
@@ -239,7 +237,6 @@ public abstract class ReflectionUtils {
      * Get caller class In SUN HotSpot JVM
      *
      * @return Caller Class
-     * @throws UnsupportedOperationException If JRE is not a SUN HotSpot JVM
      * @see #getCallerClassInSunJVM(int)
      */
     static Class<?> getCallerClassInSunJVM() throws UnsupportedOperationException {
@@ -250,7 +247,6 @@ public abstract class ReflectionUtils {
      * Get caller class name In SUN HotSpot JVM
      *
      * @return Caller Class
-     * @throws UnsupportedOperationException If JRE is not a SUN HotSpot JVM
      * @see #getCallerClassInSunJVM(int)
      */
     static String getCallerClassNameInSunJVM() throws UnsupportedOperationException {
@@ -289,7 +285,6 @@ public abstract class ReflectionUtils {
      * Get caller class's {@link Package}
      *
      * @return caller class's {@link Package}
-     * @throws IllegalStateException see {@link #getCallerClass()}
      * @see #getCallerClass()
      */
     public static Package getCallerPackage() throws IllegalStateException {
@@ -301,8 +296,6 @@ public abstract class ReflectionUtils {
      *
      * @param array Array object
      * @param index index
-     * @throws IllegalArgumentException       see {@link ReflectionUtils#assertArrayType(Object)}
-     * @throws ArrayIndexOutOfBoundsException If <code>index</code> is less than 0 or equals or greater than length of array
      */
     public static void assertArrayIndex(Object array, int index) throws IllegalArgumentException {
         if (index < 0) {
@@ -321,7 +314,6 @@ public abstract class ReflectionUtils {
      * Assert the object is array or not
      *
      * @param array asserted object
-     * @throws IllegalArgumentException if the object is not a array
      */
     public static void assertArrayType(Object array) throws IllegalArgumentException {
         Class<?> type = array.getClass();
@@ -337,7 +329,6 @@ public abstract class ReflectionUtils {
      * @param object       Object
      * @param fieldName    field name
      * @param expectedType expected type
-     * @throws IllegalArgumentException if type is not matched
      */
     public static void assertFieldMatchType(Object object, String fieldName, Class<?> expectedType) throws IllegalArgumentException {
         Class<?> type = object.getClass();
@@ -355,9 +346,7 @@ public abstract class ReflectionUtils {
      *
      * @param array array object
      * @return {@link List}
-     * @throws IllegalArgumentException if the object argument is not an array
      */
-
     public static <T> List<T> toList(Object array) throws IllegalArgumentException {
         int length = Array.getLength(array);
         List<T> list = new ArrayList<>(length);
@@ -393,7 +382,7 @@ public abstract class ReflectionUtils {
         Field[] fields = type.getDeclaredFields();
         for (Field field : fields) {
 
-            if (Modifier.isStatic(field.getModifiers())) { // To filter static fields
+            if (Modifier.isStatic(field.getModifiers())) { // To support static fields
                 continue;
             }
 
@@ -431,7 +420,7 @@ public abstract class ReflectionUtils {
         // Add Generic Super Class
         genericTypes.add(sourceClass.getGenericSuperclass());
 
-        Set<ParameterizedType> parameterizedTypes = genericTypes.stream().filter(type -> type instanceof ParameterizedType)// filter ParameterizedType
+        Set<ParameterizedType> parameterizedTypes = genericTypes.stream().filter(type -> type instanceof ParameterizedType)// support ParameterizedType
             .map(type -> ParameterizedType.class.cast(type))  // cast to ParameterizedType
             .collect(Collectors.toSet());
 

@@ -1,0 +1,144 @@
+server.error.include-message: always
+
+spring.main:
+    allow-bean-definition-overriding: true
+
+#spring.shardingsphere:
+#  datasource:
+#    names:
+#      master,slave
+#    master:
+#      type: com.zaxxer.hikari.HikariDataSource
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      jdbcUrl: jdbc:mysql://${mysql-master:mysql-master}:3307/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+#      username: ${MYSQL_USER:chensoul}
+#      password: ${MYSQL_PASSWORD:123456}
+#    slave:
+#      type: com.zaxxer.hikari.HikariDataSource
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+#      username: ${MYSQL_USER:chensoul}
+#      password: ${MYSQL_PASSWORD:123456}
+#  masterslave:
+#    # 最终的数据源名称
+#    name: dataSource
+#    load-balance-algorithm-type: round_robin
+#    # 主库数据源名称
+#    master-data-source-name: master
+#    # 从库数据源名称列表，多个逗号分隔
+#    slave-data-source-names: slave
+#  props:
+#    sql:
+#      show: true
+## Sharding Sphere 不支持数据库健康检查
+#management.health.db.enabled: false
+
+spring.redis:
+  port: 6379
+  host: ${redis:redis}
+  timeout: 3000
+  password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka:eureka}:8761/eureka/
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    # 客户端向注册中心发送心跳的时间间隔，默认30秒
+    leaseRenewalIntervalInSeconds: 5
+    #注册中心在收到客户端心跳之后，等待下一次心跳的超时时间，如果在这个时间内没有收到下次心跳，则移除该客户端。默认90秒
+    leaseExpirationDurationInSeconds: 5
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+
+spring.rabbitmq:
+  host: ${rabbitmq:rabbitmq}
+  port: 5672
+  username: user
+  password: 123456
+
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: HEADERS
+        connectTimeout: 5000
+        readTimeout: 5000
+  httpclient:
+    max-connections: 200 # 最大的连接数
+    max-connections-per-route: 50 # 每个路径的最大连接数
+    ok-http:
+      read-timeout: 5s
+  okhttp:
+    enabled: true
+    loadbalancer:
+      enabled: true
+  circuitbreaker:
+    enabled: true
+
+resilience4j.circuitbreaker:
+  instances:
+    authservice:
+      allowHealthIndicatorToFail: false
+      registerHealthIndicator: true
+      slidingWindowType: COUNT_BASED
+      slidingWindowSize: 5
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      ignoreExceptions:
+        - com.chensoul.core.exception.InvalidInputException
+        - com.chensoul.core.exception.NotFoundException
+
+resilience4j.ratelimiter:
+  instances:
+    authservice:
+      limitForPeriod: 10
+      limitRefreshPeriod: 5s
+      timeoutDuration: 0
+
+resilience4j.retry:
+  instances:
+    authservice:
+      maxAttempts: 3
+      waitDuration: 1000
+      retryExceptions:
+        - java.io.IOException
+        - java.util.concurrent.TimeoutException
+
+management.health.circuitbreakers.enabled: true
+
+spring.cloud.zipkin:
+  base-url: http://${zipkin:zipkin}:9411/
+  sender:
+    type: webmvc
+spring.cloud.sleuth:
+  sampler:
+    probability: 1
+
+management.endpoint.health.show-details: "ALWAYS"
+management.endpoints.web.exposure.include: "*"
+management.info.git.enabled: true
+management.info.git.mode: full
+
+logging:
+  level:
+    root: INFO
+    org.apache.coyote.http11.Http11InputBuffer: DEBUG
+
+
+---
+spring.config.activate.on-profile: docker
+
+spring.redis.host: redis

@@ -2,104 +2,79 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8
-    restart: always
-    env_file:
-      - .env
     ports:
       - "3306:3306"
     environment:
       - TZ=Asia/Shanghai
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - MYSQL_DATABASE=chensoul-cloud
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=123456
     command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version=''
     healthcheck:
-      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
+      test: "/usr/bin/mysql --user=user --password=123456 -e 'SHOW DATABASES;'"
       interval: 5s
       timeout: 2s
       retries: 10
 
-  mysql-master:
-    image: mysql:8
-    restart: always
-    env_file:
-      - .env
-    ports:
-      - "3307:3306"
-    environment:
-      - TZ=Asia/Shanghai
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=1
-    healthcheck:
-      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
-      interval: 5s
-      timeout: 2s
-      retries: 10
-
-  mysql-slave:
-    image: mysql:8
-    restart: always
-    env_file:
-      - .env
-    ports:
-      - "3308:3306"
-    environment:
-      - TZ=Asia/Shanghai
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=2
-    healthcheck:
-      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
-      interval: 5s
-      timeout: 2s
-      retries: 10
+  #  mysql-master:
+  #    image: mysql:8
+  #    ports:
+  #      - "3307:3306"
+  #    environment:
+  #        - TZ=Asia/Shanghai
+  #        - MYSQL_ROOT_PASSWORD=rootpwd
+  #        - MYSQL_DATABASE=chensoul-cloud
+  #        - MYSQL_USER=user
+  #        - MYSQL_PASSWORD=123456
+  #    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=1
+  #    healthcheck:
+  #      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
+  #      interval: 5s
+  #      timeout: 2s
+  #      retries: 10
+  #
+  #  mysql-slave:
+  #    image: mysql:8
+  #    ports:
+  #      - "3308:3306"
+  #    environment:
+  #        - TZ=Asia/Shanghai
+  #        - MYSQL_ROOT_PASSWORD=rootpwd
+  #        - MYSQL_DATABASE=chensoul-cloud
+  #        - MYSQL_USER=user
+  #        - MYSQL_PASSWORD=123456
+  #    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=2
+  #    healthcheck:
+  #      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
+  #      interval: 5s
+  #      timeout: 2s
+  #      retries: 10
 
   redis:
     image: redis:7
-    restart: always
-    env_file:
-      - .env
     environment:
-      TZ: Asia/Shanghai
-    command: redis-server --requirepass ${REDIS_PASSWORD}
+      - TZ=Asia/Shanghai
+    command: redis-server --requirepass 123456
     ports:
       - "6379:6379"
 
-  #  rabbitmq:
-  #    image: rabbitmq:3.11.8-management
-  #    restart: always
-  #    env_file:
-  #      - .env
-  #    ports:
-  #      - "5672:5672"
-  #      - "15672:15672"
-  #    environment:
-  #      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
-  #      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
-  #    healthcheck:
-  #      test: [ "CMD", "rabbitmqctl", "status" ]
-  #      interval: 5s
-  #      timeout: 2s
-  #      retries: 60
-  #
-  #  activemq:
-  #    image: symptoma/activemq:latest
-  #    restart: always
-  #    env_file:
-  #      - .env
-  #    ports:
-  #      - "61616:61616"
-  #      - "8161:8161"
+  rabbitmq:
+    image: rabbitmq:3.13.0-management
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 5s
+      timeout: 2s
+      retries: 60
+
   #
   #  kafka:
-  #    image: confluentinc/cp-kafka:7.3.1
-  #    restart: always
+  #    image: confluentinc/cp-kafka:7.6.0
   #    ports:
   #      - "9092:9092"
   #    environment:
@@ -120,92 +95,71 @@ services:
   #
   #  zipkin:
   #    image: openzipkin/zipkin:2.24.0
-  #    restart: always
   #    environment:
   #      - STORAGE_TYPE=mem
   #    ports:
   #      - "9411:9411"
 
   #  nacos:
-  #    build:
-  #      context: platform/nacos
-  #    image: nacos
-  #    restart: always
-  #    env_file:
-  #      - .env
+  #    build: spring-cloud/nacos
   #    ports:
   #      - "8848:8848"
   #      - "9848:9848"
   #      - "9849:9849"
   #
   #  sentinel:
-  #    build:
-  #      context: platform/sentinel
-  #    image: sentinel
-  #    restart: always
-  #    env_file:
-  #      - .env
+  #    build: spring-cloud/sentinel
   #    ports:
   #      - "5300:5300"
 
+  #  xxljob:
+  #    build: spring-cloud/xxljob
+  #    environment:
+  #      - TZ=Asia/Shanghai
+  #    ports:
+  #      - "5200:5200"
+  #
+
   eureka:
-    build:
-      context: platform/eureka
-    image: chensoul/eureka
-    restart: always
-    env_file:
-      - .env
+    build: spring-cloud/eureka
+    environment:
+      - TZ=Asia/Shanghai
     ports:
       - "8761:8761"
 
   gateway:
-    build:
-      context: platform/gateway
-    image: chensoul/gateway
-    restart: always
-    env_file:
-      - .env
+    build: spring-cloud/gateway
+    environment:
+      - TZ=Asia/Shanghai
     ports:
       - "8443:8443"
 
   admin-server:
-    build:
-      context: platform/admin-server
-    image: chensoul/admin-server
-    restart: always
-    env_file:
-      - .env
+    build: spring-cloud/admin-server
+    environment:
+      - TZ=Asia/Shanghai
     ports:
       - "5100:5100"
 
-  #  xxljob:
-  #    build:
-  #      context: platform/xxljob
-  #    image: chensoul/xxljob
-  #    restart: always
-  #    env_file:
-  #      - .env
-  #    ports:
-  #      - "5200:5200"
-
   config-server:
-    build:
-      context: platform/config-server
-    image: chensoul/config-server
-    restart: always
-    env_file:
-      - .env
+    build: spring-cloud/config-server
+    environment:
+      - TZ=Asia/Shanghai
+      - SPRING_PROFILES_ACTIVE=native
+      - ENCRYPT_KEY=${CONFIG_SERVER_ENCRYPT_KEY}
+      - SPRING_SECURITY_USER_NAME=${CONFIG_SERVER_USER_NAME}
+      - SPRING_SECURITY_USER_PASSWORD=${CONFIG_SERVER_USER_PASSWORD}
     ports:
       - "8888:8888"
     volumes:
       - ./config-repo:/config-repo
 
-  auth-service:
-    build:
-      context: microservice/auth/auth-service
-    image: chensoul/auth-service
-    restart: always
-    env_file:
-      - .env
+  authorization-server:
+    build: spring-cloud/authorization-server
+    environment:
+      - TZ=Asia/Shanghai
+    depends_on:
+      mysql:
+        condition: service_healthy
     ports:
       - "9999:9999"

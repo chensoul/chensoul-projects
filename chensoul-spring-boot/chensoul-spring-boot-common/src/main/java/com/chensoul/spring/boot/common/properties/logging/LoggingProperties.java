@@ -16,7 +16,7 @@ public class LoggingProperties implements Serializable {
     private static final long serialVersionUID = 7455171260665661949L;
 
     /**
-     * Allow CAS to add http request details into the logging's MDC filter.
+     * Allow CAS to add http request details into the logging's MDC support.
      * Mapped Diagnostic Context is essentially a map maintained by the logging
      * framework where the application code provides key-value pairs which can then be
      * inserted by the logging framework in log messages. MDC data can also be highly

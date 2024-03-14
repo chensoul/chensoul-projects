@@ -60,7 +60,6 @@ public class ResourceUtils {
      *
      * @param location the metadata location
      * @return the resource from
-     * @throws IOException the exception
      */
     public static AbstractResource getRawResourceFrom(final String location) throws IOException {
         if (StringUtils.isBlank(location)) {
@@ -145,7 +144,6 @@ public class ResourceUtils {
      *
      * @param location the metadata location
      * @return the resource from
-     * @throws IOException the exception
      */
     public static AbstractResource getResourceFrom(final String location) throws IOException {
         AbstractResource resource = getRawResourceFrom(location);
@@ -350,7 +348,7 @@ public class ResourceUtils {
      *
      * @param artifact the artifact
      * @return the resource
-     * @throws Throwable the throwable
+     *  the throwable
      */
     public static Resource toFileSystemResource(final File artifact) throws Throwable {
         String canonicalPath = CheckedSupplier.unchecked(artifact::getCanonicalPath).get();

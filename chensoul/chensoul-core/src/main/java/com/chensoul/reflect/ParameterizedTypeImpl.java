@@ -54,8 +54,6 @@ public class ParameterizedTypeImpl implements ParameterizedType {
      *                            representing the actual type arguments to the parameterized type
      * @param ownerType           - the enclosing type, if known.
      * @return An instance of <tt>ParameterizedType</tt>
-     * @throws MalformedParameterizedTypeException - if the instantiation
-     *                                             is invalid
      */
     public static ParameterizedTypeImpl of(Class<?> rawType, Type[] actualTypeArguments, Type ownerType) {
         return new ParameterizedTypeImpl(rawType, actualTypeArguments, ownerType);
@@ -82,45 +80,17 @@ public class ParameterizedTypeImpl implements ParameterizedType {
      *
      * @return an array of <tt>Type</tt> objects representing the actual type
      * arguments to this type
-     * @throws <tt>TypeNotPresentException</tt>             if any of the
-     *                                                      actual type arguments refers to a non-existent type declaration
-     * @throws <tt>MalformedParameterizedTypeException</tt> if any of the
-     *                                                      actual type parameters refer to a parameterized type that cannot
-     *                                                      be instantiated for any reason
      * @since 1.5
      */
     public Type[] getActualTypeArguments() {
         return actualTypeArguments.clone();
     }
 
-    /**
-     * Returns the <tt>Type</tt> object representing the class or interface
-     * that declared this type.
-     *
-     * @return the <tt>Type</tt> object representing the class or interface
-     * that declared this type
-     */
     public Class<?> getRawType() {
         return rawType;
     }
 
 
-    /**
-     * Returns a <tt>Type</tt> object representing the type that this type
-     * is a member of.  For example, if this type is <tt>O<T>.I<S></tt>,
-     * return a representation of <tt>O<T></tt>.
-     *
-     * <p>If this type is a top-level type, <tt>null</tt> is returned.
-     *
-     * @return a <tt>Type</tt> object representing the type that
-     * this type is a member of. If this type is a top-level type,
-     * <tt>null</tt> is returned
-     * @throws <tt>TypeNotPresentException</tt>             if the owner type
-     *                                                      refers to a non-existent type declaration
-     * @throws <tt>MalformedParameterizedTypeException</tt> if the owner type
-     *                                                      refers to a parameterized type that cannot be instantiated
-     *                                                      for any reason
-     */
     public Type getOwnerType() {
         return ownerType;
     }

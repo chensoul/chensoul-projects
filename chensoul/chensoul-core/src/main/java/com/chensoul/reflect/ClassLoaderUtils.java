@@ -20,7 +20,7 @@ public class ClassLoaderUtils {
     /**
      * Initialize the cache of loaded classes and add a shutdown hook to clear the cache
      *
-     * @return {@link ConcurrentMap}<{@link String}, {@link Class}<{@link ?}>>
+     * @return {@link ConcurrentMap}<{@link String}, >
      */
     private static ConcurrentMap<String, Class<?>> initLoadedClassesCache() {
         ConcurrentMap<String, Class<?>> loadedClassesCache = new ConcurrentHashMap<>(256);
@@ -105,7 +105,7 @@ public class ClassLoaderUtils {
 
     /**
      * @param className
-     * @return {@link Class}<{@link ?}>
+     * @return
      */
     public static Class<?> resolveClass(String className) {
         return resolveClass(className, getDefaultClassLoader());
@@ -147,7 +147,7 @@ public class ClassLoaderUtils {
     /**
      * @param className
      * @param classLoader
-     * @return {@link Class}<{@link ?}>
+     * @return
      */
     public static Class<?> loadClass(String className, ClassLoader classLoader) {
         try {
@@ -163,7 +163,7 @@ public class ClassLoaderUtils {
      * @param className   the name of {@link Class}
      * @param cached      the resolved class is required to be cached or not
      * @param classLoader
-     * @return {@link Class}<{@link ?}>
+     * @return
      */
     public static Class<?> loadClass(String className, ClassLoader classLoader, boolean cached) {
         Class loadedClass = null;

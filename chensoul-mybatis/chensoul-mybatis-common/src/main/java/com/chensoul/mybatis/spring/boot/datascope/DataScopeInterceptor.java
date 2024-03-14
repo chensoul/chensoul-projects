@@ -39,7 +39,6 @@ public class DataScopeInterceptor implements Interceptor {
     /**
      * @param invocation
      * @return
-     * @throws Throwable
      */
     public Object intercept(Invocation invocation) throws Throwable {
         Object[] args = invocation.getArgs();

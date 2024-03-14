@@ -1,15 +1,14 @@
 package com.chensoul.reflect;
 
 import static com.chensoul.collection.ArrayUtils.EMPTY_CLASS_ARRAY;
-import static com.chensoul.constant.SymbolConstants.LEFT_PARENTHESIS_CHAR;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.unmodifiableList;
-
 import com.chensoul.collection.SetUtils;
 import com.chensoul.constant.SymbolConstants;
+import static com.chensoul.constant.SymbolConstants.LEFT_PARENTHESIS_CHAR;
 import com.chensoul.lang.function.Streams;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.unmodifiableList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -240,8 +239,6 @@ public abstract class MethodUtils {
      * @param overridden the second method, possibly being overridden
      * @return {@code true} if and only if the first method overrides
      * the second
-     * @jls 8.4.8 Inheritance, Overriding, and Hiding
-     * @jls 9.4.1 Inheritance and Overriding
      * @see Elements#overrides(ExecutableElement, ExecutableElement, TypeElement)
      */
     public static boolean overrides(Method overrider, Method overridden) {

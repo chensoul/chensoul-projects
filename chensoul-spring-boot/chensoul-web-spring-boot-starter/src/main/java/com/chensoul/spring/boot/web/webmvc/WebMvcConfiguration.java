@@ -108,7 +108,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Bean
     @Profile(Constants.SPRING_PROFILE_PRODUCTION)
     public CachingHttpHeadersFilter cachingHttpHeadersFilter(final CoreProperties properties) {
-        // Use a cache filter that only match selected paths
+        // Use a cache support that only match selected paths
         return new CachingHttpHeadersFilter(TimeUnit.DAYS.toMillis(properties.getServer().getClient().getHttpProperties().getTimeToLiveInDays()));
     }
 

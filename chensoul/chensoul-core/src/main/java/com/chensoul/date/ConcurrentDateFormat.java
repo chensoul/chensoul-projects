@@ -87,7 +87,6 @@ public final class ConcurrentDateFormat {
     /**
      * @param source 字符串
      * @return 日期
-     * @throws ParseException 如果日期格式不正确
      */
     @SneakyThrows
     public Date parse(final String source) {

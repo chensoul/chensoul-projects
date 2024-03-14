@@ -173,7 +173,7 @@ public interface SymbolConstants {
     String DOT = ".";
 
     /**
-     * The and symbol : "&"
+     * The and symbol
      */
     String AND = "&";
 
@@ -183,22 +183,22 @@ public interface SymbolConstants {
     String EQUAL = "=";
 
     /**
-     * The less than symbol : "<"
+     * The less than symbol
      */
     String LESS_THAN = "<";
 
     /**
-     * The less than or equal to symbol : "<="
+     * The less than or equal to symbol
      */
     String LESS_THAN_OR_EQUAL_TO = "<=";
 
     /**
-     * The greater than symbol : ">"
+     * The greater than symbol
      */
     String GREATER_THAN = ">";
 
     /**
-     * The greater than or equal to symbol : ">="
+     * The greater than or equal to symbol
      */
     String GREATER_THAN_OR_EQUAL_TO = ">=";
 

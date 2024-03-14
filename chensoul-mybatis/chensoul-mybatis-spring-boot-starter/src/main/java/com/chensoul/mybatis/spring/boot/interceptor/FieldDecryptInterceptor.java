@@ -51,7 +51,7 @@ public class FieldDecryptInterceptor implements Interceptor {
     /**
      * @param invocation
      * @return
-     * @throws Throwable
+     *
      */
     public Object intercept(Invocation invocation) throws Throwable {
         return InterceptorHelper.decrypt(invocation, (metaObject, fieldSetProperty) -> {

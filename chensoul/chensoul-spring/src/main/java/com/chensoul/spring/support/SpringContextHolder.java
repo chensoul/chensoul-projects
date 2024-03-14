@@ -78,7 +78,6 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
 
     /**
      * @return
-     * @throws IllegalStateException
      */
     public static AutowireCapableBeanFactory getAutowireCapableBeanFactory() throws IllegalStateException {
         return applicationContext.getAutowireCapableBeanFactory();
@@ -181,7 +180,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param type
      * @param <T>
      * @return
-     * @throws BeansException
+     *
      */
     public static <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException {
         return applicationContext.getBeansOfType(type);
@@ -193,7 +192,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param allowEagerInit
      * @param <T>
      * @return
-     * @throws BeansException
+     *
      */
     public static <T> Map<String, T> getBeansOfType(Class<T> type, boolean includeNonSingletons, boolean allowEagerInit)
         throws BeansException {
@@ -211,7 +210,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
     /**
      * @param annotationType
      * @return
-     * @throws BeansException
+     *
      */
     public static Map<String, Object> getBeansWithAnnotation(Class<? extends Annotation> annotationType)
         throws BeansException {
@@ -223,7 +222,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param annotationType
      * @param <A>
      * @return
-     * @throws NoSuchBeanDefinitionException
+     *
      */
     public static <A extends Annotation> A findAnnotationOnBean(String beanName, Class<A> annotationType)
         throws NoSuchBeanDefinitionException {
@@ -234,7 +233,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param name
      * @param <T>
      * @return
-     * @throws BeansException
+     *
      */
     public static <T> T getBean(String name) throws BeansException {
         return (T) applicationContext.getBean(name);
@@ -245,7 +244,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param requiredType
      * @param <T>
      * @return
-     * @throws BeansException
+     *
      */
     public static <T> T getBean(String name, Class<T> requiredType) throws BeansException {
         return applicationContext.getBean(name, requiredType);
@@ -256,7 +255,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param args
      * @param <T>
      * @return
-     * @throws BeansException
+     *
      */
     public static <T> T getBean(String name, Object... args) throws BeansException {
         return (T) applicationContext.getBean(name, args);
@@ -266,7 +265,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param requiredType
      * @param <T>
      * @return
-     * @throws BeansException
+     *
      */
     public static <T> T getBean(Class<T> requiredType) throws BeansException {
         return applicationContext.getBean(requiredType);
@@ -276,7 +275,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param requiredType
      * @param consumer
      * @param <T>
-     * @throws BeansException
+     *
      */
     public static <T> void getBeanIfExist(Class<T> requiredType, Consumer<T> consumer) throws BeansException {
         try {
@@ -292,7 +291,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param args
      * @param <T>
      * @return
-     * @throws BeansException
+     *
      */
     public static <T> T getBean(Class<T> requiredType, Object... args) throws BeansException {
         return applicationContext.getBean(requiredType, args);
@@ -327,7 +326,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
     /**
      * @param name
      * @return
-     * @throws NoSuchBeanDefinitionException
+     *
      */
     public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException {
         return applicationContext.isSingleton(name);
@@ -336,7 +335,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
     /**
      * @param name
      * @return
-     * @throws NoSuchBeanDefinitionException
+     *
      */
     public static boolean isPrototype(String name) throws NoSuchBeanDefinitionException {
         return applicationContext.isPrototype(name);
@@ -346,7 +345,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param name
      * @param typeToMatch
      * @return
-     * @throws NoSuchBeanDefinitionException
+     *
      */
     public static boolean isTypeMatch(String name, ResolvableType typeToMatch) throws NoSuchBeanDefinitionException {
         return applicationContext.isTypeMatch(name, typeToMatch);
@@ -356,7 +355,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param name
      * @param typeToMatch
      * @return
-     * @throws NoSuchBeanDefinitionException
+     *
      */
     public static boolean isTypeMatch(String name, Class<?> typeToMatch) throws NoSuchBeanDefinitionException {
         return applicationContext.isTypeMatch(name, typeToMatch);
@@ -365,7 +364,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
     /**
      * @param name
      * @return
-     * @throws NoSuchBeanDefinitionException
+     *
      */
     public static Class<?> getType(String name) throws NoSuchBeanDefinitionException {
         return applicationContext.getType(name);
@@ -409,7 +408,6 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param args
      * @param locale
      * @return
-     * @throws NoSuchMessageException
      */
     public static String getMessage(String code, Object[] args, Locale locale) throws NoSuchMessageException {
         return applicationContext.getMessage(code, args, locale);
@@ -419,7 +417,6 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
      * @param resolvable
      * @param locale
      * @return
-     * @throws NoSuchMessageException
      */
     public static String getMessage(MessageSourceResolvable resolvable, Locale locale) throws NoSuchMessageException {
         return applicationContext.getMessage(resolvable, locale);
@@ -428,7 +425,6 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
     /**
      * @param locationPattern
      * @return
-     * @throws IOException
      */
     public static Resource[] getResources(String locationPattern) throws IOException {
         return applicationContext.getResources(locationPattern);
@@ -451,7 +447,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
 
     /**
      * @param beanFactory the bean factory used by the application context
-     * @throws BeansException
+     *
      */
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {

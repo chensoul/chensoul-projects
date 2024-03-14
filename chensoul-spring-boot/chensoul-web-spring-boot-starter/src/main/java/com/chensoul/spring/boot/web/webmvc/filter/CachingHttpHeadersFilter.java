@@ -29,7 +29,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * This filter is used in production, to put HTTP cache headers with a long (4 years) expiration time.
+ * This support is used in production, to put HTTP cache headers with a long (4 years) expiration time.
  */
 public class CachingHttpHeadersFilter implements Filter {
 

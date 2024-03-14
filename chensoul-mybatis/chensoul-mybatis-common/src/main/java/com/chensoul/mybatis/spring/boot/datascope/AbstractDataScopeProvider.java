@@ -27,7 +27,7 @@ public abstract class AbstractDataScopeProvider implements IDataScopeProvider {
      * @param args
      * @param mappedStatement
      * @param sqlCommandType
-     * @throws Exception
+     *
      */
     public void sqlRender(Object[] args, MappedStatement mappedStatement, SqlCommandType sqlCommandType)
             throws Exception {

@@ -57,7 +57,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
      * @param callable
      * @param delay
      * @param unit
-     * @return {@link ScheduledFuture}<{@link V}>
      */
     @Override
     public <V> ScheduledFuture<V> schedule(Callable<V> callable, long delay, TimeUnit unit) {
@@ -69,7 +68,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
      * @param initialDelay
      * @param period
      * @param unit
-     * @return {@link ScheduledFuture}<{@link ?}>
      */
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit) {
@@ -81,7 +79,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
      * @param initialDelay
      * @param delay
      * @param unit
-     * @return {@link ScheduledFuture}<{@link ?}>
      */
     @Override
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit) {
@@ -97,7 +94,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
     }
 
     /**
-     * @return {@link List}<{@link Runnable}>
      */
     @Override
     public List<Runnable> shutdownNow() {
@@ -124,7 +120,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
      * @param timeout
      * @param unit
      * @return boolean
-     * @throws InterruptedException
      */
     @Override
     public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
@@ -133,7 +128,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
 
     /**
      * @param task
-     * @return {@link Future}<{@link T}>
      */
     @Override
     public <T> Future<T> submit(Callable<T> task) {
@@ -143,7 +137,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
     /**
      * @param task
      * @param result
-     * @return {@link Future}<{@link T}>
      */
     @Override
     public <T> Future<T> submit(Runnable task, T result) {
@@ -152,7 +145,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
 
     /**
      * @param task
-     * @return {@link Future}<{@link ?}>
      */
     @Override
     public Future<?> submit(Runnable task) {
@@ -161,8 +153,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
 
     /**
      * @param tasks
-     * @return {@link List}<{@link Future}<{@link T}>>
-     * @throws InterruptedException
      */
     @Override
     public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks) throws InterruptedException {
@@ -173,8 +163,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
      * @param tasks
      * @param timeout
      * @param unit
-     * @return {@link List}<{@link Future}<{@link T}>>
-     * @throws InterruptedException
      */
     @Override
     public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException {
@@ -183,9 +171,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
 
     /**
      * @param tasks
-     * @return {@link T}
-     * @throws InterruptedException
-     * @throws ExecutionException
      */
     @Override
     public <T> T invokeAny(Collection<? extends Callable<T>> tasks) throws InterruptedException, ExecutionException {
@@ -196,10 +181,6 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
      * @param tasks
      * @param timeout
      * @param unit
-     * @return {@link T}
-     * @throws InterruptedException
-     * @throws ExecutionException
-     * @throws TimeoutException
      */
     @Override
     public <T> T invokeAny(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {

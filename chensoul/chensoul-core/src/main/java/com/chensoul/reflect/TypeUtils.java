@@ -361,7 +361,7 @@ public abstract class TypeUtils {
      * Get the specified types' generic types(including super classes and interfaces) that are assignable from {@link ParameterizedType} interface
      *
      * @param type        the specified type
-     * @param typeFilters one or more {@link Predicate}s to filter the {@link ParameterizedType} instance
+     * @param typeFilters one or more {@link Predicate}s to support the {@link ParameterizedType} instance
      * @return non-null read-only {@link List}
      */
     public static List<ParameterizedType> getGenericTypes(Type type, Predicate<ParameterizedType>... typeFilters) {
@@ -467,7 +467,7 @@ public abstract class TypeUtils {
      * Get all generic types(including super classes and interfaces) that are assignable from {@link ParameterizedType} interface
      *
      * @param type        the specified type
-     * @param typeFilters one or more {@link Predicate}s to filter the {@link ParameterizedType} instance
+     * @param typeFilters one or more {@link Predicate}s to support the {@link ParameterizedType} instance
      * @return non-null read-only {@link List}
      */
     public static List<ParameterizedType> getAllGenericTypes(Type type, Predicate<ParameterizedType>... typeFilters) {
@@ -484,7 +484,7 @@ public abstract class TypeUtils {
      * Get all generic super classes that are assignable from {@link ParameterizedType} interface
      *
      * @param type        the specified type
-     * @param typeFilters one or more {@link Predicate}s to filter the {@link ParameterizedType} instance
+     * @param typeFilters one or more {@link Predicate}s to support the {@link ParameterizedType} instance
      * @return non-null read-only {@link List}
      */
     public static List<ParameterizedType> getAllGenericSuperClasses(Type type, Predicate<ParameterizedType>... typeFilters) {
@@ -510,7 +510,7 @@ public abstract class TypeUtils {
      * Get all generic interfaces that are assignable from {@link ParameterizedType} interface
      *
      * @param type        the specified type
-     * @param typeFilters one or more {@link Predicate}s to filter the {@link ParameterizedType} instance
+     * @param typeFilters one or more {@link Predicate}s to support the {@link ParameterizedType} instance
      * @return non-null read-only {@link List}
      */
     public static List<ParameterizedType> getAllGenericInterfaces(Type type, Predicate<ParameterizedType>... typeFilters) {
@@ -740,7 +740,7 @@ public abstract class TypeUtils {
         // Add Generic Super Class
         genericTypes.add(sourceClass.getGenericSuperclass());
 
-        Set<ParameterizedType> parameterizedTypes = genericTypes.stream().filter(type -> type instanceof ParameterizedType)// filter ParameterizedType
+        Set<ParameterizedType> parameterizedTypes = genericTypes.stream().filter(type -> type instanceof ParameterizedType)// support ParameterizedType
             .map(ParameterizedType.class::cast)  // cast to ParameterizedType
             .collect(Collectors.toSet());
 

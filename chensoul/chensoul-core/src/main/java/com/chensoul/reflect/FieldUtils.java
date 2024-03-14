@@ -234,7 +234,6 @@ public abstract class FieldUtils {
      * @param object       Object
      * @param fieldName    field name
      * @param expectedType expected type
-     * @throws IllegalArgumentException if type is not matched
      */
     public static void assertFieldMatchType(Object object, String fieldName, Class<?> expectedType) throws IllegalArgumentException {
         Class<?> type = object.getClass();
