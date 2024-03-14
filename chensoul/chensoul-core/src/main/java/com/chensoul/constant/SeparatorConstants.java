@@ -2,8 +2,15 @@ package com.chensoul.constant;
 
 import static com.chensoul.constant.PathConstants.SLASH;
 import static com.chensoul.constant.SymbolConstants.EXCLAMATION;
+
 import java.io.File;
 
+/**
+ * <p>SeparatorConstants interface.</p>
+ *
+ * @author chensoul
+ * @version $Id: $Id
+ */
 public interface SeparatorConstants {
 
     /**

@@ -26,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 @Slf4j
 public abstract class InetAddressUtils {
@@ -39,8 +40,8 @@ public abstract class InetAddressUtils {
     static {
         final List<InetAddress> localAddresses =
             loadInetAddress(address -> address.isSiteLocalAddress()
-                                       && !address.isLoopbackAddress()
-                                       && !address.getHostAddress().contains(":"));
+                && !address.isLoopbackAddress()
+                && !address.getHostAddress().contains(":"));
 
         if (CollectionUtils.isEmpty(localAddresses)) {
             try {
@@ -55,16 +56,20 @@ public abstract class InetAddressUtils {
 
 
     /**
-     * @param ipAddress
-     * @return
+     * <p>isUnknown.</p>
+     *
+     * @param ipAddress a {@link java.lang.String} object
+     * @return a boolean
      */
     public static boolean isUnknown(String ipAddress) {
         return StringUtils.isBlank(ipAddress) || StringPool.UNKNOWN.equalsIgnoreCase(ipAddress);
     }
 
     /**
-     * @param ip
-     * @return
+     * <p>getReverseProxyIp.</p>
+     *
+     * @param ip a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
      */
     public static String getReverseProxyIp(String ip) {
         if (ip != null) {
@@ -80,8 +85,10 @@ public abstract class InetAddressUtils {
     }
 
     /**
-     * @param ipAddress
-     * @return
+     * <p>isInternalIp.</p>
+     *
+     * @param ipAddress a {@link java.lang.String} object
+     * @return a boolean
      */
     public static boolean isInternalIp(String ipAddress) {
         if (ipAddress.equals(LOCAL_IP4)) {
@@ -97,12 +104,15 @@ public abstract class InetAddressUtils {
         int secondPart = Integer.parseInt(ipParts[1]);
 
         return firstPart == 10 ||
-               firstPart == 172 && secondPart >= 16 && secondPart <= 31 ||
-               firstPart == 192 && secondPart == 168;
+            firstPart == 172 && secondPart >= 16 && secondPart <= 31 ||
+            firstPart == 192 && secondPart == 168;
     }
 
     /**
      * Returns IP address as integer.
+     *
+     * @param ipAddress a {@link java.lang.String} object
+     * @return a int
      */
     public static int getIpAsInt(final String ipAddress) {
         int ipIntValue = 0;
@@ -129,9 +139,11 @@ public abstract class InetAddressUtils {
         return m.matches();
     }
 
-
     /**
      * Resolves IP address from a hostname.
+     *
+     * @param hostname a {@link java.lang.String} object
+     * @return a {@link java.net.InetAddress} object
      */
     public static InetAddress getByHostname(final String hostname) {
         try {
@@ -147,14 +159,20 @@ public abstract class InetAddressUtils {
         }
     }
 
+    /**
+     * <p>getByUrl.</p>
+     *
+     * @param urlAddr a {@link java.lang.String} object
+     * @return a {@link java.net.InetAddress} object
+     */
     public static InetAddress getByUrl(final String urlAddr) {
-        return FunctionUtils.doAndHandle(() -> {
-            URL url = new URI(urlAddr).toURL();
+        return FunctionUtils.tryApply((String u) -> {
+            URL url = new URI(u).toURL();
             return InetAddress.getAllByName(url.getHost())[0];
         }, e -> {
             log.trace("Host name could not be determined automatically.", e);
             return null;
-        }).get();
+        }).apply(urlAddr);
     }
 
     /**
@@ -186,11 +204,20 @@ public abstract class InetAddressUtils {
         return ipSet;
     }
 
+    /**
+     * <p>getLocalhost.</p>
+     *
+     * @return a {@link java.net.InetAddress} object
+     */
     public static InetAddress getLocalhost() {
         return localAddress;
     }
 
-
+    /**
+     * <p>getLocalHostAddress.</p>
+     *
+     * @return a {@link java.lang.String} object
+     */
     public static String getLocalHostAddress() {
         if (null != localAddress) {
             return localAddress.getHostAddress();
@@ -198,9 +225,13 @@ public abstract class InetAddressUtils {
         return null;
     }
 
-
+    /**
+     * <p>getLocalHostName.</p>
+     *
+     * @return a {@link java.lang.String} object
+     */
     public static String getLocalHostName() {
-        return FunctionUtils.doAndHandle(() -> {
+        return FunctionUtils.tryGet(() -> {
             String hostName = localAddress.getHostName();
             int index = hostName.indexOf('.');
             if (index > 0) {

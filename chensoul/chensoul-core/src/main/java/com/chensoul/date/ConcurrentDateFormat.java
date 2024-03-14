@@ -14,6 +14,7 @@ import lombok.SneakyThrows;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public final class ConcurrentDateFormat {
 
@@ -46,6 +47,8 @@ public final class ConcurrentDateFormat {
     }
 
     /**
+     * <p>of.</p>
+     *
      * @param format 格式
      * @return ConcurrentDateFormat
      */
@@ -54,6 +57,8 @@ public final class ConcurrentDateFormat {
     }
 
     /**
+     * <p>of.</p>
+     *
      * @param format   格式
      * @param timezone 时区
      * @return ConcurrentDateFormat
@@ -63,6 +68,8 @@ public final class ConcurrentDateFormat {
     }
 
     /**
+     * <p>of.</p>
+     *
      * @param format   格式
      * @param locale   本地化
      * @param timezone 时区
@@ -73,6 +80,8 @@ public final class ConcurrentDateFormat {
     }
 
     /**
+     * <p>format.</p>
+     *
      * @param date 日期
      * @return 格式化后的字符串
      */
@@ -85,9 +94,10 @@ public final class ConcurrentDateFormat {
     }
 
     /**
+     * <p>parse.</p>
+     *
      * @param source 字符串
      * @return 日期
-     * @throws ParseException 如果日期格式不正确
      */
     @SneakyThrows
     public Date parse(final String source) {

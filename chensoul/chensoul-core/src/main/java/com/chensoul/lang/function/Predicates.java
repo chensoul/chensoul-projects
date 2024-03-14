@@ -3,35 +3,44 @@ package com.chensoul.lang.function;
 import java.util.function.Predicate;
 
 /**
- * The utilities class for Java {@link Predicate}
+ * The utilities class for Java {@link java.util.function.Predicate}
  *
  * @since 0.0.1
+ * @author chensoul
+ * @version $Id: $Id
  */
-public interface Predicates {
+public abstract class Predicates {
 
-    Predicate[] EMPTY_PREDICATE_ARRAY = new Predicate[0];
+    /** Constant <code>EMPTY_PREDICATE_ARRAY</code> */
+    public static Predicate[] EMPTY_PREDICATE_ARRAY = new Predicate[0];
 
-    static <T> Predicate<T>[] emptyArray() {
+    /**
+     * <p>emptyArray.</p>
+     *
+     * @param <T> a T class
+     * @return an array of {@link java.util.function.Predicate} objects
+     */
+    public static <T> Predicate<T>[] emptyArray() {
         return (Predicate<T>[]) EMPTY_PREDICATE_ARRAY;
     }
 
     /**
-     * {@link Predicate} always return <code>true</code>
+     * {@link java.util.function.Predicate} always return <code>true</code>
      *
      * @param <T> the type to test
      * @return <code>true</code>
      */
-    static <T> Predicate<T> alwaysTrue() {
+    public static <T> Predicate<T> alwaysTrue() {
         return e -> true;
     }
 
     /**
-     * {@link Predicate} always return <code>false</code>
+     * {@link java.util.function.Predicate} always return <code>false</code>
      *
      * @param <T> the type to test
      * @return <code>false</code>
      */
-    static <T> Predicate<T> alwaysFalse() {
+    public static <T> Predicate<T> alwaysFalse() {
         return e -> false;
     }
 
@@ -42,7 +51,7 @@ public interface Predicates {
      * @param <T>        the type to test
      * @return non-null
      */
-    static <T> Predicate<? super T> and(Predicate<? super T>... predicates) {
+    public static <T> Predicate<? super T> and(Predicate<? super T>... predicates) {
         int length = predicates == null ? 0 : predicates.length;
         if (length == 0) {
             return alwaysTrue();
@@ -64,7 +73,7 @@ public interface Predicates {
      * @param <T>        the detected type
      * @return non-null
      */
-    static <T> Predicate<? super T> or(Predicate<? super T>... predicates) {
+    public static <T> Predicate<? super T> or(Predicate<? super T>... predicates) {
         int length = predicates == null ? 0 : predicates.length;
         if (length == 0) {
             return alwaysTrue();

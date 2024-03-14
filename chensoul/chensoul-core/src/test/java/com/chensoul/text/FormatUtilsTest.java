@@ -1,7 +1,8 @@
 package com.chensoul.text;
 
-import com.chensoul.collection.MapUtils;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.chensoul.collection.MapUtils;
 import org.junit.jupiter.api.Test;
 
 /**

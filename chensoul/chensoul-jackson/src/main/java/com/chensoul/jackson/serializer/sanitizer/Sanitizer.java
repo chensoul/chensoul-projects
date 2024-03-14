@@ -1,6 +1,7 @@
 package com.chensoul.jackson.serializer.sanitizer;
 
 import static com.chensoul.jackson.serializer.sanitizer.Sanitizer.SanitizerType.PASSWORD;
+
 import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.lang.annotation.Retention;

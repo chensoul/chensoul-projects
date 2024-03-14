@@ -40,7 +40,6 @@ public class FieldEncryptInterceptor implements Interceptor {
     /**
      * @param invocation
      * @return
-     * @throws Throwable
      */
     public Object intercept(Invocation invocation) throws Throwable {
         return InterceptorHelper.encrypt(invocation, encryptorProperties.getAlgorithm(), encryptorProperties.getPassword(), encryptor);

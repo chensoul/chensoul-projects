@@ -16,7 +16,6 @@ public class MultipartFileJsonSerializer extends JsonSerializer<MultipartFile> {
      * @param value
      * @param gen
      * @param serializers
-     * @throws IOException
      */
     @Override
     public void serialize(MultipartFile value, JsonGenerator gen, SerializerProvider serializers) throws IOException {

@@ -1,6 +1,7 @@
 package com.chensoul.lang;
 
 import static java.lang.Integer.compare;
+
 import java.util.Comparator;
 
 /**
@@ -8,6 +9,8 @@ import java.util.Comparator;
  * should be sorted, for example the tasks in executable queue.
  *
  * @since 0.0.1
+ * @author chensoul
+ * @version $Id: $Id
  */
 public interface Prioritized extends Comparable<Prioritized> {
 
@@ -49,6 +52,7 @@ public interface Prioritized extends Comparable<Prioritized> {
         return NORMAL_PRIORITY;
     }
 
+    /** {@inheritDoc} */
     @Override
     default int compareTo(Prioritized that) {
         return compare(this.getPriority(), that.getPriority());

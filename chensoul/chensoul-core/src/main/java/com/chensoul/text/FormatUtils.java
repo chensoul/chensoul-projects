@@ -10,15 +10,33 @@ import java.util.Objects;
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy<a/>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class FormatUtils {
 
+    /** Constant <code>DEFAULT_PLACEHOLDER="{}"</code> */
     public static final String DEFAULT_PLACEHOLDER = "{}";
 
+    /**
+     * <p>formatVariables.</p>
+     *
+     * @param template a {@link java.lang.String} object
+     * @param map a {@link java.util.Map} object
+     * @return a {@link java.lang.String} object
+     */
     public static String formatVariables(final String template, final Map<String, ?> map) {
         return formatVariables(template, "{", "}", map);
     }
 
+    /**
+     * <p>formatVariables.</p>
+     *
+     * @param template a {@link java.lang.String} object
+     * @param prefix a {@link java.lang.String} object
+     * @param suffix a {@link java.lang.String} object
+     * @param map a {@link java.util.Map} object
+     * @return a {@link java.lang.String} object
+     */
     public static String formatVariables(final String template, String prefix, String suffix, final Map<String, ?> map) {
         if (null == template) {
             return null;
@@ -42,19 +60,23 @@ public abstract class FormatUtils {
     }
 
     /**
-     * @param template
-     * @param args
-     * @return
+     * <p>format.</p>
+     *
+     * @param template a {@link java.lang.String} object
+     * @param args a {@link java.lang.Object} object
+     * @return a {@link java.lang.String} object
      */
     public static String format(final String template, final Object... args) {
         return formatWithPlaceholder(template, DEFAULT_PLACEHOLDER, args);
     }
 
     /**
-     * @param template
-     * @param placeholder
-     * @param args
-     * @return
+     * <p>formatWithPlaceholder.</p>
+     *
+     * @param template a {@link java.lang.String} object
+     * @param placeholder a {@link java.lang.String} object
+     * @param args a {@link java.lang.Object} object
+     * @return a {@link java.lang.String} object
      */
     public static String formatWithPlaceholder(final String template, final String placeholder, final Object... args) {
         int argsLength = args == null ? 0 : args.length;

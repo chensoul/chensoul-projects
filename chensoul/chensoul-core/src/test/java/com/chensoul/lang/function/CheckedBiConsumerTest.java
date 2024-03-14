@@ -15,13 +15,14 @@
  */
 package com.chensoul.lang.function;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
 public class CheckedBiConsumerTest {
@@ -81,10 +82,7 @@ public class CheckedBiConsumerTest {
         // Sneaky
         if (e.getCause() == null) {
             assertEquals(message, e.getMessage());
-        }
-
-        // Unchecked
-        else {
+        } else {
             assertEquals(Exception.class, e.getCause().getClass());
             assertEquals(message, e.getCause().getMessage());
         }

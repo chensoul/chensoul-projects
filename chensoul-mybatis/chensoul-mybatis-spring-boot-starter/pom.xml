@@ -12,6 +12,9 @@
   <artifactId>chensoul-mybatis-spring-boot-starter</artifactId>
   <version>${revision}</version>
 
+  <name>Chensoul™ Mybatis Spring Boot Starter</name>
+  <description>${project.name}</description>
+
   <dependencies>
     <dependency>
       <groupId>com.chensoul</groupId>
@@ -45,5 +48,6 @@
       <artifactId>spring-boot-autoconfigure-processor</artifactId>
       <optional>true</optional>
     </dependency>
+
   </dependencies>
 </project>

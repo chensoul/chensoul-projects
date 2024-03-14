@@ -14,7 +14,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul Redis Spring Boot Starter</name>
+  <name>Chensoul™ Redis Spring Boot Starter</name>
   <description>${project.name}</description>
 
   <dependencies>

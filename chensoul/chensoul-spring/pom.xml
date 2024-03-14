@@ -13,15 +13,13 @@
   <artifactId>chensoul-spring</artifactId>
   <version>${revision}</version>
 
+  <name>Chensoul™ Spring</name>
+  <description>${project.name}</description>
+
   <dependencies>
     <dependency>
       <groupId>com.chensoul</groupId>
       <artifactId>chensoul-core</artifactId>
-      <version>${revision}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-crypto</artifactId>
       <version>${revision}</version>
     </dependency>
 

@@ -11,8 +11,8 @@
   <groupId>com.chensoul</groupId>
   <artifactId>chensoul-redis-common</artifactId>
   <version>${revision}</version>
-  <packaging>pom</packaging>
 
-  <name>Chensoul Redis Common</name>
+  <name>Chensoul™ Redis Common</name>
   <description>${project.name}</description>
+
 </project>

@@ -2,10 +2,11 @@ package com.chensoul.collection;
 
 import static com.chensoul.collection.ArrayUtils.length;
 import static com.chensoul.collection.CollectionUtils.size;
-import java.util.Collection;
 import static java.util.Collections.emptySet;
 import static java.util.Collections.singleton;
 import static java.util.Collections.unmodifiableSet;
+
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,24 +14,31 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * The utilities class for Java {@link Set}
+ * The utilities class for Java {@link java.util.Set}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @see Set
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class SetUtils {
 
+    /**
+     * <p>isSet.</p>
+     *
+     * @param elements a {@link java.lang.Iterable} object
+     * @return a boolean
+     */
     public static boolean isSet(Iterable<?> elements) {
         return elements instanceof Set;
     }
 
     /**
-     * Convert to multiple elements to be {@link LinkedHashSet}
+     * Convert to multiple elements to be {@link java.util.LinkedHashSet}
      *
      * @param elements one or more elements
      * @param <E>      the type of <code>elements</code>
-     * @return read-only {@link Set}
+     * @return read-only {@link java.util.Set}
      */
     public static <E> Set<E> of(E... elements) {
         int size = length(elements);
@@ -49,34 +57,34 @@ public abstract class SetUtils {
     }
 
     /**
-     * Build a read-only {@link Set} from the given {@lin Enumeration} elements
+     * Build a read-only {@link java.util.Set} from the given {@lin Enumeration} elements
      *
      * @param elements one or more elements
      * @param <E>      the type of <code>elements</code>
-     * @return non-null read-only {@link Set}
+     * @return non-null read-only {@link java.util.Set}
      */
     public static <E> Set<E> asSet(Enumeration<E> elements) {
         return asSet(CollectionUtils.toIterable(elements));
     }
 
     /**
-     * Convert to multiple elements to be {@link LinkedHashSet}
+     * Convert to multiple elements to be {@link java.util.LinkedHashSet}
      *
      * @param elements one or more elements
      * @param <E>      the type of <code>elements</code>
-     * @return read-only {@link Set}
+     * @return read-only {@link java.util.Set}
      */
     public static <E> Set<E> asSet(Iterable<E> elements) {
         return unmodifiableSet(newLinkedHashSet(elements));
     }
 
     /**
-     * Convert to one or more elements to be a read-only {@link Set}
+     * Convert to one or more elements to be a read-only {@link java.util.Set}
      *
      * @param one    one element
      * @param others others elements
      * @param <E>    the type of <code>elements</code>
-     * @return read-only {@link Set}
+     * @return read-only {@link java.util.Set}
      */
     public static <E> Set<E> asSet(E one, E... others) {
         int othersSize = length(others);
@@ -95,6 +103,14 @@ public abstract class SetUtils {
         return unmodifiableSet(elements);
     }
 
+    /**
+     * <p>asSet.</p>
+     *
+     * @param elements a {@link java.util.Collection} object
+     * @param others a T object
+     * @param <T> a T class
+     * @return a {@link java.util.Set} object
+     */
     public static <T> Set<T> asSet(Collection<T> elements, T... others) {
         int valuesSize = size(elements);
 
@@ -121,6 +137,13 @@ public abstract class SetUtils {
         return unmodifiableSet(set);
     }
 
+    /**
+     * <p>newHashSet.</p>
+     *
+     * @param elements a {@link java.lang.Iterable} object
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newHashSet(Iterable<E> elements) {
         Set<E> set = newHashSet();
         for (E value : elements) {
@@ -129,26 +152,68 @@ public abstract class SetUtils {
         return set;
     }
 
+    /**
+     * <p>newHashSet.</p>
+     *
+     * @param elements a {@link java.util.Collection} object
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newHashSet(Collection<? extends E> elements) {
         return new HashSet(elements);
     }
 
+    /**
+     * <p>newHashSet.</p>
+     *
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newHashSet() {
         return new HashSet<>();
     }
 
+    /**
+     * <p>newHashSet.</p>
+     *
+     * @param initialCapacity a int
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newHashSet(int initialCapacity) {
         return new HashSet<>(initialCapacity);
     }
 
+    /**
+     * <p>newHashSet.</p>
+     *
+     * @param initialCapacity a int
+     * @param loadFactor a float
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newHashSet(int initialCapacity, float loadFactor) {
         return new HashSet<>(initialCapacity, loadFactor);
     }
 
+    /**
+     * <p>newLinkedHashSet.</p>
+     *
+     * @param elements a {@link java.lang.Iterable} object
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newLinkedHashSet(Iterable<E> elements) {
         return newLinkedHashSet(elements.iterator());
     }
 
+    /**
+     * <p>newLinkedHashSet.</p>
+     *
+     * @param elements a {@link java.util.Iterator} object
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newLinkedHashSet(Iterator<E> elements) {
         Set<E> set = newLinkedHashSet();
         while (elements.hasNext()) {
@@ -158,18 +223,46 @@ public abstract class SetUtils {
         return set;
     }
 
+    /**
+     * <p>newLinkedHashSet.</p>
+     *
+     * @param elements a {@link java.util.Collection} object
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newLinkedHashSet(Collection<? extends E> elements) {
         return new LinkedHashSet(elements);
     }
 
+    /**
+     * <p>newLinkedHashSet.</p>
+     *
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newLinkedHashSet() {
         return new LinkedHashSet<>();
     }
 
+    /**
+     * <p>newLinkedHashSet.</p>
+     *
+     * @param initialCapacity a int
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newLinkedHashSet(int initialCapacity) {
         return new LinkedHashSet<>(initialCapacity);
     }
 
+    /**
+     * <p>newLinkedHashSet.</p>
+     *
+     * @param initialCapacity a int
+     * @param loadFactor a float
+     * @param <E> a E class
+     * @return a {@link java.util.Set} object
+     */
     public static <E> Set<E> newLinkedHashSet(int initialCapacity, float loadFactor) {
         return new LinkedHashSet<>(initialCapacity, loadFactor);
     }

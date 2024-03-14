@@ -8,12 +8,13 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- * {@link ParameterizedType} Implementation forks {@link sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl}
+ * {@link java.lang.reflect.ParameterizedType} Implementation forks {@link sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @see ParameterizedType
  * @see sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public class ParameterizedTypeImpl implements ParameterizedType {
 
@@ -24,8 +25,8 @@ public class ParameterizedTypeImpl implements ParameterizedType {
     private final Type ownerType;
 
     private ParameterizedTypeImpl(Class<?> rawType,
-                                  Type[] actualTypeArguments,
-                                  Type ownerType) {
+        Type[] actualTypeArguments,
+        Type ownerType) {
         this.actualTypeArguments = actualTypeArguments;
         this.rawType = rawType;
         this.ownerType = (ownerType != null) ? ownerType : rawType.getDeclaringClass();
@@ -54,8 +55,6 @@ public class ParameterizedTypeImpl implements ParameterizedType {
      *                            representing the actual type arguments to the parameterized type
      * @param ownerType           - the enclosing type, if known.
      * @return An instance of <tt>ParameterizedType</tt>
-     * @throws MalformedParameterizedTypeException - if the instantiation
-     *                                             is invalid
      */
     public static ParameterizedTypeImpl of(Class<?> rawType, Type[] actualTypeArguments, Type ownerType) {
         return new ParameterizedTypeImpl(rawType, actualTypeArguments, ownerType);
@@ -82,11 +81,6 @@ public class ParameterizedTypeImpl implements ParameterizedType {
      *
      * @return an array of <tt>Type</tt> objects representing the actual type
      * arguments to this type
-     * @throws <tt>TypeNotPresentException</tt>             if any of the
-     *                                                      actual type arguments refers to a non-existent type declaration
-     * @throws <tt>MalformedParameterizedTypeException</tt> if any of the
-     *                                                      actual type parameters refer to a parameterized type that cannot
-     *                                                      be instantiated for any reason
      * @since 1.5
      */
     public Type[] getActualTypeArguments() {
@@ -94,11 +88,9 @@ public class ParameterizedTypeImpl implements ParameterizedType {
     }
 
     /**
-     * Returns the <tt>Type</tt> object representing the class or interface
-     * that declared this type.
+     * <p>Getter for the field <code>rawType</code>.</p>
      *
-     * @return the <tt>Type</tt> object representing the class or interface
-     * that declared this type
+     * @return a {@link java.lang.Class} object
      */
     public Class<?> getRawType() {
         return rawType;
@@ -106,20 +98,9 @@ public class ParameterizedTypeImpl implements ParameterizedType {
 
 
     /**
-     * Returns a <tt>Type</tt> object representing the type that this type
-     * is a member of.  For example, if this type is <tt>O<T>.I<S></tt>,
-     * return a representation of <tt>O<T></tt>.
+     * <p>Getter for the field <code>ownerType</code>.</p>
      *
-     * <p>If this type is a top-level type, <tt>null</tt> is returned.
-     *
-     * @return a <tt>Type</tt> object representing the type that
-     * this type is a member of. If this type is a top-level type,
-     * <tt>null</tt> is returned
-     * @throws <tt>TypeNotPresentException</tt>             if the owner type
-     *                                                      refers to a non-existent type declaration
-     * @throws <tt>MalformedParameterizedTypeException</tt> if the owner type
-     *                                                      refers to a parameterized type that cannot be instantiated
-     *                                                      for any reason
+     * @return a {@link java.lang.reflect.Type} object
      */
     public Type getOwnerType() {
         return ownerType;
@@ -132,6 +113,7 @@ public class ParameterizedTypeImpl implements ParameterizedType {
      * that share the same generic type declaration and have equal
      * type parameters."
      */
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (o instanceof ParameterizedType) {
@@ -165,20 +147,26 @@ public class ParameterizedTypeImpl implements ParameterizedType {
 
             return
                 Objects.equals(ownerType, thatOwner) &&
-                Objects.equals(rawType, thatRawType) &&
-                Arrays.equals(actualTypeArguments, // avoid clone
-                    that.getActualTypeArguments());
+                    Objects.equals(rawType, thatRawType) &&
+                    Arrays.equals(actualTypeArguments, // avoid clone
+                        that.getActualTypeArguments());
         } else
             return false;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Arrays.hashCode(actualTypeArguments) ^
-               Objects.hashCode(ownerType) ^
-               Objects.hashCode(rawType);
+            Objects.hashCode(ownerType) ^
+            Objects.hashCode(rawType);
     }
 
+    /**
+     * <p>toString.</p>
+     *
+     * @return a {@link java.lang.String} object
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
 

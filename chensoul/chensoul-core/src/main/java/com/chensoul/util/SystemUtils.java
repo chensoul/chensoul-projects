@@ -4,8 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * <p>Abstract SystemUtils class.</p>
+ *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class SystemUtils {
 
@@ -305,7 +308,7 @@ public abstract class SystemUtils {
             return System.getProperty(key, defaultValue);
         } catch (final SecurityException ex) {
             logger.error("Caught a SecurityException reading the system property '{}'; " +
-                         "the SystemUtils property value will be : '{}'", key, defaultValue);
+                "the SystemUtils property value will be : '{}'", key, defaultValue);
             return defaultValue;
         }
     }

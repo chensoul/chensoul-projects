@@ -1,22 +1,26 @@
 package com.chensoul.util;
 
-import com.chensoul.collection.ArrayUtils;
 import static java.lang.String.valueOf;
+
+import com.chensoul.collection.ArrayUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
 /**
- * The utilities class for {@link String}
+ * The utilities class for {@link java.lang.String}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class StringUtils {
 
+    /** Constant <code>EMPTY=""</code> */
     public final static String EMPTY = "";
 
+    /** Constant <code>EMPTY_STRING_ARRAY</code> */
     public static final String[] EMPTY_STRING_ARRAY = ArrayUtils.EMPTY_STRING_ARRAY;
     /**
      * Represents a failed index search.
@@ -24,18 +28,42 @@ public abstract class StringUtils {
     public static final int INDEX_NOT_FOUND = -1;
     private static final int PAD_LIMIT = 8192;
 
+    /**
+     * <p>length.</p>
+     *
+     * @param value a {@link java.lang.String} object
+     * @return a int
+     */
     public static int length(String value) {
         return value == null ? 0 : value.length();
     }
 
+    /**
+     * <p>isEmpty.</p>
+     *
+     * @param cs a {@link java.lang.CharSequence} object
+     * @return a boolean
+     */
     public static boolean isEmpty(final CharSequence cs) {
         return cs == null || cs.length() == 0;
     }
 
+    /**
+     * <p>isNotEmpty.</p>
+     *
+     * @param value a {@link java.lang.String} object
+     * @return a boolean
+     */
     public static boolean isNotEmpty(String value) {
         return length(value) > 0;
     }
 
+    /**
+     * <p>isBlank.</p>
+     *
+     * @param cs a {@link java.lang.CharSequence} object
+     * @return a boolean
+     */
     public static boolean isBlank(final CharSequence cs) {
         final int strLen = length(cs);
         if (strLen == 0) {
@@ -49,18 +77,44 @@ public abstract class StringUtils {
         return true;
     }
 
+    /**
+     * <p>isNotBlank.</p>
+     *
+     * @param value a {@link java.lang.CharSequence} object
+     * @return a boolean
+     */
     public static boolean isNotBlank(CharSequence value) {
         return !isBlank(value);
     }
 
+    /**
+     * <p>length.</p>
+     *
+     * @param cs a {@link java.lang.CharSequence} object
+     * @return a int
+     */
     public static int length(final CharSequence cs) {
         return cs == null ? 0 : cs.length();
     }
 
+    /**
+     * <p>split.</p>
+     *
+     * @param value a {@link java.lang.String} object
+     * @param delimiter a char
+     * @return an array of {@link java.lang.String} objects
+     */
     public static String[] split(String value, char delimiter) {
         return split(value, valueOf(delimiter));
     }
 
+    /**
+     * <p>split.</p>
+     *
+     * @param value a {@link java.lang.String} object
+     * @param delimiter a {@link java.lang.String} object
+     * @return an array of {@link java.lang.String} objects
+     */
     public static String[] split(String value, String delimiter) {
         if (isEmpty(value)) {
             return EMPTY_STRING_ARRAY;
@@ -69,6 +123,13 @@ public abstract class StringUtils {
         return (String[]) ArrayUtils.asArray(stringTokenizer, String.class);
     }
 
+    /**
+     * <p>contains.</p>
+     *
+     * @param value a {@link java.lang.String} object
+     * @param part a {@link java.lang.CharSequence} object
+     * @return a boolean
+     */
     public static boolean contains(String value, CharSequence part) {
         if (value != null && part != null) {
             return value.contains(part);
@@ -76,6 +137,13 @@ public abstract class StringUtils {
         return false;
     }
 
+    /**
+     * <p>startsWith.</p>
+     *
+     * @param value a {@link java.lang.String} object
+     * @param part a {@link java.lang.String} object
+     * @return a boolean
+     */
     public static boolean startsWith(String value, String part) {
         if (value != null && part != null) {
             return value.startsWith(part);
@@ -83,6 +151,13 @@ public abstract class StringUtils {
         return false;
     }
 
+    /**
+     * <p>endsWith.</p>
+     *
+     * @param value a {@link java.lang.String} object
+     * @param part a {@link java.lang.String} object
+     * @return a boolean
+     */
     public static boolean endsWith(String value, String part) {
         if (value != null && part != null) {
             return value.endsWith(part);
@@ -104,7 +179,7 @@ public abstract class StringUtils {
     }
 
     static boolean regionMatches(final CharSequence cs, final boolean ignoreCase, final int thisStart,
-                                 final CharSequence substring, final int start, final int length) {
+        final CharSequence substring, final int start, final int length) {
         if (cs instanceof String && substring instanceof String) {
             return ((String) cs).regionMatches(ignoreCase, thisStart, (String) substring, start, length);
         }
@@ -149,18 +224,50 @@ public abstract class StringUtils {
         return true;
     }
 
+    /**
+     * <p>abbreviate.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param maxWidth a int
+     * @return a {@link java.lang.String} object
+     */
     public static String abbreviate(final String str, final int maxWidth) {
         return abbreviate(str, "...", 0, maxWidth);
     }
 
+    /**
+     * <p>abbreviate.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param offset a int
+     * @param maxWidth a int
+     * @return a {@link java.lang.String} object
+     */
     public static String abbreviate(final String str, final int offset, final int maxWidth) {
         return abbreviate(str, "...", offset, maxWidth);
     }
 
+    /**
+     * <p>abbreviate.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param abbrevMarker a {@link java.lang.String} object
+     * @param maxWidth a int
+     * @return a {@link java.lang.String} object
+     */
     public static String abbreviate(final String str, final String abbrevMarker, final int maxWidth) {
         return abbreviate(str, abbrevMarker, 0, maxWidth);
     }
 
+    /**
+     * <p>abbreviate.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param abbrevMarker a {@link java.lang.String} object
+     * @param offset a int
+     * @param maxWidth a int
+     * @return a {@link java.lang.String} object
+     */
     public static String abbreviate(final String str, final String abbrevMarker, int offset, final int maxWidth) {
         if (isNotEmpty(str) && EMPTY.equals(abbrevMarker) && maxWidth > 0) {
             return substring(str, 0, maxWidth);
@@ -197,6 +304,12 @@ public abstract class StringUtils {
         return abbrevMarker + str.substring(strLen - (maxWidth - abbrevMarkerLength));
     }
 
+    /**
+     * <p>isAnyEmpty.</p>
+     *
+     * @param css a {@link java.lang.CharSequence} object
+     * @return a boolean
+     */
     public static boolean isAnyEmpty(final CharSequence... css) {
         if (ArrayUtils.isEmpty(css)) {
             return false;
@@ -209,6 +322,13 @@ public abstract class StringUtils {
         return false;
     }
 
+    /**
+     * <p>substring.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param start a int
+     * @return a {@link java.lang.String} object
+     */
     public static String substring(final String str, int start) {
         if (str == null) {
             return null;
@@ -229,6 +349,14 @@ public abstract class StringUtils {
         return str.substring(start);
     }
 
+    /**
+     * <p>substring.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param start a int
+     * @param end a int
+     * @return a {@link java.lang.String} object
+     */
     public static String substring(final String str, int start, int end) {
         if (str == null) {
             return null;
@@ -262,6 +390,12 @@ public abstract class StringUtils {
         return str.substring(start, end);
     }
 
+    /**
+     * <p>splitByCharacterTypeCamelCase.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @return an array of {@link java.lang.String} objects
+     */
     public static String[] splitByCharacterTypeCamelCase(final String str) {
         return splitByCharacterType(str, true);
     }
@@ -298,10 +432,24 @@ public abstract class StringUtils {
         return list.toArray(ArrayUtils.EMPTY_STRING_ARRAY);
     }
 
+    /**
+     * <p>defaultIfBlank.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param defaultStr a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String defaultIfBlank(final String str, final String defaultStr) {
         return isBlank(str) ? defaultStr : str;
     }
 
+    /**
+     * <p>defaultIfEmpty.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param defaultStr a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String defaultIfEmpty(final String str, final String defaultStr) {
         return isEmpty(str) ? defaultStr : str;
     }
@@ -422,6 +570,13 @@ public abstract class StringUtils {
         return removeEnd(result, separator);
     }
 
+    /**
+     * <p>removeEnd.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param remove a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String removeEnd(final String str, final String remove) {
         if (isEmpty(str) || isEmpty(remove)) {
             return str;
@@ -432,6 +587,13 @@ public abstract class StringUtils {
         return str;
     }
 
+    /**
+     * <p>removeEndIgnoreCase.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param remove a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String removeEndIgnoreCase(final String str, final String remove) {
         if (isEmpty(str) || isEmpty(remove)) {
             return str;
@@ -442,10 +604,24 @@ public abstract class StringUtils {
         return str;
     }
 
+    /**
+     * <p>endsWithIgnoreCase.</p>
+     *
+     * @param str a {@link java.lang.CharSequence} object
+     * @param suffix a {@link java.lang.CharSequence} object
+     * @return a boolean
+     */
     public static boolean endsWithIgnoreCase(final CharSequence str, final CharSequence suffix) {
         return endsWith(str, suffix, true);
     }
 
+    /**
+     * <p>equals.</p>
+     *
+     * @param cs1 a {@link java.lang.CharSequence} object
+     * @param cs2 a {@link java.lang.CharSequence} object
+     * @return a boolean
+     */
     public static boolean equals(final CharSequence cs1, final CharSequence cs2) {
         if (cs1 == cs2) {
             return true;
@@ -469,6 +645,13 @@ public abstract class StringUtils {
         return true;
     }
 
+    /**
+     * <p>equalsIgnoreCase.</p>
+     *
+     * @param cs1 a {@link java.lang.CharSequence} object
+     * @param cs2 a {@link java.lang.CharSequence} object
+     * @return a boolean
+     */
     public static boolean equalsIgnoreCase(final CharSequence cs1, final CharSequence cs2) {
         if (cs1 == cs2) {
             return true;
@@ -482,6 +665,13 @@ public abstract class StringUtils {
         return regionMatches(cs1, true, 0, cs2, 0, cs1.length());
     }
 
+    /**
+     * <p>remove.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param remove a char
+     * @return a {@link java.lang.String} object
+     */
     public static String remove(final String str, final char remove) {
         if (isEmpty(str) || str.indexOf(remove) == INDEX_NOT_FOUND) {
             return str;
@@ -496,6 +686,13 @@ public abstract class StringUtils {
         return new String(chars, 0, pos);
     }
 
+    /**
+     * <p>remove.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param remove a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String remove(final String str, final String remove) {
         if (isEmpty(str) || isEmpty(remove)) {
             return str;
@@ -503,6 +700,14 @@ public abstract class StringUtils {
         return replace(str, remove, EMPTY, -1);
     }
 
+    /**
+     * <p>appendIfMissing.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @param suffix a {@link java.lang.CharSequence} object
+     * @param suffixes a {@link java.lang.CharSequence} object
+     * @return a {@link java.lang.String} object
+     */
     public static String appendIfMissing(final String str, final CharSequence suffix, final CharSequence... suffixes) {
         return appendIfMissing(str, suffix, false, suffixes);
     }

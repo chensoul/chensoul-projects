@@ -239,7 +239,7 @@ public abstract class ScriptingUtils {
      * @param clazz        the clazz
      * @param failOnError  the fail on error
      * @return the result
-     * @throws Throwable the exception
+     *  the exception
      */
     public static <T> T executeGroovyScript(final GroovyObject groovyObject,
                                             final Object[] args, final Class<T> clazz,
@@ -256,7 +256,7 @@ public abstract class ScriptingUtils {
      * @param clazz        the clazz
      * @param args         the args
      * @return the type to return
-     * @throws Throwable the exception
+     *  the exception
      */
     public static <T> T executeGroovyScript(final Resource groovyScript,
                                             final String methodName,
@@ -320,7 +320,7 @@ public abstract class ScriptingUtils {
      * @param clazz        the clazz
      * @param failOnError  the fail on error
      * @return the t
-     * @throws Throwable the throwable
+     *  the throwable
      */
     public static <T> T executeGroovyScript(final GroovyObject groovyObject,
                                             final String methodName,

@@ -8,6 +8,7 @@ import lombok.Getter;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 @Getter
 @AllArgsConstructor
@@ -17,6 +18,8 @@ public enum ResultCode implements Enumerable<ResultCode> {
     BAD_REQUEST(400, "BAD_REQUEST"),
     UNAUTHORIZED(401, "UNAUTHORIZED"),
     FORBIDDEN(403, "FORBIDDEN"),
+    NOT_FOUND(404, "NOT_FOUND"),
+    TOO_MANY_REQUESTS(429, "TOO_MANY_REQUESTS"),
 
     SYSTEM_ERROR(500, "INTERNAL_ERROR"),
     SERVICE_ERROR(501, "SERVICE_ERROR"),

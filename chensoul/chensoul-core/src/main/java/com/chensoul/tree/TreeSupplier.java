@@ -13,6 +13,7 @@ import java.util.function.Supplier;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 1.0.0
+ * @version $Id: $Id
  */
 public class TreeSupplier<E> implements Supplier<Tree<E>> {
 
@@ -22,26 +23,59 @@ public class TreeSupplier<E> implements Supplier<Tree<E>> {
 
     private boolean isBuild;
 
+    /**
+     * <p>Constructor for TreeSupplier.</p>
+     *
+     * @param rootId a E object
+     * @param config a {@link com.chensoul.tree.TreeNodeConfig} object
+     */
     public TreeSupplier(final E rootId, final TreeNodeConfig config) {
         root = new Tree<>(config);
         root.setId(rootId);
         idTreeMap = new TreeMap<>(); // 使用有序map
     }
 
+    /**
+     * <p>of.</p>
+     *
+     * @param rootId a T object
+     * @param <T> a T class
+     * @return a {@link com.chensoul.tree.TreeSupplier} object
+     */
     public static <T> TreeSupplier<T> of(final T rootId) {
         return of(rootId, null);
     }
 
+    /**
+     * <p>of.</p>
+     *
+     * @param rootId a T object
+     * @param config a {@link com.chensoul.tree.TreeNodeConfig} object
+     * @param <T> a T class
+     * @return a {@link com.chensoul.tree.TreeSupplier} object
+     */
     public static <T> TreeSupplier<T> of(final T rootId, final TreeNodeConfig config) {
         return new TreeSupplier<>(rootId, config);
     }
 
+    /**
+     * <p>append.</p>
+     *
+     * @param map a {@link java.util.Map} object
+     * @return a {@link com.chensoul.tree.TreeSupplier} object
+     */
     public TreeSupplier<E> append(final Map<E, Tree<E>> map) {
         checkBuilt();
         idTreeMap.putAll(map);
         return this;
     }
 
+    /**
+     * <p>append.</p>
+     *
+     * @param trees a {@link java.lang.Iterable} object
+     * @return a {@link com.chensoul.tree.TreeSupplier} object
+     */
     public TreeSupplier<E> append(final Iterable<Tree<E>> trees) {
         checkBuilt();
 
@@ -51,6 +85,14 @@ public class TreeSupplier<E> implements Supplier<Tree<E>> {
         return this;
     }
 
+    /**
+     * <p>append.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param nodeParser a {@link com.chensoul.tree.NodeParser} object
+     * @param <T> a T class
+     * @return a {@link com.chensoul.tree.TreeSupplier} object
+     */
     public <T> TreeSupplier<E> append(final List<T> list, final NodeParser<T, E> nodeParser) {
         checkBuilt();
 
@@ -65,6 +107,11 @@ public class TreeSupplier<E> implements Supplier<Tree<E>> {
         return append(map);
     }
 
+    /**
+     * <p>reset.</p>
+     *
+     * @return a {@link com.chensoul.tree.TreeSupplier} object
+     */
     public TreeSupplier<E> reset() {
         idTreeMap.clear();
         root.setChildren(null);
@@ -72,6 +119,7 @@ public class TreeSupplier<E> implements Supplier<Tree<E>> {
         return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Tree<E> get() {
         checkBuilt();
@@ -85,6 +133,11 @@ public class TreeSupplier<E> implements Supplier<Tree<E>> {
         return root;
     }
 
+    /**
+     * <p>buildList.</p>
+     *
+     * @return a {@link java.util.List} object
+     */
     public List<Tree<E>> buildList() {
         if (isBuild) {
             // 已经构建过了

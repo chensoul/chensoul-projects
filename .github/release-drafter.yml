@@ -8,24 +8,18 @@ categories:
     labels:
       - 'feature'
       - 'enhancement'
-      - 'kind/feature'
   - title: '🐞 Bug Fixes'
     labels:
       - 'fix'
       - 'bugfix'
       - 'bug'
-      - 'regression'
-      - 'kind/bug'
   - title: '📝 Documentation'
     labels:
       - documentation
-      - 'kind/doc'
   - title: '🧰 Dependency Upgrades'
     labels:
       - chore
       - dependencies
-      - 'kind/chore'
-      - 'kind/dep'
   - title: '🚦 Tests'
     labels:
       - test
@@ -35,6 +29,22 @@ exclude-labels:
   - no-changelog
   - skip-changelog
   - invalid
+autolabeler:
+  - label: 'chore'
+    files:
+      - '*.md'
+    branch:
+      - '/docs{0,1}\/.+/'
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+    title:
+      - '/fix/i'
+  - label: 'enhancement'
+    branch:
+      - '/feature\/.+/'
+    body:
+      - '/JIRA-[0-9]{1,4}/'
 change-template: '* $TITLE (#$NUMBER) @$AUTHOR'
 template: |
   ## What’s Changed

@@ -33,7 +33,7 @@ public class FeignRetryAspect {
      * @param joinPoint
      * @param feignRetry
      * @return
-     * @throws Throwable
+     *
      */
     @Around("@annotation(feignRetry)")
     public Object retry(ProceedingJoinPoint joinPoint, FeignRetry feignRetry) throws Throwable {

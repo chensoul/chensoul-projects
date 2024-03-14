@@ -1,6 +1,7 @@
 package com.chensoul.spring.client;
 
 import static com.chensoul.constant.StringPool.EMPTY;
+
 import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.spring.util.HttpRequestUtils;
 import com.chensoul.util.StringUtils;

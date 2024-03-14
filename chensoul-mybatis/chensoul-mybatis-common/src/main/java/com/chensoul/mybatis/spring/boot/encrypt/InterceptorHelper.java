@@ -37,7 +37,7 @@ public class InterceptorHelper {
      * @param password
      * @param encryptor
      * @return
-     * @throws Throwable
+     *
      */
     public static Object encrypt(Invocation invocation, Algorithm algorithm, String password, Encryptor encryptor)
             throws Throwable {
@@ -146,7 +146,7 @@ public class InterceptorHelper {
      * @param invocation
      * @param consumer
      * @return
-     * @throws Throwable
+     *
      */
     public static Object decrypt(Invocation invocation, BiConsumer<MetaObject, FieldSetProperty> consumer)
             throws Throwable {

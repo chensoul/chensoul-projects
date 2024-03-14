@@ -1,25 +1,39 @@
 package com.chensoul.reflect;
 
 import com.chensoul.lang.function.CheckedSupplier;
-import static com.chensoul.util.ShutdownHookUtils.addShutdownHookCallback;
+import com.chensoul.util.ShutdownHookUtils;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * The utilities class of {@link ClassLoader}
+ * The utilities class of {@link java.lang.ClassLoader}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
+ * @since 1.0.0
+ * @version $Id: $Id
  */
 public class ClassLoaderUtils {
+    /**
+     * The cache of loaded classes
+     */
     private static final ConcurrentMap<String, Class<?>> loadedClassesCache = initLoadedClassesCache();
 
+    /**
+     * Initialize the cache of loaded classes and add a shutdown hook to clear the cache
+     *
+     * @return {@link ConcurrentMap}<{@link String}, >
+     */
     private static ConcurrentMap<String, Class<?>> initLoadedClassesCache() {
         ConcurrentMap<String, Class<?>> loadedClassesCache = new ConcurrentHashMap<>(256);
-        addShutdownHookCallback(loadedClassesCache::clear);
+        ShutdownHookUtils.addShutdownHookCallback(loadedClassesCache::clear);
         return loadedClassesCache;
     }
 
+    /**
+     * Get the default {@link java.lang.ClassLoader}
+     *
+     * @return {@link java.lang.ClassLoader}
+     */
     public static ClassLoader getDefaultClassLoader() {
         ClassLoader classLoader = null;
         try {
@@ -27,8 +41,8 @@ public class ClassLoaderUtils {
         } catch (Throwable ignored) {
         }
 
-        if (classLoader == null) { // If the ClassLoader is also not found,
-            // try to get the ClassLoader from the Caller class
+        if (classLoader == null) {
+            // If the ClassLoader is also not found, try to get the ClassLoader from the Caller class
             Class<?> callerClass = ReflectionUtils.getCallerClass(3);
             if (callerClass != null) {
                 classLoader = callerClass.getClassLoader();
@@ -36,6 +50,7 @@ public class ClassLoaderUtils {
         }
 
         if (classLoader == null) {
+            // If the ClassLoader is also not found, try to get the ClassLoader from the current class
             classLoader = ClassLoaderUtils.class.getClassLoader();
         }
 
@@ -49,6 +64,12 @@ public class ClassLoaderUtils {
         return classLoader;
     }
 
+    /**
+     * <p>getClassLoader.</p>
+     *
+     * @param loadedClass a {@link java.lang.Class} object
+     * @return {@link java.lang.ClassLoader}
+     */
     public static ClassLoader getClassLoader(Class<?> loadedClass) {
         ClassLoader classLoader = null;
         try {
@@ -62,6 +83,11 @@ public class ClassLoaderUtils {
         return classLoader == null ? getDefaultClassLoader() : classLoader;
     }
 
+    /**
+     * <p>getCallerClassLoader.</p>
+     *
+     * @return {@link java.lang.ClassLoader}
+     */
     public static ClassLoader getCallerClassLoader() {
         return getCallerClassLoader(4);
     }
@@ -69,6 +95,7 @@ public class ClassLoaderUtils {
     /**
      * Return the ClassLoader from the caller class
      *
+     * @param invocationFrame
      * @return the ClassLoader (only {@code null} if the caller class was absent
      * @see ReflectionUtils#getCallerClass()
      */
@@ -81,15 +108,21 @@ public class ClassLoaderUtils {
         return classLoader;
     }
 
+    /**
+     * <p>resolveClass.</p>
+     *
+     * @param className a {@link java.lang.String} object
+     * @return a {@link java.lang.Class} object
+     */
     public static Class<?> resolveClass(String className) {
         return resolveClass(className, getDefaultClassLoader());
     }
 
     /**
-     * Resolve the {@link Class} by the specified name and {@link ClassLoader}
+     * Resolve the {@link java.lang.Class} by the specified name and {@link java.lang.ClassLoader}
      *
-     * @param className   the name of {@link Class}
-     * @param classLoader {@link ClassLoader}
+     * @param className   the name of {@link java.lang.Class}
+     * @param classLoader a {@link java.lang.ClassLoader} object
      * @return If can't be resolved , return <code>null</code>
      */
     public static Class<?> resolveClass(String className, ClassLoader classLoader) {
@@ -97,11 +130,11 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * Resolve the {@link Class} by the specified name and {@link ClassLoader}
+     * Resolve the {@link java.lang.Class} by the specified name and {@link java.lang.ClassLoader}
      *
-     * @param className   the name of {@link Class}
-     * @param classLoader {@link ClassLoader}
+     * @param className   the name of {@link java.lang.Class}
      * @param cached      the resolved class is required to be cached or not
+     * @param classLoader a {@link java.lang.ClassLoader} object
      * @return If can't be resolved , return <code>null</code>
      */
     public static Class<?> resolveClass(String className, ClassLoader classLoader, boolean cached) {
@@ -118,6 +151,13 @@ public class ClassLoaderUtils {
         return targetClass;
     }
 
+    /**
+     * <p>loadClass.</p>
+     *
+     * @param className a {@link java.lang.String} object
+     * @param classLoader a {@link java.lang.ClassLoader} object
+     * @return a {@link java.lang.Class} object
+     */
     public static Class<?> loadClass(String className, ClassLoader classLoader) {
         try {
             return classLoader.loadClass(className);
@@ -127,12 +167,12 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * Loaded specified class name under {@link ClassLoader}
+     * Loaded specified class name under {@link java.lang.ClassLoader}
      *
-     * @param className   the name of {@link Class}
-     * @param classLoader {@link ClassLoader}
+     * @param className   the name of {@link java.lang.Class}
      * @param cached      the resolved class is required to be cached or not
-     * @return {@link Class} if can be loaded
+     * @param classLoader a {@link java.lang.ClassLoader} object
+     * @return a {@link java.lang.Class} object
      */
     public static Class<?> loadClass(String className, ClassLoader classLoader, boolean cached) {
         Class loadedClass = null;
@@ -145,6 +185,11 @@ public class ClassLoaderUtils {
         return loadedClass;
     }
 
+    /**
+     * @param className
+     * @param classLoader
+     * @return {@link String}
+     */
     private static String buildCacheKey(String className, ClassLoader classLoader) {
         return className + classLoader.hashCode();
     }

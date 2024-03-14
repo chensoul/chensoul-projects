@@ -1,6 +1,6 @@
 package com.chensoul.groovy.scripting;
 
-import com.chensoul.concurrent.TryReentrantLock;
+import com.chensoul.concurrent.TryLock;
 import groovy.lang.Binding;
 import groovy.lang.GroovyRuntimeException;
 import groovy.lang.Script;
@@ -23,9 +23,9 @@ import lombok.val;
 @ToString(of = "script")
 @RequiredArgsConstructor
 public class GroovyShellScript implements ExecutableScript {
-    private static final ThreadLocal<Map<String, Object>> BINDING_THREAD_LOCAL = new ThreadLocal<>();
+    private static final ThreadLocal<Map<String, Object>> BINDING_THREAD_LOCAL = new InheritableThreadLocal<>();
 
-    private final TryReentrantLock lock = new TryReentrantLock();
+    private final TryLock lock = new TryLock();
     private final String script;
 
     private Script groovyScript;

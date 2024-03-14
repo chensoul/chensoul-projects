@@ -8,6 +8,7 @@ import java.util.Objects;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 1.0.0
+ * @version $Id: $Id
  */
 public class TreeNode<T> implements Node<T> {
 
@@ -63,44 +64,52 @@ public class TreeNode<T> implements Node<T> {
 
     }
 
+    /** {@inheritDoc} */
     @Override
     public T getId() {
         return id;
     }
 
+    /** {@inheritDoc} */
     @Override
     public TreeNode<T> setId(final T id) {
         this.id = id;
         return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public T getParentId() {
         return parentId;
     }
 
+    /** {@inheritDoc} */
     @Override
     public TreeNode<T> setParentId(final T parentId) {
         this.parentId = parentId;
         return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public CharSequence getName() {
         return name;
     }
 
+    /** {@inheritDoc} */
     @Override
     public TreeNode<T> setName(final CharSequence name) {
         this.name = name;
         return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Comparable<?> getWeight() {
         return weight;
     }
 
+    /** {@inheritDoc} */
     @Override
     public TreeNode<T> setWeight(final Comparable<?> weight) {
         this.weight = weight;
@@ -129,6 +138,7 @@ public class TreeNode<T> implements Node<T> {
         return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
@@ -141,6 +151,7 @@ public class TreeNode<T> implements Node<T> {
         return Objects.equals(id, treeNode.id);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Objects.hash(id);

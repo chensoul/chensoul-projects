@@ -21,10 +21,11 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 
 /**
- * The Java Reflection {@link Method} Utility class
+ * The Java Reflection {@link java.lang.reflect.Method} Utility class
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class MethodUtils {
 
@@ -33,12 +34,13 @@ public abstract class MethodUtils {
      */
     public final static Predicate<? super Method> OBJECT_METHOD_PREDICATE = MethodUtils::isObjectMethod;
 
+    /** Constant <code>OBJECT_METHODS</code> */
     public final static Set<Method> OBJECT_METHODS = SetUtils.of(Object.class.getMethods());
 
     private final static ConcurrentMap<MethodKey, Method> methodsCache = new ConcurrentHashMap<>();
 
     /**
-     * Create an instance of {@link Predicate} for {@link Method} to exclude the specified declared class
+     * Create an instance of {@link java.util.function.Predicate} for {@link java.lang.reflect.Method} to exclude the specified declared class
      *
      * @param declaredClass the declared class to exclude
      * @return non-null
@@ -54,10 +56,10 @@ public abstract class MethodUtils {
      * @param includeInheritedTypes include the inherited types, e,g. super classes or interfaces
      * @param publicOnly            only public method
      * @param methodsToFilter       (optional) the methods to be filtered
-     * @return non-null read-only {@link List}
+     * @return non-null read-only {@link java.util.List}
      */
     public static List<Method> getMethods(Class<?> declaringClass, boolean includeInheritedTypes, boolean publicOnly,
-                                          Predicate<? super Method>... methodsToFilter) {
+        Predicate<? super Method>... methodsToFilter) {
 
         if (declaringClass == null || declaringClass.isPrimitive()) {
             return emptyList();
@@ -91,7 +93,7 @@ public abstract class MethodUtils {
      *
      * @param declaringClass  the declared class
      * @param methodsToFilter (optional) the methods to be filtered
-     * @return non-null read-only {@link List}
+     * @return non-null read-only {@link java.util.List}
      * @see #getMethods(Class, boolean, boolean, Predicate[])
      */
     public static List<Method> getDeclaredMethods(Class<?> declaringClass, Predicate<Method>... methodsToFilter) {
@@ -103,7 +105,7 @@ public abstract class MethodUtils {
      *
      * @param declaringClass  the declared class
      * @param methodsToFilter (optional) the methods to be filtered
-     * @return non-null read-only {@link List}
+     * @return non-null read-only {@link java.util.List}
      * @see #getMethods(Class, boolean, boolean, Predicate[])
      */
     public static List<Method> getMethods(Class<?> declaringClass, Predicate<Method>... methodsToFilter) {
@@ -115,7 +117,7 @@ public abstract class MethodUtils {
      *
      * @param declaringClass  the declared class
      * @param methodsToFilter (optional) the methods to be filtered
-     * @return non-null read-only {@link List}
+     * @return non-null read-only {@link java.util.List}
      * @see #getMethods(Class, boolean, boolean, Predicate[])
      */
     public static List<Method> getAllDeclaredMethods(Class<?> declaringClass, Predicate<? super Method>... methodsToFilter) {
@@ -127,7 +129,7 @@ public abstract class MethodUtils {
      *
      * @param declaringClass  the declared class
      * @param methodsToFilter (optional) the methods to be filtered
-     * @return non-null read-only {@link List}
+     * @return non-null read-only {@link java.util.List}
      * @see #getMethods(Class, boolean, boolean, Predicate[])
      */
     public static List<Method> getAllMethods(Class<?> declaringClass, Predicate<Method>... methodsToFilter) {
@@ -135,7 +137,7 @@ public abstract class MethodUtils {
     }
 
     /**
-     * Find the {@link Method} by the the specified type(including inherited types) and method name without the
+     * Find the {@link java.lang.reflect.Method} by the the specified type(including inherited types) and method name without the
      * parameter type.
      *
      * @param type       the target type
@@ -147,7 +149,7 @@ public abstract class MethodUtils {
     }
 
     /**
-     * Find the {@link Method} by the the specified type(including inherited types) and method name and parameter types
+     * Find the {@link java.lang.reflect.Method} by the the specified type(including inherited types) and method name and parameter types
      *
      * @param type           the target type
      * @param methodName     the method name
@@ -166,6 +168,14 @@ public abstract class MethodUtils {
         return findDeclaredMethod(declaredClass, methodName, parameterTypes);
     }
 
+    /**
+     * <p>findDeclaredMethod.</p>
+     *
+     * @param declaredClass a {@link java.lang.Class} object
+     * @param methodName a {@link java.lang.String} object
+     * @param parameterTypes a {@link java.lang.Class} object
+     * @return a {@link java.lang.reflect.Method} object
+     */
     public static Method findDeclaredMethod(Class<?> declaredClass, String methodName, Class<?>... parameterTypes) {
         Method method = getDeclaredMethod(declaredClass, methodName, parameterTypes);
         if (method == null) {
@@ -180,6 +190,14 @@ public abstract class MethodUtils {
         return method;
     }
 
+    /**
+     * <p>getDeclaredMethod.</p>
+     *
+     * @param declaredClass a {@link java.lang.Class} object
+     * @param methodName a {@link java.lang.String} object
+     * @param parameterTypes a {@link java.lang.Class} object
+     * @return a {@link java.lang.reflect.Method} object
+     */
     public static Method getDeclaredMethod(Class<?> declaredClass, String methodName, Class<?>... parameterTypes) {
         Method method = null;
         try {
@@ -216,6 +234,16 @@ public abstract class MethodUtils {
         return invokeMethod(null, type, methodName, parameters);
     }
 
+    /**
+     * <p>invokeMethod.</p>
+     *
+     * @param instance a {@link java.lang.Object} object
+     * @param type a {@link java.lang.Class} object
+     * @param methodName a {@link java.lang.String} object
+     * @param parameters a {@link java.lang.Object} object
+     * @param <T> a T class
+     * @return a T object
+     */
     public static <T> T invokeMethod(Object instance, Class<?> type, String methodName, Object... parameters) {
         Class[] parameterTypes = ClassUtils.getTypes(parameters);
         Method method = findMethod(type, methodName, parameterTypes);
@@ -227,6 +255,15 @@ public abstract class MethodUtils {
         return invokeMethod(instance, method, parameters);
     }
 
+    /**
+     * <p>invokeMethod.</p>
+     *
+     * @param instance a {@link java.lang.Object} object
+     * @param method a {@link java.lang.reflect.Method} object
+     * @param parameters a {@link java.lang.Object} object
+     * @param <T> a T class
+     * @return a T object
+     */
     public static <T> T invokeMethod(Object instance, Method method, Object... parameters) {
         return AccessibleObjectUtils.execute(method, () -> (T) method.invoke(instance, parameters));
     }
@@ -239,8 +276,6 @@ public abstract class MethodUtils {
      * @param overridden the second method, possibly being overridden
      * @return {@code true} if and only if the first method overrides
      * the second
-     * @jls 8.4.8 Inheritance, Overriding, and Hiding
-     * @jls 9.4.1 Inheritance and Overriding
      * @see Elements#overrides(ExecutableElement, ExecutableElement, TypeElement)
      */
     public static boolean overrides(Method overrider, Method overridden) {
@@ -345,10 +380,10 @@ public abstract class MethodUtils {
         String methodName = method.getName();
         String declaringClassName = ClassUtils.getTypeName(declaringClass);
         int size = declaringClassName.length() + 1 // '#'
-                   + methodName.length() + 1  // '('
-                   + (parameterCount == 0 ? 0 : parameterCount - 1) // (parameterCount - 1) * ','
-                   + 1  // ')'
-            ;
+            + methodName.length() + 1  // '('
+            + (parameterCount == 0 ? 0 : parameterCount - 1) // (parameterCount - 1) * ','
+            + 1  // ')'
+        ;
 
         for (int i = 0; i < parameterCount; i++) {
             Class<?> parameterType = parameterTypes[i];
@@ -375,6 +410,12 @@ public abstract class MethodUtils {
         return signatureBuilder.toString();
     }
 
+    /**
+     * <p>isObjectMethod.</p>
+     *
+     * @param method a {@link java.lang.reflect.Method} object
+     * @return a boolean
+     */
     public static boolean isObjectMethod(Method method) {
         if (method != null) {
             return Objects.equals(Object.class, method.getDeclaringClass());

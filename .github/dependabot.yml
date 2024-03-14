@@ -49,9 +49,6 @@ updates:
       - dependency-name: mysql:mysql-connector-java
         versions:
           - ">= 8"
-      - dependency-name: io.github.git-commit-id:git-commit-id-maven-plugin
-        versions:
-          - ">= 5"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

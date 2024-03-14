@@ -1,18 +1,19 @@
 package com.chensoul.util;
 
 import static com.chensoul.lang.Prioritized.COMPARATOR;
-import com.chensoul.reflect.ClassLoaderUtils;
-import com.chensoul.reflect.FieldUtils;
 import static java.lang.ClassLoader.getSystemClassLoader;
-import java.lang.reflect.Field;
-import java.util.Collection;
 import static java.util.Collections.emptySet;
 import static java.util.Collections.unmodifiableCollection;
+import static java.util.stream.Collectors.toSet;
+
+import com.chensoul.reflect.ClassLoaderUtils;
+import com.chensoul.reflect.FieldUtils;
+import java.lang.reflect.Field;
+import java.util.Collection;
 import java.util.IdentityHashMap;
 import java.util.Set;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.function.Predicate;
-import static java.util.stream.Collectors.toSet;
 
 /**
  * The utilities class for ShutdownHook
@@ -20,6 +21,7 @@ import static java.util.stream.Collectors.toSet;
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @see java.lang.ApplicationShutdownHooks
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class ShutdownHookUtils {
 
@@ -60,10 +62,23 @@ public abstract class ShutdownHookUtils {
         return filterShutdownHookThreads(t -> true);
     }
 
+    /**
+     * <p>filterShutdownHookThreads.</p>
+     *
+     * @param hookThreadFilter a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.Set} object
+     */
     public static Set<Thread> filterShutdownHookThreads(Predicate<Thread> hookThreadFilter) {
         return filterShutdownHookThreads(hookThreadFilter, false);
     }
 
+    /**
+     * <p>filterShutdownHookThreads.</p>
+     *
+     * @param hookThreadFilter a {@link java.util.function.Predicate} object
+     * @param removed a boolean
+     * @return a {@link java.util.Set} object
+     */
     public static Set<Thread> filterShutdownHookThreads(Predicate<Thread> hookThreadFilter, boolean removed) {
         if (hooksRef == null || hooksRef.isEmpty()) {
             return emptySet();
@@ -79,7 +94,7 @@ public abstract class ShutdownHookUtils {
     /**
      * Add the Shutdown Hook Callback
      *
-     * @param callback the {@link Runnable} callback
+     * @param callback the {@link java.lang.Runnable} callback
      * @return <code>true</code> if the specified Shutdown Hook Callback added, otherwise <code>false</code>
      */
     public static boolean addShutdownHookCallback(Runnable callback) {
@@ -93,7 +108,7 @@ public abstract class ShutdownHookUtils {
     /**
      * Remove the Shutdown Hook Callback
      *
-     * @param callback the {@link Runnable} callback
+     * @param callback the {@link java.lang.Runnable} callback
      * @return <code>true</code> if the specified Shutdown Hook Callback removed, otherwise <code>false</code>
      */
     public static boolean removeShutdownHookCallback(Runnable callback) {

@@ -3,48 +3,90 @@ package com.chensoul.util;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.Getter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
- * Result Object
+ * Pojo for response with code, message and data
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
-@Getter
+@Data
+@Accessors(chain = true)
 public class R<T> implements Serializable {
     private static final long serialVersionUID = 6551531108468957025L;
 
-    private final int code;
-    private final String message;
-    private final T data;
+    private int code;
+    private String message;
+    private T data;
 
-    private R(final int code, final String message, final T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
+    /**
+     * <p>Constructor for R.</p>
+     */
+    public R() {
     }
 
+    /**
+     * <p>ok.</p>
+     *
+     * @param <T> a T class
+     * @return a {@link com.chensoul.util.R} object
+     */
     public static <T> R<T> ok() {
-        return new R<>(0, "OK", null);
+        return new R<T>().setCode(0).setMessage("OK");
     }
 
-    public static <T> R<T> ok(final T object) {
-        return new R<>(0, "OK", object);
+    /**
+     * <p>ok.</p>
+     *
+     * @param data a T object
+     * @param <T> a T class
+     * @return a {@link com.chensoul.util.R} object
+     */
+    public static <T> R<T> ok(final T data) {
+        return new R<T>().setCode(0).setMessage("OK").setData(data);
     }
 
+    /**
+     * <p>error.</p>
+     *
+     * @param <T> a T class
+     * @return a {@link com.chensoul.util.R} object
+     */
     public static <T> R<T> error() {
         return error(ResultCode.SYSTEM_ERROR.getName());
     }
 
+    /**
+     * <p>error.</p>
+     *
+     * @param message a {@link java.lang.String} object
+     * @param <T> a T class
+     * @return a {@link com.chensoul.util.R} object
+     */
     public static <T> R<T> error(final String message) {
-        return error(500, message);
+        return error(ResultCode.SYSTEM_ERROR.getCode(), message);
     }
 
+    /**
+     * <p>error.</p>
+     *
+     * @param code a int
+     * @param message a {@link java.lang.String} object
+     * @param <T> a T class
+     * @return a {@link com.chensoul.util.R} object
+     */
     public static <T> R<T> error(final int code, final String message) {
-        return new R<>(code, message, null);
+        return new R<T>().setCode(code).setMessage(message);
     }
 
+    /**
+     * <p>toMap.</p>
+     *
+     * @return a {@link java.util.Map} object
+     */
     public Map<String, Object> toMap() {
         final Map<String, Object> map = new HashMap<>();
         map.put("code", this.getCode());

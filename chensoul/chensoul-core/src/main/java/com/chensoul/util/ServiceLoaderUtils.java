@@ -16,12 +16,12 @@ import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * {@link ServiceLoader} Utility
+ * {@link java.util.ServiceLoader} Utility
  *
- * @author <a href="mailto:mercyblitz@gmail.com">Mercy<a/>
- * @version 1.0.0
  * @see ServiceLoader
  * @since 0.0.1
+ * @author chensoul
+ * @version $Id: $Id
  */
 public abstract class ServiceLoaderUtils {
 
@@ -35,16 +35,14 @@ public abstract class ServiceLoaderUtils {
     }
 
     /**
-     * Using the hierarchy of {@link ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the configuration file META-INF/services <code>serviceType<code> under its class path.
-     * The configuration file of each service type can define multiple lists of implementation classes.
-     * <p/>
+     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
+     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
+     * The config file of each service type can define multiple lists of implementation classes.
      *
      * @param <S>         service type
      * @param serviceType service type
-     * @return service type all implementation objects of {@link Collections#unmodifiableList(List) readonly list}
-     * @throws IllegalArgumentException If it refers to the implementation class that does not define <code>serviceType<code>
-     *                                  in the configuration file /META-INF/services/<code>serviceType</code>
+     * @return service type all implementation objects of {@link java.util.Collections#unmodifiableList(List) readonly list}
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> List<S> loadServicesList(Class<S> serviceType) throws IllegalArgumentException {
         return loadServicesList(serviceType, ClassLoaderUtils.getClassLoader(serviceType));
@@ -52,34 +50,30 @@ public abstract class ServiceLoaderUtils {
 
 
     /**
-     * Using the hierarchy of {@link ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the configuration file META-INF/services <code>serviceType<code> under its class path.
-     * The configuration file of each service type can define multiple lists of implementation classes.
-     * <p/>
+     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
+     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
+     * The config file of each service type can define multiple lists of implementation classes.
      *
      * @param <S>         service type
      * @param serviceType service type
-     * @param classLoader {@link ClassLoader}
-     * @return service type all implementation objects of {@link Collections#unmodifiableList(List) readonly list}
-     * @throws IllegalArgumentException If it refers to the implementation class that does not define <code>serviceType<code>
-     *                                  in the configuration file /META-INF/services/<code>serviceType</code>
+     * @param classLoader {@link java.lang.ClassLoader}
+     * @return service type all implementation objects of {@link java.util.Collections#unmodifiableList(List) readonly list}
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> List<S> loadServicesList(Class<S> serviceType, ClassLoader classLoader) throws IllegalArgumentException {
         return loadServicesList(serviceType, classLoader, serviceLoaderCached);
     }
 
     /**
-     * Using the hierarchy of {@link ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the configuration file META-INF/services <code>serviceType<code> under its class path.
-     * The configuration file of each service type can define multiple lists of implementation classes.
-     * <p/>
+     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
+     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
+     * The config file of each service type can define multiple lists of implementation classes.
      *
      * @param <S>         service type
      * @param serviceType service type
      * @param cached      the list of services to be cached
-     * @return service type all implementation objects of {@link Collections#unmodifiableList(List) readonly list}
-     * @throws IllegalArgumentException If it refers to the implementation class that does not define <code>serviceType<code>
-     *                                  in the configuration file /META-INF/services/<code>serviceType</code>
+     * @return service type all implementation objects of {@link java.util.Collections#unmodifiableList(List) readonly list}
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> List<S> loadServicesList(Class<S> serviceType, boolean cached) throws IllegalArgumentException {
         return loadServicesList(serviceType, ClassLoaderUtils.getClassLoader(serviceType), cached);
@@ -87,86 +81,76 @@ public abstract class ServiceLoaderUtils {
 
 
     /**
-     * Using the hierarchy of {@link ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the configuration file META-INF/services <code>serviceType<code> under its class path.
-     * The configuration file of each service type can define multiple lists of implementation classes.
-     * <p/>
+     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
+     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
+     * The config file of each service type can define multiple lists of implementation classes.
      *
      * @param <S>         service type
      * @param serviceType service type
-     * @param classLoader {@link ClassLoader}
+     * @param classLoader {@link java.lang.ClassLoader}
      * @param cached      the list of services to be cached
-     * @return service type all implementation objects of {@link Collections#unmodifiableList(List) readonly list}
-     * @throws IllegalArgumentException If it refers to the implementation class that does not define <code>serviceType<code>
-     *                                  in the configuration file /META-INF/services/<code>serviceType</code>
+     * @return service type all implementation objects of {@link java.util.Collections#unmodifiableList(List) readonly list}
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> List<S> loadServicesList(Class<S> serviceType, ClassLoader classLoader, boolean cached) throws IllegalArgumentException {
         return unmodifiableList(loadServicesList0(serviceType, classLoader, cached));
     }
 
     /**
-     * Using the hierarchy of {@link ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the configuration file META-INF/services <code>serviceType<code> under its class path.
-     * The configuration file of each service type can define multiple lists of implementation classes.
-     * <p/>
+     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
+     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
+     * The config file of each service type can define multiple lists of implementation classes.
      *
      * @param <S>         service type
      * @param serviceType service type
      * @return service type all implementation objects
-     * @throws IllegalArgumentException If it refers to the implementation class that does not define <code>serviceType<code>
-     *                                  in the configuration file /META-INF/services/<code>serviceType</code>
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S[] loadServices(Class<S> serviceType) throws IllegalArgumentException {
         return loadServices(serviceType, ClassLoaderUtils.getClassLoader(serviceType));
     }
 
     /**
-     * Using the hierarchy of {@link ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the configuration file META-INF/services <code>serviceType<code> under its class path.
-     * The configuration file of each service type can define multiple lists of implementation classes.
-     * <p/>
+     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
+     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
+     * The config file of each service type can define multiple lists of implementation classes.
      *
      * @param <S>         service type
      * @param serviceType service type
-     * @param classLoader {@link ClassLoader}
+     * @param classLoader {@link java.lang.ClassLoader}
      * @return service type all implementation objects
-     * @throws IllegalArgumentException If it refers to the implementation class that does not define <code>serviceType<code>
-     *                                  in the configuration file /META-INF/services/<code>serviceType</code>
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S[] loadServices(Class<S> serviceType, ClassLoader classLoader) throws IllegalArgumentException {
         return loadServices(serviceType, classLoader, serviceLoaderCached);
     }
 
     /**
-     * Using the hierarchy of {@link ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the configuration file META-INF/services <code>serviceType<code> under its class path.
-     * The configuration file of each service type can define multiple lists of implementation classes.
-     * <p/>
+     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
+     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
+     * The config file of each service type can define multiple lists of implementation classes.
      *
      * @param <S>         service type
      * @param serviceType service type
      * @param cached      the list of services to be cached
      * @return service type all implementation objects
-     * @throws IllegalArgumentException If it refers to the implementation class that does not define <code>serviceType<code>
-     *                                  in the configuration file /META-INF/services/<code>serviceType</code>
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S[] loadServices(Class<S> serviceType, boolean cached) throws IllegalArgumentException {
         return loadServices(serviceType, ClassLoaderUtils.getClassLoader(serviceType), cached);
     }
 
     /**
-     * Using the hierarchy of {@link ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the configuration file META-INF/services <code>serviceType<code> under its class path.
-     * The configuration file of each service type can define multiple lists of implementation classes.
-     * <p/>
+     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
+     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
+     * The config file of each service type can define multiple lists of implementation classes.
      *
      * @param <S>         service type
      * @param serviceType service type
-     * @param classLoader {@link ClassLoader}
+     * @param classLoader {@link java.lang.ClassLoader}
      * @param cached      the list of services to be cached
      * @return service type all implementation objects
-     * @throws IllegalArgumentException If it refers to the implementation class that does not define <code>serviceType<code>
-     *                                  in the configuration file /META-INF/services/<code>serviceType</code>
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S[] loadServices(Class<S> serviceType, ClassLoader classLoader, boolean cached) throws IllegalArgumentException {
         return asArray(loadServicesList0(serviceType, classLoader, cached), serviceType);
@@ -174,17 +158,16 @@ public abstract class ServiceLoaderUtils {
 
     /**
      * Load the first instance of {@link #loadServicesList(Class) Service interface instances list}
-     * <p/>
-     * Design Purpose : Using the hierarchy of {@link ClassLoader}, each level of ClassLoader will be able to access the configuration files under its class path
+     *
+     * Design Purpose : Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader will be able to access the config files under its class path
      * /META-INF/services/<code>serviceType</code>.
-     * Then, override the first implementation class of the configuration file under the class path of ClassLoader,
+     * Then, override the first implementation class of the config file under the class path of ClassLoader,
      * thereby providing a mechanism for overriding the implementation class.
      *
      * @param <S>         service type
      * @param serviceType service type
      * @return If it exists, {@link #loadServicesList(Class, ClassLoader) loads the first in the list of implementation objects of service type}.
-     * @throws IllegalArgumentException If the implementation class that does not define <code>serviceType<code> is in the configuration file
-     *                                  META-INF/services/<code>serviceType<code>, IllegalArgumentException will be thrown
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S loadFirstService(Class<S> serviceType) throws IllegalArgumentException {
         return loadFirstService(serviceType, ClassLoaderUtils.getClassLoader(serviceType));
@@ -192,18 +175,17 @@ public abstract class ServiceLoaderUtils {
 
     /**
      * Load the first instance of {@link #loadServicesList(Class) Service interface instances list}
-     * <p/>
-     * Design Purpose : Using the hierarchy of {@link ClassLoader}, each level of ClassLoader will be able to access the configuration files under its class path
+     *
+     * Design Purpose : Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader will be able to access the config files under its class path
      * /META-INF/services/<code>serviceType</code>.
-     * Then, override the first implementation class of the configuration file under the class path of ClassLoader,
+     * Then, override the first implementation class of the config file under the class path of ClassLoader,
      * thereby providing a mechanism for overriding the implementation class.
      *
      * @param <S>         service type
      * @param serviceType service type
      * @param cached      the list of services to be cached
      * @return If it exists, {@link #loadServicesList(Class, ClassLoader) loads the first in the list of implementation objects of service type}.
-     * @throws IllegalArgumentException If the implementation class that does not define <code>serviceType<code> is in the configuration file
-     *                                  META-INF/services/<code>serviceType<code>, IllegalArgumentException will be thrown
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S loadFirstService(Class<S> serviceType, boolean cached) throws IllegalArgumentException {
         return loadFirstService(serviceType, ClassLoaderUtils.getClassLoader(serviceType), cached);
@@ -211,17 +193,17 @@ public abstract class ServiceLoaderUtils {
 
     /**
      * Load the first instance of {@link #loadServicesList(Class, ClassLoader) Service interface instances list}
-     * <p/>
-     * Design Purpose : Using the hierarchy of {@link ClassLoader}, each level of ClassLoader will be able to access the configuration files under its class path
+     *
+     * Design Purpose : Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader will be able to access the config files under its class path
      * /META-INF/services/<code>serviceType</code>.
-     * Then, override the first implementation class of the configuration file under the class path of ClassLoader,
+     * Then, override the first implementation class of the config file under the class path of ClassLoader,
      * thereby providing a mechanism for overriding the implementation class.
      *
      * @param <S>         service type
      * @param serviceType service type
      * @return If it exists, {@link #loadServicesList(Class, ClassLoader) loads the first in the list of implementation objects of service type}.
-     * @throws IllegalArgumentException If the implementation class that does not define <code>serviceType<code> is in the configuration file
-     *                                  META-INF/services/<code>serviceType<code>, IllegalArgumentException will be thrown
+     * @param classLoader a {@link java.lang.ClassLoader} object
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S loadFirstService(Class<S> serviceType, ClassLoader classLoader) throws IllegalArgumentException {
         return loadFirstService(serviceType, classLoader, serviceLoaderCached);
@@ -229,18 +211,18 @@ public abstract class ServiceLoaderUtils {
 
     /**
      * Load the first instance of {@link #loadServicesList(Class, ClassLoader) Service interface instances list}
-     * <p/>
-     * Design Purpose : Using the hierarchy of {@link ClassLoader}, each level of ClassLoader will be able to access the configuration files under its class path
+     *
+     * Design Purpose : Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader will be able to access the config files under its class path
      * /META-INF/services/<code>serviceType</code>.
-     * Then, override the first implementation class of the configuration file under the class path of ClassLoader,
+     * Then, override the first implementation class of the config file under the class path of ClassLoader,
      * thereby providing a mechanism for overriding the implementation class.
      *
      * @param <S>         service type
      * @param serviceType service type
      * @param cached      the list of services to be cached
      * @return If it exists, {@link #loadServicesList(Class, ClassLoader) loads the first in the list of implementation objects of service type}.
-     * @throws IllegalArgumentException If the implementation class that does not define <code>serviceType<code> is in the configuration file
-     *                                  META-INF/services/<code>serviceType<code>, IllegalArgumentException will be thrown
+     * @param classLoader a {@link java.lang.ClassLoader} object
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S loadFirstService(Class<S> serviceType, ClassLoader classLoader, boolean cached) throws IllegalArgumentException {
         return loadService(serviceType, classLoader, cached, true);
@@ -248,16 +230,16 @@ public abstract class ServiceLoaderUtils {
 
     /**
      * Loads the last in the list of objects implementing the service type, if present.
-     * <p/>
-     * <p/>
-     * Design Purpose : Using the hierarchy of {@link ClassLoader}, once the configuration file is loaded in the parent's ClassLoader at a higher level (here the highest-level ClassLoader is Bootstrap ClassLoader)
+     *
+     *
+     * Design Purpose : Using the hierarchy of {@link java.lang.ClassLoader}, once the config file is loaded in the parent's ClassLoader at a higher level (here the highest-level ClassLoader is Bootstrap ClassLoader)
      * /META-INF/services/<code>serviceType</code>
      * If the last implementation class is used, the lower-level Class Loader will not be able to override the previous definition。
      *
      * @param <S>         service type
      * @param serviceType service type
      * @return Loads the last in the list of objects implementing the service type, if present.
-     * @throws IllegalArgumentException see {@link #loadServicesList(Class, ClassLoader)}
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S loadLastService(Class<S> serviceType) throws IllegalArgumentException {
         return loadLastService(serviceType, ClassLoaderUtils.getClassLoader(serviceType));
@@ -265,9 +247,9 @@ public abstract class ServiceLoaderUtils {
 
     /**
      * Loads the last in the list of objects implementing the service type, if present.
-     * <p/>
-     * <p/>
-     * Design Purpose : Using the hierarchy of {@link ClassLoader}, once the configuration file is loaded in the parent's ClassLoader at a higher level (here the highest-level ClassLoader is Bootstrap ClassLoader)
+     *
+     *
+     * Design Purpose : Using the hierarchy of {@link java.lang.ClassLoader}, once the config file is loaded in the parent's ClassLoader at a higher level (here the highest-level ClassLoader is Bootstrap ClassLoader)
      * /META-INF/services/<code>serviceType</code>
      * If the last implementation class is used, the lower-level Class Loader will not be able to override the previous definition。
      *
@@ -275,7 +257,7 @@ public abstract class ServiceLoaderUtils {
      * @param serviceType service type
      * @param cached      the list of services to be cached
      * @return Loads the last in the list of objects implementing the service type, if present.
-     * @throws IllegalArgumentException see {@link #loadServicesList(Class, ClassLoader)}
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S loadLastService(Class<S> serviceType, boolean cached) throws IllegalArgumentException {
         return loadLastService(serviceType, ClassLoaderUtils.getClassLoader(serviceType), cached);
@@ -283,17 +265,17 @@ public abstract class ServiceLoaderUtils {
 
     /**
      * Loads the last in the list of objects implementing the service type, if present.
-     * <p/>
-     * <p/>
-     * Design Purpose : Using the hierarchy of {@link ClassLoader}, once the configuration file is loaded in the parent's ClassLoader at a higher level (here the highest-level ClassLoader is Bootstrap ClassLoader)
+     *
+     *
+     * Design Purpose : Using the hierarchy of {@link java.lang.ClassLoader}, once the config file is loaded in the parent's ClassLoader at a higher level (here the highest-level ClassLoader is Bootstrap ClassLoader)
      * /META-INF/services/<code>serviceType</code>
      * If the last implementation class is used, the lower-level Class Loader will not be able to override the previous definition。
      *
      * @param <S>         service type
      * @param serviceType service type
-     * @param classLoader {@link ClassLoader}
+     * @param classLoader {@link java.lang.ClassLoader}
      * @return Loads the last in the list of objects implementing the service type, if present.
-     * @throws IllegalArgumentException see {@link #loadServicesList(Class, ClassLoader)}
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S loadLastService(Class<S> serviceType, ClassLoader classLoader) throws IllegalArgumentException {
         return loadLastService(serviceType, classLoader, serviceLoaderCached);
@@ -301,21 +283,32 @@ public abstract class ServiceLoaderUtils {
 
     /**
      * Loads the last in the list of objects implementing the service type, if present.
-     * <p/>
-     * <p/>
-     * Design Purpose : Using the hierarchy of {@link ClassLoader}, once the configuration file is loaded in the parent's ClassLoader at a higher level (here the highest-level ClassLoader is Bootstrap ClassLoader)
+     *
+     *
+     * Design Purpose : Using the hierarchy of {@link java.lang.ClassLoader}, once the config file is loaded in the parent's ClassLoader at a higher level (here the highest-level ClassLoader is Bootstrap ClassLoader)
      * /META-INF/services/<code>serviceType</code>
      * If the last implementation class is used, the lower-level Class Loader will not be able to override the previous definition。
      *
      * @param <S>         service type
      * @param serviceType service type
      * @return Loads the last in the list of objects implementing the service type, if present.
-     * @throws IllegalArgumentException see {@link #loadServicesList(Class, ClassLoader)}
+     * @param classLoader a {@link java.lang.ClassLoader} object
+     * @param cached a boolean
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <S> S loadLastService(Class<S> serviceType, ClassLoader classLoader, boolean cached) throws IllegalArgumentException {
         return loadService(serviceType, classLoader, cached, false);
     }
 
+    /**
+     * <p>load.</p>
+     *
+     * @param serviceType a {@link java.lang.Class} object
+     * @param classLoader a {@link java.lang.ClassLoader} object
+     * @param cached a boolean
+     * @param <S> a S class
+     * @return a {@link java.util.ServiceLoader} object
+     */
     public static <S> ServiceLoader<S> load(Class<S> serviceType, ClassLoader classLoader, boolean cached) {
         if (cached) {
             Map<Class<?>, ServiceLoader<?>> serviceLoadersMap =
@@ -341,7 +334,7 @@ public abstract class ServiceLoaderUtils {
      * @param classLoader {@link ClassLoader}
      * @param cached      the list of services to be cached
      * @return Load all instances of service type
-     * @throws IllegalArgumentException see {@link #loadServicesList(Class, ClassLoader)}
+     *
      */
     private static <S> List<S> loadServicesList0(Class<S> serviceType, ClassLoader classLoader, boolean cached) throws IllegalArgumentException {
         if (classLoader == null) {
@@ -353,7 +346,7 @@ public abstract class ServiceLoaderUtils {
 
         if (serviceList.isEmpty()) {
             String className = serviceType.getName();
-            String message = String.format("No Service interface[type : %s] implementation was defined in service loader configuration file[/META-INF/services/%s] under ClassLoader[%s]", className, className, classLoader);
+            String message = String.format("No Service interface[type : %s] implementation was defined in service loader config file[/META-INF/services/%s] under ClassLoader[%s]", className, className, classLoader);
             IllegalArgumentException e = new IllegalArgumentException(message);
             throw e;
         }

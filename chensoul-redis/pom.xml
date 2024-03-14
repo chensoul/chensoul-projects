@@ -13,7 +13,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul Redis</name>
+  <name>Chensoul™ Redis</name>
   <description>${project.name}</description>
 
   <modules>

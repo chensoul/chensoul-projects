@@ -1,17 +1,30 @@
 package com.chensoul.exception;
 
+/**
+ * <p>BadRequestException class.</p>
+ *
+ * @author chensoul
+ * @version $Id: $Id
+ */
 public class BadRequestException extends RuntimeException {
-  public BadRequestException() {}
+    /**
+     * <p>Constructor for BadRequestException.</p>
+     *
+     * @param message a {@link java.lang.String} object
+     */
+    public BadRequestException(String message) {
+        super(message);
+    }
 
-  public BadRequestException(String message) {
-    super(message);
-  }
+    /**
+     * <p>Constructor for BadRequestException.</p>
+     *
+     * @param message a {@link java.lang.String} object
+     * @param cause a {@link java.lang.Throwable} object
+     */
+    public BadRequestException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public BadRequestException(String message, Throwable cause) {
-    super(message, cause);
-  }
 
-  public BadRequestException(Throwable cause) {
-    super(cause);
-  }
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
  *
  * @author Scott Battaglia
  * @since 3.0.0
+ * @version $Id: $Id
  */
 @NoArgsConstructor
 public class DefaultRandomStringGenerator extends AbstractRandomStringGenerator {
@@ -18,15 +19,19 @@ public class DefaultRandomStringGenerator extends AbstractRandomStringGenerator 
      */
     private static final char[] PRINTABLE_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345679".toCharArray();
 
+    /**
+     * <p>Constructor for DefaultRandomStringGenerator.</p>
+     *
+     * @param defaultLength a long
+     */
     public DefaultRandomStringGenerator(final long defaultLength) {
         super(defaultLength);
     }
 
     /**
-     * Convert bytes to string, taking into account {@link #PRINTABLE_CHARACTERS}.
+     * {@inheritDoc}
      *
-     * @param random the random
-     * @return the string
+     * Convert bytes to string, taking into account {@link #PRINTABLE_CHARACTERS}.
      */
     @Override
     protected String convertBytesToString(final byte[] random) {

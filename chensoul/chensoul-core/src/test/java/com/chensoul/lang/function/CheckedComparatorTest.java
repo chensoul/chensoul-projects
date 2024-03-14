@@ -15,11 +15,12 @@
  */
 package com.chensoul.lang.function;
 
-import java.util.Comparator;
-import java.util.function.Consumer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.Comparator;
+import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 
 public class CheckedComparatorTest {
@@ -67,10 +68,7 @@ public class CheckedComparatorTest {
         // Sneaky
         if (e.getCause() == null) {
             assertEquals(message, e.getMessage());
-        }
-
-        // Unchecked
-        else {
+        } else {
             assertEquals(Exception.class, e.getCause().getClass());
             assertEquals(message, e.getCause().getMessage());
         }

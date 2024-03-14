@@ -1,9 +1,10 @@
 package com.chensoul.validation;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+
 import javax.validation.ConstraintViolationException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;

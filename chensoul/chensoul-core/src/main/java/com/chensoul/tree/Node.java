@@ -8,56 +8,75 @@ import java.io.Serializable;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 1.0.0
+ * @version $Id: $Id
  */
 public interface Node<T> extends Comparable<Node<T>>, Serializable {
 
     /**
-     * @return
+     * <p>getId.</p>
+     *
+     * @return a T object
      */
     T getId();
 
     /**
-     * @param var1
-     * @return
+     * <p>setId.</p>
+     *
+     * @param var1 a T object
+     * @return a {@link com.chensoul.tree.Node} object
      */
     Node<T> setId(T var1);
 
     /**
-     * @return
+     * <p>getParentId.</p>
+     *
+     * @return a T object
      */
     T getParentId();
 
     /**
-     * @param var1
-     * @return
+     * <p>setParentId.</p>
+     *
+     * @param var1 a T object
+     * @return a {@link com.chensoul.tree.Node} object
      */
     Node<T> setParentId(T var1);
 
     /**
-     * @return
+     * <p>getName.</p>
+     *
+     * @return a {@link java.lang.CharSequence} object
      */
     CharSequence getName();
 
     /**
-     * @param var1
-     * @return
+     * <p>setName.</p>
+     *
+     * @param var1 a {@link java.lang.CharSequence} object
+     * @return a {@link com.chensoul.tree.Node} object
      */
     Node<T> setName(CharSequence var1);
 
     /**
-     * @return
+     * <p>getWeight.</p>
+     *
+     * @return a {@link java.lang.Comparable} object
      */
     Comparable<?> getWeight();
 
     /**
-     * @param var1
-     * @return
+     * <p>setWeight.</p>
+     *
+     * @param var1 a {@link java.lang.Comparable} object
+     * @return a {@link com.chensoul.tree.Node} object
      */
     Node<T> setWeight(Comparable<?> var1);
 
     /**
+     * <p>compareTo.</p>
+     *
      * @param node the object to be compared.
-     * @return
+     * @return a int
      */
     default int compareTo(Node node) {
         Comparable weight = this.getWeight();

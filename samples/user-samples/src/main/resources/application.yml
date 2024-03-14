@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+
+spring:
+  redis:
+    host: localhost
+    password: 123456
+
+spring.security.oauth2.resourceserver.jwt.public-key-location: classpath:public.key
+debug: on

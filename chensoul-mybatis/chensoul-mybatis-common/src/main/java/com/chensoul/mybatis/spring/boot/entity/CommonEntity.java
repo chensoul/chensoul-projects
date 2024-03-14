@@ -1,6 +1,7 @@
 package com.chensoul.mybatis.spring.boot.entity;
 
 import static com.chensoul.mybatis.spring.boot.entity.SaveEntity.NORM_DATETIME_PATTERN;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.time.LocalDateTime;

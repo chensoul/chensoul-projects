@@ -68,8 +68,6 @@ public class StompWebSocketMessageSender implements WebSocketMessageSender {
      * 发送给指定用户信息。
      *
      * @param webSocketMessage 发送内容参数实体 {@link WebSocketMessage}
-     * @throws IllegalChannelException    Web Socket 通道设置错误
-     * @throws PrincipalNotFoundException 该服务中无法找到与 identity 对应的用户 Principal
      */
     public void toUser(WebSocketMessage<String> webSocketMessage) {
         WebSocketChannel webSocketChannel = WebSocketChannel.getWebSocketChannel(webSocketMessage.getChannel());

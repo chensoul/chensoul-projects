@@ -14,6 +14,9 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
+  <name>Chensoul™ Spring Cloud</name>
+  <description>${project.name}</description>
+
   <modules>
     <module>chensoul-spring-cloud-openfeign</module>
     <module>chensoul-spring-cloud-loadbalancer</module>

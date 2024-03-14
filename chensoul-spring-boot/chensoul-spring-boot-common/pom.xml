@@ -10,7 +10,12 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>chensoul-spring-boot-common</artifactId>
+  <version>${revision}</version>
+
+  <name>Chensoul™ Spring Boot Common</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <dependency>
@@ -18,7 +23,7 @@
       <artifactId>chensoul-core</artifactId>
       <version>${revision}</version>
     </dependency>
-    
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-autoconfigure</artifactId>

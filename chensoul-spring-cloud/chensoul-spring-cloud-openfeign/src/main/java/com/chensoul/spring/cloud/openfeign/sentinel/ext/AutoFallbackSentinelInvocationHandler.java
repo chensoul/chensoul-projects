@@ -16,6 +16,8 @@
 
 package com.chensoul.spring.cloud.openfeign.sentinel.ext;
 
+import static feign.Util.checkNotNull;
+
 import com.alibaba.cloud.sentinel.feign.SentinelContractHolder;
 import com.alibaba.cloud.sentinel.feign.SentinelInvocationHandler;
 import com.alibaba.csp.sentinel.Entry;
@@ -30,7 +32,6 @@ import feign.Feign;
 import feign.InvocationHandlerFactory;
 import feign.MethodMetadata;
 import feign.Target;
-import static feign.Util.checkNotNull;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

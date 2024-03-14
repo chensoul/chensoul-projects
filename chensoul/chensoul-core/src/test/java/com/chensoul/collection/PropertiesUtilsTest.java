@@ -1,8 +1,9 @@
 package com.chensoul.collection;
 
 import static com.chensoul.collection.PropertiesUtils.flatProperties;
-import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 /**

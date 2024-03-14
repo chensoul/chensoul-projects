@@ -1,31 +1,39 @@
 package com.chensoul.reflect;
 
+import static java.util.Arrays.asList;
+
 import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.lang.function.Streams;
 import java.lang.reflect.Constructor;
-import static java.util.Arrays.asList;
 import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * The utilities class of {@link Constructor}
+ * The utilities class of {@link java.lang.reflect.Constructor}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class ConstructorUtils {
 
     /**
      * Is a non-private constructor without parameters
      *
-     * @param constructor {@link Constructor}
-     * @return <code>true</code> if the given {@link Constructor} is a public no-arg one,
+     * @param constructor {@link java.lang.reflect.Constructor}
+     * @return <code>true</code> if the given {@link java.lang.reflect.Constructor} is a public no-arg one,
      * otherwise <code>false</code>
      */
     public static boolean isNonPrivateConstructorWithoutParameters(Constructor<?> constructor) {
         return !MemberUtils.isPrivate(constructor) && constructor.getParameterCount() < 1;
     }
 
+    /**
+     * <p>hasNonPrivateConstructorWithoutParameters.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @return a boolean
+     */
     public static boolean hasNonPrivateConstructorWithoutParameters(Class<?> type) {
         Constructor<?>[] constructors = type.getDeclaredConstructors();
         boolean has = false;
@@ -38,30 +46,60 @@ public abstract class ConstructorUtils {
         return has;
     }
 
+    /**
+     * <p>getConstructors.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @param constructorFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Constructor<?>> getConstructors(Class<?> type,
-                                                       Predicate<? super Constructor<?>>... constructorFilters) {
+        Predicate<? super Constructor<?>>... constructorFilters) {
         List<Constructor<?>> constructors = asList(type.getConstructors());
         return Streams.filterAll(constructors, constructorFilters);
     }
 
+    /**
+     * <p>getDeclaredConstructors.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @param constructorFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Constructor<?>> getDeclaredConstructors(Class<?> type,
-                                                               Predicate<? super Constructor<?>>... constructorFilters) {
+        Predicate<? super Constructor<?>>... constructorFilters) {
         List<Constructor<?>> constructors = asList(type.getDeclaredConstructors());
         return Streams.filterAll(constructors, constructorFilters);
     }
 
+    /**
+     * <p>getConstructor.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @param parameterTypes a {@link java.lang.Class} object
+     * @param <T> a T class
+     * @return a {@link java.lang.reflect.Constructor} object
+     */
     public static <T> Constructor<T> getConstructor(Class<T> type, Class<?>... parameterTypes) {
         return CheckedSupplier.unchecked(() -> type.getConstructor(parameterTypes)).get();
     }
 
+    /**
+     * <p>getDeclaredConstructor.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @param parameterTypes a {@link java.lang.Class} object
+     * @param <T> a T class
+     * @return a {@link java.lang.reflect.Constructor} object
+     */
     public static <T> Constructor<T> getDeclaredConstructor(Class<T> type, Class<?>... parameterTypes) {
         return CheckedSupplier.unchecked(() -> type.getDeclaredConstructor(parameterTypes)).get();
     }
 
     /**
-     * Create an instance by the specified {@link Constructor} and arguments
+     * Create an instance by the specified {@link java.lang.reflect.Constructor} and arguments
      *
-     * @param constructor {@link Constructor}
+     * @param constructor {@link java.lang.reflect.Constructor}
      * @param args        the {@link Constructor Constructors} arguments
      * @param <T>         the type of instance
      * @return non-null

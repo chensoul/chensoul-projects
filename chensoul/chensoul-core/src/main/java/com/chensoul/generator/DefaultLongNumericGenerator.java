@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
  *
  * @author Scott Battaglia
  * @since 3.0.0
+ * @version $Id: $Id
  */
 public class DefaultLongNumericGenerator implements LongNumericGenerator {
 
@@ -39,21 +40,25 @@ public class DefaultLongNumericGenerator implements LongNumericGenerator {
         this.count = new AtomicLong(initialValue);
     }
 
+    /** {@inheritDoc} */
     @Override
     public long getNextLong() {
         return this.getNextValue();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getNextNumberAsString() {
         return Long.toString(this.getNextValue());
     }
 
+    /** {@inheritDoc} */
     @Override
     public int maxLength() {
         return DefaultLongNumericGenerator.MAX_STRING_LENGTH;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int minLength() {
         return DefaultLongNumericGenerator.MIN_STRING_LENGTH;
@@ -63,8 +68,8 @@ public class DefaultLongNumericGenerator implements LongNumericGenerator {
     /**
      * Gets the next value.
      *
-     * @return the next value. If the count has reached {@link Long#MAX_VALUE},
-     * then {@link Long#MAX_VALUE} is returned. Otherwise, the next increment.
+     * @return the next value. If the count has reached {@link java.lang.Long#MAX_VALUE},
+     * then {@link java.lang.Long#MAX_VALUE} is returned. Otherwise, the next increment.
      */
     protected long getNextValue() {
         if (this.count.compareAndSet(Long.MAX_VALUE, 0)) {

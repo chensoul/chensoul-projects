@@ -7,10 +7,11 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- *
+ * <p>Abstract TreeUtils class.</p>
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class TreeUtils {
     /**
@@ -20,9 +21,12 @@ public abstract class TreeUtils {
     }
 
     /**
-     * @param list
-     * @param parentId
-     * @return {@link Tree}<{@link E}>
+     * <p>buildSingle.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param parentId a E object
+     * @return {@link com.chensoul.tree.Tree}<{@link E}>
+     * @param <E> a E class
      */
     public static <E> Tree<E> buildSingle(final List<TreeNode<E>> list, final E parentId) {
         return buildSingle(list, parentId, TreeNodeConfig.treeNodeConfig, new DefaultNodeParser<>());
@@ -30,10 +34,13 @@ public abstract class TreeUtils {
 
 
     /**
-     * @param list
-     * @param parentId
-     * @param treeNodeConfig
-     * @return {@link Tree}<{@link E}>
+     * <p>buildSingle.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param parentId a E object
+     * @param treeNodeConfig a {@link com.chensoul.tree.TreeNodeConfig} object
+     * @return {@link com.chensoul.tree.Tree}<{@link E}>
+     * @param <E> a E class
      */
     public static <E> Tree<E> buildSingle(final List<TreeNode<E>> list, final E parentId, final TreeNodeConfig treeNodeConfig) {
         return buildSingle(list, parentId, treeNodeConfig, new DefaultNodeParser<>());
@@ -41,10 +48,14 @@ public abstract class TreeUtils {
 
 
     /**
-     * @param list
-     * @param parentId
-     * @param nodeParser
-     * @return {@link Tree}<{@link E}>
+     * <p>buildSingle.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param parentId a E object
+     * @param nodeParser a {@link com.chensoul.tree.NodeParser} object
+     * @return {@link com.chensoul.tree.Tree}<{@link E}>
+     * @param <T> a T class
+     * @param <E> a E class
      */
     public static <T, E> Tree<E> buildSingle(final List<T> list, final E parentId, final NodeParser<T, E> nodeParser) {
         return buildSingle(list, parentId, TreeNodeConfig.treeNodeConfig, nodeParser);
@@ -52,19 +63,25 @@ public abstract class TreeUtils {
 
 
     /**
-     * @param list
-     * @param parentId
-     * @return {@link List}<{@link Tree}<{@link E}>>
+     * <p>build.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param parentId a E object
+     * @return {@link java.util.List}<{@link com.chensoul.tree.Tree}<{@link E}>>
+     * @param <E> a E class
      */
     public static <E> List<Tree<E>> build(final List<TreeNode<E>> list, final E parentId) {
         return build(list, parentId, TreeNodeConfig.treeNodeConfig, new DefaultNodeParser<>());
     }
 
     /**
-     * @param list
-     * @param parentId
-     * @param treeNodeConfig
-     * @return {@link List}<{@link Tree}<{@link E}>>
+     * <p>build.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param parentId a E object
+     * @param treeNodeConfig a {@link com.chensoul.tree.TreeNodeConfig} object
+     * @return {@link java.util.List}<{@link com.chensoul.tree.Tree}<{@link E}>>
+     * @param <E> a E class
      */
     public static <E> List<Tree<E>> build(final List<TreeNode<E>> list, final E parentId, final TreeNodeConfig treeNodeConfig) {
         return build(list, parentId, treeNodeConfig, new DefaultNodeParser<>());
@@ -72,45 +89,60 @@ public abstract class TreeUtils {
 
 
     /**
-     * @param list
-     * @param parentId
-     * @param nodeParser
-     * @return {@link List}<{@link Tree}<{@link E}>>
+     * <p>build.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param parentId a E object
+     * @param nodeParser a {@link com.chensoul.tree.NodeParser} object
+     * @return {@link java.util.List}<{@link com.chensoul.tree.Tree}<{@link E}>>
+     * @param <T> a T class
+     * @param <E> a E class
      */
     public static <T, E> List<Tree<E>> build(final List<T> list, final E parentId, final NodeParser<T, E> nodeParser) {
         return build(list, parentId, TreeNodeConfig.treeNodeConfig, nodeParser);
     }
 
     /**
-     * @param list
-     * @param rootId
-     * @param treeNodeConfig
-     * @param nodeParser
-     * @return {@link List}<{@link Tree}<{@link E}>>
+     * <p>build.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param rootId a E object
+     * @param treeNodeConfig a {@link com.chensoul.tree.TreeNodeConfig} object
+     * @param nodeParser a {@link com.chensoul.tree.NodeParser} object
+     * @return {@link java.util.List}<{@link com.chensoul.tree.Tree}<{@link E}>>
+     * @param <T> a T class
+     * @param <E> a E class
      */
     public static <T, E> List<Tree<E>> build(final List<T> list, final E rootId, final TreeNodeConfig treeNodeConfig,
-                                             final NodeParser<T, E> nodeParser) {
+        final NodeParser<T, E> nodeParser) {
         return buildSingle(list, rootId, treeNodeConfig, nodeParser).getChildren();
     }
 
 
     /**
-     * @param list
-     * @param rootId
-     * @param treeNodeConfig
-     * @param nodeParser
-     * @return {@link Tree}<{@link E}>
+     * <p>buildSingle.</p>
+     *
+     * @param list a {@link java.util.List} object
+     * @param rootId a E object
+     * @param treeNodeConfig a {@link com.chensoul.tree.TreeNodeConfig} object
+     * @param nodeParser a {@link com.chensoul.tree.NodeParser} object
+     * @return {@link com.chensoul.tree.Tree}<{@link E}>
+     * @param <T> a T class
+     * @param <E> a E class
      */
     public static <T, E> Tree<E> buildSingle(final List<T> list, final E rootId, final TreeNodeConfig treeNodeConfig,
-                                             final NodeParser<T, E> nodeParser) {
+        final NodeParser<T, E> nodeParser) {
         return TreeSupplier.of(rootId, treeNodeConfig).append(list, nodeParser).get();
     }
 
 
     /**
-     * @param map
-     * @param rootId
-     * @return {@link List}<{@link Tree}<{@link E}>>
+     * <p>build.</p>
+     *
+     * @param map a {@link java.util.Map} object
+     * @param rootId a E object
+     * @return {@link java.util.List}<{@link com.chensoul.tree.Tree}<{@link E}>>
+     * @param <E> a E class
      */
     public static <E> List<Tree<E>> build(final Map<E, Tree<E>> map, final E rootId) {
         return buildSingle(map, rootId).getChildren();
@@ -118,9 +150,12 @@ public abstract class TreeUtils {
 
 
     /**
-     * @param map
-     * @param rootId
-     * @return {@link Tree}<{@link E}>
+     * <p>buildSingle.</p>
+     *
+     * @param map a {@link java.util.Map} object
+     * @param rootId a E object
+     * @return {@link com.chensoul.tree.Tree}<{@link E}>
+     * @param <E> a E class
      */
     public static <E> Tree<E> buildSingle(final Map<E, Tree<E>> map, final E rootId) {
         final Tree<E> tree = getFirstNoneNull(map.values());
@@ -133,8 +168,11 @@ public abstract class TreeUtils {
     }
 
     /**
-     * @param iterable
+     * <p>getFirstNoneNull.</p>
+     *
+     * @param iterable a {@link java.lang.Iterable} object
      * @return {@link T}
+     * @param <T> a T class
      */
     public static <T> T getFirstNoneNull(final Iterable<T> iterable) {
         if (null == iterable) {
@@ -154,9 +192,12 @@ public abstract class TreeUtils {
 
 
     /**
-     * @param node
-     * @param id
-     * @return {@link Tree}<{@link T}>
+     * <p>getNode.</p>
+     *
+     * @param node a {@link com.chensoul.tree.Tree} object
+     * @param id a T object
+     * @return {@link com.chensoul.tree.Tree}<{@link T}>
+     * @param <T> a T class
      */
     public static <T> Tree<T> getNode(final Tree<T> node, final T id) {
         if (Objects.equals(id, node.getId())) {
@@ -182,9 +223,12 @@ public abstract class TreeUtils {
     }
 
     /**
-     * @param node
-     * @param includeCurrentNode
-     * @return {@link List}<{@link CharSequence}>
+     * <p>getParentsName.</p>
+     *
+     * @param node a {@link com.chensoul.tree.Tree} object
+     * @param includeCurrentNode a boolean
+     * @return {@link java.util.List}<{@link java.lang.CharSequence}>
+     * @param <T> a T class
      */
     public static <T> List<CharSequence> getParentsName(final Tree<T> node, final boolean includeCurrentNode) {
         final List<CharSequence> result = new ArrayList<>();
@@ -205,8 +249,11 @@ public abstract class TreeUtils {
     }
 
     /**
-     * @param id
-     * @return {@link Tree}<{@link E}>
+     * <p>createEmptyNode.</p>
+     *
+     * @param id a E object
+     * @return {@link com.chensoul.tree.Tree}<{@link E}>
+     * @param <E> a E class
      */
     public static <E> Tree<E> createEmptyNode(final E id) {
         return new Tree<E>().setId(id);

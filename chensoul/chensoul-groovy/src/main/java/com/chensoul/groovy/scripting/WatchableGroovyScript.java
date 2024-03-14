@@ -1,6 +1,6 @@
 package com.chensoul.groovy.scripting;
 
-import com.chensoul.concurrent.TryReentrantLock;
+import com.chensoul.concurrent.TryLock;
 import com.chensoul.lang.function.CheckedConsumer;
 import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.spring.util.ResourceUtils;
@@ -24,7 +24,7 @@ import org.springframework.core.io.Resource;
 @ToString(of = "resource")
 @Accessors(chain = true)
 public class WatchableGroovyScript implements ExecutableScript {
-    private final TryReentrantLock lock = new TryReentrantLock();
+    private final TryLock lock = new TryLock();
 
     private final Resource resource;
 

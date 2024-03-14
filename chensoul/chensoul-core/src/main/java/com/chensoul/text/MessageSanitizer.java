@@ -5,6 +5,7 @@ package com.chensoul.text;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 @FunctionalInterface
 public interface MessageSanitizer {

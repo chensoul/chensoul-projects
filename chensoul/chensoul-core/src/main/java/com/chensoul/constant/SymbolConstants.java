@@ -1,5 +1,11 @@
 package com.chensoul.constant;
 
+/**
+ * <p>SymbolConstants interface.</p>
+ *
+ * @author chensoul
+ * @version $Id: $Id
+ */
 public interface SymbolConstants {
     /**
      * The comma char : ','
@@ -86,11 +92,15 @@ public interface SymbolConstants {
      */
     char RIGHT_PARENTHESIS_CHAR = ')';
 
+    /** Constant <code>LEFT_BRACE_CHAR='{'</code> */
     char LEFT_BRACE_CHAR = '{';
 
+    /** Constant <code>RIGHT_BRACE_CHAR='}'</code> */
     char RIGHT_BRACE_CHAR = '}';
 
+    /** Constant <code>LEFT_SQ_BRACKET_CHAR='['</code> */
     char LEFT_SQ_BRACKET_CHAR = '[';
+    /** Constant <code>RIGHT_SQ_BRACKET_CHAR=']'</code> */
     char RIGHT_SQ_BRACKET_CHAR = ']';
 
     /**
@@ -173,7 +183,7 @@ public interface SymbolConstants {
     String DOT = ".";
 
     /**
-     * The and symbol : "&"
+     * The and symbol
      */
     String AND = "&";
 
@@ -183,22 +193,22 @@ public interface SymbolConstants {
     String EQUAL = "=";
 
     /**
-     * The less than symbol : "<"
+     * The less than symbol
      */
     String LESS_THAN = "<";
 
     /**
-     * The less than or equal to symbol : "<="
+     * The less than or equal to symbol
      */
     String LESS_THAN_OR_EQUAL_TO = "<=";
 
     /**
-     * The greater than symbol : ">"
+     * The greater than symbol
      */
     String GREATER_THAN = ">";
 
     /**
-     * The greater than or equal to symbol : ">="
+     * The greater than or equal to symbol
      */
     String GREATER_THAN_OR_EQUAL_TO = ">=";
 
@@ -278,6 +288,7 @@ public interface SymbolConstants {
      */
     String STAR = "*";
 
+    /** Constant <code>STAR_THREE="***"</code> */
     String STAR_THREE = "***";
 
 
@@ -308,6 +319,7 @@ public interface SymbolConstants {
      */
     String PERCENT = "%";
 
+    /** Constant <code>AT="@"</code> */
     String AT = "@";
 
 }

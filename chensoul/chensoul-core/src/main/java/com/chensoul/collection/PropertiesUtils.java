@@ -1,16 +1,18 @@
 package com.chensoul.collection;
 
 import static com.chensoul.constant.SymbolConstants.DOT;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
 /**
- * The utilities class for {@link Properties}
+ * The utilities class for {@link java.util.Properties}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class PropertiesUtils {
 
@@ -30,7 +32,7 @@ public abstract class PropertiesUtils {
     }
 
     static void flatProperties(Map<String, Object> properties, String propertyNamePrefix,
-                               Map<String, Object> flattenProperties) {
+        Map<String, Object> flattenProperties) {
         for (Map.Entry<String, Object> entry : properties.entrySet()) {
             String propertyName = normalizePropertyName(propertyNamePrefix, entry.getKey());
             Object propertyValue = entry.getValue();
