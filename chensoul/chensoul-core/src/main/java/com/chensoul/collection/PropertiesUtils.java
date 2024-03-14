@@ -8,10 +8,11 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * The utilities class for {@link Properties}
+ * The utilities class for {@link java.util.Properties}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class PropertiesUtils {
 

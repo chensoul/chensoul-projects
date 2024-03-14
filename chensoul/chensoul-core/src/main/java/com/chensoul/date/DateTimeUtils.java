@@ -32,6 +32,7 @@ import lombok.val;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 @SuppressWarnings("JavaUtilDate")
 public abstract class DateTimeUtils {
@@ -47,14 +48,23 @@ public abstract class DateTimeUtils {
         DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm")
     );
 
+    /**
+     * <p>format.</p>
+     *
+     * @param localDate a {@link java.time.LocalDate} object
+     * @param datePattern a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String format(final LocalDate localDate, String datePattern) {
         return localDate.format(DateTimeFormatter.ofPattern(datePattern));
     }
 
     /**
-     * @param localDateTime
-     * @param datePattern
-     * @return
+     * <p>format.</p>
+     *
+     * @param localDateTime a {@link java.time.LocalDateTime} object
+     * @param datePattern a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
      */
     public static String format(final LocalDateTime localDateTime, String datePattern) {
         return localDateTime.format(DateTimeFormatter.ofPattern(datePattern));
@@ -130,6 +140,12 @@ public abstract class DateTimeUtils {
         return localDateTimeOf(time.getTime());
     }
 
+    /**
+     * <p>localDateTimeOf.</p>
+     *
+     * @param calendar a {@link java.util.Calendar} object
+     * @return a {@link java.time.LocalDateTime} object
+     */
     public static LocalDateTime localDateTimeOf(final Calendar calendar) {
         final TimeZone tz = calendar.getTimeZone();
         final ZoneId zid = tz == null ? ZoneId.systemDefault() : tz.toZoneId();
@@ -223,12 +239,21 @@ public abstract class DateTimeUtils {
         return ZonedDateTime.ofInstant(time.toInstant(), time.getTimeZone().toZoneId());
     }
 
+    /**
+     * <p>calendarOf.</p>
+     *
+     * @param localDateTime a {@link java.time.LocalDateTime} object
+     * @return a {@link java.util.Calendar} object
+     */
     public static Calendar calendarOf(final LocalDateTime localDateTime) {
         return GregorianCalendar.from(ZonedDateTime.of(localDateTime, ZoneId.systemDefault()));
     }
 
     /**
      * Converts local date date to Calendar and setting date to midnight.
+     *
+     * @param localDate a {@link java.time.LocalDate} object
+     * @return a {@link java.util.Calendar} object
      */
     public static Calendar calendarOf(final LocalDate localDate) {
         return GregorianCalendar.from(ZonedDateTime.of(localDate, LocalTime.NOON, ZoneId.systemDefault()));
@@ -270,18 +295,25 @@ public abstract class DateTimeUtils {
      * @param time Time object to be converted.
      * @return Date representing time
      */
-
     public static Date dateOf(final Instant time) {
         return Date.from(time.atZone(ZoneId.systemDefault()).toInstant());
     }
 
+    /**
+     * <p>millisecondOf.</p>
+     *
+     * @param localDateTime a {@link java.time.LocalDateTime} object
+     * @return a long
+     */
     public static long millisecondOf(final LocalDateTime localDateTime) {
         return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
     /**
-     * @param localDateTime
-     * @return
+     * <p>secondOf.</p>
+     *
+     * @param localDateTime a {@link java.time.LocalDateTime} object
+     * @return a long
      */
     public static long secondOf(final LocalDateTime localDateTime) {
         return localDateTime.atZone(ZoneId.systemDefault()).toInstant().getEpochSecond();
@@ -290,6 +322,9 @@ public abstract class DateTimeUtils {
     /**
      * Converts local date date to epoh milliseconds assuming start of the day as date
      * point.
+     *
+     * @param localDate a {@link java.time.LocalDate} object
+     * @return a long
      */
     public static long millisecondOf(final LocalDate localDate) {
         return millisecondOf(localDate.atStartOfDay());
@@ -376,54 +411,72 @@ public abstract class DateTimeUtils {
         }
     }
 
+    /**
+     * <p>startOfDay.</p>
+     *
+     * @param time a {@link java.time.LocalDateTime} object
+     * @return a {@link java.time.LocalDateTime} object
+     */
     public static LocalDateTime startOfDay(LocalDateTime time) {
         return time.with(LocalTime.MIN);
     }
 
     /**
-     * @param time
-     * @return
+     * <p>endOfDay.</p>
+     *
+     * @param time a {@link java.time.LocalDateTime} object
+     * @return a {@link java.time.LocalDateTime} object
      */
     public static LocalDateTime endOfDay(LocalDateTime time) {
         return time.with(LocalTime.MAX);
     }
 
     /**
-     * @param localDateTime
-     * @return
+     * <p>firstDayOfMonth.</p>
+     *
+     * @param localDateTime a {@link java.time.LocalDateTime} object
+     * @return a {@link java.time.LocalDateTime} object
      */
     public static LocalDateTime firstDayOfMonth(LocalDateTime localDateTime) {
         return localDateTime.with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
     }
 
     /**
-     * @param localDateTime
-     * @return
+     * <p>lastDayOfMonth.</p>
+     *
+     * @param localDateTime a {@link java.time.LocalDateTime} object
+     * @return a {@link java.time.LocalDateTime} object
      */
     public static LocalDateTime lastDayOfMonth(LocalDateTime localDateTime) {
         return localDateTime.with(TemporalAdjusters.lastDayOfMonth()).with(LocalTime.MAX);
     }
 
     /**
-     * @param localDateTime
-     * @return
+     * <p>firstDayOfYear.</p>
+     *
+     * @param localDateTime a {@link java.time.LocalDateTime} object
+     * @return a {@link java.time.LocalDateTime} object
      */
     public static LocalDateTime firstDayOfYear(LocalDateTime localDateTime) {
         return localDateTime.with(TemporalAdjusters.firstDayOfYear()).with(LocalTime.MIN);
     }
 
     /**
-     * @param localDateTime
-     * @return
+     * <p>lastDayOfYear.</p>
+     *
+     * @param localDateTime a {@link java.time.LocalDateTime} object
+     * @return a {@link java.time.LocalDateTime} object
      */
     public static LocalDateTime lastDayOfYear(LocalDateTime localDateTime) {
         return localDateTime.with(TemporalAdjusters.lastDayOfYear()).with(LocalTime.MAX);
     }
 
     /**
-     * @param from
-     * @param to
-     * @return
+     * <p>getDays.</p>
+     *
+     * @param from a {@link java.time.LocalDate} object
+     * @param to a {@link java.time.LocalDate} object
+     * @return a {@link java.util.List} object
      */
     public static List<String> getDays(LocalDate from, LocalDate to) {
         if (from == null || to == null) {

@@ -4,10 +4,11 @@ import java.lang.reflect.Type;
 import java.util.Objects;
 
 /**
- * {@link Type} Argument
+ * {@link java.lang.reflect.Type} Argument
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public class TypeArgument {
 
@@ -15,15 +16,29 @@ public class TypeArgument {
 
     private final int index;
 
+    /**
+     * <p>Constructor for TypeArgument.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param index a int
+     */
     protected TypeArgument(Type type, int index) {
         this.type = type;
         this.index = index;
     }
 
+    /**
+     * <p>create.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param index a int
+     * @return a {@link com.chensoul.reflect.TypeArgument} object
+     */
     public static TypeArgument create(Type type, int index) {
         return new TypeArgument(type, index);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return "TypeArgument{" +
@@ -32,14 +47,25 @@ public class TypeArgument {
             '}';
     }
 
+    /**
+     * <p>Getter for the field <code>type</code>.</p>
+     *
+     * @return a {@link java.lang.reflect.Type} object
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     * <p>Getter for the field <code>index</code>.</p>
+     *
+     * @return a int
+     */
     public int getIndex() {
         return index;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,6 +77,7 @@ public class TypeArgument {
         return Objects.equals(type, that.type);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         int result = type != null ? type.hashCode() : 0;

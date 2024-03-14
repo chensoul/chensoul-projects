@@ -14,7 +14,7 @@
   <artifactId>gateway</artifactId>
   <version>${revision}</version>
 
-  <name>Microservice :: Gateway</name>
+  <name>SpringCloud :: Gateway</name>
   <description>${project.name}</description>
 
   <dependencies>

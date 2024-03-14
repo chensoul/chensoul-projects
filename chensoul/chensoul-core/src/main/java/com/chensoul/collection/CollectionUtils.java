@@ -17,38 +17,85 @@ import java.util.List;
  */
 public abstract class CollectionUtils {
 
+    /**
+     * <p>isEmpty.</p>
+     *
+     * @param collection a {@link java.util.Collection} object
+     * @return a boolean
+     */
     public static boolean isEmpty(Collection<?> collection) {
         return collection == null || collection.isEmpty();
     }
 
+    /**
+     * <p>isNotEmpty.</p>
+     *
+     * @param collection a {@link java.util.Collection} object
+     * @return a boolean
+     */
     public static boolean isNotEmpty(Collection<?> collection) {
         return !isEmpty(collection);
     }
 
+    /**
+     * <p>toIterable.</p>
+     *
+     * @param collection a {@link java.util.Collection} object
+     * @param <E> a E class
+     * @return a {@link java.lang.Iterable} object
+     */
     public static <E> Iterable<E> toIterable(Collection<E> collection) {
         return collection;
     }
 
+    /**
+     * <p>toIterable.</p>
+     *
+     * @param iterator a {@link java.util.Iterator} object
+     * @param <E> a E class
+     * @return a {@link java.lang.Iterable} object
+     */
     public static <E> Iterable<E> toIterable(Iterator<E> iterator) {
         return new IterableAdapter(iterator);
     }
 
+    /**
+     * <p>toIterator.</p>
+     *
+     * @param enumeration a {@link java.util.Enumeration} object
+     * @param <E> a E class
+     * @return a {@link java.util.Iterator} object
+     */
     public static <E> Iterator<E> toIterator(Enumeration<E> enumeration) {
         return new EnumerationIterator(enumeration);
     }
 
+    /**
+     * <p>toIterable.</p>
+     *
+     * @param enumeration a {@link java.util.Enumeration} object
+     * @param <E> a E class
+     * @return a {@link java.lang.Iterable} object
+     */
     public static <E> Iterable<E> toIterable(Enumeration<E> enumeration) {
         return toIterable(toIterator(enumeration));
     }
 
+    /**
+     * <p>unmodifiableIterator.</p>
+     *
+     * @param iterator a {@link java.util.Iterator} object
+     * @param <E> a E class
+     * @return a {@link java.util.Iterator} object
+     */
     public static <E> Iterator<E> unmodifiableIterator(Iterator<E> iterator) {
         return new UnmodifiableIterator(iterator);
     }
 
     /**
-     * Get the size of the specified {@link Collection}
+     * Get the size of the specified {@link java.util.Collection}
      *
-     * @param collection the specified {@link Collection}
+     * @param collection the specified {@link java.util.Collection}
      * @return must be positive number
      */
     public static int size(Collection<?> collection) {
@@ -56,9 +103,9 @@ public abstract class CollectionUtils {
     }
 
     /**
-     * Get the size of the specified {@link Iterable}
+     * Get the size of the specified {@link java.lang.Iterable}
      *
-     * @param iterable the specified {@link Iterable}
+     * @param iterable the specified {@link java.lang.Iterable}
      * @return must be positive number
      */
     public static int size(Iterable<?> iterable) {
@@ -76,10 +123,10 @@ public abstract class CollectionUtils {
 
     /**
      * Compares the specified collection with another, the main implementation references
-     * {@link AbstractSet}
+     * {@link java.util.AbstractSet}
      *
-     * @param one     {@link Collection}
-     * @param another {@link Collection}
+     * @param one     {@link java.util.Collection}
+     * @param another {@link java.util.Collection}
      * @return if equals, return <code>true</code>, or <code>false</code>
      */
     public static boolean equals(Collection<?> one, Collection<?> another) {
@@ -151,10 +198,10 @@ public abstract class CollectionUtils {
     }
 
     /**
-     * Take the first element from the specified {@link Iterable}
+     * Take the first element from the specified {@link java.lang.Iterable}
      *
-     * @param values the {@link Iterable} object
-     * @param <T>    the type of element of {@link Iterable}
+     * @param values the {@link java.lang.Iterable} object
+     * @param <T>    the type of element of {@link java.lang.Iterable}
      * @return if found, return the first one, or <code>null</code>
      */
     public static <T> T first(Iterable<T> values) {
@@ -164,7 +211,7 @@ public abstract class CollectionUtils {
     /**
      * Take the first element from the specified {@lin Iterator}
      *
-     * @param values the {@link Iterator} object
+     * @param values the {@link java.util.Iterator} object
      * @param <T>    the type of element of {@lin Iterator}
      * @return if found, return the first one, or <code>null</code>
      */

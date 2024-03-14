@@ -7,8 +7,14 @@ import java.time.Duration;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class ThreadUtils {
+    /**
+     * <p>sleep.</p>
+     *
+     * @param ms a long
+     */
     public static void sleep(final long ms) {
         try {
             Thread.sleep(ms);
@@ -28,6 +34,11 @@ public abstract class ThreadUtils {
         }
     }
 
+    /**
+     * <p>sleep.</p>
+     *
+     * @param duration a {@link java.time.Duration} object
+     */
     public static void sleep(final Duration duration) {
         sleep(duration.toMillis());
     }

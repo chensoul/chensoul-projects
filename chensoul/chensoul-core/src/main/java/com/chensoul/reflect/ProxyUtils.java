@@ -35,6 +35,7 @@ import java.util.function.Predicate;
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since 1.0.0
+ * @version $Id: $Id
  */
 public abstract class ProxyUtils {
 
@@ -47,8 +48,8 @@ public abstract class ProxyUtils {
      *     <li>class is not array type</li>
      * </ul>
      *
-     * @param type
-     * @return
+     * @param type a {@link java.lang.Class} object
+     * @return a boolean
      */
     public static boolean isProxyable(Class<?> type) {
         if (isArray(type)) {

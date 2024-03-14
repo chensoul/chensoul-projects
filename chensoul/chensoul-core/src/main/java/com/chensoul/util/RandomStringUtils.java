@@ -4,9 +4,9 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Generates random {@link String}s.
+ * Generates random {@link java.lang.String}s.
  *
- * <p><b>Caveat: Instances of {@link Random}, upon which the implementation of this
+ * <p><b>Caveat: Instances of {@link java.util.Random}, upon which the implementation of this
  * class relies, are not cryptographically secure.</b></p>
  *
  * <p>RandomStringUtils is intended for simple use cases. For more advanced
@@ -31,6 +31,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * <p>#ThreadSafe#</p>
  *
  * @since 1.0
+ * @author chensoul
+ * @version $Id: $Id
  */
 public abstract class RandomStringUtils {
 
@@ -77,7 +79,6 @@ public abstract class RandomStringUtils {
      * @param numbers if {@code true}, generated string may include
      *                numeric characters
      * @return the random string
-     *
      */
     public static String random(final int count, final boolean letters, final boolean numbers) {
         return random(count, 0, 0, letters, numbers);
@@ -93,7 +94,6 @@ public abstract class RandomStringUtils {
      * @param chars the character array containing the set of characters to use,
      *              may be null
      * @return the random string
-     *
      */
     public static String random(final int count, final char... chars) {
         if (chars == null) {
@@ -117,7 +117,6 @@ public abstract class RandomStringUtils {
      * @param numbers if {@code true}, generated string may include
      *                numeric characters
      * @return the random string
-     *
      */
     public static String random(final int count, final int start, final int end, final boolean letters, final boolean numbers) {
         return random(count, start, end, letters, numbers, null, random());
@@ -130,7 +129,7 @@ public abstract class RandomStringUtils {
      * <p>This method has exactly the same semantics as
      * {@link #random(int, int, int, boolean, boolean, char[], Random)}, but
      * instead of using an externally supplied source of randomness, it uses
-     * the internal static {@link Random} instance.</p>
+     * the internal static {@link java.util.Random} instance.</p>
      *
      * @param count   the length of random string to create
      * @param start   the position in set of chars to start at
@@ -155,14 +154,14 @@ public abstract class RandomStringUtils {
      * to {@code ' '} and {@code 'z'}, the ASCII printable
      * characters, will be used, unless letters and numbers are both
      * {@code false}, in which case, start and end are set to
-     * {@code 0} and {@link Character#MAX_CODE_POINT}.
+     * {@code 0} and {@link java.lang.Character#MAX_CODE_POINT}.
      *
      * <p>If set is not {@code null}, characters between start and
      * end are chosen.</p>
      *
-     * <p>This method accepts a user-supplied {@link Random}
+     * <p>This method accepts a user-supplied {@link java.util.Random}
      * instance to use as a source of randomness. By seeding a single
-     * {@link Random} instance with a fixed seed and using it for each call,
+     * {@link java.util.Random} instance with a fixed seed and using it for each call,
      * the same random sequence of strings can be generated repeatedly
      * and predictably.</p>
      *
@@ -284,7 +283,6 @@ public abstract class RandomStringUtils {
      *
      * @param count the length of random string to create
      * @return the random string
-     *
      */
     public static String randomAlphabetic(final int count) {
         return random(count, true, false);
@@ -314,7 +312,6 @@ public abstract class RandomStringUtils {
      *
      * @param count the length of random string to create
      * @return the random string
-     *
      */
     public static String randomAlphanumeric(final int count) {
         return random(count, true, true);
@@ -345,7 +342,6 @@ public abstract class RandomStringUtils {
      *
      * @param count the length of random string to create
      * @return the random string
-     *
      */
     public static String randomAscii(final int count) {
         return random(count, 32, 127, false, false);
@@ -376,7 +372,6 @@ public abstract class RandomStringUtils {
      *
      * @param count the length of random string to create
      * @return the random string
-     *
      * @since 3.5
      */
     public static String randomGraph(final int count) {
@@ -407,7 +402,6 @@ public abstract class RandomStringUtils {
      *
      * @param count the length of random string to create
      * @return the random string
-     *
      */
     public static String randomNumeric(final int count) {
         return random(count, false, true);
@@ -437,7 +431,6 @@ public abstract class RandomStringUtils {
      *
      * @param count the length of random string to create
      * @return the random string
-     *
      * @since 3.5
      */
     public static String randomPrint(final int count) {

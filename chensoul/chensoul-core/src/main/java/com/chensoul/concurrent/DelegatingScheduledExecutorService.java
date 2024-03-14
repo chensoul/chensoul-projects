@@ -11,8 +11,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
+ * <p>DelegatingScheduledExecutorService class.</p>
+ *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public class DelegatingScheduledExecutorService implements ScheduledExecutorService {
 
@@ -22,174 +25,129 @@ public class DelegatingScheduledExecutorService implements ScheduledExecutorServ
     private volatile ScheduledExecutorService delegate;
 
     /**
-     * @param delegate
+     * <p>Constructor for DelegatingScheduledExecutorService.</p>
+     *
+     * @param delegate a {@link java.util.concurrent.ScheduledExecutorService} object
      */
     public DelegatingScheduledExecutorService(ScheduledExecutorService delegate) {
         this.delegate = delegate;
     }
 
     /**
-     * @return {@link ScheduledExecutorService}
+     * <p>Getter for the field <code>delegate</code>.</p>
+     *
+     * @return {@link java.util.concurrent.ScheduledExecutorService}
      */
     public ScheduledExecutorService getDelegate() {
         return delegate;
     }
 
     /**
-     * @param delegate
+     * <p>Setter for the field <code>delegate</code>.</p>
+     *
+     * @param delegate a {@link java.util.concurrent.ScheduledExecutorService} object
      */
     public void setDelegate(ScheduledExecutorService delegate) {
         this.delegate = delegate;
     }
 
-    /**
-     * @param command
-     * @param delay
-     * @param unit
-     * @return {@link ScheduledFuture}<{@link ?}>
-     */
+    /** {@inheritDoc} */
     @Override
     public ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit) {
         return getDelegate().schedule(command, delay, unit);
     }
 
-    /**
-     * @param callable
-     * @param delay
-     * @param unit
-     */
+    /** {@inheritDoc} */
     @Override
     public <V> ScheduledFuture<V> schedule(Callable<V> callable, long delay, TimeUnit unit) {
         return getDelegate().schedule(callable, delay, unit);
     }
 
-    /**
-     * @param command
-     * @param initialDelay
-     * @param period
-     * @param unit
-     */
+    /** {@inheritDoc} */
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit) {
         return getDelegate().scheduleAtFixedRate(command, initialDelay, period, unit);
     }
 
-    /**
-     * @param command
-     * @param initialDelay
-     * @param delay
-     * @param unit
-     */
+    /** {@inheritDoc} */
     @Override
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit) {
         return getDelegate().scheduleWithFixedDelay(command, initialDelay, delay, unit);
     }
 
-    /**
-     *
-     */
+    /** {@inheritDoc} */
     @Override
     public void shutdown() {
         getDelegate().shutdown();
     }
 
-    /**
-     */
+    /** {@inheritDoc} */
     @Override
     public List<Runnable> shutdownNow() {
         return getDelegate().shutdownNow();
     }
 
-    /**
-     * @return boolean
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean isShutdown() {
         return getDelegate().isShutdown();
     }
 
-    /**
-     * @return boolean
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean isTerminated() {
         return getDelegate().isTerminated();
     }
 
-    /**
-     * @param timeout
-     * @param unit
-     * @return boolean
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
         return getDelegate().awaitTermination(timeout, unit);
     }
 
-    /**
-     * @param task
-     */
+    /** {@inheritDoc} */
     @Override
     public <T> Future<T> submit(Callable<T> task) {
         return getDelegate().submit(task);
     }
 
-    /**
-     * @param task
-     * @param result
-     */
+    /** {@inheritDoc} */
     @Override
     public <T> Future<T> submit(Runnable task, T result) {
         return getDelegate().submit(task, result);
     }
 
-    /**
-     * @param task
-     */
+    /** {@inheritDoc} */
     @Override
     public Future<?> submit(Runnable task) {
         return getDelegate().submit(task);
     }
 
-    /**
-     * @param tasks
-     */
+    /** {@inheritDoc} */
     @Override
     public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks) throws InterruptedException {
         return getDelegate().invokeAll(tasks);
     }
 
-    /**
-     * @param tasks
-     * @param timeout
-     * @param unit
-     */
+    /** {@inheritDoc} */
     @Override
     public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException {
         return getDelegate().invokeAll(tasks, timeout, unit);
     }
 
-    /**
-     * @param tasks
-     */
+    /** {@inheritDoc} */
     @Override
     public <T> T invokeAny(Collection<? extends Callable<T>> tasks) throws InterruptedException, ExecutionException {
         return getDelegate().invokeAny(tasks);
     }
 
-    /**
-     * @param tasks
-     * @param timeout
-     * @param unit
-     */
+    /** {@inheritDoc} */
     @Override
     public <T> T invokeAny(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
         return getDelegate().invokeAny(tasks, timeout, unit);
     }
 
-    /**
-     * @param command
-     */
+    /** {@inheritDoc} */
     @Override
     public void execute(Runnable command) {
         getDelegate().execute(command);

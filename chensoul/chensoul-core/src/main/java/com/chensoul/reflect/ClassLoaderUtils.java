@@ -6,10 +6,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * The utilities class of {@link ClassLoader}
+ * The utilities class of {@link java.lang.ClassLoader}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 1.0.0
+ * @version $Id: $Id
  */
 public class ClassLoaderUtils {
     /**
@@ -29,9 +30,9 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * Get the default {@link ClassLoader}
+     * Get the default {@link java.lang.ClassLoader}
      *
-     * @return {@link ClassLoader}
+     * @return {@link java.lang.ClassLoader}
      */
     public static ClassLoader getDefaultClassLoader() {
         ClassLoader classLoader = null;
@@ -64,8 +65,10 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * @param loadedClass
-     * @return {@link ClassLoader}
+     * <p>getClassLoader.</p>
+     *
+     * @param loadedClass a {@link java.lang.Class} object
+     * @return {@link java.lang.ClassLoader}
      */
     public static ClassLoader getClassLoader(Class<?> loadedClass) {
         ClassLoader classLoader = null;
@@ -81,7 +84,9 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * @return {@link ClassLoader}
+     * <p>getCallerClassLoader.</p>
+     *
+     * @return {@link java.lang.ClassLoader}
      */
     public static ClassLoader getCallerClassLoader() {
         return getCallerClassLoader(4);
@@ -104,18 +109,20 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * @param className
-     * @return
+     * <p>resolveClass.</p>
+     *
+     * @param className a {@link java.lang.String} object
+     * @return a {@link java.lang.Class} object
      */
     public static Class<?> resolveClass(String className) {
         return resolveClass(className, getDefaultClassLoader());
     }
 
     /**
-     * Resolve the {@link Class} by the specified name and {@link ClassLoader}
+     * Resolve the {@link java.lang.Class} by the specified name and {@link java.lang.ClassLoader}
      *
-     * @param className   the name of {@link Class}
-     * @param classLoader
+     * @param className   the name of {@link java.lang.Class}
+     * @param classLoader a {@link java.lang.ClassLoader} object
      * @return If can't be resolved , return <code>null</code>
      */
     public static Class<?> resolveClass(String className, ClassLoader classLoader) {
@@ -123,11 +130,11 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * Resolve the {@link Class} by the specified name and {@link ClassLoader}
+     * Resolve the {@link java.lang.Class} by the specified name and {@link java.lang.ClassLoader}
      *
-     * @param className   the name of {@link Class}
+     * @param className   the name of {@link java.lang.Class}
      * @param cached      the resolved class is required to be cached or not
-     * @param classLoader
+     * @param classLoader a {@link java.lang.ClassLoader} object
      * @return If can't be resolved , return <code>null</code>
      */
     public static Class<?> resolveClass(String className, ClassLoader classLoader, boolean cached) {
@@ -145,9 +152,11 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * @param className
-     * @param classLoader
-     * @return
+     * <p>loadClass.</p>
+     *
+     * @param className a {@link java.lang.String} object
+     * @param classLoader a {@link java.lang.ClassLoader} object
+     * @return a {@link java.lang.Class} object
      */
     public static Class<?> loadClass(String className, ClassLoader classLoader) {
         try {
@@ -158,12 +167,12 @@ public class ClassLoaderUtils {
     }
 
     /**
-     * Loaded specified class name under {@link ClassLoader}
+     * Loaded specified class name under {@link java.lang.ClassLoader}
      *
-     * @param className   the name of {@link Class}
+     * @param className   the name of {@link java.lang.Class}
      * @param cached      the resolved class is required to be cached or not
-     * @param classLoader
-     * @return
+     * @param classLoader a {@link java.lang.ClassLoader} object
+     * @return a {@link java.lang.Class} object
      */
     public static Class<?> loadClass(String className, ClassLoader classLoader, boolean cached) {
         Class loadedClass = null;

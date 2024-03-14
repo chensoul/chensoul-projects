@@ -23,12 +23,14 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 /**
- * The utilities class of {@link Class}
+ * The utilities class of {@link java.lang.Class}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public class ClassUtils {
+    /** Constant <code>SIMPLE_TYPES</code> */
     public static final Set<Class<?>> SIMPLE_TYPES = SetUtils.of(
         Void.class,
         Boolean.class,
@@ -45,6 +47,7 @@ public class ClassUtils {
         Date.class,
         Object.class);
 
+    /** Constant <code>PRIMITIVE_TYPES</code> */
     public static final Set<Class<?>> PRIMITIVE_TYPES = SetUtils.of(
         Void.TYPE,
         Boolean.TYPE,
@@ -57,18 +60,43 @@ public class ClassUtils {
         Double.TYPE
     );
 
+    /**
+     * <p>isPrimitive.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @return a boolean
+     */
     public static boolean isPrimitive(Class<?> type) {
         return PRIMITIVE_TYPES.contains(type);
     }
 
+    /**
+     * <p>isFinal.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @return a boolean
+     */
     public static boolean isFinal(Class<?> type) {
         return type != null && Modifier.isFinal(type.getModifiers());
     }
 
+    /**
+     * <p>isSimpleType.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @return a boolean
+     */
     public static boolean isSimpleType(Class<?> type) {
         return SIMPLE_TYPES.contains(type);
     }
 
+    /**
+     * <p>isAssignableFrom.</p>
+     *
+     * @param superType a {@link java.lang.Class} object
+     * @param targetType a {@link java.lang.Class} object
+     * @return a boolean
+     */
     public static boolean isAssignableFrom(Class<?> superType, Class<?> targetType) {
         // any argument is null
         if (superType == null || targetType == null) {
@@ -82,6 +110,13 @@ public class ClassUtils {
         return superType.isAssignableFrom(targetType);
     }
 
+    /**
+     * <p>getAllInheritedTypes.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.Set} object
+     */
     public static Set<Class<?>> getAllInheritedTypes(Class<?> type, Predicate<Class<?>>... typeFilters) {
         // Add all super classes
         Set<Class<?>> types = new LinkedHashSet<>(getAllSuperClasses(type, typeFilters));
@@ -90,6 +125,13 @@ public class ClassUtils {
         return unmodifiableSet(types);
     }
 
+    /**
+     * <p>getAllInterfaces.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @param interfaceFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.Set} object
+     */
     public static Set<Class<?>> getAllInterfaces(Class<?> type, Predicate<Class<?>>... interfaceFilters) {
         if (type == null || type.isPrimitive()) {
             return emptySet();
@@ -122,6 +164,13 @@ public class ClassUtils {
         return filterAll(allInterfaces, interfaceFilters);
     }
 
+    /**
+     * <p>getAllSuperClasses.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @param classFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.Set} object
+     */
     public static Set<Class<?>> getAllSuperClasses(Class<?> type, Predicate<Class<?>>... classFilters) {
 
         Set<Class<?>> allSuperClasses = new LinkedHashSet<>();
@@ -136,6 +185,14 @@ public class ClassUtils {
         return unmodifiableSet(filterAll(allSuperClasses, classFilters));
     }
 
+    /**
+     * <p>newInstance.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @param args a {@link java.lang.Object} object
+     * @param <T> a T class
+     * @return a T object
+     */
     public static <T> T newInstance(Class<T> type, Object... args) {
         int length = ArrayUtils.length(args);
 
@@ -163,6 +220,12 @@ public class ClassUtils {
         return CheckedSupplier.unchecked(() -> constructor.newInstance(args)).get();
     }
 
+    /**
+     * <p>getTypes.</p>
+     *
+     * @param values a {@link java.lang.Object} object
+     * @return an array of {@link java.lang.Class} objects
+     */
     public static Class[] getTypes(Object... values) {
 
         if (ArrayUtils.isEmpty(values)) {

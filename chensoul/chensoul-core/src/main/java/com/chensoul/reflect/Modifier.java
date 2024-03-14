@@ -22,6 +22,7 @@ package com.chensoul.reflect;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see java.lang.reflect.Modifier
  * @since 1.0.0
+ * @version $Id: $Id
  */
 public enum Modifier {
 

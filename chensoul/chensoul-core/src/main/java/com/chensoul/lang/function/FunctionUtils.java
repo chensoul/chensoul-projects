@@ -14,13 +14,23 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 1.0.0
+ * @version $Id: $Id
  */
 @Slf4j
 public class FunctionUtils {
+    /** Constant <code>SNEAKY_THROW</code> */
     public static final Consumer<Throwable> SNEAKY_THROW = FunctionUtils::sneakyThrow;
 
+    /** Constant <code>CHECKED_THROW</code> */
     public static final Consumer<Throwable> CHECKED_THROW = FunctionUtils::checkedThrow;
 
+    /**
+     * <p>checkedThrow.</p>
+     *
+     * @param t a {@link java.lang.Throwable} object
+     * @param <E> a E class
+     * @throws E if any.
+     */
     public static <E extends Throwable> void checkedThrow(Throwable t) throws E {
         if (t instanceof Error)
             throw (Error) t;
@@ -38,21 +48,41 @@ public class FunctionUtils {
         throw new UncheckedException(t);
     }
 
+    /**
+     * <p>sneakyThrow.</p>
+     *
+     * @param throwable a {@link java.lang.Throwable} object
+     * @param <E> a E class
+     * @throws E if any.
+     */
     @SuppressWarnings("unchecked")
     public static <E extends Throwable> void sneakyThrow(Throwable throwable) throws E {
         throw (E) throwable;
     }
 
+    /**
+     * <p>doIf.</p>
+     *
+     * @param predicate a {@link java.util.function.Predicate} object
+     * @param trueFunction a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param <T> a T class
+     * @param <R> a R class
+     * @return a {@link java.util.function.Function} object
+     */
     public static <T, R> Function<T, R> doIf(final Predicate<T> predicate,
                                              final CheckedFunction<T, R> trueFunction) {
         return doIf(predicate, trueFunction, t -> null);
     }
 
     /**
-     * @param predicate
-     * @param trueFunction
-     * @param falseFunction
+     * <p>doIf.</p>
      *
+     * @param predicate a {@link java.util.function.Predicate} object
+     * @param trueFunction a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param falseFunction a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param <T> a T class
+     * @param <R> a R class
+     * @return a {@link java.util.function.Function} object
      */
     public static <T, R> Function<T, R> doIf(final Predicate<T> predicate,
         final CheckedFunction<T, R> trueFunction,
@@ -71,11 +101,30 @@ public class FunctionUtils {
         };
     }
 
+    /**
+     * <p>doIf.</p>
+     *
+     * @param condition a boolean
+     * @param trueFunction a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param <T> a T class
+     * @param <R> a R class
+     * @return a {@link java.util.function.Function} object
+     */
     public static <T, R> Function<T, R> doIf(final boolean condition,
                                              final CheckedFunction<T, R> trueFunction) {
         return doIf(condition, trueFunction, t -> null);
     }
 
+    /**
+     * <p>doIf.</p>
+     *
+     * @param condition a boolean
+     * @param trueFunction a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param falseFunction a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param <T> a T class
+     * @param <R> a R class
+     * @return a {@link java.util.function.Function} object
+     */
     public static <T, R> Function<T, R> doIf(final boolean condition,
                                              final CheckedFunction<T, R> trueFunction,
                                              final CheckedFunction<T, R> falseFunction) {
@@ -97,9 +146,10 @@ public class FunctionUtils {
      * Do if consumer.
      *
      * @param condition     the condition
-     * @param trueConsumer
-     * @param falseConsumer
+     * @param trueConsumer a {@link java.util.function.Consumer} object
+     * @param falseConsumer a {@link java.util.function.Consumer} object
      * @return the consumer
+     * @param <T> a T class
      */
     public static <T> Consumer<T> doIf(final boolean condition, final Consumer<T> trueConsumer, final Consumer<T> falseConsumer) {
         return t -> {
@@ -147,18 +197,54 @@ public class FunctionUtils {
         };
     }
 
+    /**
+     * <p>doIf.</p>
+     *
+     * @param condition a boolean
+     * @param trueSupplier a {@link java.util.function.Supplier} object
+     * @param <R> a R class
+     * @return a {@link java.util.function.Supplier} object
+     */
     public static <R> Supplier<R> doIf(final boolean condition, final Supplier<R> trueSupplier) {
         return doIf(condition, trueSupplier, () -> null);
     }
 
+    /**
+     * <p>tryApply.</p>
+     *
+     * @param function a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param errorHandler a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param <T> a T class
+     * @param <R> a R class
+     * @return a {@link java.util.function.Function} object
+     */
     public static <T, R> Function<T, R> tryApply(final CheckedFunction<T, R> function, final CheckedFunction<Throwable, R> errorHandler) {
         return tryApply(function, errorHandler, null);
     }
 
+    /**
+     * <p>tryApply.</p>
+     *
+     * @param function a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param finalConsumer a {@link com.chensoul.lang.function.CheckedConsumer} object
+     * @param <T> a T class
+     * @param <R> a R class
+     * @return a {@link java.util.function.Function} object
+     */
     public static <T, R> Function<T, R> tryApply(final CheckedFunction<T, R> function, final CheckedConsumer<T> finalConsumer) {
         return tryApply(function, null, finalConsumer);
     }
 
+    /**
+     * <p>tryApply.</p>
+     *
+     * @param function a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param errorHandler a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param finalConsumer a {@link com.chensoul.lang.function.CheckedConsumer} object
+     * @param <T> a T class
+     * @param <R> a R class
+     * @return a {@link java.util.function.Function} object
+     */
     public static <T, R> Function<T, R> tryApply(final CheckedFunction<T, R> function, final CheckedFunction<Throwable, R> errorHandler,
         final CheckedConsumer<T> finalConsumer) {
         return t -> {
@@ -180,6 +266,14 @@ public class FunctionUtils {
     }
 
 
+    /**
+     * <p>tryAccept.</p>
+     *
+     * @param consumer a {@link com.chensoul.lang.function.CheckedConsumer} object
+     * @param errorHandler a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param <R> a R class
+     * @return a {@link java.util.function.Consumer} object
+     */
     public static <R> Consumer<R> tryAccept(final CheckedConsumer<R> consumer, final CheckedFunction<Throwable, R> errorHandler) {
         return tryAccept(consumer, errorHandler, null);
     }
@@ -191,6 +285,7 @@ public class FunctionUtils {
      * @param consumer     the consumer
      * @param errorHandler the error handler
      * @return the checked consumer
+     * @param finalConsumer a {@link com.chensoul.lang.function.CheckedConsumer} object
      */
     public static <R> Consumer<R> tryAccept(final CheckedConsumer<R> consumer, final CheckedFunction<Throwable, R> errorHandler, final CheckedConsumer<R> finalConsumer) {
         return t -> {
@@ -223,6 +318,15 @@ public class FunctionUtils {
         return tryGet(supplier, errorHandler, null);
     }
 
+    /**
+     * <p>tryGet.</p>
+     *
+     * @param supplier a {@link com.chensoul.lang.function.CheckedSupplier} object
+     * @param errorHandler a {@link com.chensoul.lang.function.CheckedFunction} object
+     * @param finalConsumer a {@link com.chensoul.lang.function.CheckedConsumer} object
+     * @param <R> a R class
+     * @return a {@link java.util.function.Supplier} object
+     */
     public static <R> Supplier<R> tryGet(final CheckedSupplier<R> supplier, final CheckedFunction<Throwable, R> errorHandler, final CheckedConsumer<R> finalConsumer) {
         return () -> {
             try {
@@ -248,6 +352,7 @@ public class FunctionUtils {
      * @param value the value
      * @return the value
      *  the throwable
+     * @throws java.lang.Throwable if any.
      */
     public static String throwIfBlank(final String value) throws Throwable {
         throwIf(StringUtils.isBlank(value), () -> new IllegalArgumentException("Value cannot be empty or blank"));
@@ -262,6 +367,7 @@ public class FunctionUtils {
      * @param handler the handler
      * @return the t
      *  the throwable
+     * @throws java.lang.Throwable if any.
      */
     public static <T> T throwIfNull(final T value, final CheckedSupplier<Throwable> handler) throws Throwable {
         throwIf(value == null, handler);
@@ -274,6 +380,7 @@ public class FunctionUtils {
      * @param condition the condition
      * @param throwable the throwable
      *  the throwable
+     * @throws java.lang.Throwable if any.
      */
     public static void throwIf(final boolean condition,
         final CheckedSupplier<? extends Throwable> throwable) throws Throwable {

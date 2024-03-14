@@ -7,6 +7,7 @@ import static com.chensoul.constant.SymbolConstants.DOT;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public interface FileConstants {
     /**
@@ -75,9 +76,12 @@ public interface FileConstants {
      */
     String DOT_CLASS = DOT + CLASS;
 
+    /** Constant <code>DOT_XML="DOT + XML"</code> */
     String DOT_XML = DOT + XML;
 
+    /** Constant <code>DOT_YML="DOT + YML"</code> */
     String DOT_YML = DOT + YML;
+    /** Constant <code>DOT_YAML="DOT + YAML"</code> */
     String DOT_YAML = DOT + YAML;
 
 

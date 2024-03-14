@@ -3,20 +3,29 @@ package com.chensoul.lang.function;
 import java.util.function.Predicate;
 
 /**
- * The utilities class for Java {@link Predicate}
+ * The utilities class for Java {@link java.util.function.Predicate}
  *
  * @since 0.0.1
+ * @author chensoul
+ * @version $Id: $Id
  */
 public abstract class Predicates {
 
+    /** Constant <code>EMPTY_PREDICATE_ARRAY</code> */
     public static Predicate[] EMPTY_PREDICATE_ARRAY = new Predicate[0];
 
+    /**
+     * <p>emptyArray.</p>
+     *
+     * @param <T> a T class
+     * @return an array of {@link java.util.function.Predicate} objects
+     */
     public static <T> Predicate<T>[] emptyArray() {
         return (Predicate<T>[]) EMPTY_PREDICATE_ARRAY;
     }
 
     /**
-     * {@link Predicate} always return <code>true</code>
+     * {@link java.util.function.Predicate} always return <code>true</code>
      *
      * @param <T> the type to test
      * @return <code>true</code>
@@ -26,7 +35,7 @@ public abstract class Predicates {
     }
 
     /**
-     * {@link Predicate} always return <code>false</code>
+     * {@link java.util.function.Predicate} always return <code>false</code>
      *
      * @param <T> the type to test
      * @return <code>false</code>

@@ -12,7 +12,7 @@
   <artifactId>xxljob</artifactId>
   <version>${revision}</version>
 
-  <name>Microservice :: Xxljob</name>
+  <name>SpringCloud :: Xxljob</name>
   <description>${project.name}</description>
 
   <dependencies>

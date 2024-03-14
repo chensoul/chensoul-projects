@@ -5,6 +5,7 @@ package com.chensoul.generator;
  *
  * @author Scott Battaglia
  * @since 3.0.0
+ * @version $Id: $Id
  */
 public interface NumericGenerator {
 

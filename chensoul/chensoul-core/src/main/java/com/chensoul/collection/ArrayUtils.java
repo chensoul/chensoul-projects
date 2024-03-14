@@ -13,10 +13,11 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 /**
- * The utilities class for {@link Array}
+ * The utilities class for {@link java.lang.reflect.Array}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class ArrayUtils {
 
@@ -120,42 +121,116 @@ public abstract class ArrayUtils {
      */
     public static final Character[] EMPTY_CHARACTER_OBJECT_ARRAY = new Character[0];
 
+    /**
+     * <p>length.</p>
+     *
+     * @param values an array of T[] objects
+     * @param <T> a T class
+     * @return a int
+     */
     public static <T> int length(T[] values) {
         return values == null ? 0 : values.length;
     }
 
+    /**
+     * <p>isEmpty.</p>
+     *
+     * @param values an array of T[] objects
+     * @param <T> a T class
+     * @return a boolean
+     */
     public static <T> boolean isEmpty(T[] values) {
         return length(values) == 0;
     }
 
+    /**
+     * <p>isNotEmpty.</p>
+     *
+     * @param values an array of T[] objects
+     * @param <T> a T class
+     * @return a boolean
+     */
     public static <T> boolean isNotEmpty(T[] values) {
         return !isEmpty(values);
     }
 
+    /**
+     * <p>of.</p>
+     *
+     * @param values a T object
+     * @param <T> a T class
+     * @return an array of T[] objects
+     */
     public static <T> T[] of(T... values) {
         return values;
     }
 
+    /**
+     * <p>isArray.</p>
+     *
+     * @param object a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean isArray(final Object object) {
         return object != null && object.getClass().isArray();
     }
 
+    /**
+     * <p>asArray.</p>
+     *
+     * @param enumeration a {@link java.util.Enumeration} object
+     * @param componentType a {@link java.lang.Class} object
+     * @param <E> a E class
+     * @return an array of E[] objects
+     */
     public static <E> E[] asArray(Enumeration<E> enumeration, Class<?> componentType) {
         return asArray(list(enumeration), componentType);
     }
 
+    /**
+     * <p>asArray.</p>
+     *
+     * @param elements a {@link java.lang.Iterable} object
+     * @param componentType a {@link java.lang.Class} object
+     * @param <E> a E class
+     * @return an array of E[] objects
+     */
     public static <E> E[] asArray(Iterable<E> elements, Class<?> componentType) {
         return asArray(newArrayList(elements), componentType);
     }
 
+    /**
+     * <p>asArray.</p>
+     *
+     * @param collection a {@link java.util.Collection} object
+     * @param componentType a {@link java.lang.Class} object
+     * @param <E> a E class
+     * @return an array of E[] objects
+     */
     public static <E> E[] asArray(Collection<E> collection, Class<?> componentType) {
         return collection.toArray(newArray(componentType, 0));
     }
 
+    /**
+     * <p>newArray.</p>
+     *
+     * @param componentType a {@link java.lang.Class} object
+     * @param length a int
+     * @param <E> a E class
+     * @return an array of E[] objects
+     */
     public static <E> E[] newArray(Class<?> componentType, int length) {
         return (E[]) newInstance(componentType, length);
     }
 
+    /**
+     * <p>combine.</p>
+     *
+     * @param one a E object
+     * @param others a E object
+     * @param <E> a E class
+     * @return an array of E[] objects
+     */
     public static <E> E[] combine(E one, E... others) {
         int othersLength = length(others);
         Class<?> oneType = one.getClass();
@@ -173,10 +248,26 @@ public abstract class ArrayUtils {
         }
     }
 
+    /**
+     * <p>combine.</p>
+     *
+     * @param one an array of E[] objects
+     * @param others an array of E[] objects
+     * @param <E> a E class
+     * @return an array of E[] objects
+     */
     public static <E> E[] combine(E[] one, E[]... others) {
         return combineArray(one, others);
     }
 
+    /**
+     * <p>combineArray.</p>
+     *
+     * @param one an array of E[] objects
+     * @param others an array of E[] objects
+     * @param <E> a E class
+     * @return an array of E[] objects
+     */
     public static <E> E[] combineArray(E[] one, E[]... others) {
         int othersSize = length(others);
         if (othersSize < 1) {
@@ -209,6 +300,13 @@ public abstract class ArrayUtils {
         return newArray;
     }
 
+    /**
+     * <p>forEach.</p>
+     *
+     * @param values an array of T[] objects
+     * @param indexedElementConsumer a {@link java.util.function.BiConsumer} object
+     * @param <T> a T class
+     */
     public static <T> void forEach(T[] values, BiConsumer<Integer, T> indexedElementConsumer) {
         int length = length(values);
         for (int i = 0; i < length; i++) {
@@ -217,14 +315,33 @@ public abstract class ArrayUtils {
         }
     }
 
+    /**
+     * <p>forEach.</p>
+     *
+     * @param values an array of T[] objects
+     * @param consumer a {@link java.util.function.Consumer} object
+     * @param <T> a T class
+     */
     public static <T> void forEach(T[] values, Consumer<T> consumer) {
         forEach(values, (i, e) -> consumer.accept(e));
     }
 
+    /**
+     * <p>anyNull.</p>
+     *
+     * @param values a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean anyNull(final Object... values) {
         return !allNotNull(values);
     }
 
+    /**
+     * <p>allNotNull.</p>
+     *
+     * @param values a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean allNotNull(final Object... values) {
         return values != null && Stream.of(values).noneMatch(Objects::isNull);
     }

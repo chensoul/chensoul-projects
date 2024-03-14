@@ -14,7 +14,7 @@
   <artifactId>eureka</artifactId>
   <version>${revision}</version>
 
-  <name>Microservice :: Eureka</name>
+  <name>SpringCloud :: Eureka</name>
   <description>${project.name}</description>
 
   <dependencies>

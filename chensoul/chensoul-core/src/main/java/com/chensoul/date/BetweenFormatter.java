@@ -8,6 +8,7 @@ import java.io.Serializable;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public final class BetweenFormatter implements Serializable {
 
@@ -139,6 +140,7 @@ public final class BetweenFormatter implements Serializable {
         this.level = level;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return format();

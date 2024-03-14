@@ -7,6 +7,7 @@ import java.time.temporal.ChronoUnit;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public enum DateUnit {
 
@@ -42,9 +43,9 @@ public enum DateUnit {
     }
 
     /**
-     * 单位兼容转换，将{@link ChronoUnit}转换为对应的DateUnit
+     * 单位兼容转换，将{@link java.time.temporal.ChronoUnit}转换为对应的DateUnit
      *
-     * @param unit {@link ChronoUnit}
+     * @param unit {@link java.time.temporal.ChronoUnit}
      * @return DateUnit，null表示不支持此单位
      * @since 5.4.5
      */
@@ -68,10 +69,10 @@ public enum DateUnit {
     }
 
     /**
-     * 单位兼容转换，将DateUnit转换为对应的{@link ChronoUnit}
+     * 单位兼容转换，将DateUnit转换为对应的{@link java.time.temporal.ChronoUnit}
      *
      * @param unit DateUnit
-     * @return {@link ChronoUnit}
+     * @return {@link java.time.temporal.ChronoUnit}
      * @since 5.4.5
      */
     public static ChronoUnit toChronoUnit(DateUnit unit) {
@@ -94,6 +95,8 @@ public enum DateUnit {
     }
 
     /**
+     * <p>Getter for the field <code>millis</code>.</p>
+     *
      * @return 单位对应的毫秒数
      */
     public long getMillis() {
@@ -101,9 +104,9 @@ public enum DateUnit {
     }
 
     /**
-     * 单位兼容转换，将DateUnit转换为对应的{@link ChronoUnit}
+     * 单位兼容转换，将DateUnit转换为对应的{@link java.time.temporal.ChronoUnit}
      *
-     * @return {@link ChronoUnit}
+     * @return {@link java.time.temporal.ChronoUnit}
      * @since 5.4.5
      */
     public ChronoUnit toChronoUnit() {

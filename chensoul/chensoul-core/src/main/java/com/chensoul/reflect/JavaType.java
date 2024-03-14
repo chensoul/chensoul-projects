@@ -53,11 +53,14 @@ import javax.annotation.Nullable;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @see Type
  * @since 1.0.0
+ * @version $Id: $Id
  */
 public class JavaType implements Serializable {
 
+    /** Constant <code>EMPTY_ARRAY</code> */
     public static final JavaType[] EMPTY_ARRAY = new JavaType[0];
 
+    /** Constant <code>OBJECT_TYPE</code> */
     public static final JavaType OBJECT_TYPE = new JavaType(Object.class, Kind.CLASS);
 
     private final Type type;
@@ -74,18 +77,42 @@ public class JavaType implements Serializable {
 
     private volatile JavaType[] genericTypes;
 
+    /**
+     * <p>Constructor for JavaType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     */
     protected JavaType(Type type) {
         this(type, Kind.valueOf(type));
     }
 
+    /**
+     * <p>Constructor for JavaType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param kind a {@link com.chensoul.reflect.JavaType.Kind} object
+     */
     protected JavaType(Type type, Kind kind) {
         this(type, kind, null);
     }
 
+    /**
+     * <p>Constructor for JavaType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param source a {@link com.chensoul.reflect.JavaType} object
+     */
     protected JavaType(Type type, JavaType source) {
         this(type, Kind.valueOf(type), source);
     }
 
+    /**
+     * <p>Constructor for JavaType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param kind a {@link com.chensoul.reflect.JavaType.Kind} object
+     * @param source a {@link com.chensoul.reflect.JavaType} object
+     */
     protected JavaType(Type type, Kind kind, JavaType source) {
         this.type = type;
         this.kind = kind;
@@ -106,49 +133,121 @@ public class JavaType implements Serializable {
         return genericType;
     }
 
+    /**
+     * <p>from.</p>
+     *
+     * @param field a {@link java.lang.reflect.Field} object
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     public static JavaType from(Field field) {
         return from(field.getGenericType());
     }
 
+    /**
+     * <p>fromMethodReturnType.</p>
+     *
+     * @param method a {@link java.lang.reflect.Method} object
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     public static JavaType fromMethodReturnType(Method method) {
         Type genericReturnType = method.getGenericReturnType();
         return from(genericReturnType);
     }
 
+    /**
+     * <p>fromMethodParameters.</p>
+     *
+     * @param method a {@link java.lang.reflect.Method} object
+     * @return an array of {@link com.chensoul.reflect.JavaType} objects
+     */
     public static JavaType[] fromMethodParameters(Method method) {
         Type[] genericParameterType = method.getGenericParameterTypes();
         return from(genericParameterType);
     }
 
+    /**
+     * <p>fromMethodParameter.</p>
+     *
+     * @param method a {@link java.lang.reflect.Method} object
+     * @param parameterIndex a int
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     public static JavaType fromMethodParameter(Method method, int parameterIndex) {
         Type genericParameterType = method.getGenericParameterTypes()[parameterIndex];
         return from(genericParameterType);
     }
 
+    /**
+     * <p>from.</p>
+     *
+     * @param targetClass a {@link java.lang.Class} object
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     public static JavaType from(Class<?> targetClass) {
         return from(targetClass, Kind.CLASS);
     }
 
+    /**
+     * <p>from.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     public static JavaType from(Type type) {
         return new JavaType(type);
     }
 
+    /**
+     * <p>from.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param kind a {@link com.chensoul.reflect.JavaType.Kind} object
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     protected static JavaType from(Type type, Kind kind) {
         return new JavaType(type, kind);
     }
 
+    /**
+     * <p>from.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param source a {@link com.chensoul.reflect.JavaType} object
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     protected static JavaType from(Type type, JavaType source) {
         return new JavaType(type, source);
     }
 
+    /**
+     * <p>from.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param kind a {@link com.chensoul.reflect.JavaType.Kind} object
+     * @param source a {@link com.chensoul.reflect.JavaType} object
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     protected static JavaType from(Type type, Kind kind, JavaType source) {
         return new JavaType(type, kind, source);
     }
 
+    /**
+     * <p>from.</p>
+     *
+     * @param types an array of {@link java.lang.reflect.Type} objects
+     * @return an array of {@link com.chensoul.reflect.JavaType} objects
+     */
     protected static JavaType[] from(Type[] types) {
         return from(types, null);
     }
 
+    /**
+     * <p>from.</p>
+     *
+     * @param types an array of {@link java.lang.reflect.Type} objects
+     * @param source a {@link com.chensoul.reflect.JavaType} object
+     * @return an array of {@link com.chensoul.reflect.JavaType} objects
+     */
     protected static JavaType[] from(Type[] types, JavaType source) {
         int length = types == null ? 0 : types.length;
         if (length == 0) {
@@ -178,18 +277,38 @@ public class JavaType implements Serializable {
         return false;
     }
 
+    /**
+     * <p>Getter for the field <code>type</code>.</p>
+     *
+     * @return a {@link java.lang.reflect.Type} object
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     * <p>Getter for the field <code>kind</code>.</p>
+     *
+     * @return a {@link com.chensoul.reflect.JavaType.Kind} object
+     */
     public Kind getKind() {
         return kind;
     }
 
+    /**
+     * <p>Getter for the field <code>source</code>.</p>
+     *
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     public JavaType getSource() {
         return this.source;
     }
 
+    /**
+     * <p>getRootSource.</p>
+     *
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     @Nullable
     public JavaType getRootSource() {
         JavaType currentSource = this.source;
@@ -210,35 +329,75 @@ public class JavaType implements Serializable {
         return rootSource;
     }
 
+    /**
+     * <p>getRawType.</p>
+     *
+     * @return a {@link java.lang.reflect.Type} object
+     */
     @Nullable
     public Type getRawType() {
         return this.kind.getRawType(this.type);
     }
 
+    /**
+     * <p>isSource.</p>
+     *
+     * @return a boolean
+     */
     public boolean isSource() {
         return this.source == null;
     }
 
+    /**
+     * <p>isRootSource.</p>
+     *
+     * @return a boolean
+     */
     public boolean isRootSource() {
         return getRootSource() == null;
     }
 
+    /**
+     * <p>isClass.</p>
+     *
+     * @return a boolean
+     */
     public boolean isClass() {
         return Kind.CLASS.equals(this.kind);
     }
 
+    /**
+     * <p>isParameterizedType.</p>
+     *
+     * @return a boolean
+     */
     public boolean isParameterizedType() {
         return Kind.PARAMETERIZED_TYPE.equals(this.kind);
     }
 
+    /**
+     * <p>isTypeVariable.</p>
+     *
+     * @return a boolean
+     */
     public boolean isTypeVariable() {
         return Kind.TYPE_VARIABLE.equals(this.kind);
     }
 
+    /**
+     * <p>isWildCardType.</p>
+     *
+     * @return a boolean
+     */
     public boolean isWildCardType() {
         return Kind.WILDCARD_TYPE.equals(this.kind);
     }
 
+    /**
+     * <p>Getter for the field <code>superType</code>.</p>
+     *
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     @Nullable
     public JavaType getSuperType() {
         JavaType superType = this.superType;
@@ -249,11 +408,21 @@ public class JavaType implements Serializable {
         return superType;
     }
 
+    /**
+     * <p>resolveSuperType.</p>
+     *
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     */
     protected JavaType resolveSuperType() {
         Type superType = kind.getSuperType(type);
         return from(superType, this);
     }
 
+    /**
+     * <p>Getter for the field <code>interfaces</code>.</p>
+     *
+     * @return an array of {@link com.chensoul.reflect.JavaType} objects
+     */
     public JavaType[] getInterfaces() {
         JavaType[] interfaces = this.interfaces;
         if (interfaces == null) {
@@ -263,15 +432,32 @@ public class JavaType implements Serializable {
         return interfaces;
     }
 
+    /**
+     * <p>resolveInterfaces.</p>
+     *
+     * @return an array of {@link com.chensoul.reflect.JavaType} objects
+     */
     protected JavaType[] resolveInterfaces() {
         Type[] interfaces = kind.getInterfaces(type);
         return from(interfaces, this);
     }
 
+    /**
+     * <p>getInterface.</p>
+     *
+     * @param interfaceIndex a int
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     * @throws java.lang.IndexOutOfBoundsException if any.
+     */
     public JavaType getInterface(int interfaceIndex) throws IndexOutOfBoundsException {
         return getInterfaces()[interfaceIndex];
     }
 
+    /**
+     * <p>Getter for the field <code>genericTypes</code>.</p>
+     *
+     * @return an array of {@link com.chensoul.reflect.JavaType} objects
+     */
     public JavaType[] getGenericTypes() {
         JavaType[] genericTypes = this.genericTypes;
         if (genericTypes == null) {
@@ -281,6 +467,11 @@ public class JavaType implements Serializable {
         return genericTypes;
     }
 
+    /**
+     * <p>resolveGenericTypes.</p>
+     *
+     * @return an array of {@link com.chensoul.reflect.JavaType} objects
+     */
     protected JavaType[] resolveGenericTypes() {
         if (!OBJECT_TYPE.equals(this)) {
             Kind kind = this.kind;
@@ -290,6 +481,13 @@ public class JavaType implements Serializable {
         return EMPTY_ARRAY;
     }
 
+    /**
+     * <p>getGenericType.</p>
+     *
+     * @param genericTypeIndex a int
+     * @return a {@link com.chensoul.reflect.JavaType} object
+     * @throws java.lang.IndexOutOfBoundsException if any.
+     */
     public JavaType getGenericType(int genericTypeIndex) throws IndexOutOfBoundsException {
         return getGenericTypes()[genericTypeIndex];
     }
@@ -310,32 +508,55 @@ public class JavaType implements Serializable {
         return targetType == null ? null : from(targetType, this);
     }
 
+    /**
+     * <p>toClass.</p>
+     *
+     * @param <T> a T class
+     * @return a {@link java.lang.Class} object
+     */
     @Nullable
     public <T> Class<T> toClass() {
         Type rawType = getRawType();
         return rawType == null ? null : (Class<T>) rawType;
     }
 
+    /**
+     * <p>toParameterizedType.</p>
+     *
+     * @return a {@link java.lang.reflect.ParameterizedType} object
+     */
     @Nullable
     public ParameterizedType toParameterizedType() {
         return asParameterizedType(this.type);
     }
 
+    /**
+     * <p>toTypeVariable.</p>
+     *
+     * @return a {@link java.lang.reflect.TypeVariable} object
+     */
     @Nullable
     public TypeVariable toTypeVariable() {
         return asTypeVariable(this.type);
     }
 
+    /**
+     * <p>toWildcardType.</p>
+     *
+     * @return a {@link java.lang.reflect.WildcardType} object
+     */
     @Nullable
     public WildcardType toWildcardType() {
         return asWildcardType(this.type);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return "JavaType : " + type.getTypeName();
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -344,6 +565,7 @@ public class JavaType implements Serializable {
         return Objects.equals(type, javaType.type);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Arrays.hashCode(new Object[]{type});

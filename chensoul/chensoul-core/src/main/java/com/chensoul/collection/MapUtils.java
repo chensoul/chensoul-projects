@@ -20,10 +20,11 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.function.Function;
 
 /**
- * The utilities class for Java {@link Map}
+ * The utilities class for Java {@link java.util.Map}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class MapUtils {
 
@@ -33,7 +34,9 @@ public abstract class MapUtils {
     public static final float MIN_LOAD_FACTOR = Float.MIN_NORMAL;
 
     /**
-     * @param map
+     * <p>isEmpty.</p>
+     *
+     * @param map a {@link java.util.Map} object
      * @return boolean
      */
     public static boolean isEmpty(Map<?, ?> map) {
@@ -41,7 +44,9 @@ public abstract class MapUtils {
     }
 
     /**
-     * @param map
+     * <p>isNotEmpty.</p>
+     *
+     * @param map a {@link java.util.Map} object
      * @return boolean
      */
     public static boolean isNotEmpty(Map<?, ?> map) {
@@ -49,81 +54,105 @@ public abstract class MapUtils {
     }
 
     /**
-     * @param key
-     * @param value
-     * @return {@link Map}<{@link K}, {@link V}>
+     * <p>of.</p>
+     *
+     * @param key a K object
+     * @param value a V object
+     * @return {@link java.util.Map}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> Map<K, V> of(K key, V value) {
         return singletonMap(key, value);
     }
 
     /**
-     * @param key1
-     * @param value1
-     * @param key2
-     * @param value2
-     * @return {@link Map}<{@link K}, {@link V}>
+     * <p>of.</p>
+     *
+     * @param key1 a K object
+     * @param value1 a V object
+     * @param key2 a K object
+     * @param value2 a V object
+     * @return {@link java.util.Map}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> Map<K, V> of(K key1, V value1, K key2, V value2) {
         return ofMap(key1, value1, key2, value2);
     }
 
     /**
-     * @param key1
-     * @param value1
-     * @param key2
-     * @param value2
-     * @param key3
-     * @param value3
-     * @return {@link Map}<{@link K}, {@link V}>
+     * <p>of.</p>
+     *
+     * @param key1 a K object
+     * @param value1 a V object
+     * @param key2 a K object
+     * @param value2 a V object
+     * @param key3 a K object
+     * @param value3 a V object
+     * @return {@link java.util.Map}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> Map<K, V> of(K key1, V value1, K key2, V value2, K key3, V value3) {
         return ofMap(key1, value1, key2, value2, key3, value3);
     }
 
     /**
-     * @param key1
-     * @param value1
-     * @param key2
-     * @param value2
-     * @param key3
-     * @param value3
-     * @param key4
-     * @param value4
-     * @return {@link Map}<{@link K}, {@link V}>
+     * <p>of.</p>
+     *
+     * @param key1 a K object
+     * @param value1 a V object
+     * @param key2 a K object
+     * @param value2 a V object
+     * @param key3 a K object
+     * @param value3 a V object
+     * @param key4 a K object
+     * @param value4 a V object
+     * @return {@link java.util.Map}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> Map<K, V> of(K key1, V value1, K key2, V value2, K key3, V value3, K key4, V value4) {
         return ofMap(key1, value1, key2, value2, key3, value3, key4, value4);
     }
 
     /**
-     * @param key1
-     * @param value1
-     * @param key2
-     * @param value2
-     * @param key3
-     * @param value3
-     * @param key4
-     * @param value4
-     * @param key5
-     * @param value5
-     * @return {@link Map}<{@link K}, {@link V}>
+     * <p>of.</p>
+     *
+     * @param key1 a K object
+     * @param value1 a V object
+     * @param key2 a K object
+     * @param value2 a V object
+     * @param key3 a K object
+     * @param value3 a V object
+     * @param key4 a K object
+     * @param value4 a V object
+     * @param key5 a K object
+     * @param value5 a V object
+     * @return {@link java.util.Map}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> Map<K, V> of(K key1, V value1, K key2, V value2, K key3, V value3, K key4, V value4, K key5, V value5) {
         return ofMap(key1, value1, key2, value2, key3, value3, key4, value4, key5, value5);
     }
 
     /**
-     * @param values
-     * @return {@link Map}
+     * <p>of.</p>
+     *
+     * @param values a {@link java.lang.Object} object
+     * @return {@link java.util.Map}
      */
     public static Map of(Object... values) {
         return ofMap(values);
     }
 
     /**
-     * @param keyValuePairs
-     * @return {@link Map}
+     * <p>ofMap.</p>
+     *
+     * @param keyValuePairs a {@link java.lang.Object} object
+     * @return {@link java.util.Map}
      */
     public static Map ofMap(Object... keyValuePairs) {
         int length = keyValuePairs.length;
@@ -135,56 +164,84 @@ public abstract class MapUtils {
     }
 
     /**
-     * @return {@link HashMap}<{@link K}, {@link V}>
+     * <p>newHashMap.</p>
+     *
+     * @return {@link java.util.HashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> HashMap<K, V> newHashMap() {
         return new HashMap<>();
     }
 
     /**
-     * @param initialCapacity
-     * @return {@link HashMap}<{@link K}, {@link V}>
+     * <p>newHashMap.</p>
+     *
+     * @param initialCapacity a int
+     * @return {@link java.util.HashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> HashMap<K, V> newHashMap(int initialCapacity) {
         return new HashMap<>(initialCapacity);
     }
 
     /**
-     * @param initialCapacity
-     * @param loadFactor
-     * @return {@link HashMap}<{@link K}, {@link V}>
+     * <p>newHashMap.</p>
+     *
+     * @param initialCapacity a int
+     * @param loadFactor a float
+     * @return {@link java.util.HashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> HashMap<K, V> newHashMap(int initialCapacity, float loadFactor) {
         return new HashMap<>(initialCapacity, loadFactor);
     }
 
     /**
-     * @param map
-     * @return {@link HashMap}<{@link K}, {@link V}>
+     * <p>newHashMap.</p>
+     *
+     * @param map a {@link java.util.Map} object
+     * @return {@link java.util.HashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> HashMap<K, V> newHashMap(Map<? extends K, ? extends V> map) {
         return new HashMap<>(map);
     }
 
     /**
-     * @return {@link LinkedHashMap}<{@link K}, {@link V}>
+     * <p>newLinkedHashMap.</p>
+     *
+     * @return {@link java.util.LinkedHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> LinkedHashMap<K, V> newLinkedHashMap() {
         return new LinkedHashMap<>();
     }
 
     /**
-     * @param initialCapacity
-     * @return {@link LinkedHashMap}<{@link K}, {@link V}>
+     * <p>newLinkedHashMap.</p>
+     *
+     * @param initialCapacity a int
+     * @return {@link java.util.LinkedHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> LinkedHashMap<K, V> newLinkedHashMap(int initialCapacity) {
         return new LinkedHashMap<>(initialCapacity);
     }
 
     /**
-     * @param initialCapacity
-     * @param loadFactor
-     * @return {@link LinkedHashMap}<{@link K}, {@link V}>
+     * <p>newLinkedHashMap.</p>
+     *
+     * @param initialCapacity a int
+     * @param loadFactor a float
+     * @return {@link java.util.LinkedHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> LinkedHashMap<K, V> newLinkedHashMap(int initialCapacity,
         float loadFactor) {
@@ -192,10 +249,14 @@ public abstract class MapUtils {
     }
 
     /**
-     * @param initialCapacity
-     * @param loadFactor
-     * @param accessOrder
-     * @return {@link LinkedHashMap}<{@link K}, {@link V}>
+     * <p>newLinkedHashMap.</p>
+     *
+     * @param initialCapacity a int
+     * @param loadFactor a float
+     * @param accessOrder a boolean
+     * @return {@link java.util.LinkedHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> LinkedHashMap<K, V> newLinkedHashMap(int initialCapacity,
         float loadFactor,
@@ -204,32 +265,48 @@ public abstract class MapUtils {
     }
 
     /**
-     * @param map
-     * @return {@link LinkedHashMap}<{@link K}, {@link V}>
+     * <p>newLinkedHashMap.</p>
+     *
+     * @param map a {@link java.util.Map} object
+     * @return {@link java.util.LinkedHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> LinkedHashMap<K, V> newLinkedHashMap(Map<? extends K, ? extends V> map) {
         return newLinkedHashMap(map);
     }
 
     /**
-     * @return {@link ConcurrentHashMap}<{@link K}, {@link V}>
+     * <p>newConcurrentHashMap.</p>
+     *
+     * @return {@link java.util.concurrent.ConcurrentHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap() {
         return new ConcurrentHashMap<>();
     }
 
     /**
-     * @param initialCapacity
-     * @return {@link ConcurrentHashMap}<{@link K}, {@link V}>
+     * <p>newConcurrentHashMap.</p>
+     *
+     * @param initialCapacity a int
+     * @return {@link java.util.concurrent.ConcurrentHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap(int initialCapacity) {
         return new ConcurrentHashMap<>(initialCapacity);
     }
 
     /**
-     * @param initialCapacity
-     * @param loadFactor
-     * @return {@link ConcurrentHashMap}<{@link K}, {@link V}>
+     * <p>newConcurrentHashMap.</p>
+     *
+     * @param initialCapacity a int
+     * @param loadFactor a float
+     * @return {@link java.util.concurrent.ConcurrentHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap(int initialCapacity,
         float loadFactor) {
@@ -237,49 +314,71 @@ public abstract class MapUtils {
     }
 
     /**
-     * @param map
-     * @return {@link ConcurrentHashMap}<{@link K}, {@link V}>
+     * <p>newConcurrentHashMap.</p>
+     *
+     * @param map a {@link java.util.Map} object
+     * @return {@link java.util.concurrent.ConcurrentHashMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap(Map<? extends K, ? extends V> map) {
         return new ConcurrentHashMap<>(map);
     }
 
     /**
-     * @return {@link TreeMap}<{@link K}, {@link V}>
+     * <p>newTreeMap.</p>
+     *
+     * @return {@link java.util.TreeMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> TreeMap<K, V> newTreeMap() {
         return new TreeMap<>();
     }
 
     /**
-     * @param comparator
-     * @return {@link TreeMap}<{@link K}, {@link V}>
+     * <p>newTreeMap.</p>
+     *
+     * @param comparator a {@link java.util.Comparator} object
+     * @return {@link java.util.TreeMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> TreeMap<K, V> newTreeMap(Comparator<? super K> comparator) {
         return new TreeMap<>(comparator);
     }
 
     /**
-     * @param map
-     * @return {@link TreeMap}<{@link K}, {@link V}>
+     * <p>newTreeMap.</p>
+     *
+     * @param map a {@link java.util.Map} object
+     * @return {@link java.util.TreeMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> TreeMap<K, V> newTreeMap(Map<? extends K, ? extends V> map) {
         return new TreeMap<>(map);
     }
 
     /**
-     * @param map
-     * @return {@link TreeMap}<{@link K}, {@link V}>
+     * <p>newTreeMap.</p>
+     *
+     * @param map a {@link java.util.SortedMap} object
+     * @return {@link java.util.TreeMap}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> TreeMap<K, V> newTreeMap(SortedMap<K, ? extends V> map) {
         return new TreeMap<>(map);
     }
 
     /**
-     * Shallow Clone {@link Map}
+     * Shallow Clone {@link java.util.Map}
      *
-     * @param source the source of {@link Map}
+     * @param source the source of {@link java.util.Map}
      * @return non-null
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> Map<K, V> shallowCloneMap(Map<K, V> source) {
         if (source instanceof SortedMap) {
@@ -298,9 +397,14 @@ public abstract class MapUtils {
     }
 
     /**
-     * @param values
-     * @param entryMapper
-     * @return {@link Map}<{@link K}, {@link V}>
+     * <p>toFixedMap.</p>
+     *
+     * @param values a {@link java.util.Collection} object
+     * @param entryMapper a {@link java.util.function.Function} object
+     * @return {@link java.util.Map}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
+     * @param <E> a E class
      */
     public static <K, V, E> Map<K, V> toFixedMap(Collection<E> values,
         Function<E, Map.Entry<K, V>> entryMapper) {
@@ -319,18 +423,26 @@ public abstract class MapUtils {
     }
 
     /**
-     * @param key
-     * @param value
-     * @return {@link Map.Entry}<{@link K}, {@link V}>
+     * <p>ofEntry.</p>
+     *
+     * @param key a K object
+     * @param value a V object
+     * @return {@link java.util.Map.Entry}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> Map.Entry<K, V> ofEntry(K key, V value) {
         return immutableEntry(key, value);
     }
 
     /**
-     * @param key
-     * @param value
-     * @return {@link Map.Entry}<{@link K}, {@link V}>
+     * <p>immutableEntry.</p>
+     *
+     * @param key a K object
+     * @param value a V object
+     * @return {@link java.util.Map.Entry}<{@link K}, {@link V}>
+     * @param <K> a K class
+     * @param <V> a V class
      */
     public static <K, V> Map.Entry<K, V> immutableEntry(K key, V value) {
         return new ImmutableEntry(key, value);

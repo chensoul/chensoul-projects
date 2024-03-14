@@ -14,7 +14,7 @@
   <artifactId>config-server</artifactId>
   <version>${revision}</version>
 
-  <name>Microservice :: Config Server</name>
+  <name>SpringCloud :: Config Server</name>
   <description>${project.name}</description>
 
   <dependencies>

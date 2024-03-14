@@ -15,6 +15,7 @@ import lombok.val;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 @Slf4j
 public abstract class RegexUtils {
@@ -62,7 +63,7 @@ public abstract class RegexUtils {
      * case insensitive.
      *
      * @param pattern the pattern, may not be null.
-     * @return the pattern or or {@link RegexUtils#MATCH_NOTHING_PATTERN}
+     * @return the pattern or or {@link com.chensoul.util.RegexUtils#MATCH_NOTHING_PATTERN}
      * if pattern is null or invalid.
      */
     public static Pattern createPattern(final String pattern) {
@@ -74,7 +75,7 @@ public abstract class RegexUtils {
      *
      * @param pattern the pattern, may be null.
      * @param flags   the flags
-     * @return the compiled pattern or {@link RegexUtils#MATCH_NOTHING_PATTERN} if pattern is null or invalid.
+     * @return the compiled pattern or {@link com.chensoul.util.RegexUtils#MATCH_NOTHING_PATTERN} if pattern is null or invalid.
      */
     public static Pattern createPattern(final String pattern, final int flags) {
         if (StringUtils.isBlank(pattern)) {
@@ -171,10 +172,25 @@ public abstract class RegexUtils {
             .findFirst();
     }
 
+    /**
+     * <p>removeAll.</p>
+     *
+     * @param text a {@link java.lang.String} object
+     * @param regex a {@link java.util.regex.Pattern} object
+     * @return a {@link java.lang.String} object
+     */
     public static String removeAll(final String text, final Pattern regex) {
         return replaceAll(text, regex, StringUtils.EMPTY);
     }
 
+    /**
+     * <p>replaceAll.</p>
+     *
+     * @param text a {@link java.lang.String} object
+     * @param regex a {@link java.util.regex.Pattern} object
+     * @param replacement a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String replaceAll(final String text, final Pattern regex, final String replacement) {
         if (ArrayUtils.anyNull(text, regex, replacement)) {
             return text;
@@ -182,6 +198,14 @@ public abstract class RegexUtils {
         return regex.matcher(text).replaceAll(replacement);
     }
 
+    /**
+     * <p>replaceAll.</p>
+     *
+     * @param text a {@link java.lang.String} object
+     * @param regex a {@link java.lang.String} object
+     * @param replacement a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String replaceAll(final String text, final String regex, final String replacement) {
         if (ArrayUtils.anyNull(text, regex, replacement)) {
             return text;

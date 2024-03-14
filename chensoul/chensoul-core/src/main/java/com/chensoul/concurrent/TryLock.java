@@ -14,7 +14,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * BLOCKED because of synchronized method (or block), it will not relinquish its control over the underlying
  * OS thread. Thus, you would not gain the benefits of switching to virtual threads.
  * <p>
- * The following components provides an alternative to synchronized locking with {@link ReentrantLock}.
+ * The following components provides an alternative to synchronized locking with {@link java.util.concurrent.locks.ReentrantLock}.
+ *
+ * @author chensoul
+ * @version $Id: $Id
  */
 public class TryLock {
     private static final int LOCK_TIMEOUT_SECONDS = 3;

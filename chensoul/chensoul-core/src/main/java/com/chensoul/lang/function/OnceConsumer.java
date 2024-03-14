@@ -8,6 +8,7 @@ import java.util.function.Consumer;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public final class OnceConsumer<T> {
 
@@ -23,7 +24,7 @@ public final class OnceConsumer<T> {
      *
      * @param t   input which is passed to operation
      * @param <T> type of input on which operation is applied.
-     * @return
+     * @return a {@link com.chensoul.lang.function.OnceConsumer} object
      */
     public static <T> OnceConsumer<T> of(final T t) {
         return new OnceConsumer<>(t);

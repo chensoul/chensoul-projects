@@ -1,5 +1,11 @@
 package com.chensoul.constant;
 
+/**
+ * <p>ProtocolConstants interface.</p>
+ *
+ * @author chensoul
+ * @version $Id: $Id
+ */
 public interface ProtocolConstants {
 
     /**

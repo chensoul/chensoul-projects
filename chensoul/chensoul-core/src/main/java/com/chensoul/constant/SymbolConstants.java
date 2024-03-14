@@ -1,5 +1,11 @@
 package com.chensoul.constant;
 
+/**
+ * <p>SymbolConstants interface.</p>
+ *
+ * @author chensoul
+ * @version $Id: $Id
+ */
 public interface SymbolConstants {
     /**
      * The comma char : ','
@@ -86,11 +92,15 @@ public interface SymbolConstants {
      */
     char RIGHT_PARENTHESIS_CHAR = ')';
 
+    /** Constant <code>LEFT_BRACE_CHAR='{'</code> */
     char LEFT_BRACE_CHAR = '{';
 
+    /** Constant <code>RIGHT_BRACE_CHAR='}'</code> */
     char RIGHT_BRACE_CHAR = '}';
 
+    /** Constant <code>LEFT_SQ_BRACKET_CHAR='['</code> */
     char LEFT_SQ_BRACKET_CHAR = '[';
+    /** Constant <code>RIGHT_SQ_BRACKET_CHAR=']'</code> */
     char RIGHT_SQ_BRACKET_CHAR = ']';
 
     /**
@@ -278,6 +288,7 @@ public interface SymbolConstants {
      */
     String STAR = "*";
 
+    /** Constant <code>STAR_THREE="***"</code> */
     String STAR_THREE = "***";
 
 
@@ -308,6 +319,7 @@ public interface SymbolConstants {
      */
     String PERCENT = "%";
 
+    /** Constant <code>AT="@"</code> */
     String AT = "@";
 
 }

@@ -32,6 +32,12 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import lombok.SneakyThrows;
 
+/**
+ * <p>KeyGeneratorUtils class.</p>
+ *
+ * @author chensoul
+ * @version $Id: $Id
+ */
 public final class KeyGeneratorUtils {
 
     private static final String RSA_ALGORITHM = "RSA";
@@ -39,6 +45,11 @@ public final class KeyGeneratorUtils {
     private KeyGeneratorUtils() {
     }
 
+    /**
+     * <p>generateSecretKey.</p>
+     *
+     * @return a {@link javax.crypto.SecretKey} object
+     */
     public static SecretKey generateSecretKey() {
         SecretKey hmacKey;
         try {
@@ -49,6 +60,12 @@ public final class KeyGeneratorUtils {
         return hmacKey;
     }
 
+    /**
+     * <p>createPrivateKey.</p>
+     *
+     * @param privateKeyStr a {@link java.lang.String} object
+     * @return a {@link java.security.PrivateKey} object
+     */
     @SneakyThrows
     public static PrivateKey createPrivateKey(String privateKeyStr) {
         byte[] privateKeyBytes = Base64.getDecoder().decode(privateKeyStr.replaceAll("\n", ""));
@@ -57,6 +74,12 @@ public final class KeyGeneratorUtils {
         return keyFactory.generatePrivate(keySpec);
     }
 
+    /**
+     * <p>createPublicKey.</p>
+     *
+     * @param publicKeyStr a {@link java.lang.String} object
+     * @return a {@link java.security.PublicKey} object
+     */
     @SneakyThrows
     public static PublicKey createPublicKey(String publicKeyStr) {
         byte[] publicKeyBytes = Base64.getDecoder().decode(publicKeyStr.replaceAll("\n", ""));
@@ -65,6 +88,11 @@ public final class KeyGeneratorUtils {
         return keyFactory.generatePublic(keySpec);
     }
 
+    /**
+     * <p>generateRsaKey.</p>
+     *
+     * @return a {@link java.security.KeyPair} object
+     */
     public static KeyPair generateRsaKey() {
         KeyPair keyPair;
         try {
@@ -77,6 +105,11 @@ public final class KeyGeneratorUtils {
         return keyPair;
     }
 
+    /**
+     * <p>generateEcKey.</p>
+     *
+     * @return a {@link java.security.KeyPair} object
+     */
     public static KeyPair generateEcKey() {
         EllipticCurve ellipticCurve = new EllipticCurve(
             new ECFieldFp(new BigInteger(

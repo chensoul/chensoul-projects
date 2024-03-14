@@ -21,6 +21,7 @@ import java.util.function.Predicate;
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @see java.lang.ApplicationShutdownHooks
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class ShutdownHookUtils {
 
@@ -61,10 +62,23 @@ public abstract class ShutdownHookUtils {
         return filterShutdownHookThreads(t -> true);
     }
 
+    /**
+     * <p>filterShutdownHookThreads.</p>
+     *
+     * @param hookThreadFilter a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.Set} object
+     */
     public static Set<Thread> filterShutdownHookThreads(Predicate<Thread> hookThreadFilter) {
         return filterShutdownHookThreads(hookThreadFilter, false);
     }
 
+    /**
+     * <p>filterShutdownHookThreads.</p>
+     *
+     * @param hookThreadFilter a {@link java.util.function.Predicate} object
+     * @param removed a boolean
+     * @return a {@link java.util.Set} object
+     */
     public static Set<Thread> filterShutdownHookThreads(Predicate<Thread> hookThreadFilter, boolean removed) {
         if (hooksRef == null || hooksRef.isEmpty()) {
             return emptySet();
@@ -80,7 +94,7 @@ public abstract class ShutdownHookUtils {
     /**
      * Add the Shutdown Hook Callback
      *
-     * @param callback the {@link Runnable} callback
+     * @param callback the {@link java.lang.Runnable} callback
      * @return <code>true</code> if the specified Shutdown Hook Callback added, otherwise <code>false</code>
      */
     public static boolean addShutdownHookCallback(Runnable callback) {
@@ -94,7 +108,7 @@ public abstract class ShutdownHookUtils {
     /**
      * Remove the Shutdown Hook Callback
      *
-     * @param callback the {@link Runnable} callback
+     * @param callback the {@link java.lang.Runnable} callback
      * @return <code>true</code> if the specified Shutdown Hook Callback removed, otherwise <code>false</code>
      */
     public static boolean removeShutdownHookCallback(Runnable callback) {

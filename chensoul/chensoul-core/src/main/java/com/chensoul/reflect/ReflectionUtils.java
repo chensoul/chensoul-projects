@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Reflection Utility class , generic methods are defined from {@link FieldUtils} , {@link MethodUtils} , {@link
+ * Reflection Utility class , generic methods are defined from {@link com.chensoul.reflect.FieldUtils} , {@link com.chensoul.reflect.MethodUtils} , {@link
  * ConstructorUtils}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
@@ -135,7 +135,6 @@ public abstract class ReflectionUtils {
      *
      * @return Get the Class name that called the method
      */
-
     public static String getCallerClassName() {
         return getCallerClassName(sunReflectReflectionInvocationFrame);
     }
@@ -146,8 +145,8 @@ public abstract class ReflectionUtils {
      * @param invocationFrame invocation frame
      * @return Class name under specified invocation frame
      * @see Thread#getStackTrace()
+     * @throws java.lang.IndexOutOfBoundsException if any.
      */
-
     protected static String getCallerClassName(int invocationFrame) throws IndexOutOfBoundsException {
         if (supportedSunReflectReflection) {
             Class<?> callerClass = getCallerClassInSunJVM(invocationFrame + 1);
@@ -214,7 +213,7 @@ public abstract class ReflectionUtils {
 
     /**
      * Get caller class
-
+     *
      * For instance,
      * <pre>
      *     package com.acme;
@@ -227,8 +226,8 @@ public abstract class ReflectionUtils {
      * </pre>
      *
      * @return Get caller class
+     * @throws java.lang.IllegalStateException if any.
      */
-
     public static Class<?> getCallerClass() throws IllegalStateException {
         return getCallerClass(sunReflectReflectionInvocationFrame);
     }
@@ -282,10 +281,11 @@ public abstract class ReflectionUtils {
     }
 
     /**
-     * Get caller class's {@link Package}
+     * Get caller class's {@link java.lang.Package}
      *
-     * @return caller class's {@link Package}
+     * @return caller class's {@link java.lang.Package}
      * @see #getCallerClass()
+     * @throws java.lang.IllegalStateException if any.
      */
     public static Package getCallerPackage() throws IllegalStateException {
         return getCallerClass().getPackage();
@@ -296,6 +296,7 @@ public abstract class ReflectionUtils {
      *
      * @param array Array object
      * @param index index
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static void assertArrayIndex(Object array, int index) throws IllegalArgumentException {
         if (index < 0) {
@@ -314,6 +315,7 @@ public abstract class ReflectionUtils {
      * Assert the object is array or not
      *
      * @param array asserted object
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static void assertArrayType(Object array) throws IllegalArgumentException {
         Class<?> type = array.getClass();
@@ -329,6 +331,7 @@ public abstract class ReflectionUtils {
      * @param object       Object
      * @param fieldName    field name
      * @param expectedType expected type
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static void assertFieldMatchType(Object object, String fieldName, Class<?> expectedType) throws IllegalArgumentException {
         Class<?> type = object.getClass();
@@ -342,10 +345,12 @@ public abstract class ReflectionUtils {
 
 
     /**
-     * Convert {@link Array} object to {@link List}
+     * Convert {@link java.lang.reflect.Array} object to {@link java.util.List}
      *
      * @param array array object
-     * @return {@link List}
+     * @return {@link java.util.List}
+     * @param <T> a T class
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static <T> List<T> toList(Object array) throws IllegalArgumentException {
         int length = Array.getLength(array);
@@ -370,12 +375,11 @@ public abstract class ReflectionUtils {
     }
 
     /**
-     * Read fields value as {@link Map}
+     * Read fields value as {@link java.util.Map}
      *
      * @param object object to be read
-     * @return fields value as {@link Map}
+     * @return fields value as {@link java.util.Map}
      */
-
     public static Map<String, Object> readFieldsAsMap(Object object) {
         Map<String, Object> fieldsAsMap = new LinkedHashMap();
         Class<?> type = object.getClass();
@@ -409,10 +413,10 @@ public abstract class ReflectionUtils {
 
 
     /**
-     * Find the {@link Set} of {@link ParameterizedType}
+     * Find the {@link java.util.Set} of {@link java.lang.reflect.ParameterizedType}
      *
      * @param sourceClass the source {@link Class class}
-     * @return non-null read-only {@link Set}
+     * @return non-null read-only {@link java.util.Set}
      */
     public static Set<ParameterizedType> findParameterizedTypes(Class<?> sourceClass) {
         // Add Generic Interfaces
@@ -440,7 +444,7 @@ public abstract class ReflectionUtils {
      * @param sourceClass the source {@link Class class}
      * @param matchType   the type to match
      * @param <T>         the type to match
-     * @return non-null read-only {@link Set}
+     * @return non-null read-only {@link java.util.Set}
      */
     public static <T> Set<Class<T>> findHierarchicalTypes(Class<?> sourceClass, Class<T> matchType) {
         if (sourceClass == null) {
@@ -465,7 +469,7 @@ public abstract class ReflectionUtils {
      * @param bean       the bean instance
      * @param methodName the name of getter
      * @param <T>        the type of property value
-     * @return
+     * @return a T object
      */
     public static <T> T getProperty(Object bean, String methodName) {
         Class<?> beanClass = bean.getClass();
@@ -494,7 +498,7 @@ public abstract class ReflectionUtils {
      * Resolve the types of the specified values
      *
      * @param values the values
-     * @return If can't be resolved, return {@link ArrayUtils#EMPTY_CLASS_ARRAY empty class array}
+     * @return If can't be resolved, return {@link com.chensoul.collection.ArrayUtils#EMPTY_CLASS_ARRAY empty class array}
      */
     public static Class[] resolveTypes(Object... values) {
 

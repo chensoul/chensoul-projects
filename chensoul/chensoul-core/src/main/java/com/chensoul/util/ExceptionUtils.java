@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@link Exception} Utilities class
+ * {@link java.lang.Exception} Utilities class
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class ExceptionUtils {
     private static final Object CAUSE_METHOD_NAMES_LOCK = new Object();
@@ -33,11 +34,23 @@ public abstract class ExceptionUtils {
         "getThrowable",
     };
 
+    /**
+     * <p>getRootCause.</p>
+     *
+     * @param throwable a {@link java.lang.Throwable} object
+     * @return a {@link java.lang.Throwable} object
+     */
     public static Throwable getRootCause(Throwable throwable) {
         List list = getThrowableList(throwable);
         return list.size() < 2 ? null : (Throwable) list.get(list.size() - 1);
     }
 
+    /**
+     * <p>getThrowableList.</p>
+     *
+     * @param throwable a {@link java.lang.Throwable} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Throwable> getThrowableList(Throwable throwable) {
         List<Throwable> list = new ArrayList();
         while (throwable != null && list.contains(throwable) == false) {
@@ -47,12 +60,25 @@ public abstract class ExceptionUtils {
         return list;
     }
 
+    /**
+     * <p>getCause.</p>
+     *
+     * @param throwable a {@link java.lang.Throwable} object
+     * @return a {@link java.lang.Throwable} object
+     */
     public static Throwable getCause(Throwable throwable) {
         synchronized (CAUSE_METHOD_NAMES_LOCK) {
             return getCause(throwable, CAUSE_METHOD_NAMES);
         }
     }
 
+    /**
+     * <p>getCause.</p>
+     *
+     * @param throwable a {@link java.lang.Throwable} object
+     * @param methodNames an array of {@link java.lang.String} objects
+     * @return a {@link java.lang.Throwable} object
+     */
     public static Throwable getCause(Throwable throwable, String[] methodNames) {
         if (throwable == null) {
             return null;
@@ -137,12 +163,24 @@ public abstract class ExceptionUtils {
         return null;
     }
 
+    /**
+     * <p>getRootCauseMessage.</p>
+     *
+     * @param th a {@link java.lang.Throwable} object
+     * @return a {@link java.lang.String} object
+     */
     public static String getRootCauseMessage(Throwable th) {
         Throwable root = ExceptionUtils.getRootCause(th);
         root = (root == null ? th : root);
         return getMessage(root);
     }
 
+    /**
+     * <p>getMessage.</p>
+     *
+     * @param th a {@link java.lang.Throwable} object
+     * @return a {@link java.lang.String} object
+     */
     public static String getMessage(Throwable th) {
         if (th == null) {
             return "";
@@ -150,6 +188,15 @@ public abstract class ExceptionUtils {
         return th.getMessage();
     }
 
+    /**
+     * <p>wrap.</p>
+     *
+     * @param source a T object
+     * @param thrownType a {@link java.lang.Class} object
+     * @param <T> a T class
+     * @param <TT> a TT class
+     * @return a TT object
+     */
     public static <T extends Throwable, TT extends Throwable> TT wrap(T source, Class<TT> thrownType) {
         if (ClassUtils.isAssignableFrom(thrownType, source.getClass())) {
             return (TT) source;

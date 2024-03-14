@@ -12,7 +12,7 @@
   <artifactId>admin-server</artifactId>
   <version>${revision}</version>
 
-  <name>Microservice :: Admin Server</name>
+  <name>SpringCloud :: Admin Server</name>
   <description>${project.name}</description>
 
   <dependencies>

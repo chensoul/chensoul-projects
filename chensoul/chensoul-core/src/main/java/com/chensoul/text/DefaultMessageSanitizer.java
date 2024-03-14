@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 @RequiredArgsConstructor
 public class DefaultMessageSanitizer implements MessageSanitizer {
@@ -23,6 +24,7 @@ public class DefaultMessageSanitizer implements MessageSanitizer {
      */
     public static final String OBFUSCATED_STRING = StringUtils.repeat("*", OBFUSCATION_LENGTH);
 
+    /** {@inheritDoc} */
     @Override
     public String sanitize(final String msg) {
         String modifiedMessage = msg;

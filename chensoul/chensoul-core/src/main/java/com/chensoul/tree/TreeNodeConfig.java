@@ -9,12 +9,14 @@ import lombok.experimental.Accessors;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 1.0.0
+ * @version $Id: $Id
  */
 @Data
 @Accessors(chain = true)
 public class TreeNodeConfig implements Serializable {
     private static final long serialVersionUID = 3653051391609093595L;
 
+    /** Constant <code>treeNodeConfig</code> */
     public static TreeNodeConfig treeNodeConfig = new TreeNodeConfig();
 
     private String idKey = "id";

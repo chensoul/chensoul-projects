@@ -13,7 +13,7 @@
   <artifactId>authorization-server</artifactId>
   <version>${revision}</version>
 
-  <name>Microservice :: Authorization Server</name>
+  <name>SpringCloud :: Authorization Server</name>
   <description>认证微服务器</description>
 
   <dependencies>

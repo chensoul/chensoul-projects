@@ -29,7 +29,7 @@
   <artifactId>nacos</artifactId>
   <version>${revision}</version>
 
-  <name>Microservice :: Nacos</name>
+  <name>SpringCloud :: Nacos</name>
   <description>${project.name}</description>
 
   <properties>

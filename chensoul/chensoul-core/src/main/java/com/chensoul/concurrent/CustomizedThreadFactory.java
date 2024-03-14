@@ -4,10 +4,11 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * The Customized {@link ThreadFactory}
+ * The Customized {@link java.util.concurrent.ThreadFactory}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public class CustomizedThreadFactory implements ThreadFactory {
 
@@ -42,34 +43,42 @@ public class CustomizedThreadFactory implements ThreadFactory {
     private final long stackSize;
 
     /**
-     * @param namePrefix
+     * <p>Constructor for CustomizedThreadFactory.</p>
+     *
+     * @param namePrefix a {@link java.lang.String} object
      */
     protected CustomizedThreadFactory(String namePrefix) {
         this(namePrefix, false);
     }
 
     /**
-     * @param namePrefix
-     * @param daemon
+     * <p>Constructor for CustomizedThreadFactory.</p>
+     *
+     * @param namePrefix a {@link java.lang.String} object
+     * @param daemon a boolean
      */
     protected CustomizedThreadFactory(String namePrefix, boolean daemon) {
         this(namePrefix, daemon, Thread.NORM_PRIORITY);
     }
 
     /**
-     * @param namePrefix
-     * @param daemon
-     * @param priority
+     * <p>Constructor for CustomizedThreadFactory.</p>
+     *
+     * @param namePrefix a {@link java.lang.String} object
+     * @param daemon a boolean
+     * @param priority a int
      */
     protected CustomizedThreadFactory(String namePrefix, boolean daemon, int priority) {
         this(namePrefix, daemon, priority, 0);
     }
 
     /**
-     * @param namePrefix
-     * @param daemon
-     * @param priority
-     * @param stackSize
+     * <p>Constructor for CustomizedThreadFactory.</p>
+     *
+     * @param namePrefix a {@link java.lang.String} object
+     * @param daemon a boolean
+     * @param priority a int
+     * @param stackSize a long
      */
     protected CustomizedThreadFactory(String namePrefix, boolean daemon, int priority, long stackSize) {
         SecurityManager s = System.getSecurityManager();
@@ -83,47 +92,52 @@ public class CustomizedThreadFactory implements ThreadFactory {
     }
 
     /**
-     * @param namePrefix
-     * @return {@link ThreadFactory}
+     * <p>newThreadFactory.</p>
+     *
+     * @param namePrefix a {@link java.lang.String} object
+     * @return {@link java.util.concurrent.ThreadFactory}
      */
     public static ThreadFactory newThreadFactory(String namePrefix) {
         return new CustomizedThreadFactory(namePrefix);
     }
 
     /**
-     * @param namePrefix
-     * @param daemon
-     * @return {@link ThreadFactory}
+     * <p>newThreadFactory.</p>
+     *
+     * @param namePrefix a {@link java.lang.String} object
+     * @param daemon a boolean
+     * @return {@link java.util.concurrent.ThreadFactory}
      */
     public static ThreadFactory newThreadFactory(String namePrefix, boolean daemon) {
         return new CustomizedThreadFactory(namePrefix, daemon);
     }
 
     /**
-     * @param namePrefix
-     * @param daemon
-     * @param priority
-     * @return {@link ThreadFactory}
+     * <p>newThreadFactory.</p>
+     *
+     * @param namePrefix a {@link java.lang.String} object
+     * @param daemon a boolean
+     * @param priority a int
+     * @return {@link java.util.concurrent.ThreadFactory}
      */
     public static ThreadFactory newThreadFactory(String namePrefix, boolean daemon, int priority) {
         return new CustomizedThreadFactory(namePrefix, daemon, priority);
     }
 
     /**
-     * @param namePrefix
-     * @param daemon
-     * @param priority
-     * @param stackSize
-     * @return {@link ThreadFactory}
+     * <p>newThreadFactory.</p>
+     *
+     * @param namePrefix a {@link java.lang.String} object
+     * @param daemon a boolean
+     * @param priority a int
+     * @param stackSize a long
+     * @return {@link java.util.concurrent.ThreadFactory}
      */
     public static ThreadFactory newThreadFactory(String namePrefix, boolean daemon, int priority, long stackSize) {
         return new CustomizedThreadFactory(namePrefix, daemon, priority, stackSize);
     }
 
-    /**
-     * @param r
-     * @return {@link Thread}
-     */
+    /** {@inheritDoc} */
     public Thread newThread(Runnable r) {
         Thread t = new Thread(group, r, namePrefix + threadNumber.getAndIncrement(), stackSize);
         t.setDaemon(daemon);

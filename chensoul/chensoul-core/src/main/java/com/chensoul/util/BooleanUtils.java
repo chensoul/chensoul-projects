@@ -9,6 +9,7 @@ import java.util.List;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public abstract class BooleanUtils {
     /**
@@ -37,6 +38,12 @@ public abstract class BooleanUtils {
     public static final String YES = "yes";
     private static final List<Boolean> BOOLEAN_LIST = Collections.unmodifiableList(Arrays.asList(Boolean.FALSE, Boolean.TRUE));
 
+    /**
+     * <p>isTrue.</p>
+     *
+     * @param bool a {@link java.lang.Boolean} object
+     * @return a boolean
+     */
     public static boolean isTrue(Boolean bool) {
         if (bool == null) {
             return false;
@@ -44,10 +51,22 @@ public abstract class BooleanUtils {
         return bool.booleanValue() ? true : false;
     }
 
+    /**
+     * <p>isNotTrue.</p>
+     *
+     * @param bool a {@link java.lang.Boolean} object
+     * @return a boolean
+     */
     public static boolean isNotTrue(Boolean bool) {
         return !isTrue(bool);
     }
 
+    /**
+     * <p>isFalse.</p>
+     *
+     * @param bool a {@link java.lang.Boolean} object
+     * @return a boolean
+     */
     public static boolean isFalse(Boolean bool) {
         if (bool == null) {
             return false;
@@ -55,18 +74,44 @@ public abstract class BooleanUtils {
         return bool.booleanValue() ? false : true;
     }
 
+    /**
+     * <p>isNotFalse.</p>
+     *
+     * @param bool a {@link java.lang.Boolean} object
+     * @return a boolean
+     */
     public static boolean isNotFalse(Boolean bool) {
         return !isFalse(bool);
     }
 
+    /**
+     * <p>toString.</p>
+     *
+     * @param bool a boolean
+     * @param trueString a {@link java.lang.String} object
+     * @param falseString a {@link java.lang.String} object
+     * @return a {@link java.lang.String} object
+     */
     public static String toString(final boolean bool, final String trueString, final String falseString) {
         return bool ? trueString : falseString;
     }
 
+    /**
+     * <p>toBoolean.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @return a boolean
+     */
     public static boolean toBoolean(final String str) {
         return toBooleanObject(str) == Boolean.TRUE;
     }
 
+    /**
+     * <p>toBooleanObject.</p>
+     *
+     * @param value a {@link java.lang.Integer} object
+     * @return a {@link java.lang.Boolean} object
+     */
     public static Boolean toBooleanObject(final Integer value) {
         if (value == null) {
             return null;
@@ -74,6 +119,12 @@ public abstract class BooleanUtils {
         return value.intValue() == 0 ? Boolean.FALSE : Boolean.TRUE;
     }
 
+    /**
+     * <p>toBooleanObject.</p>
+     *
+     * @param str a {@link java.lang.String} object
+     * @return a {@link java.lang.Boolean} object
+     */
     public static Boolean toBooleanObject(final String str) {
         // Previously used equalsIgnoreCase, which was fast for interned 'true'.
         // Non interned 'true' matched 15 times slower.

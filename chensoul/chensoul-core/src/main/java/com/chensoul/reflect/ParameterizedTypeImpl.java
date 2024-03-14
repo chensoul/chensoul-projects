@@ -8,12 +8,13 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- * {@link ParameterizedType} Implementation forks {@link sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl}
+ * {@link java.lang.reflect.ParameterizedType} Implementation forks {@link sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @see ParameterizedType
  * @see sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl
  * @since 0.0.1
+ * @version $Id: $Id
  */
 public class ParameterizedTypeImpl implements ParameterizedType {
 
@@ -86,11 +87,21 @@ public class ParameterizedTypeImpl implements ParameterizedType {
         return actualTypeArguments.clone();
     }
 
+    /**
+     * <p>Getter for the field <code>rawType</code>.</p>
+     *
+     * @return a {@link java.lang.Class} object
+     */
     public Class<?> getRawType() {
         return rawType;
     }
 
 
+    /**
+     * <p>Getter for the field <code>ownerType</code>.</p>
+     *
+     * @return a {@link java.lang.reflect.Type} object
+     */
     public Type getOwnerType() {
         return ownerType;
     }
@@ -102,6 +113,7 @@ public class ParameterizedTypeImpl implements ParameterizedType {
      * that share the same generic type declaration and have equal
      * type parameters."
      */
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (o instanceof ParameterizedType) {
@@ -142,6 +154,7 @@ public class ParameterizedTypeImpl implements ParameterizedType {
             return false;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Arrays.hashCode(actualTypeArguments) ^
@@ -149,6 +162,11 @@ public class ParameterizedTypeImpl implements ParameterizedType {
             Objects.hashCode(rawType);
     }
 
+    /**
+     * <p>toString.</p>
+     *
+     * @return a {@link java.lang.String} object
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
 

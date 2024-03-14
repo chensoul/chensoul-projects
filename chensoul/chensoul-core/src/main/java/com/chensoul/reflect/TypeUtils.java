@@ -35,22 +35,30 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
- * The utilities class for {@link Type}
+ * The utilities class for {@link java.lang.reflect.Type}
  *
  * @since 0.0.1
+ * @author chensoul
+ * @version $Id: $Id
  */
 public abstract class TypeUtils {
 
+    /** Constant <code>NON_OBJECT_TYPE_FILTER</code> */
     public static final Predicate<Type> NON_OBJECT_TYPE_FILTER = t -> t != null && !isObjectType(t);
 
+    /** Constant <code>NON_OBJECT_CLASS_FILTER</code> */
     public static final Predicate<Class<?>> NON_OBJECT_CLASS_FILTER = (Predicate) NON_OBJECT_TYPE_FILTER;
 
+    /** Constant <code>TYPE_VARIABLE_FILTER</code> */
     public static final Predicate<Type> TYPE_VARIABLE_FILTER = TypeUtils::isTypeVariable;
 
+    /** Constant <code>PARAMETERIZED_TYPE_FILTER</code> */
     public static final Predicate<Type> PARAMETERIZED_TYPE_FILTER = TypeUtils::isParameterizedType;
 
+    /** Constant <code>WILDCARD_TYPE_FILTER</code> */
     public static final Predicate<Type> WILDCARD_TYPE_FILTER = TypeUtils::isWildcardType;
 
+    /** Constant <code>GENERIC_ARRAY_TYPE_FILTER</code> */
     public static final Predicate<Type> GENERIC_ARRAY_TYPE_FILTER = TypeUtils::isGenericArrayType;
 
     /**
@@ -58,34 +66,77 @@ public abstract class TypeUtils {
      */
     public static final Type[] EMPTY_TYPE = new Type[0];
 
+    /** Constant <code>RESOLVED_GENERIC_TYPES_CACHE_SIZE_PROPERTY_NAME="microsphere.reflect.resolved-generic-ty"{trunked}</code> */
     public static final String RESOLVED_GENERIC_TYPES_CACHE_SIZE_PROPERTY_NAME = "microsphere.reflect.resolved-generic-types.cache.size";
 
     private static final ConcurrentMap<MultipleType, List<Type>> resolvedGenericTypesCache = MapUtils.newConcurrentHashMap(getInteger(RESOLVED_GENERIC_TYPES_CACHE_SIZE_PROPERTY_NAME, 256));
 
+    /**
+     * <p>isClass.</p>
+     *
+     * @param type a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean isClass(Object type) {
         return type instanceof Class;
     }
 
+    /**
+     * <p>isObjectType.</p>
+     *
+     * @param type a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean isObjectType(Object type) {
         return Object.class.equals(type);
     }
 
+    /**
+     * <p>isParameterizedType.</p>
+     *
+     * @param type a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean isParameterizedType(Object type) {
         return type instanceof ParameterizedType;
     }
 
+    /**
+     * <p>isTypeVariable.</p>
+     *
+     * @param type a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean isTypeVariable(Object type) {
         return type instanceof TypeVariable;
     }
 
+    /**
+     * <p>isWildcardType.</p>
+     *
+     * @param type a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean isWildcardType(Object type) {
         return type instanceof WildcardType;
     }
 
+    /**
+     * <p>isGenericArrayType.</p>
+     *
+     * @param type a {@link java.lang.Object} object
+     * @return a boolean
+     */
     public static boolean isGenericArrayType(Object type) {
         return type instanceof GenericArrayType;
     }
 
+    /**
+     * <p>getRawType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.reflect.Type} object
+     */
     public static Type getRawType(Type type) {
         if (isParameterizedType(type)) {
             return ((ParameterizedType) type).getRawType();
@@ -94,6 +145,12 @@ public abstract class TypeUtils {
         }
     }
 
+    /**
+     * <p>getRawClass.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.Class} object
+     */
     public static Class<?> getRawClass(Type type) {
         Type rawType = getRawType(type);
         if (isClass(rawType)) {
@@ -103,11 +160,11 @@ public abstract class TypeUtils {
     }
 
     /**
-     * the semantics is same as {@link Class#isAssignableFrom(Class)}
+     * the semantics is same as {@link java.lang.Class#isAssignableFrom(Class)}
      *
      * @param superType  the super type
      * @param targetType the target type
-     * @return see {@link Class#isAssignableFrom(Class)}
+     * @return see {@link java.lang.Class#isAssignableFrom(Class)}
      */
     public static boolean isAssignableFrom(Type superType, Type targetType) {
         Class<?> superClass = asClass(superType);
@@ -115,11 +172,11 @@ public abstract class TypeUtils {
     }
 
     /**
-     * the semantics is same as {@link Class#isAssignableFrom(Class)}
+     * the semantics is same as {@link java.lang.Class#isAssignableFrom(Class)}
      *
      * @param superClass the super class
      * @param targetType the target type
-     * @return see {@link Class#isAssignableFrom(Class)}
+     * @return see {@link java.lang.Class#isAssignableFrom(Class)}
      */
     public static boolean isAssignableFrom(Class<?> superClass, Type targetType) {
         Class<?> targetClass = asClass(targetType);
@@ -127,11 +184,11 @@ public abstract class TypeUtils {
     }
 
     /**
-     * the semantics is same as {@link Class#isAssignableFrom(Class)}
+     * the semantics is same as {@link java.lang.Class#isAssignableFrom(Class)}
      *
      * @param superType  the super type
      * @param targetType the target type
-     * @return see {@link Class#isAssignableFrom(Class)}
+     * @return see {@link java.lang.Class#isAssignableFrom(Class)}
      */
     protected static boolean isAssignableFrom(Class<?> superType, Class<?> targetType) {
         return ClassUtils.isAssignableFrom(superType, targetType);
@@ -154,6 +211,7 @@ public abstract class TypeUtils {
      * @param type     the type to be resolved
      * @param baseType The base class or interface of <code>type</code>
      * @return the actual type parameters
+     * @param index a int
      */
     public static Type resolveActualTypeArgument(Type type, Type baseType, int index) {
         return doResolveActualTypeArguments(type, baseType).get(index);
@@ -164,7 +222,7 @@ public abstract class TypeUtils {
      *
      * @param type     the type to be resolved
      * @param baseType The base class or interface of <code>type</code>
-     * @return the read-only {@link List} classes of the actual type parameters
+     * @return the read-only {@link java.util.List} classes of the actual type parameters
      */
     public static List<Class> resolveActualTypeArgumentClasses(Type type, Type baseType) {
         return unmodifiableList(doResolveActualTypeArgumentClasses(type, baseType));
@@ -176,25 +234,53 @@ public abstract class TypeUtils {
      * @param type     the type to be resolved
      * @param baseType The base class or interface of <code>type</code>
      * @param index    the index of actual type parameter
-     * @return the read-only {@link List} classes of the actual type parameters
+     * @return the read-only {@link java.util.List} classes of the actual type parameters
      */
     public static Class resolveActualTypeArgumentClass(Type type, Class baseType, int index) {
         return asClass(resolveActualTypeArgument(type, baseType, index));
     }
 
+    /**
+     * <p>doResolveActualTypeArgumentClasses.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param baseType a {@link java.lang.reflect.Type} object
+     * @return a {@link java.util.List} object
+     */
     protected static List<Class> doResolveActualTypeArgumentClasses(Type type, Type baseType) {
         return doResolveActualTypeArguments(type, baseType).stream().map(TypeUtils::asClass).filter(Objects::nonNull).collect(toList());
     }
 
+    /**
+     * <p>doResolveActualTypeArguments.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param baseType a {@link java.lang.reflect.Type} object
+     * @return a {@link java.util.List} object
+     */
     protected static List<Type> doResolveActualTypeArguments(Type type, Type baseType) {
         Class baseClass = asClass(baseType);
         return doResolveActualTypeArguments(type, baseClass);
     }
 
+    /**
+     * <p>resolveActualTypeArguments.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param baseClass a {@link java.lang.Class} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Type> resolveActualTypeArguments(Type type, Class baseClass) {
         return unmodifiableList(doResolveActualTypeArguments(type, baseClass));
     }
 
+    /**
+     * <p>doResolveActualTypeArguments.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param baseClass a {@link java.lang.Class} object
+     * @return a {@link java.util.List} object
+     */
     protected static List<Type> doResolveActualTypeArguments(Type type, Class baseClass) {
         return resolvedGenericTypesCache.computeIfAbsent(MultipleType.of(type, baseClass), mt -> {
 
@@ -353,16 +439,22 @@ public abstract class TypeUtils {
         return typeArgumentsMap.get(klass);
     }
 
+    /**
+     * <p>isActualType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a boolean
+     */
     public static boolean isActualType(Type type) {
         return isClass(type) || isParameterizedType(type);
     }
 
     /**
-     * Get the specified types' generic types(including super classes and interfaces) that are assignable from {@link ParameterizedType} interface
+     * Get the specified types' generic types(including super classes and interfaces) that are assignable from {@link java.lang.reflect.ParameterizedType} interface
      *
      * @param type        the specified type
-     * @param typeFilters one or more {@link Predicate}s to support the {@link ParameterizedType} instance
-     * @return non-null read-only {@link List}
+     * @param typeFilters one or more {@link java.util.function.Predicate}s to support the {@link java.lang.reflect.ParameterizedType} instance
+     * @return non-null read-only {@link java.util.List}
      */
     public static List<ParameterizedType> getGenericTypes(Type type, Predicate<ParameterizedType>... typeFilters) {
 
@@ -380,6 +472,13 @@ public abstract class TypeUtils {
         return unmodifiableList(Streams.filterList(genericTypes, TypeUtils::isParameterizedType).stream().map(ParameterizedType.class::cast).filter(Predicates.and(typeFilters)).collect(toList()));
     }
 
+    /**
+     * <p>findAllTypes.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Type> findAllTypes(Type type, Predicate<Type>... typeFilters) {
         List<Type> allGenericTypes = ListUtils.newLinkedList();
         Predicate filter = Predicates.and(typeFilters);
@@ -393,19 +492,46 @@ public abstract class TypeUtils {
 
     }
 
+    /**
+     * <p>findHierarchicalTypes.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Type> findHierarchicalTypes(Type type) {
         return findHierarchicalTypes(type, EMPTY_PREDICATE_ARRAY);
     }
 
+    /**
+     * <p>findHierarchicalTypes.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Type> findHierarchicalTypes(Type type, Predicate<Type>... typeFilters) {
         return unmodifiableList(doFindHierarchicalTypes(type, typeFilters));
     }
 
+    /**
+     * <p>doFindHierarchicalTypes.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.List} object
+     */
     protected static List<Type> doFindHierarchicalTypes(Type type, Predicate<Type>... typeFilters) {
         Class<?> klass = asClass(type);
         return doFindHierarchicalTypes(klass, typeFilters);
     }
 
+    /**
+     * <p>doFindHierarchicalTypes.</p>
+     *
+     * @param klass a {@link java.lang.Class} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.List} object
+     */
     protected static List<Type> doFindHierarchicalTypes(Class<?> klass, Predicate<Type>... typeFilters) {
         if (klass == null || isObjectType(klass)) {
             return emptyList();
@@ -431,20 +557,47 @@ public abstract class TypeUtils {
     }
 
 
+    /**
+     * <p>findAllHierarchicalTypes.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Type> findAllHierarchicalTypes(Type type) {
         return findAllHierarchicalTypes(type, EMPTY_PREDICATE_ARRAY);
     }
 
+    /**
+     * <p>findAllHierarchicalTypes.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Type> findAllHierarchicalTypes(Type type, Predicate<Type>... typeFilters) {
         return unmodifiableList(doFindAllHierarchicalTypes(type, typeFilters));
     }
 
+    /**
+     * <p>doFindAllHierarchicalTypes.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.LinkedList} object
+     */
     protected static LinkedList<Type> doFindAllHierarchicalTypes(Type type, Predicate<Type>... typeFilters) {
         LinkedList<Type> allTypes = ListUtils.newLinkedList();
         addAllHierarchicalTypes(allTypes, type, typeFilters);
         return allTypes;
     }
 
+    /**
+     * <p>addAllHierarchicalTypes.</p>
+     *
+     * @param allTypes a {@link java.util.List} object
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     */
     protected static void addAllHierarchicalTypes(List<Type> allTypes, Type type, Predicate<Type>... typeFilters) {
 
         List<Type> hierarchicalTypes = doFindHierarchicalTypes(type, typeFilters);
@@ -464,11 +617,11 @@ public abstract class TypeUtils {
     }
 
     /**
-     * Get all generic types(including super classes and interfaces) that are assignable from {@link ParameterizedType} interface
+     * Get all generic types(including super classes and interfaces) that are assignable from {@link java.lang.reflect.ParameterizedType} interface
      *
      * @param type        the specified type
-     * @param typeFilters one or more {@link Predicate}s to support the {@link ParameterizedType} instance
-     * @return non-null read-only {@link List}
+     * @param typeFilters one or more {@link java.util.function.Predicate}s to support the {@link java.lang.reflect.ParameterizedType} instance
+     * @return non-null read-only {@link java.util.List}
      */
     public static List<ParameterizedType> getAllGenericTypes(Type type, Predicate<ParameterizedType>... typeFilters) {
         List<ParameterizedType> allGenericTypes = new LinkedList<>();
@@ -481,11 +634,11 @@ public abstract class TypeUtils {
     }
 
     /**
-     * Get all generic super classes that are assignable from {@link ParameterizedType} interface
+     * Get all generic super classes that are assignable from {@link java.lang.reflect.ParameterizedType} interface
      *
      * @param type        the specified type
-     * @param typeFilters one or more {@link Predicate}s to support the {@link ParameterizedType} instance
-     * @return non-null read-only {@link List}
+     * @param typeFilters one or more {@link java.util.function.Predicate}s to support the {@link java.lang.reflect.ParameterizedType} instance
+     * @return non-null read-only {@link java.util.List}
      */
     public static List<ParameterizedType> getAllGenericSuperClasses(Type type, Predicate<ParameterizedType>... typeFilters) {
 
@@ -507,11 +660,11 @@ public abstract class TypeUtils {
     }
 
     /**
-     * Get all generic interfaces that are assignable from {@link ParameterizedType} interface
+     * Get all generic interfaces that are assignable from {@link java.lang.reflect.ParameterizedType} interface
      *
      * @param type        the specified type
-     * @param typeFilters one or more {@link Predicate}s to support the {@link ParameterizedType} instance
-     * @return non-null read-only {@link List}
+     * @param typeFilters one or more {@link java.util.function.Predicate}s to support the {@link java.lang.reflect.ParameterizedType} instance
+     * @return non-null read-only {@link java.util.List}
      */
     public static List<ParameterizedType> getAllGenericInterfaces(Type type, Predicate<ParameterizedType>... typeFilters) {
 
@@ -534,14 +687,32 @@ public abstract class TypeUtils {
         return unmodifiableList(Streams.filterAll(allGenericInterfaces, typeFilters));
     }
 
+    /**
+     * <p>getClassName.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.String} object
+     */
     public static String getClassName(Type type) {
         return getRawType(type).getTypeName();
     }
 
+    /**
+     * <p>getClassNames.</p>
+     *
+     * @param types a {@link java.lang.Iterable} object
+     * @return a {@link java.util.Set} object
+     */
     public static Set<String> getClassNames(Iterable<? extends Type> types) {
         return stream(types.spliterator(), false).map(TypeUtils::getClassName).collect(toSet());
     }
 
+    /**
+     * <p>resolveTypeArguments.</p>
+     *
+     * @param targetClass a {@link java.lang.Class} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Class<?>> resolveTypeArguments(Class<?> targetClass) {
         List<Class<?>> typeArguments = emptyList();
         while (targetClass != null) {
@@ -565,6 +736,12 @@ public abstract class TypeUtils {
         return typeArguments;
     }
 
+    /**
+     * <p>resolveTypeArgumentsFromInterfaces.</p>
+     *
+     * @param type a {@link java.lang.Class} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Class<?>> resolveTypeArgumentsFromInterfaces(Class<?> type) {
         List<Class<?>> typeArguments = emptyList();
         for (Type superInterface : type.getGenericInterfaces()) {
@@ -576,6 +753,12 @@ public abstract class TypeUtils {
         return typeArguments;
     }
 
+    /**
+     * <p>resolveTypeArgumentsFromType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.util.List} object
+     */
     public static List<Class<?>> resolveTypeArgumentsFromType(Type type) {
         List<Class<?>> typeArguments = emptyList();
         if (type instanceof ParameterizedType) {
@@ -593,6 +776,12 @@ public abstract class TypeUtils {
         return typeArguments;
     }
 
+    /**
+     * <p>asClass.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.Class} object
+     */
     public static Class<?> asClass(Type type) {
         Class targetClass = asClass0(type);
         if (targetClass == null) { // try to cast a ParameterizedType if possible
@@ -614,6 +803,12 @@ public abstract class TypeUtils {
         return isClass(type) ? (Class<?>) type : null;
     }
 
+    /**
+     * <p>asGenericArrayType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.reflect.GenericArrayType} object
+     */
     public static GenericArrayType asGenericArrayType(Type type) {
         if (type instanceof GenericArrayType) {
             return (GenericArrayType) type;
@@ -621,6 +816,12 @@ public abstract class TypeUtils {
         return null;
     }
 
+    /**
+     * <p>asParameterizedType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.reflect.ParameterizedType} object
+     */
     public static ParameterizedType asParameterizedType(Type type) {
         if (isParameterizedType(type)) {
             return (ParameterizedType) type;
@@ -628,6 +829,12 @@ public abstract class TypeUtils {
         return null;
     }
 
+    /**
+     * <p>asTypeVariable.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.reflect.TypeVariable} object
+     */
     public static TypeVariable asTypeVariable(Type type) {
         if (isTypeVariable(type)) {
             return (TypeVariable) type;
@@ -635,6 +842,12 @@ public abstract class TypeUtils {
         return null;
     }
 
+    /**
+     * <p>asWildcardType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.reflect.WildcardType} object
+     */
     public static WildcardType asWildcardType(Type type) {
         if (isWildcardType(type)) {
             return (WildcardType) type;
@@ -642,6 +855,12 @@ public abstract class TypeUtils {
         return null;
     }
 
+    /**
+     * <p>getComponentType.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @return a {@link java.lang.reflect.Type} object
+     */
     public static Type getComponentType(Type type) {
         GenericArrayType genericArrayType = asGenericArrayType(type);
         if (genericArrayType != null) {
@@ -657,7 +876,7 @@ public abstract class TypeUtils {
      *
      * @param type        the specified type
      * @param typeFilters the filters for type
-     * @return non-null read-only {@link Set}
+     * @return non-null read-only {@link java.util.Set}
      * @since 0.0.1
      */
     public static Set<Type> getAllSuperTypes(Type type, Predicate<Type>... typeFilters) {
@@ -691,7 +910,7 @@ public abstract class TypeUtils {
      *
      * @param type        the specified type
      * @param typeFilters the filters for type
-     * @return non-null read-only {@link Set}
+     * @return non-null read-only {@link java.util.Set}
      * @since 0.0.1
      */
     public static Set<Type> getAllInterfaces(Type type, Predicate<Type>... typeFilters) {
@@ -720,6 +939,13 @@ public abstract class TypeUtils {
         return Streams.filterAll(allSuperInterfaces, typeFilters);
     }
 
+    /**
+     * <p>getAllTypes.</p>
+     *
+     * @param type a {@link java.lang.reflect.Type} object
+     * @param typeFilters a {@link java.util.function.Predicate} object
+     * @return a {@link java.util.Set} object
+     */
     public static Set<Type> getAllTypes(Type type, Predicate<Type>... typeFilters) {
 
         Set<Type> allTypes = new LinkedHashSet<>();
@@ -734,6 +960,12 @@ public abstract class TypeUtils {
         return Streams.filterAll(allTypes, typeFilters);
     }
 
+    /**
+     * <p>findParameterizedTypes.</p>
+     *
+     * @param sourceClass a {@link java.lang.Class} object
+     * @return a {@link java.util.Set} object
+     */
     public static Set<ParameterizedType> findParameterizedTypes(Class<?> sourceClass) {
         // Add Generic Interfaces
         List<Type> genericTypes = new LinkedList<>(asList(sourceClass.getGenericInterfaces()));
