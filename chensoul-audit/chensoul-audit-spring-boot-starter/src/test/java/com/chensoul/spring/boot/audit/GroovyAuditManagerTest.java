@@ -1,10 +1,14 @@
-package com.chensoul.audit;
+package com.chensoul.spring.boot.audit;
 
+import com.chensoul.audit.AuditActionContext;
+import com.chensoul.audit.AuditManager;
+import com.chensoul.spring.boot.audit.SharedTestConfiguration;
 import com.chensoul.spring.boot.common.properties.CoreProperties;
 import com.chensoul.spring.client.ClientInfo;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import org.apache.groovy.util.Maps;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

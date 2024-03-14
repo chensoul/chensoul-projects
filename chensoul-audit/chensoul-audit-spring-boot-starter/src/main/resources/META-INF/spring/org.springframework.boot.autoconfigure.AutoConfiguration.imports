@@ -1,1 +1,1 @@
-com.chensoul.audit.auditConfiguration
+com.chensoul.audit.spring.boot.AuditConfiguration
