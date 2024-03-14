@@ -12,7 +12,7 @@
   <artifactId>chensoul-redis-common</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Redis Common</name>
+  <name>Chensoul :: Redis Common</name>
   <description>${project.name}</description>
 
 </project>

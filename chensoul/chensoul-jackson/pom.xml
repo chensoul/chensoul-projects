@@ -14,7 +14,7 @@
   <artifactId>chensoul-jackson</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Jackson</name>
+  <name>Chensoul :: Jackson</name>
   <description>${project.name}</description>
 
   <dependencies>

@@ -3,7 +3,6 @@ package com.chensoul.groovy.scripting;
 import com.chensoul.concurrent.TryLock;
 import com.chensoul.lang.function.CheckedConsumer;
 import com.chensoul.lang.function.CheckedSupplier;
-import com.chensoul.spring.util.ResourceUtils;
 import com.chensoul.spring.util.io.FileWatcherService;
 import groovy.lang.GroovyObject;
 import lombok.Getter;
@@ -37,8 +36,8 @@ public class WatchableGroovyScript implements ExecutableScript {
 
     public WatchableGroovyScript(final Resource script, final boolean enableWatcher) {
         this.resource = script;
-        if (ResourceUtils.doesResourceExist(script)) {
-            if (ResourceUtils.isFile(script) && enableWatcher) {
+        if (script.exists()) {
+            if (script.isFile() && enableWatcher) {
                 watcherService = CheckedSupplier.unchecked(
                     () -> new FileWatcherService(script.getFile(),
                         CheckedConsumer.unchecked(file -> {

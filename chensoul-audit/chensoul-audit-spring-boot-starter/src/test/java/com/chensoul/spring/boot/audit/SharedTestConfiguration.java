@@ -1,5 +1,6 @@
-package com.chensoul.audit;
+package com.chensoul.spring.boot.audit;
 
+import com.chensoul.audit.spring.boot.AuditConfiguration;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.aop.AopAutoConfiguration;

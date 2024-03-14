@@ -12,9 +12,8 @@
   <groupId>com.chensoul</groupId>
   <artifactId>chensoul-redis-spring-boot-starter</artifactId>
   <version>${revision}</version>
-  <packaging>pom</packaging>
 
-  <name>Chensoul™ Redis Spring Boot Starter</name>
+  <name>Chensoul :: Redis Spring Boot Starter</name>
   <description>${project.name}</description>
 
   <dependencies>
@@ -27,12 +26,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-redis</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
     </dependency>
   </dependencies>
 </project>

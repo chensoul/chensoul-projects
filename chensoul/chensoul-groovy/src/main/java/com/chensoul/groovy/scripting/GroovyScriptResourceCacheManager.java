@@ -3,12 +3,12 @@ package com.chensoul.groovy.scripting;
 import com.chensoul.concurrent.TryLock;
 import com.chensoul.spring.support.SpringExpressionLanguageValueResolver;
 import com.chensoul.spring.support.bean.Beans;
-import com.chensoul.spring.util.ResourceUtils;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 
 /**
@@ -86,7 +86,7 @@ public class GroovyScriptResourceCacheManager implements ScriptResourceCacheMana
             try {
                 if (ScriptingUtils.isExternalGroovyScript(scriptResource)) {
                     String scriptPath = SpringExpressionLanguageValueResolver.getInstance().resolve(scriptResource);
-                    Resource resource = ResourceUtils.getResourceFrom(scriptPath);
+                    Resource resource = new DefaultResourceLoader().getResource(scriptPath);
                     script = new WatchableGroovyScript(resource);
                 } else {
                     String resourceToUse = scriptResource;

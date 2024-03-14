@@ -13,7 +13,7 @@
   <artifactId>chensoul-spring</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Spring</name>
+  <name>Chensoul :: Spring</name>
   <description>${project.name}</description>
 
   <dependencies>

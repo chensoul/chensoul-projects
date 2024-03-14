@@ -13,7 +13,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul™ Mybatis</name>
+  <name>Chensoul :: Mybatis</name>
   <description>${project.name}</description>
 
   <modules>

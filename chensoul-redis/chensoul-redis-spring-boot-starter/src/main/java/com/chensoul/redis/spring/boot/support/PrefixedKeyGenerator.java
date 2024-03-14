@@ -1,10 +1,10 @@
 package com.chensoul.redis.spring.boot.support;
 
-import com.chensoul.util.ObjectUtils;
 import com.chensoul.util.RandomStringUtils;
 import java.lang.reflect.Method;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Objects;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.boot.info.GitProperties;
@@ -54,7 +54,8 @@ public class PrefixedKeyGenerator implements KeyGenerator {
             time = buildProperties.getTime();
             version = buildProperties.getVersion();
         }
-        Object p = ObjectUtils.firstNonNull(shortCommitId, time, version, RandomStringUtils.randomAlphanumeric(12));
+        Object p = Arrays.asList(shortCommitId, time, version, RandomStringUtils.randomAlphanumeric(12))
+            .stream().filter(Objects::nonNull).findFirst();
 
         if (p instanceof Instant) {
             return DateTimeFormatter.ISO_INSTANT.format((Instant) p);

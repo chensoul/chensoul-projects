@@ -12,7 +12,7 @@
   <artifactId>chensoul-mybatis-spring-boot-starter</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Mybatis Spring Boot Starter</name>
+  <name>Chensoul :: Mybatis Spring Boot Starter</name>
   <description>${project.name}</description>
 
   <dependencies>

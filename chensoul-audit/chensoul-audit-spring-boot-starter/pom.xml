@@ -9,13 +9,11 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-
   <groupId>com.chensoul</groupId>
   <artifactId>chensoul-audit-spring-boot-starter</artifactId>
   <version>${revision}</version>
-  <packaging>pom</packaging>
 
-  <name>Chensoul™ Audit Spring Boot Starter</name>
+  <name>Chensoul :: Audit Spring Boot Starter</name>
   <description>${project.name}</description>
 
   <dependencies>
@@ -50,12 +48,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-actuator</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
     </dependency>
   </dependencies>
 </project>

@@ -13,7 +13,7 @@
   <artifactId>chensoul-spring-cloud-openfeign</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul™ Spring Cloud OpenFeign</name>
+  <name>Chensoul :: Spring Cloud OpenFeign</name>
   <description>${project.name}</description>
 
   <dependencies>
@@ -86,12 +86,6 @@
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
     </dependency>
   </dependencies>
 </project>
