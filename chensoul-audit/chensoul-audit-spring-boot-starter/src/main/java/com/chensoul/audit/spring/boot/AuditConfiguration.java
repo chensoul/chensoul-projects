@@ -19,7 +19,7 @@ import com.chensoul.audit.support.DefaultAuditResolverRegistry;
 import com.chensoul.audit.support.FilteredAuditManager;
 import com.chensoul.audit.support.GroovyAuditManager;
 import com.chensoul.audit.support.Slf4jAuditManager;
-import com.chensoul.lang.function.FunctionUtils;
+import com.chensoul.lang.function.CheckedConsumer;
 import com.chensoul.spring.boot.common.properties.CoreProperties;
 import com.chensoul.spring.boot.common.properties.audit.AuditEngineProperties;
 import com.chensoul.spring.boot.common.properties.audit.AuditSlf4jProperties;
@@ -181,7 +181,7 @@ public class AuditConfiguration {
             final ConfigurableApplicationContext applicationContext,
             final CoreProperties properties) {
 
-            return auditManagerRegistry -> FunctionUtils.doAndHandle(__ -> {
+            return auditManagerRegistry -> CheckedConsumer.unchecked(__ -> {
                 final File templateFile = properties.getAudit().getGroovy().getTemplate().getLocation().getFile();
                 final GroovyAuditManager mgr = new GroovyAuditManager(templateFile, applicationContext);
                 auditManagerRegistry.registerAuditManager(mgr);

@@ -1,10 +1,10 @@
 package com.chensoul.spring.support;
 
 import com.chensoul.lang.function.CheckedSupplier;
-import com.chensoul.spring.util.ResourceUtils;
 import java.time.ZonedDateTime;
 import lombok.NoArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 
 /**
@@ -32,7 +32,7 @@ public class Converters {
 
         @Override
         public Resource convert(final String resource) {
-            return CheckedSupplier.unchecked(() -> ResourceUtils.getRawResourceFrom(resource)).get();
+            return CheckedSupplier.unchecked(() -> new DefaultResourceLoader().getResource(resource)).get();
         }
     }
 }

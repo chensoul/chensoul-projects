@@ -2,7 +2,6 @@ package com.chensoul.groovy.scripting;
 
 import com.chensoul.collection.ArrayUtils;
 import com.chensoul.lang.function.CheckedSupplier;
-import com.chensoul.spring.util.ResourceUtils;
 import com.chensoul.util.RegexUtils;
 import com.chensoul.util.StringUtils;
 import groovy.lang.Binding;
@@ -28,6 +27,7 @@ import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;
 import org.codehaus.groovy.control.customizers.ImportCustomizer;
 import org.codehaus.groovy.runtime.InvokerInvocationException;
 import org.springframework.core.io.Resource;
+import org.springframework.util.ResourceUtils;
 
 /**
  * TODO
@@ -409,7 +409,7 @@ public abstract class ScriptingUtils {
 
     private static Class loadGroovyClass(final Resource groovyScript,
                                   final GroovyClassLoader loader) throws IOException {
-        if (ResourceUtils.isJarResource(groovyScript)) {
+        if (ResourceUtils.isJarFileURL(groovyScript.getURL())) {
             try (val groovyReader = new BufferedReader(new InputStreamReader(groovyScript.getInputStream(), StandardCharsets.UTF_8))) {
                 return loader.parseClass(groovyReader, groovyScript.getFilename());
             }
