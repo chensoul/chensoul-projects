@@ -12,10 +12,10 @@ categories:
     labels:
       - 'fix'
       - 'bugfix'
-      - 'bug'
   - title: '📝 Documentation'
     labels:
       - documentation
+      - chore
   - title: '🧰 Dependency Upgrades'
     labels:
       - chore
@@ -35,11 +35,11 @@ autolabeler:
       - '*.md'
     branch:
       - '/docs{0,1}\/.+/'
-  - label: 'bug'
+  - label: 'bugfix'
     branch:
-      - '/fix\/.+/'
+      - '/bugfix\/.+/'
     title:
-      - '/fix/i'
+      - '/bugfix/i'
   - label: 'enhancement'
     branch:
       - '/feature\/.+/'
