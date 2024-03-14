@@ -102,9 +102,9 @@ istioctl version --remote=false
 
 127.0.0.1 redis
 127.0.0.1 rabbitmq
-127.0.0.1 activemq
 
 127.0.0.1 config-server
+127.0.0.1 auth-server
 127.0.0.1 nacos
 127.0.0.1 eureka
 127.0.0.1 gateway

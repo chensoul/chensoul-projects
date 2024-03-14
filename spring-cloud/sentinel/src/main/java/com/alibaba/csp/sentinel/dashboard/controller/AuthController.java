@@ -19,15 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 1.6.0
  */
 @RestController
-@RequestMapping("/authorization")
+@RequestMapping("/authserver")
 public class AuthController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
 
-    @Value("${authorization.username:sentinel}")
+    @Value("${authserver.username:sentinel}")
     private String authUsername;
 
-    @Value("${authorization.password:sentinel}")
+    @Value("${authserver.password:sentinel}")
     private String authPassword;
 
     @Autowired
@@ -44,8 +44,8 @@ public class AuthController {
         }
 
         /*
-         * If authorization.username or authorization.password is blank(set in application.properties or VM
-         * arguments), authorization will pass, as the front side validate the input which can't be
+         * If authserver.username or authserver.password is blank(set in application.properties or VM
+         * arguments), authserver will pass, as the front side validate the input which can't be
          * blank, so user can input any username or password(both are not blank) to login
          * in that case.
          */

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Primary
-@ConditionalOnProperty(name = "authorization.enabled", matchIfMissing = true)
+@ConditionalOnProperty(name = "authserver.enabled", matchIfMissing = true)
 public class SimpleWebAuthServiceImpl implements AuthService<HttpServletRequest> {
 
     public static final String WEB_SESSION_KEY = "session_sentinel_admin";

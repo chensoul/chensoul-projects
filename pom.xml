@@ -34,7 +34,7 @@
 
     <module>spring-cloud/config-server</module>
     <module>spring-cloud/eureka</module>
-    <module>spring-cloud/authorization-server</module>
+    <module>spring-cloud/auth-server</module>
     <module>spring-cloud/gateway</module>
     <module>spring-cloud/nacos</module>
     <module>spring-cloud/admin-server</module>
@@ -167,7 +167,6 @@
         <artifactId>jsr305</artifactId>
         <version>${jsr305.version}</version>
       </dependency>
-
 
       <dependency>
         <groupId>org.testcontainers</groupId>

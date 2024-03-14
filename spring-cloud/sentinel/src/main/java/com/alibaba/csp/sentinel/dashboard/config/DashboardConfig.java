@@ -26,12 +26,12 @@ public class DashboardConfig {
     /**
      * Login username
      */
-    public static final String CONFIG_AUTH_USERNAME = "sentinel.dashboard.authorization.username";
+    public static final String CONFIG_AUTH_USERNAME = "sentinel.dashboard.authserver.username";
 
     /**
      * Login password
      */
-    public static final String CONFIG_AUTH_PASSWORD = "sentinel.dashboard.authorization.password";
+    public static final String CONFIG_AUTH_PASSWORD = "sentinel.dashboard.authserver.password";
 
     /**
      * Hide application name in sidebar when it has no healthy machines after specific

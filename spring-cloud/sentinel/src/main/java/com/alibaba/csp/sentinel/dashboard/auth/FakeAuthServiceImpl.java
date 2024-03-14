@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Component;
 
 /**
- * A fake AuthService implementation, which will pass all user authorization checking.
+ * A fake AuthService implementation, which will pass all user authserver checking.
  *
  * @author Carpenter Lee
  * @since 1.5.0

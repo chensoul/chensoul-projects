@@ -154,8 +154,8 @@ services:
     volumes:
       - ./config-repo:/config-repo
 
-  authorization-server:
-    build: spring-cloud/authorization-server
+  auth-server:
+    build: spring-cloud/auth-server
     environment:
       - TZ=Asia/Shanghai
     depends_on:
