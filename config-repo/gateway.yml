@@ -1,8 +1,8 @@
 server.port: 8443
 
 spring.cloud.gateway.routes:
-  - id: authorization-server
-    uri: lb://authorization-server
+  - id: auth-server
+    uri: lb://auth-server
     predicates:
       - Path=/auth/**
     filters:
@@ -42,5 +42,5 @@ springdoc:
   swagger-ui:
     use-root-path: true
     urls:
-      - name: "authorization-server"
+      - name: "auth-server"
         url: "/auth/v3/api-docs"

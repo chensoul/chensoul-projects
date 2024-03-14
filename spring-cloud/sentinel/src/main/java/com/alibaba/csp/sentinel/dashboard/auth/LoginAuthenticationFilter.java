@@ -23,7 +23,7 @@ import org.springframework.util.AntPathMatcher;
  * </p>
  *
  * <p>
- * Note: some urls are excluded as they needn't authorization, such as:
+ * Note: some urls are excluded as they needn't authserver, such as:
  * </p>
  * <ul>
  * <li>index url: {@code /}</li>
@@ -46,15 +46,15 @@ public class LoginAuthenticationFilter implements Filter {
     private static final AntPathMatcher PATH_MATCHER = new AntPathMatcher();
 
     /**
-     * Some urls which needn't authorization, such as /authorization/login, /registry/machine and so on.
+     * Some urls which needn't authserver, such as /authserver/login, /registry/machine and so on.
      */
-    @Value("#{'${authorization.support.exclude-urls}'.split(',')}")
+    @Value("#{'${authserver.support.exclude-urls}'.split(',')}")
     private List<String> authFilterExcludeUrls;
 
     /**
-     * Some urls with suffixes which needn't authorization, such as htm, html, js and so on.
+     * Some urls with suffixes which needn't authserver, such as htm, html, js and so on.
      */
-    @Value("#{'${authorization.support.exclude-url-suffixes}'.split(',')}")
+    @Value("#{'${authserver.support.exclude-url-suffixes}'.split(',')}")
     private List<String> authFilterExcludeUrlSuffixes;
 
     /**
@@ -75,7 +75,7 @@ public class LoginAuthenticationFilter implements Filter {
 
         String servletPath = httpRequest.getServletPath();
 
-        // Exclude the urls which needn't authorization
+        // Exclude the urls which needn't authserver
         if (authFilterExcludeUrls.stream().anyMatch(s -> PATH_MATCHER.match(s, servletPath))) {
             chain.doFilter(request, response);
             return;
@@ -85,7 +85,7 @@ public class LoginAuthenticationFilter implements Filter {
             return;
         }
 
-        // Exclude the urls with suffixes which needn't authorization
+        // Exclude the urls with suffixes which needn't authserver
         for (String authFilterExcludeUrlSuffix : authFilterExcludeUrlSuffixes) {
             if (StringUtils.isBlank(authFilterExcludeUrlSuffix)) {
                 continue;
@@ -106,7 +106,7 @@ public class LoginAuthenticationFilter implements Filter {
 
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         if (authUser == null) {
-            // If authorization fail, set response status code to 401
+            // If authserver fail, set response status code to 401
             httpResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
         } else {
             chain.doFilter(request, response);
