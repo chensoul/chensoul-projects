@@ -44,6 +44,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
         <configuration>
+          <!-- maven.deploy.skip = true-->
           <skip>true</skip>
         </configuration>
       </plugin>

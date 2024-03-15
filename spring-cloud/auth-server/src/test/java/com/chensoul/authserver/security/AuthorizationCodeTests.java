@@ -49,8 +49,8 @@ class AuthorizationCodeTests {
     @Test
     void start() throws IOException {
 
-        String username = "user";
-        String password = "pw";
+        String username = "devuser";
+        String password = "devpwd";
 
         String redirectUri = "https://miao.baidu.com/";
         String scope = "openid profile message.read message.write";

@@ -3,7 +3,7 @@ server:
 
 auth:
   username: user
-  password: 123456
+  password: devpwd
   filter:
     exclude-urls: /,/authserver/login,/authserver/logout,/registry/machine,/version,/actuator/**,/details
     exclude-url-suffixes: htm,html,js,css,map,ico,ttf,woff,png

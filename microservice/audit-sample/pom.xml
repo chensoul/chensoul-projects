@@ -14,6 +14,10 @@
   <artifactId>audit-sample</artifactId>
   <version>${revision}</version>
 
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>com.chensoul</groupId>

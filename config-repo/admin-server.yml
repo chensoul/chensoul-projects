@@ -2,7 +2,7 @@ server:
   port: 5100
 
 spring.security.user.name: user
-spring.security.user.password: 123456
+spring.security.user.password: devpwd
 
 spring.boot.admin:
   discovery:

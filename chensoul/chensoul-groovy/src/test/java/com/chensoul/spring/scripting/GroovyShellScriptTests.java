@@ -95,14 +95,14 @@ class GroovyShellScriptTests {
             Map<String, Object> attributes2 = new HashMap();
             attributes2.put("entitlement", Collections.singletonList("user"));
             attributes2.put("uid", Collections.singletonList("casuser"));
-            attributes2.put("identifier", Collections.singletonList("123456"));
+            attributes2.put("identifier", Collections.singletonList("devpwd"));
 
             AtomicBoolean testHasFailed = new AtomicBoolean();
             List<Thread> threads = new ArrayList();
             for (int i = 1; i <= 10; i++) {
                 RunnableScript runnable = i % 2 == 0
                         ? new RunnableScript(attributes1, shellScript, "CASADMIN")
-                        : new RunnableScript(attributes2, shellScript, "123456");
+                        : new RunnableScript(attributes2, shellScript, "devpwd");
                 Thread thread = new Thread(runnable);
                 thread.setName("Thread-" + i);
                 thread.setUncaughtExceptionHandler((t, e) -> {
