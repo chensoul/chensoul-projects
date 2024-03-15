@@ -11,14 +11,14 @@ spring.main:
 #      type: com.zaxxer.hikari.HikariDataSource
 #      driver-class-name: com.mysql.cj.jdbc.Driver
 #      jdbcUrl: jdbc:mysql://${mysql-master:mysql-master}:3307/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-#      username: ${MYSQL_USER:chensoul}
-#      password: ${MYSQL_PASSWORD:123456}
+#      username: dev-user
+#      password: dev-pwd
 #    slave:
 #      type: com.zaxxer.hikari.HikariDataSource
 #      driver-class-name: com.mysql.cj.jdbc.Driver
 #      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-#      username: ${MYSQL_USER:chensoul}
-#      password: ${MYSQL_PASSWORD:123456}
+#      username: dev-user
+#      password: dev-pwd
 #  masterslave:
 #    # 最终的数据源名称
 #    name: dataSource
@@ -58,13 +58,13 @@ spring.redis:
   port: 6379
   host: ${redis:redis}
   timeout: 3000
-  password: 123456
+  password: dev-pwd
 
 spring.rabbitmq:
   host: ${rabbitmq:rabbitmq}
   port: 5672
-  username: user
-  password: 123456
+  username: dev-user
+  password: dev-pwd
 
 feign:
   client:
@@ -95,9 +95,8 @@ management.endpoints.web.exposure.include: "*"
 management.info.git.enabled: true
 management.info.git.mode: full
 
-logging:
-  level:
-    root: INFO
-    org.apache.coyote.http11.Http11InputBuffer: DEBUG
-    org.springframework.web.server.adapter.HttpWebHandlerAdapter: DEBUG
+management.endpoint.health.probes.enabled: true
+management.health.rabbit.enabled: true
 
+server.shutdown: graceful
+spring.lifecycle.timeout-per-shutdown-phase: 10s

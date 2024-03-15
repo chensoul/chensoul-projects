@@ -11,5 +11,5 @@ spring:
       maxInterval: 10000
       maxAttempts: 20
     uri: http://${config-server:config-server}:8888
-    username: ${CONFIG_SERVER_USER_NAME:user}
-    password: ${CONFIG_SERVER_USER_PASSWORD:123456}
+    username: ${CONFIG_SERVER_USR:dev-user}
+    password: ${CONFIG_SERVER_PWD:dev-pwd}

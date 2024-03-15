@@ -9,11 +9,11 @@ services:
       - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=chensoul-cloud
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=123456
+      - MYSQL_USER=dev-user
+      - MYSQL_PASSWORD=dev-pwd
     command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version=''
     healthcheck:
-      test: "/usr/bin/mysql --user=user --password=123456 -e 'SHOW DATABASES;'"
+      test: "/usr/bin/mysql --user=dev-user --password=dev-pwd -e 'SHOW DATABASES;'"
       interval: 5s
       timeout: 2s
       retries: 10
@@ -26,8 +26,8 @@ services:
   #        - TZ=Asia/Shanghai
   #        - MYSQL_ROOT_PASSWORD=rootpwd
   #        - MYSQL_DATABASE=chensoul-cloud
-  #        - MYSQL_USER=user
-  #        - MYSQL_PASSWORD=123456
+  #        - MYSQL_USER=dev-user
+  #        - MYSQL_PASSWORD=dev-pwd
   #    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=1
   #    healthcheck:
   #      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
@@ -43,8 +43,8 @@ services:
   #        - TZ=Asia/Shanghai
   #        - MYSQL_ROOT_PASSWORD=rootpwd
   #        - MYSQL_DATABASE=chensoul-cloud
-  #        - MYSQL_USER=user
-  #        - MYSQL_PASSWORD=123456
+  #        - MYSQL_USER=dev-user
+  #        - MYSQL_PASSWORD=dev-pwd
   #    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=2
   #    healthcheck:
   #      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
@@ -56,9 +56,9 @@ services:
     image: redis:7
     environment:
       - TZ=Asia/Shanghai
-    command: redis-server --requirepass 123456
+    command: redis-server --requirepass dev-pwd
     healthcheck:
-      test: [ "CMD", "redis-cli","-a","123456","--raw", "incr","ping" ]
+      test: [ "CMD", "redis-cli","-a","dev-pwd","--raw", "incr","ping" ]
       interval: 5s
       timeout: 2s
       retries: 10
@@ -138,10 +138,8 @@ services:
       - TZ=Asia/Shanghai
       - SPRING_PROFILES_ACTIVE=native
       - ENCRYPT_KEY=${CONFIG_SERVER_ENCRYPT_KEY}
-      - SPRING_SECURITY_USER_NAME=${CONFIG_SERVER_USER_NAME}
-      - SPRING_SECURITY_USER_PASSWORD=${CONFIG_SERVER_USER_PASSWORD}
-    ports:
-      - "8888:8888"
+      - SPRING_SECURITY_USER_NAME=${CONFIG_SERVER_USR}
+      - SPRING_SECURITY_USER_PASSWORD=${CONFIG_SERVER_PWD}
     volumes:
       - ./config-repo:/config-repo
 
@@ -149,8 +147,8 @@ services:
     build: spring-cloud/eureka
     environment:
       - TZ=Asia/Shanghai
-    depends_on:
-      - config-server
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     ports:
       - "8761:8761"
 
@@ -158,9 +156,11 @@ services:
     build: spring-cloud/gateway
     environment:
       - TZ=Asia/Shanghai
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     depends_on:
-      - config-server
-      - eureka
+      auth-server:
+        condition: service_healthy
     ports:
       - "8443:8443"
 
@@ -168,24 +168,25 @@ services:
     build: spring-cloud/admin-server
     environment:
       - TZ=Asia/Shanghai
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     depends_on:
     - config-server
     - eureka
-    ports:
-      - "5100:5100"
 
   auth-server:
     build: spring-cloud/auth-server
     environment:
       - TZ=Asia/Shanghai
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
+    healthcheck:
+      test: [ "CMD", "curl", "-fs", "http://localhost:9999/actuator/health" ]
+      interval: 5s
+      timeout: 2s
+      retries: 60
     depends_on:
-      config-server:
-        condition: service_healthy
-      eureka:
-        condition: service_healthy
       mysql:
         condition: service_healthy
       redis:
         condition: service_healthy
-    ports:
-      - "9999:9999"
