@@ -11,14 +11,14 @@ spring.main:
 #      type: com.zaxxer.hikari.HikariDataSource
 #      driver-class-name: com.mysql.cj.jdbc.Driver
 #      jdbcUrl: jdbc:mysql://${mysql-master:mysql-master}:3307/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-#      username: devuser
-#      password: devpwd
+#      username: dev-user
+#      password: dev-pwd
 #    slave:
 #      type: com.zaxxer.hikari.HikariDataSource
 #      driver-class-name: com.mysql.cj.jdbc.Driver
 #      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-#      username: devuser
-#      password: devpwd
+#      username: dev-user
+#      password: dev-pwd
 #  masterslave:
 #    # 最终的数据源名称
 #    name: dataSource
@@ -58,13 +58,13 @@ spring.redis:
   port: 6379
   host: ${redis:redis}
   timeout: 3000
-  password: devpwd
+  password: dev-pwd
 
 spring.rabbitmq:
   host: ${rabbitmq:rabbitmq}
   port: 5672
-  username: devuser
-  password: devpwd
+  username: dev-user
+  password: dev-pwd
 
 feign:
   client:

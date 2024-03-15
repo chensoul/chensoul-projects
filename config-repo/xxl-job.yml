@@ -6,8 +6,8 @@ management.health.mail.enabled: false
 spring.datasource:
   url: jdbc:mysql://${mysql:mysql}:3306/chensoul-xxl-job?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
   driver-class-name: com.mysql.cj.jdbc.Driver
-  username: user
-  password: devpwd
+  username: dev-user
+  password: dev-pwd
   type: com.zaxxer.hikari.HikariDataSource
   hikari:
     connection-test-query: 'SELECT 1'
