@@ -33,12 +33,6 @@ spring.main:
 ## Sharding Sphere 不支持数据库健康检查
 #management.health.db.enabled: false
 
-spring.redis:
-  port: 6379
-  host: ${redis:redis}
-  timeout: 3000
-  password: 123456
-
 eureka:
   client:
     service-url:
@@ -60,12 +54,17 @@ mybatis-plus:
     db-config:
       id-type: ASSIGN_ID
 
+spring.redis:
+  port: 6379
+  host: ${redis:redis}
+  timeout: 3000
+  password: 123456
+
 spring.rabbitmq:
   host: ${rabbitmq:rabbitmq}
   port: 5672
   username: user
   password: 123456
-
 
 feign:
   client:
@@ -86,43 +85,7 @@ feign:
   circuitbreaker:
     enabled: true
 
-resilience4j.circuitbreaker:
-  instances:
-    authservice:
-      allowHealthIndicatorToFail: false
-      registerHealthIndicator: true
-      slidingWindowType: COUNT_BASED
-      slidingWindowSize: 5
-      failureRateThreshold: 50
-      waitDurationInOpenState: 10000
-      permittedNumberOfCallsInHalfOpenState: 3
-      automaticTransitionFromOpenToHalfOpenEnabled: true
-      ignoreExceptions:
-        - com.chensoul.core.exception.InvalidInputException
-        - com.chensoul.core.exception.NotFoundException
-
-resilience4j.ratelimiter:
-  instances:
-    authservice:
-      limitForPeriod: 10
-      limitRefreshPeriod: 5s
-      timeoutDuration: 0
-
-resilience4j.retry:
-  instances:
-    authservice:
-      maxAttempts: 3
-      waitDuration: 1000
-      retryExceptions:
-        - java.io.IOException
-        - java.util.concurrent.TimeoutException
-
-management.health.circuitbreakers.enabled: true
-
-spring.cloud.zipkin:
-  base-url: http://${zipkin:zipkin}:9411/
-  sender:
-    type: webmvc
+spring.zipkin.base-url: http://${zipkin:zipkin}:9411/
 spring.cloud.sleuth:
   sampler:
     probability: 1
@@ -136,9 +99,5 @@ logging:
   level:
     root: INFO
     org.apache.coyote.http11.Http11InputBuffer: DEBUG
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: DEBUG
 
-
----
-spring.config.activate.on-profile: docker
-
-spring.redis.host: redis

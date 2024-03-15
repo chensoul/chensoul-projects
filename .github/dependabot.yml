@@ -33,7 +33,7 @@ updates:
       - dependency-name: de.codecentric:spring-boot-admin-dependencies
         versions:
           - ">= 3"
-      - dependency-name: org.springframework.security:spring-security-oauth2-authorization-server
+      - dependency-name: org.springframework.security:spring-security-oauth2-authserver-server
         versions:
           - ">= 1"
       - dependency-name: com.alibaba.cloud:spring-cloud-alibaba-dependencies

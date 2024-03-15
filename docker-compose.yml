@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   mysql:
     image: mysql:8
@@ -56,6 +57,19 @@ services:
     environment:
       - TZ=Asia/Shanghai
     command: redis-server --requirepass 123456
+    healthcheck:
+      test: [ "CMD", "redis-cli","-a","123456","--raw", "incr","ping" ]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 50M
+        reservations:
+          cpus: '0.25'
+          memory: 20M
     ports:
       - "6379:6379"
 
@@ -93,13 +107,6 @@ services:
   #    environment:
   #      - ZOOKEEPER_CLIENT_PORT=2181
   #
-  #  zipkin:
-  #    image: openzipkin/zipkin:2.24.0
-  #    environment:
-  #      - STORAGE_TYPE=mem
-  #    ports:
-  #      - "9411:9411"
-
   #  nacos:
   #    build: spring-cloud/nacos
   #    ports:
@@ -112,34 +119,18 @@ services:
   #    ports:
   #      - "5300:5300"
 
-  #  xxljob:
-  #    build: spring-cloud/xxljob
+  #  xxl-job:
+  #    build: spring-cloud/xxl-job
   #    environment:
   #      - TZ=Asia/Shanghai
   #    ports:
   #      - "5200:5200"
   #
 
-  eureka:
-    build: spring-cloud/eureka
-    environment:
-      - TZ=Asia/Shanghai
+  zipkin:
+    image: openzipkin/zipkin
     ports:
-      - "8761:8761"
-
-  gateway:
-    build: spring-cloud/gateway
-    environment:
-      - TZ=Asia/Shanghai
-    ports:
-      - "8443:8443"
-
-  admin-server:
-    build: spring-cloud/admin-server
-    environment:
-      - TZ=Asia/Shanghai
-    ports:
-      - "5100:5100"
+      - "9411:9411"
 
   config-server:
     build: spring-cloud/config-server
@@ -154,12 +145,47 @@ services:
     volumes:
       - ./config-repo:/config-repo
 
-  authorization-server:
-    build: spring-cloud/authorization-server
+  eureka:
+    build: spring-cloud/eureka
     environment:
       - TZ=Asia/Shanghai
     depends_on:
+      - config-server
+    ports:
+      - "8761:8761"
+
+  gateway:
+    build: spring-cloud/gateway
+    environment:
+      - TZ=Asia/Shanghai
+    depends_on:
+      - config-server
+      - eureka
+    ports:
+      - "8443:8443"
+
+  admin-server:
+    build: spring-cloud/admin-server
+    environment:
+      - TZ=Asia/Shanghai
+    depends_on:
+    - config-server
+    - eureka
+    ports:
+      - "5100:5100"
+
+  auth-server:
+    build: spring-cloud/auth-server
+    environment:
+      - TZ=Asia/Shanghai
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka:
+        condition: service_healthy
       mysql:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     ports:
       - "9999:9999"

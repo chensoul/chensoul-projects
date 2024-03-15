@@ -1,8 +1,8 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-CREATE database if NOT EXISTS `chensoul-xxljob` default character set utf8mb4 collate utf8mb4_unicode_ci;
-use `chensoul-xxljob`;
+CREATE database if NOT EXISTS `chensoul-xxl-job` default character set utf8mb4 collate utf8mb4_unicode_ci;
+use `chensoul-xxl-job`;
 
 CREATE TABLE `xxl_job_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
