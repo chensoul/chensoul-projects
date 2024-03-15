@@ -29,22 +29,6 @@ exclude-labels:
   - no-changelog
   - skip-changelog
   - invalid
-autolabeler:
-  - label: 'chore'
-    files:
-      - '*.md'
-    branch:
-      - '/docs{0,1}\/.+/'
-  - label: 'bugfix'
-    branch:
-      - '/bugfix\/.+/'
-    title:
-      - '/bugfix/i'
-  - label: 'enhancement'
-    branch:
-      - '/feature\/.+/'
-    body:
-      - '/JIRA-[0-9]{1,4}/'
 change-template: '* $TITLE (#$NUMBER) @$AUTHOR'
 template: |
   ## What’s Changed
