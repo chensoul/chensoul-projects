@@ -62,7 +62,7 @@
     <spring-cloud-alibaba.version>2021.0.6.0</spring-cloud-alibaba.version>
     <spring-security-oauth2-authorization-server.version>0.4.5</spring-security-oauth2-authorization-server.version>
     <spring-boot-admin.version>2.7.15</spring-boot-admin.version>
-    <sleuth.version>2.2.8.RELEASE</sleuth.version>
+    <sleuth.version>3.1.11</sleuth.version>
     <mybatis-plus.version>3.5.5</mybatis-plus.version>
     <springdoc.version>1.8.0</springdoc.version>
     <therapi-runtime-javadoc.version>0.15.0</therapi-runtime-javadoc.version>
