@@ -24,6 +24,4 @@ springdoc:
   oAuthFlow:
     tokenUrl: http://localhost:8443/auth/oauth2/token
 
-logging:
-  level:
-    root: INFO
+

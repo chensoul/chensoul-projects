@@ -14,7 +14,7 @@ spring.cloud.gateway.routes:
       - Path=/monitor/**
     filters:
       - StripPrefix=1
-      -
+
   - id: config-server
     uri: ${spring.cloud.config.uri}
     predicates:
@@ -35,8 +35,8 @@ logging:
   level:
     root: INFO
     org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
-    org.springframework.cloud.gateway: TRACE
-    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
+    org.springframework.cloud.gateway.filter.GatewayMetricsFilter: INFO
+    org.springframework.cloud.gateway: DEBUG
 
 springdoc:
   swagger-ui:
