@@ -73,13 +73,13 @@ public class AuthorizationServerConfiguration {
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient registeredClient = RegisteredClient
             .withId(UUID.randomUUID().toString())
-            .clientId("messaging-client")
+            .clientId("client")
             .clientSecret("{noop}secret")
             .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
             .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
             .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
             .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-            .redirectUri("http://localhost:8081/login/oauth2/code/messaging-client-oidc")
+            .redirectUri("http://localhost:8081/login/oauth2/code/client-oidc")
             .redirectUri("https://miao.baidu.com/")
             .scope("message.read")
             .scope("message.write")

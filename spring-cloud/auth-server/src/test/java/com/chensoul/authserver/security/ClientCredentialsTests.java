@@ -29,7 +29,7 @@ class ClientCredentialsTests {
 
     @Test
     void start() throws JsonProcessingException {
-        String clientId = "messaging-client";
+        String clientId = "client";
         String clientSecret = "secret";
 
         RestTemplate restTemplate = new RestTemplate();

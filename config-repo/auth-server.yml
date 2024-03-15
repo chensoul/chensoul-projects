@@ -18,7 +18,7 @@ springdoc:
   cache.disabled: true
   swagger-ui:
     oauth:
-      clientId: messaging-client
+      clientId: client
       clientSecret: secret
       useBasicAuthenticationWithAccessCodeGrant: true
   oAuthFlow:

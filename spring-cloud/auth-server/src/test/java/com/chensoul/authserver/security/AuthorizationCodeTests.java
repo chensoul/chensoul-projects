@@ -56,7 +56,7 @@ class AuthorizationCodeTests {
         String scope = "openid profile message.read message.write";
         String state = UUID.randomUUID().toString();
 
-        String clientId = "messaging-client";
+        String clientId = "client";
         String clientSecret = "secret";
 
         HtmlPage loginPage = webClient.getPage("/login");

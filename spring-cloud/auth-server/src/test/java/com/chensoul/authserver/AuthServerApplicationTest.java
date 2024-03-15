@@ -35,7 +35,7 @@ class AuthServerApplicationTest {
     @LocalServerPort
     private int serverPort;
 
-    static final String CLIENT_ID = "messaging-client";
+    static final String CLIENT_ID = "client";
 
     static final String CLIENT_SECRET = "secret";
 
