@@ -162,7 +162,11 @@ docker-compose up -d --scale admin-server=2
 docker system prune -f --volumes
 ```
 
-### 访问服务
+### 通过 k8s 运行
+
+## 测试
+
+各个服务访问方式如下：
 
 - [Config Server](http://localhost:8888)
 - [Eureka](http://localhost:8761)
@@ -173,19 +177,27 @@ docker system prune -f --volumes
 - [Xxl Job](http://localhost:5200)
 - [RabbitMQ](http://localhost:15672)
 
-### 测试
+### 测试 OAuth2
 
 ```bash
 ACCESS_TOKEN=$(curl -k http://client:secret@localhost:8443/auth/oauth2/token -d grant_type=client_credentials -d scope="product:read product:write" -s | jq .access_token -r)
 echo ACCESS_TOKEN=$ACCESS_TOKEN
 AUTH="-H \"Authorization: Bearer $ACCESS_TOKEN\""
+```
 
+### 测试 Eureka
+
+```bash
 curl -H "accept:application/json" -k http://user:123456@localhost:8761/eureka/api/apps -s
 curl -H "accept:application/json" -k http://user:123456@localhost:8761/config/auth-server/default -s
+```
 
+### 测试 Config server
+
+```bash
 TEST_VALUE="hello-world"
-ENCRYPTED_VALUE=$(curl -k http://user:dev-123456@localhost:8443/config/encrypt --data-urlencode "$TEST_VALUE" -s)
-DECRYPTED_VALUE=$(curl -k http://user:dev-123456@localhost:8443/config/decrypt -d $ENCRYPTED_VALUE -s)
+ENCRYPTED_VALUE=$(curl -k http://user:123456@localhost:8443/config/encrypt --data-urlencode "$TEST_VALUE" -s)
+DECRYPTED_VALUE=$(curl -k http://user:123456@localhost:8443/config/decrypt -d $ENCRYPTED_VALUE -s)
 
 echo ENCRYPTED_VALUE=$ENCRYPTED_VALUE
 echo DECRYPTED_VALUE=$DECRYPTED_VALUE
