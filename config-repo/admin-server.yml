@@ -1,7 +1,7 @@
 server:
   port: 5100
 
-spring.security.user.name: user
+spring.security.user.name: dev-user
 spring.security.user.password: dev-pwd
 
 spring.boot.admin:
