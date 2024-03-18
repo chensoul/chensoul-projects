@@ -9,7 +9,12 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <groupId>com.chensoul</groupId>
   <artifactId>user-sample</artifactId>
+  <version>${revision}</version>
+
+  <name>Chensoul :: User Sample</name>
+  <description>${project.name}</description>
 
   <dependencies>
     <dependency>

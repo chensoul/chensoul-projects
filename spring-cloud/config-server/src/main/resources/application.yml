@@ -7,7 +7,7 @@ spring:
 spring.cloud.config.server.native.searchLocations: file:${PWD:}/config-repo
 
 encrypt.key: ${CONFIG_SERVER_ENCRYPT_KEY:my-very-secure-encrypt-key}
-spring.security.user.name: ${CONFIG_SERVER_USR:user}
+spring.security.user.name: ${CONFIG_SERVER_USR:dev-user}
 spring.security.user.password: ${CONFIG_SERVER_PWD:dev-pwd}
 
 management.endpoint.health.show-details: ALWAYS
