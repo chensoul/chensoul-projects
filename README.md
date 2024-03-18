@@ -16,8 +16,8 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 |--------|------------------------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------|
 | 语言     | Java                               | 1.8        |                                                                                                                                                                                                                                        |            |                        |
 | 构建工具   | Maven                              | 3.9.6      |                                                                                                                                                                                                                                        |            |                        |
-| 数据库    | MySQL                              | 8          |                                                                                                                                                                                                                                        | 3306       |                        |
-| 缓存     | Redis                              | 7          |                                                                                                                                                                                                                                        | 6379       |                        |
+| 数据库    | MySQL                              | 8.3.0      |                                                                                                                                                                                                                                        | 3306       |                        |
+| 缓存     | Redis                              | 7.2.4      |                                                                                                                                                                                                                                        | 6379       |                        |
 | 消息队列   | Rabbitmq                           | 3.13.0     |                                                                                                                                                                                                                                        | 5672、15672 | http://localhost:15672 |
 | 服务治理   | Spring Cloud Netflix Eureka        | 2021.0.9   | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2021&metadataUrl=https://s01.oss.sonatype.org/content/repositories/releases/org/springframework/cloud/spring-cloud-dependencies/maven-metadata.xml"> | 8761       | http://localhost:8761  |
 | 配置中心   | Spring Cloud Config                | 2021.0.9   | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2021&metadataUrl=https://s01.oss.sonatype.org/content/repositories/releases/org/springframework/cloud/spring-cloud-dependencies/maven-metadata.xml"> | 8888       | http://localhost:8888  |
@@ -29,10 +29,10 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 | 服务监控   | Spring Boot Admin                  | 2.7.15     | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&versionPrefix=2.&metadataUrl=https://oss.sonatype.org/content/repositories/releases/de/codecentric/spring-boot-admin-dependencies/maven-metadata.xml">             | 5100       | http://localhost:5100  |
 | 任务调度   | Xxl Job                            | 2.4.0      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/xuxueli/xxl-job/maven-metadata.xml">                                                        | 5200       | http://localhost:5200  |
 | 在线文档   | SpringDoc OpenApi                  | 1.8.0      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/org/springdoc/springdoc-openapi-ui/maven-metadata.xml">                                         |            | http://localhost:9000  |
-| 分布式日志  | ELK                                |            |                                                                                                                                                                                                                                        |            |                        |
+| 分布式日志  | EFK                                |            |                                                                                                                                                                                                                                        |            |                        |
 | 数据库持久化 | mybatis-plus                       | 3.5.5      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/baomidou/mybatis-plus-boot-starter/maven-metadata.xml">                                     |            |                        |
 | 分布式锁   | redisson                           | 3.27.2     | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/org/redisson/redisson/maven-metadata.xml">                                                      |            |                        |
-| 验证码    | redisson                           | 1.6.2      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/github/whvcse/easy-captcha/maven-metadata.xml">                                             |            |                        |
+| 验证码    | Easy Captcha                       | 1.6.2      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/github/whvcse/easy-captcha/maven-metadata.xml">                                             |            |                        |
 
 
 ## 快速开始
@@ -40,7 +40,7 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 ### 环境搭建
 
 - [Git](https://git-scm.com/downloads)
-- [OrbStack](https://orbstack.dev/)
+- [Docker](https://docs.docker.com/get-docker/)
 - [Java](https://www.azul.com/downloads/#zulu)
 - [Curl](https://curl.haxx.se/download.html)
 - [Jq](https://stedolan.github.io/jq/download/)
@@ -58,12 +58,16 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 
 brew tap spring-io/tap && \
 brew tap homebrew/cask-versions && \
-brew install zulu21 && \
+brew install docker && \
+brew install --cask temurin8 && \
 brew install jq && \
 brew install spring-boot && \
-brew install helm && \
 brew install siege && \
-brew install orbstack
+brew install helm && \
+brew install minikub && \
+brew install kubectl && \
+brew install istioctl
+```
 
 echo 'export JAVA_HOME=$(/usr/libexec/java_home -v8)' >> ~/.bash_profile
 source ~/.bash_profile
@@ -75,6 +79,7 @@ source ~/.bash_profile
 git version && \
 docker version -f json | jq -r .Client.Version && \
 java -version 2>&1 | grep "openjdk version" && \
+mvn -v | grep "Maven" && \
 curl --version | grep "curl" | sed 's/(.*//' && \
 jq --version && \
 spring --version && \
