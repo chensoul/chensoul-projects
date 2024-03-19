@@ -60,7 +60,7 @@ public class JobRegistryHelper {
             }
         });
 
-        // for adminserver
+        // for monitor
         registryMonitorThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -120,18 +120,18 @@ public class JobRegistryHelper {
                         }
                     } catch (Exception e) {
                         if (!toStop) {
-                            logger.error(">>>>>>>>>>> xxl-job, job registry adminserver thread error:{}", e);
+                            logger.error(">>>>>>>>>>> xxl-job, job registry monitor thread error:{}", e);
                         }
                     }
                     try {
                         TimeUnit.SECONDS.sleep(RegistryConfig.BEAT_TIMEOUT);
                     } catch (InterruptedException e) {
                         if (!toStop) {
-                            logger.error(">>>>>>>>>>> xxl-job, job registry adminserver thread error:{}", e);
+                            logger.error(">>>>>>>>>>> xxl-job, job registry monitor thread error:{}", e);
                         }
                     }
                 }
-                logger.info(">>>>>>>>>>> xxl-job, job registry adminserver thread stop");
+                logger.info(">>>>>>>>>>> xxl-job, job registry monitor thread stop");
             }
         });
         registryMonitorThread.setDaemon(true);

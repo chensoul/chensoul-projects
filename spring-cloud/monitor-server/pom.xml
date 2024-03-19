@@ -12,7 +12,7 @@
   <artifactId>monitor-server</artifactId>
   <version>${revision}</version>
 
-  <name>SpringCloud :: Admin Server</name>
+  <name>SpringCloud :: Monitor Server</name>
   <description>${project.name}</description>
 
   <dependencies>

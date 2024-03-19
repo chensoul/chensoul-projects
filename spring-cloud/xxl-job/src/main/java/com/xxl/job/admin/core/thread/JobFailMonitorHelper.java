@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * job adminserver instance
+ * job monitor instance
  *
  * @author xuxueli 2015-9-1 18:05:56
  */
@@ -25,7 +25,7 @@ public class JobFailMonitorHelper {
         return instance;
     }
 
-    // ---------------------- adminserver ----------------------
+    // ---------------------- monitor ----------------------
 
     private Thread monitorThread;
 
@@ -37,7 +37,7 @@ public class JobFailMonitorHelper {
             @Override
             public void run() {
 
-                // adminserver
+                // monitor
                 while (!toStop) {
                     try {
 
@@ -56,7 +56,7 @@ public class JobFailMonitorHelper {
                                 XxlJobInfo info = XxlJobAdminConfig.getAdminConfig().getXxlJobInfoDao()
                                         .loadById(log.getJobId());
 
-                                // 1、fail retry adminserver
+                                // 1、fail retry monitor
                                 if (log.getExecutorFailRetryCount() > 0) {
                                     JobTriggerPoolHelper.trigger(log.getJobId(), TriggerTypeEnum.RETRY,
                                             (log.getExecutorFailRetryCount() - 1), log.getExecutorShardingParam(),
@@ -68,7 +68,7 @@ public class JobFailMonitorHelper {
                                     XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().updateTriggerInfo(log);
                                 }
 
-                                // 2、fail alarm adminserver
+                                // 2、fail alarm monitor
                                 int newAlarmStatus = 0; // 告警状态：0-默认、-1=锁定状态、1-无需告警、2-告警成功、3-告警失败
                                 if (info != null && info.getAlarmEmail() != null
                                     && info.getAlarmEmail().trim().length() > 0) {
@@ -86,7 +86,7 @@ public class JobFailMonitorHelper {
 
                     } catch (Exception e) {
                         if (!toStop) {
-                            logger.error(">>>>>>>>>>> xxl-job, job fail adminserver thread error:{}", e);
+                            logger.error(">>>>>>>>>>> xxl-job, job fail monitor thread error:{}", e);
                         }
                     }
 
@@ -100,7 +100,7 @@ public class JobFailMonitorHelper {
 
                 }
 
-                logger.info(">>>>>>>>>>> xxl-job, job fail adminserver thread stop");
+                logger.info(">>>>>>>>>>> xxl-job, job fail monitor thread stop");
 
             }
         });

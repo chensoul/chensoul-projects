@@ -31,13 +31,13 @@ public class XxlJobScheduler {
         // admin trigger pool start
         JobTriggerPoolHelper.toStart();
 
-        // admin registry adminserver run
+        // admin registry monitor run
         JobRegistryHelper.getInstance().start();
 
-        // admin fail-adminserver run
+        // admin fail-monitor run
         JobFailMonitorHelper.getInstance().start();
 
-        // admin lose-adminserver run ( depend on JobTriggerPoolHelper )
+        // admin lose-monitor run ( depend on JobTriggerPoolHelper )
         JobCompleteHelper.getInstance().start();
 
         // admin log report start
@@ -57,10 +57,10 @@ public class XxlJobScheduler {
         // admin log report stop
         JobLogReportHelper.getInstance().toStop();
 
-        // admin lose-adminserver stop
+        // admin lose-monitor stop
         JobCompleteHelper.getInstance().toStop();
 
-        // admin fail-adminserver stop
+        // admin fail-monitor stop
         JobFailMonitorHelper.getInstance().toStop();
 
         // admin registry stop

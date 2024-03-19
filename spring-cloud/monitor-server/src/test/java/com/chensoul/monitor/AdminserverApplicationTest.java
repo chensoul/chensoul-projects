@@ -1,4 +1,4 @@
-package com.chensoul.adminserver;
+package com.chensoul.monitor;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 

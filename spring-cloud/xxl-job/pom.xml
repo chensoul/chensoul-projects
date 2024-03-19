@@ -12,7 +12,7 @@
   <artifactId>xxl-job</artifactId>
   <version>${revision}</version>
 
-  <name>SpringCloud :: xxl-job</name>
+  <name>SpringCloud :: XXL Job</name>
   <description>${project.name}</description>
 
   <dependencies>

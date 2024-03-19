@@ -1,4 +1,4 @@
-package com.chensoul.adminserver.converter;
+package com.chensoul.monitor.converter;
 
 import static java.util.Collections.emptyMap;
 

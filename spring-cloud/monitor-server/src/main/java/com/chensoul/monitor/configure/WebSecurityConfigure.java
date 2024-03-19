@@ -1,4 +1,4 @@
-package com.chensoul.adminserver.configure;
+package com.chensoul.monitor.configure;
 
 import de.codecentric.boot.admin.server.config.AdminServerProperties;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
