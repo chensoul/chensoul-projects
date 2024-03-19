@@ -3,17 +3,20 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.3.0
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     ports:
       - "3306:3306"
     environment:
-      - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=rootpwd
       - MYSQL_DATABASE=chensoul-cloud
-      - MYSQL_USER=dev-user
+      - MYSQL_USER=dev-usr
       - MYSQL_PASSWORD=dev-pwd
     command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version=''
     healthcheck:
-      test: "/usr/bin/mysql --user=dev-user --password=dev-pwd -e 'SHOW DATABASES;'"
+      test: "/usr/bin/mysql --user=dev-usr --password=dev-pwd -e 'SHOW DATABASES;'"
       interval: 5s
       timeout: 2s
       retries: 10
@@ -26,7 +29,7 @@ services:
   #        - TZ=Asia/Shanghai
   #        - MYSQL_ROOT_PASSWORD=rootpwd
   #        - MYSQL_DATABASE=chensoul-cloud
-  #        - MYSQL_USER=dev-user
+  #        - MYSQL_USER=dev-usr
   #        - MYSQL_PASSWORD=dev-pwd
   #    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=1
   #    healthcheck:
@@ -43,7 +46,7 @@ services:
   #        - TZ=Asia/Shanghai
   #        - MYSQL_ROOT_PASSWORD=rootpwd
   #        - MYSQL_DATABASE=chensoul-cloud
-  #        - MYSQL_USER=dev-user
+  #        - MYSQL_USER=dev-usr
   #        - MYSQL_PASSWORD=dev-pwd
   #    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=2
   #    healthcheck:
@@ -54,29 +57,21 @@ services:
 
   redis:
     image: redis:7.2.4
-    environment:
-      - TZ=Asia/Shanghai
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     command: redis-server --requirepass dev-pwd
     healthcheck:
       test: [ "CMD", "redis-cli","-a","dev-pwd","--raw", "incr","ping" ]
       interval: 5s
       timeout: 2s
       retries: 10
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 50M
-        reservations:
-          cpus: '0.25'
-          memory: 20M
     ports:
       - "6379:6379"
 
   rabbitmq:
     image: rabbitmq:3.13.0-management-alpine
-    environment:
-      - TZ=Asia/Shanghai
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -84,7 +79,7 @@ services:
       test: [ "CMD", "rabbitmqctl", "status" ]
       interval: 5s
       timeout: 2s
-      retries: 60
+      retries: 10
 
   #
   #  kafka:
@@ -129,13 +124,21 @@ services:
 
   zipkin:
     image: openzipkin/zipkin:3.1.1
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     ports:
       - "9411:9411"
 
   config-server:
     build: spring-cloud/config-server
+    image: chensoul-cloud/config-server
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     environment:
-      - TZ=Asia/Shanghai
       - SPRING_PROFILES_ACTIVE=native
       - ENCRYPT_KEY=${CONFIG_SERVER_ENCRYPT_KEY}
       - SPRING_SECURITY_USER_NAME=${CONFIG_SERVER_USR}
@@ -145,8 +148,12 @@ services:
 
   eureka:
     build: spring-cloud/eureka
+    image: chensoul-cloud/eureka
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     environment:
-      - TZ=Asia/Shanghai
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     ports:
@@ -154,8 +161,12 @@ services:
 
   gateway:
     build: spring-cloud/gateway
+    image: chensoul-cloud/gateway
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     environment:
-      - TZ=Asia/Shanghai
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     depends_on:
@@ -164,10 +175,14 @@ services:
     ports:
       - "8443:8443"
 
-  admin-server:
-    build: spring-cloud/admin-server
+  monitor-server:
+    build: spring-cloud/monitor-server
+    image: chensoul-cloud/monitor-server
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     environment:
-      - TZ=Asia/Shanghai
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     depends_on:
@@ -176,8 +191,12 @@ services:
 
   auth-server:
     build: spring-cloud/auth-server
+    image: chensoul-cloud/auth-server
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     environment:
-      - TZ=Asia/Shanghai
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     healthcheck:

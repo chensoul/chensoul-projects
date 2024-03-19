@@ -11,13 +11,13 @@ spring.main:
 #      type: com.zaxxer.hikari.HikariDataSource
 #      driver-class-name: com.mysql.cj.jdbc.Driver
 #      jdbcUrl: jdbc:mysql://${mysql-master:mysql-master}:3307/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-#      username: dev-user
+#      username: dev-usr
 #      password: dev-pwd
 #    slave:
 #      type: com.zaxxer.hikari.HikariDataSource
 #      driver-class-name: com.mysql.cj.jdbc.Driver
 #      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-#      username: dev-user
+#      username: dev-usr
 #      password: dev-pwd
 #  masterslave:
 #    # 最终的数据源名称
@@ -63,8 +63,12 @@ spring.redis:
 spring.rabbitmq:
   host: ${rabbitmq:rabbitmq}
   port: 5672
-  username: dev-user
+  username: dev-usr
   password: dev-pwd
+
+app:
+  eureka-username: u
+  eureka-password: '{cipher}bf298f6d5f878b342f9e44bec08cb9ac00b4ce57e98316f030194a225fac89fb'
 
 feign:
   client:

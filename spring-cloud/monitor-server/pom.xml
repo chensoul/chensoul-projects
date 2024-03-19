@@ -9,7 +9,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <groupId>com.chensoul</groupId>
-  <artifactId>admin-server</artifactId>
+  <artifactId>monitor-server</artifactId>
   <version>${revision}</version>
 
   <name>SpringCloud :: Admin Server</name>

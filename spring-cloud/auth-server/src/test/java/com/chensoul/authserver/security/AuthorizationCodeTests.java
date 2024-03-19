@@ -49,7 +49,7 @@ class AuthorizationCodeTests {
     @Test
     void start() throws IOException {
 
-        String username = "dev-user";
+        String username = "dev-usr";
         String password = "dev-pwd";
 
         String redirectUri = "https://miao.baidu.com/";

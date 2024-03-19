@@ -2,7 +2,7 @@ server:
   port: 5300
 
 auth:
-  username: dev-user
+  username: dev-usr
   password: dev-pwd
   filter:
     exclude-urls: /,/authserver/login,/authserver/logout,/registry/machine,/version,/actuator/**,/details

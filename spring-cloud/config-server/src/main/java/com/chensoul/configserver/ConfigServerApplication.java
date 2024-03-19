@@ -22,8 +22,9 @@ public class ConfigServerApplication {
 	public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(ConfigServerApplication.class, args);
 
-		String repoLocation = ctx.getEnvironment().getProperty("spring.cloud.config.server.native.searchLocations");
-		LOG.info("Serving configurations from folder: " + repoLocation);
+        String repoLocation = ctx.getEnvironment().getProperty("spring.cloud.config.server.native.searchLocations");
+        String username = ctx.getEnvironment().getProperty("spring.security.user.name");
+        LOG.info("Serving configurations for secured user: {} from folder: {}", username, repoLocation);
 	}
 
 }

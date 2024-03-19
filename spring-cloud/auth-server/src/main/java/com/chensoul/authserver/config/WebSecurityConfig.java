@@ -37,7 +37,7 @@ public class WebSecurityConfig {
      */
     @Bean
     public UserDetailsService inMemoryUserDetailsManager() {
-        UserDetails one = User.withDefaultPasswordEncoder().username("dev-user").password("dev-pwd").roles("user").build();
+        UserDetails one = User.withDefaultPasswordEncoder().username("dev-usr").password("dev-pwd").roles("user").build();
         return new InMemoryUserDetailsManager(one);
     }
 }

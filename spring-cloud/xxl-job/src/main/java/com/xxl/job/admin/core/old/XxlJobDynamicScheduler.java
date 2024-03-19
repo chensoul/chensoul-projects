@@ -63,7 +63,7 @@
 // // admin adminserver run
 // JobFailMonitorHelper.getInstance().start();
 //
-// // admin-server
+// // monitor-server
 // initRpcProvider();
 //
 // logger.info(">>>>>>>>> init xxl-job admin success.");
@@ -80,7 +80,7 @@
 // // admin adminserver stop
 // JobFailMonitorHelper.getInstance().toStop();
 //
-// // admin-server
+// // monitor-server
 // stopRpcProvider();
 // }
 //

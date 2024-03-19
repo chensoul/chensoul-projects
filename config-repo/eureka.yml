@@ -12,3 +12,6 @@ eureka:
     # from: https://github.com/spring-cloud-samples/eureka/blob/master/src/main/resources/application.yml
     waitTimeInMsWhenSyncEmpty: 0
     responseCacheUpdateIntervalMs: 5000
+
+spring.security.user.name: ${app.eureka-username}
+spring.security.user.password: ${app.eureka-password}

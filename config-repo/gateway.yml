@@ -8,8 +8,8 @@ spring.cloud.gateway.routes:
     filters:
       - StripPrefix=1
 
-  - id: admin-server
-    uri: lb://admin-server
+  - id: monitor-server
+    uri: lb://monitor-server
     predicates:
       - Path=/monitor/**
     filters:

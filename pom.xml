@@ -37,7 +37,7 @@
     <module>spring-cloud/auth-server</module>
     <module>spring-cloud/gateway</module>
     <module>spring-cloud/nacos</module>
-    <module>spring-cloud/admin-server</module>
+    <module>spring-cloud/monitor-server</module>
     <module>spring-cloud/xxl-job</module>
 
     <module>microservice</module>

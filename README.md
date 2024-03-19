@@ -10,7 +10,7 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 
 注意：
 - ⚠️JDK 使用的是 1.8，Spring Boot 只能使用 2.x 版本。
-- ⚠️开发环境，用户名/密码统一为：dev-user/dev-pwd。
+- ⚠️开发环境，用户名/密码统一为：dev-usr/dev-pwd。
 
 | 模块名称   | 技术选型                               | 使用版本       | 最新版本                                                                                                                                                                                                                                   | 端口         | web 访问地址               |
 |--------|------------------------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------|
@@ -30,8 +30,8 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 | 任务调度   | Xxl Job                            | 2.4.0      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/xuxueli/xxl-job/maven-metadata.xml">                                                        | 5200       | http://localhost:5200  |
 | 在线文档   | SpringDoc OpenApi                  | 1.8.0      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/org/springdoc/springdoc-openapi-ui/maven-metadata.xml">                                         |            | http://localhost:9000  |
 | 分布式日志  | EFK                                |            |                                                                                                                                                                                                                                        |            |                        |
-| 数据库持久化 | mybatis-plus                       | 3.5.5      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/baomidou/mybatis-plus-boot-starter/maven-metadata.xml">                                     |            |                        |
-| 分布式锁   | redisson                           | 3.27.2     | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/org/redisson/redisson/maven-metadata.xml">                                                      |            |                        |
+| 数据库持久化 | Mybatis-Plus                       | 3.5.5      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/baomidou/mybatis-plus-boot-starter/maven-metadata.xml">                                     |            |                        |
+| 分布式锁   | Redisson                           | 3.27.2     | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/org/redisson/redisson/maven-metadata.xml">                                                      |            |                        |
 | 验证码    | Easy Captcha                       | 1.6.2      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/github/whvcse/easy-captcha/maven-metadata.xml">                                             |            |                        |
 
 
@@ -154,13 +154,13 @@ docker compose down --remove-orphans
 重启某个微服务：
 
 ```bash
-docker-compose restart admin-server
+docker-compose restart monitor-server
 ```
 
 扩容微服务：
 
 ```bash
-docker-compose up -d --scale admin-server=2
+docker-compose up -d --scale monitor-server=2
 ```
 
 回收 docker 磁盘空间：
@@ -195,16 +195,16 @@ AUTH="-H \"Authorization: Bearer $ACCESS_TOKEN\""
 ### 测试 Eureka
 
 ```bash
-curl -H "accept:application/json" -k http://dev-user:dev-pwd@localhost:8761/eureka/api/apps -s
-curl -H "accept:application/json" -k http://dev-user:dev-pwd@localhost:8761/config/auth-server/default -s
+curl -H "accept:application/json" -k http://dev-usr:dev-pwd@localhost:8761/eureka/api/apps -s
+curl -H "accept:application/json" -k http://dev-usr:dev-pwd@localhost:8761/config/auth-server/default -s
 ```
 
 ### 测试 Config server
 
 ```bash
 TEST_VALUE="hello-world"
-ENCRYPTED_VALUE=$(curl -k http://dev-user:dev-pwd@localhost:8443/config/encrypt --data-urlencode "$TEST_VALUE" -s)
-DECRYPTED_VALUE=$(curl -k http://dev-user:dev-pwd@localhost:8443/config/decrypt -d $ENCRYPTED_VALUE -s)
+ENCRYPTED_VALUE=$(curl -k http://dev-usr:dev-pwd@localhost:8443/config/encrypt --data-urlencode "$TEST_VALUE" -s)
+DECRYPTED_VALUE=$(curl -k http://dev-usr:dev-pwd@localhost:8443/config/decrypt -d $ENCRYPTED_VALUE -s)
 
 echo ENCRYPTED_VALUE=$ENCRYPTED_VALUE
 echo DECRYPTED_VALUE=$DECRYPTED_VALUE
