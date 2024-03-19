@@ -15,10 +15,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 @Slf4j
 @EnableEurekaServer
 @SpringBootApplication
-public class EurekaApplication {
+public class EurekaServerApplication {
 
 	public static void main(final String[] args) {
-        ConfigurableApplicationContext ctx = SpringApplication.run(EurekaApplication.class, args);
+        ConfigurableApplicationContext ctx = SpringApplication.run(EurekaServerApplication.class, args);
 
         String serviceUrl = ctx.getEnvironment().getProperty("eureka.client.serviceUrl.defaultZone");
         String username = ctx.getEnvironment().getProperty("spring.security.user.name");

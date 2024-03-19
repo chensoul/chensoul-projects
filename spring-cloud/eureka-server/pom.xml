@@ -11,10 +11,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.chensoul</groupId>
-  <artifactId>eureka</artifactId>
+  <artifactId>eureka-server</artifactId>
   <version>${revision}</version>
 
-  <name>SpringCloud :: Eureka</name>
+  <name>SpringCloud :: Eureka Server</name>
   <description>${project.name}</description>
 
   <dependencies>

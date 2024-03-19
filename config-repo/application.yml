@@ -36,7 +36,7 @@ spring.main:
 eureka:
   client:
     service-url:
-      defaultZone: http://${eureka:eureka}:8761/eureka/
+      defaultZone: http://${eureka-server:eureka-server}:8761/eureka/
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 5
   instance:
@@ -67,8 +67,8 @@ spring.rabbitmq:
   password: dev-pwd
 
 app:
-  eureka-username: u
-  eureka-password: '{cipher}bf298f6d5f878b342f9e44bec08cb9ac00b4ce57e98316f030194a225fac89fb'
+  eureka-username: dev-usr
+  eureka-password: dev-pwd
 
 feign:
   client:

@@ -33,10 +33,9 @@
     <module>chensoul-spring-cloud</module>
 
     <module>spring-cloud/config-server</module>
-    <module>spring-cloud/eureka</module>
+    <module>spring-cloud/eureka-server</module>
     <module>spring-cloud/auth-server</module>
     <module>spring-cloud/gateway</module>
-    <module>spring-cloud/nacos</module>
     <module>spring-cloud/monitor-server</module>
     <module>spring-cloud/xxl-job</module>
 

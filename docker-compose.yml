@@ -133,7 +133,7 @@ services:
 
   config-server:
     build: spring-cloud/config-server
-    image: chensoul-cloud/config-server
+    image: chensoul/config-server
     deploy:
       resources:
         limits:
@@ -146,9 +146,9 @@ services:
     volumes:
       - ./config-repo:/config-repo
 
-  eureka:
-    build: spring-cloud/eureka
-    image: chensoul-cloud/eureka
+  eureka-server:
+    build: spring-cloud/eureka-server
+    image: chensoul/eureka-server
     deploy:
       resources:
         limits:
@@ -161,7 +161,7 @@ services:
 
   gateway:
     build: spring-cloud/gateway
-    image: chensoul-cloud/gateway
+    image: chensoul/gateway
     deploy:
       resources:
         limits:
@@ -169,15 +169,12 @@ services:
     environment:
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
-    depends_on:
-      auth-server:
-        condition: service_healthy
     ports:
       - "8443:8443"
 
   monitor-server:
     build: spring-cloud/monitor-server
-    image: chensoul-cloud/monitor-server
+    image: chensoul/monitor-server
     deploy:
       resources:
         limits:
@@ -185,13 +182,10 @@ services:
     environment:
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
-    depends_on:
-    - config-server
-    - eureka
 
   auth-server:
     build: spring-cloud/auth-server
-    image: chensoul-cloud/auth-server
+    image: chensoul/auth-server
     deploy:
       resources:
         limits:

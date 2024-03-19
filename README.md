@@ -103,10 +103,10 @@ istioctl version --remote=false
 
 127.0.0.1 config-server
 127.0.0.1 auth-server
-127.0.0.1 nacos
-127.0.0.1 eureka
+127.0.0.1 zipkin-server
+127.0.0.1 eureka-server
 127.0.0.1 gateway
-127.0.0.1 zipkin
+127.0.0.1 nacos
 ```
 
 其次，启动 mysql、redis、rabbitmq、zipkin 服务。
@@ -114,40 +114,25 @@ istioctl version --remote=false
 然后，依次启动 `chensoul-cloud` 项目中的以下模块：
 
 - config-server
-- eureka
-- gateway
+- eureka-server
 - auth-server
+- gateway
 
 ### 通过 docker 运行
 
-首先，编译项目并打包
+运行 docker compose 文件：
 
 ```bash
 mvn clean package -DskipTests=true
-```
 
-运行 docker compose 文件
-
-```bash
 docker compose up -d
-```
-
-查看日志：
-```bash
 docker compose logs -f
-```
-
-查看启动的容器：
-
-```bash
 docker ps --format {{.Names}}
 ```
 
 停止容器：
 
 ```bash
-docker compose down
-
 docker compose down --remove-orphans
 ```
 
@@ -176,9 +161,9 @@ docker system prune -f --volumes
 各个服务访问方式如下：
 
 - [Config Server](http://localhost:8888)
-- [Eureka](http://localhost:8761)
+- [Eureka Server](http://localhost:8761)
 - [Gateway & OpenAPI](http://localhost:8443)
-- [Zipkin](http://localhost:9411)
+- [Zipkin Server](http://localhost:9411)
 - [Spring Boot Admin](http://localhost:5100)
 - [Auth Server](http://localhost:9999)
 - [Xxl Job](http://localhost:5200)
