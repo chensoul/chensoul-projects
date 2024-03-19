@@ -1,6 +1,6 @@
-package com.chensoul.authserver.config;
+package com.chensoul.auth.config;
 
-import com.chensoul.authserver.support.Jwks;
+import com.chensoul.auth.support.Jwks;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;

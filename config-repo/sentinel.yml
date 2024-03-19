@@ -5,7 +5,7 @@ auth:
   username: dev-usr
   password: dev-pwd
   filter:
-    exclude-urls: /,/authserver/login,/authserver/logout,/registry/machine,/version,/actuator/**,/details
+    exclude-urls: /,/auth/login,/auth/logout,/registry/machine,/version,/actuator/**,/details
     exclude-url-suffixes: htm,html,js,css,map,ico,ttf,woff,png
 
 sentinel:

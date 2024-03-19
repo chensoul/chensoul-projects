@@ -1,4 +1,4 @@
-package com.chensoul.authserver.captcha;
+package com.chensoul.auth.captcha;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,14 +12,14 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
  */
 @Data
 @RefreshScope
-@ConfigurationProperties(prefix = "authserver")
+@ConfigurationProperties(prefix = "auth")
 public class AuthProperties {
     private LoginProperties login = new LoginProperties();
 
     @Data
     public class LoginProperties {
-        public final static String PASSWORD_LOGIN_URL = "/authserver/passwordLogin";
-        public final static String SMS_LOGIN_URL = "/authserver/smsLogin";
+        public final static String PASSWORD_LOGIN_URL = "/auth/passwordLogin";
+        public final static String SMS_LOGIN_URL = "/auth/smsLogin";
 
         private String passwordLoginUrl = PASSWORD_LOGIN_URL;
 

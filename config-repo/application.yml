@@ -33,18 +33,19 @@ spring.main:
 ## Sharding Sphere 不支持数据库健康检查
 #management.health.db.enabled: false
 
+app:
+  eureka-username: dev-usr
+  eureka-password: dev-pwd
+
 eureka:
   client:
-    service-url:
-      defaultZone: http://${eureka-server:eureka-server}:8761/eureka/
+    serviceUrl:
+      defaultZone: http://${app.eureka-username}:${app.eureka-password}@${eureka-server:eureka-server}:8761/eureka/
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 5
   instance:
-    prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    # 客户端向注册中心发送心跳的时间间隔，默认30秒
     leaseRenewalIntervalInSeconds: 5
-    #注册中心在收到客户端心跳之后，等待下一次心跳的超时时间，如果在这个时间内没有收到下次心跳，则移除该客户端。默认90秒
     leaseExpirationDurationInSeconds: 5
 
 mybatis-plus:
@@ -65,10 +66,6 @@ spring.rabbitmq:
   port: 5672
   username: dev-usr
   password: dev-pwd
-
-app:
-  eureka-username: dev-usr
-  eureka-password: dev-pwd
 
 feign:
   client:
@@ -104,3 +101,7 @@ management.health.rabbit.enabled: true
 
 server.shutdown: graceful
 spring.lifecycle.timeout-per-shutdown-phase: 10s
+
+logging.level:
+  org.apache.coyote.http11.Http11InputBuffer: DEBUG
+  org.springframework.web.client.RestTemplate: DEBUG

@@ -1,4 +1,4 @@
-package com.chensoul.authserver.config;
+package com.chensoul.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import static org.springframework.security.config.Customizer.withDefaults;

@@ -1,6 +1,6 @@
-package com.chensoul.authserver.captcha;
+package com.chensoul.auth.captcha;
 
-import com.chensoul.authserver.captcha.service.CaptchaService;
+import com.chensoul.auth.captcha.service.CaptchaService;
 import com.chensoul.jackson.utils.JsonUtils;
 import com.chensoul.util.R;
 import java.io.IOException;

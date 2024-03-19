@@ -1,4 +1,4 @@
-package com.chensoul.authserver;
+package com.chensoul.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

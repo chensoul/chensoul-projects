@@ -1,6 +1,6 @@
-package com.chensoul.authserver.security;
+package com.chensoul.auth.security;
 
-import com.chensoul.authserver.TestApplicationConfiguration;
+import com.chensoul.auth.TestApplicationConfiguration;
 import com.chensoul.util.R;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;

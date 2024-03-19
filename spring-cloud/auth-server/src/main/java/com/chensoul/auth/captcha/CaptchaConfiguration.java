@@ -1,8 +1,8 @@
-package com.chensoul.authserver.captcha;
+package com.chensoul.auth.captcha;
 
-import com.chensoul.authserver.captcha.service.CaptchaService;
-import com.chensoul.authserver.captcha.service.InMemoryCaptchaService;
-import com.chensoul.authserver.captcha.service.RedisCaptchaService;
+import com.chensoul.auth.captcha.service.CaptchaService;
+import com.chensoul.auth.captcha.service.InMemoryCaptchaService;
+import com.chensoul.auth.captcha.service.RedisCaptchaService;
 import javax.servlet.DispatcherType;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -20,7 +20,7 @@ import org.springframework.data.redis.core.RedisTemplate;
  * @since 0.0.1
  */
 @Configuration
-@ConditionalOnProperty(name = "authserver.service.enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(name = "auth.service.enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(AuthProperties.class)
 public class CaptchaConfiguration {
 
@@ -36,14 +36,14 @@ public class CaptchaConfiguration {
     }
 
     @Bean
-    @ConditionalOnProperty(name = "authserver.service.enabled", havingValue = "true")
+    @ConditionalOnProperty(name = "auth.service.enabled", havingValue = "true")
     public CaptchaService RedisCaptchaService(final RedisTemplate<String, Object> redisTemplate, final AuthProperties authProperties) {
         return new RedisCaptchaService(redisTemplate, authProperties.getLogin().getCaptcha());
     }
 
     @Bean
     @ConditionalOnMissingBean(CaptchaService.class)
-    @ConditionalOnProperty(name = "authserver.service.enabled", havingValue = "false", matchIfMissing = true)
+    @ConditionalOnProperty(name = "auth.service.enabled", havingValue = "false", matchIfMissing = true)
     public CaptchaService inMemoryCaptchaService() {
         return new InMemoryCaptchaService();
     }

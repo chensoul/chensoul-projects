@@ -14,7 +14,6 @@ services:
       - MYSQL_DATABASE=chensoul-cloud
       - MYSQL_USER=dev-usr
       - MYSQL_PASSWORD=dev-pwd
-    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version=''
     healthcheck:
       test: "/usr/bin/mysql --user=dev-usr --password=dev-pwd -e 'SHOW DATABASES;'"
       interval: 5s
@@ -61,14 +60,14 @@ services:
       resources:
         limits:
           memory: 512M
+    ports:
+      - "6379:6379"
     command: redis-server --requirepass dev-pwd
     healthcheck:
       test: [ "CMD", "redis-cli","-a","dev-pwd","--raw", "incr","ping" ]
       interval: 5s
       timeout: 2s
       retries: 10
-    ports:
-      - "6379:6379"
 
   rabbitmq:
     image: rabbitmq:3.13.0-management-alpine
@@ -80,6 +79,15 @@ services:
       interval: 5s
       timeout: 2s
       retries: 10
+
+  zipkin:
+    image: openzipkin/zipkin:3.1.1
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    ports:
+      - "9411:9411"
 
   #
   #  kafka:
@@ -121,15 +129,6 @@ services:
   #    ports:
   #      - "5200:5200"
   #
-
-  zipkin:
-    image: openzipkin/zipkin:3.1.1
-    deploy:
-      resources:
-        limits:
-          memory: 512M
-    ports:
-      - "9411:9411"
 
   config-server:
     build: spring-cloud/config-server

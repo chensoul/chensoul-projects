@@ -1,4 +1,4 @@
-package com.chensoul.authserver.controller;
+package com.chensoul.auth.controller;
 
 import com.chensoul.collection.MapUtils;
 import com.chensoul.util.R;

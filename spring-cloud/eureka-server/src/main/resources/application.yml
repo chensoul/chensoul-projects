@@ -13,3 +13,8 @@ spring:
     uri: http://${config-server:config-server}:8888
     username: ${CONFIG_SERVER_USR:dev-usr}
     password: ${CONFIG_SERVER_PWD:dev-pwd}
+
+
+logging.level:
+  org.apache.coyote.http11.Http11InputBuffer: DEBUG
+  org.springframework.cloud.config.client: DEBUG

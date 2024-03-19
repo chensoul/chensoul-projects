@@ -24,7 +24,9 @@ public class ConfigServerApplication {
 
         String repoLocation = ctx.getEnvironment().getProperty("spring.cloud.config.server.native.searchLocations");
         String username = ctx.getEnvironment().getProperty("spring.security.user.name");
-        LOG.info("Serving configurations for secured user: {} from folder: {}", username, repoLocation);
+        String password = ctx.getEnvironment().getProperty("spring.security.user.password");
+
+        LOG.info("Serving configurations for secured user: {}/{} from folder: {}", username, password, repoLocation);
 	}
 
 }

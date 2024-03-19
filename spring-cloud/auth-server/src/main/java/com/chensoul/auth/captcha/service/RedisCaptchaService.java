@@ -1,6 +1,6 @@
-package com.chensoul.authserver.captcha.service;
+package com.chensoul.auth.captcha.service;
 
-import com.chensoul.authserver.captcha.AuthProperties;
+import com.chensoul.auth.captcha.AuthProperties;
 import com.chensoul.net.InetAddressUtils;
 import com.chensoul.spring.util.HttpRequestUtils;
 import java.util.Objects;

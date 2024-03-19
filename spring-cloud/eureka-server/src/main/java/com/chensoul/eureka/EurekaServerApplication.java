@@ -21,8 +21,10 @@ public class EurekaServerApplication {
         ConfigurableApplicationContext ctx = SpringApplication.run(EurekaServerApplication.class, args);
 
         String serviceUrl = ctx.getEnvironment().getProperty("eureka.client.serviceUrl.defaultZone");
-        String username = ctx.getEnvironment().getProperty("spring.security.user.name");
-        log.info("Serving configurations for secured user: {} from serviceUrl: {}", username, serviceUrl);
+        String username = ctx.getEnvironment().getProperty("app.eureka-username");
+        String password = ctx.getEnvironment().getProperty("app.eureka-password");
+
+        log.info("Serving configurations for secured user: {}/{} from serviceUrl: {}", username, password, serviceUrl);
     }
 
 }

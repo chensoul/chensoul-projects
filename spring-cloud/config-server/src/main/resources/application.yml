@@ -2,9 +2,10 @@ server.port: 8888
 
 spring.application.name: @artifactId@
 
-spring.profiles.active: native
+# 兼容 docker 部署时的绝对路径
+spring.cloud.config.server.native.searchLocations: file:${PWD:}/config-repo
 
-spring.cloud.config.server.native.searchLocations: file:${PWD:.}/config-repo
+spring.profiles.active: native
 
 encrypt.key: ${CONFIG_SERVER_ENCRYPT_KEY:my-very-secure-encrypt-key}
 spring.security.user.name: ${CONFIG_SERVER_USR:dev-usr}

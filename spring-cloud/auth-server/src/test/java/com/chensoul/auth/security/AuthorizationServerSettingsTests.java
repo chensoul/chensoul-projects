@@ -1,4 +1,4 @@
-package com.chensoul.authserver.security;
+package com.chensoul.auth.security;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

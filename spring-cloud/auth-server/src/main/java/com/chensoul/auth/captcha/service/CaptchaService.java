@@ -1,4 +1,4 @@
-package com.chensoul.authserver.captcha.service;
+package com.chensoul.auth.captcha.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

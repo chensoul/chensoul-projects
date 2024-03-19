@@ -1,4 +1,4 @@
-package com.chensoul.authserver.support;
+package com.chensoul.auth.support;
 
 import com.chensoul.util.KeyGeneratorUtils;
 import com.nimbusds.jose.jwk.Curve;

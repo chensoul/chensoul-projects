@@ -1,4 +1,4 @@
-package com.chensoul.authserver.config;
+package com.chensoul.auth.config;
 
 import com.chensoul.util.StringUtils;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;

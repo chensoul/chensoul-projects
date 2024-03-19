@@ -1,4 +1,4 @@
-package com.chensoul.authserver.captcha.service;
+package com.chensoul.auth.captcha.service;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

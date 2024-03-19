@@ -1,4 +1,4 @@
-package com.chensoul.authserver;
+package com.chensoul.auth;
 
 import org.springframework.context.annotation.Configuration;
 

@@ -100,13 +100,21 @@ istioctl version --remote=false
 
 127.0.0.1 redis
 127.0.0.1 rabbitmq
+127.0.0.1 zipkin
 
 127.0.0.1 config-server
 127.0.0.1 auth-server
-127.0.0.1 zipkin-server
 127.0.0.1 eureka-server
 127.0.0.1 gateway
 127.0.0.1 nacos
+```
+
+~/.bash_profile 添加环境变量:
+
+```bash
+export CONFIG_SERVER_ENCRYPT_KEY=my-very-secure-encrypt-key
+export CONFIG_SERVER_USR=dev-usr
+export CONFIG_SERVER_PWD=dev-pwd
 ```
 
 其次，启动 mysql、redis、rabbitmq、zipkin 服务。
