@@ -197,7 +197,7 @@ services:
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     healthcheck:
-      test: [ "CMD", "curl", "-fs", "http://localhost:9999/actuator/health" ]
+      test: [ "CMD", "curl", "-fs", "http://localhost:8080/actuator/health" ]
       interval: 5s
       timeout: 2s
       retries: 10

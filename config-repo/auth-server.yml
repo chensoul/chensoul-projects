@@ -29,6 +29,8 @@ springdoc:
 ---
 spring.config.activate.on-profile: docker
 
+server.port: 8080
+
 spring.datasource.url: jdbc:mysql://mysql:3306/chensoul-cloud?connectTimeout=2000&socketTimeout=150000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
 
 ---
