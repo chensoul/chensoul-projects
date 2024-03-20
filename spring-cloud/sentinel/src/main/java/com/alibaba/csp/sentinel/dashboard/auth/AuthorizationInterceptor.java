@@ -12,7 +12,7 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
- * The spring interceptor for privilege-based authserver.
+ * The spring interceptor for privilege-based auth.
  *
  * @author lkxiaolou
  * @since 1.7.1

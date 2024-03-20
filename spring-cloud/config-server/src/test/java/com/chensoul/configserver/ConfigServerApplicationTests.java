@@ -1,11 +1,10 @@
 package com.chensoul.configserver;
 
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest(webEnvironment = RANDOM_PORT, properties = {"spring.profiles.active=native"})
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 class ConfigServerApplicationTests {
 
   @Test

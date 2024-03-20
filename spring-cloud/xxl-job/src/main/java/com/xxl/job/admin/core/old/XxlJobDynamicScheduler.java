@@ -57,13 +57,13 @@
 // // init i18n
 // initI18n();
 //
-// // admin registry adminserver run
+// // admin registry monitor run
 // JobRegistryMonitorHelper.getInstance().start();
 //
-// // admin adminserver run
+// // admin monitor run
 // JobFailMonitorHelper.getInstance().start();
 //
-// // admin-server
+// // monitor-server
 // initRpcProvider();
 //
 // logger.info(">>>>>>>>> init xxl-job admin success.");
@@ -77,10 +77,10 @@
 // // admin registry stop
 // JobRegistryMonitorHelper.getInstance().toStop();
 //
-// // admin adminserver stop
+// // admin monitor stop
 // JobFailMonitorHelper.getInstance().toStop();
 //
-// // admin-server
+// // monitor-server
 // stopRpcProvider();
 // }
 //

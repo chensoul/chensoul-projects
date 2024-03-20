@@ -2,13 +2,18 @@ server:
   port: 5300
 
 auth:
-  username: dev-user
+  username: dev-usr
   password: dev-pwd
   filter:
-    exclude-urls: /,/authserver/login,/authserver/logout,/registry/machine,/version,/actuator/**,/details
+    exclude-urls: /,/auth/login,/auth/logout,/registry/machine,/version,/actuator/**,/details
     exclude-url-suffixes: htm,html,js,css,map,ico,ttf,woff,png
 
 sentinel:
   dashboard:
     # 配置 sentinel 控制台版本号
     version: 1.8.0
+
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080

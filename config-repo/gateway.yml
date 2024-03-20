@@ -8,8 +8,8 @@ spring.cloud.gateway.routes:
     filters:
       - StripPrefix=1
 
-  - id: admin-server
-    uri: lb://admin-server
+  - id: monitor-server
+    uri: lb://monitor-server
     predicates:
       - Path=/monitor/**
     filters:
@@ -35,8 +35,8 @@ logging:
   level:
     root: INFO
     org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
-    org.springframework.cloud.gateway.filter.GatewayMetricsFilter: INFO
-    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
 
 springdoc:
   swagger-ui:

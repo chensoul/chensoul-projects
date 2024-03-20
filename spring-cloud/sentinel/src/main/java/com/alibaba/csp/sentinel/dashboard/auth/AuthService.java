@@ -1,7 +1,7 @@
 package com.alibaba.csp.sentinel.dashboard.auth;
 
 /**
- * Interface for authentication and authserver.
+ * Interface for authentication and auth.
  *
  * @author Carpenter Lee
  * @since 1.5.0
@@ -12,7 +12,7 @@ public interface AuthService<R> {
      * Get the authentication user.
      *
      * @param request the request contains the user information
-     * @return the authserver user represent the current user, when the user is illegal, a null
+     * @return the auth user represent the current user, when the user is illegal, a null
      * value will return.
      */
     AuthUser getAuthUser(R request);
@@ -59,7 +59,7 @@ public interface AuthService<R> {
          * may be an app name or an ip address, or other destination.
          * <p>
          * This method will use return value to represent whether user has the specific
-         * privileges to the target, but to throw a RuntimeException to represent no authserver
+         * privileges to the target, but to throw a RuntimeException to represent no auth
          * is also a good way.
          * </p>
          *
