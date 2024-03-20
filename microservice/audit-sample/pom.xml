@@ -14,7 +14,7 @@
   <artifactId>audit-sample</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul :: Audit Sample</name>
+  <name>MicroService :: Audit Sample</name>
   <description>${project.name}</description>
 
   <properties>

@@ -138,7 +138,7 @@ services:
         limits:
           memory: 512M
     environment:
-      - SPRING_PROFILES_ACTIVE=native
+      - SPRING_PROFILES_ACTIVE=docker,native
       - ENCRYPT_KEY=${CONFIG_SERVER_ENCRYPT_KEY}
       - SPRING_SECURITY_USER_NAME=${CONFIG_SERVER_USR}
       - SPRING_SECURITY_USER_PASSWORD=${CONFIG_SERVER_PWD}
@@ -153,6 +153,7 @@ services:
         limits:
           memory: 512M
     environment:
+      - SPRING_PROFILES_ACTIVE=docker
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     ports:
@@ -166,6 +167,7 @@ services:
         limits:
           memory: 512M
     environment:
+      - SPRING_PROFILES_ACTIVE=docker
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     ports:
@@ -179,6 +181,7 @@ services:
         limits:
           memory: 512M
     environment:
+      - SPRING_PROFILES_ACTIVE=docker
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
 
@@ -190,13 +193,14 @@ services:
         limits:
           memory: 512M
     environment:
+      - SPRING_PROFILES_ACTIVE=docker
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     healthcheck:
       test: [ "CMD", "curl", "-fs", "http://localhost:9999/actuator/health" ]
       interval: 5s
       timeout: 2s
-      retries: 60
+      retries: 10
     depends_on:
       mysql:
         condition: service_healthy

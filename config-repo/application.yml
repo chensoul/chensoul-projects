@@ -1,37 +1,6 @@
-server.error.include-message: always
-
-spring.main:
-    allow-bean-definition-overriding: true
-
-#spring.shardingsphere:
-#  datasource:
-#    names:
-#      master,slave
-#    master:
-#      type: com.zaxxer.hikari.HikariDataSource
-#      driver-class-name: com.mysql.cj.jdbc.Driver
-#      jdbcUrl: jdbc:mysql://${mysql-master:mysql-master}:3307/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-#      username: dev-usr
-#      password: dev-pwd
-#    slave:
-#      type: com.zaxxer.hikari.HikariDataSource
-#      driver-class-name: com.mysql.cj.jdbc.Driver
-#      jdbcUrl: jdbc:mysql://${mysql-slave:mysql-slave}:3308/chensoul-cloud?connectTimeout=2000&socketTimeout=60000&allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
-#      username: dev-usr
-#      password: dev-pwd
-#  masterslave:
-#    # 最终的数据源名称
-#    name: dataSource
-#    load-balance-algorithm-type: round_robin
-#    # 主库数据源名称
-#    master-data-source-name: master
-#    # 从库数据源名称列表，多个逗号分隔
-#    slave-data-source-names: slave
-#  props:
-#    sql:
-#      show: true
-## Sharding Sphere 不支持数据库健康检查
-#management.health.db.enabled: false
+server.shutdown: graceful
+spring.lifecycle.timeout-per-shutdown-phase: 10s
+spring.main.allow-bean-definition-overriding: true
 
 app:
   eureka-username: dev-usr
@@ -40,11 +9,10 @@ app:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${app.eureka-username}:${app.eureka-password}@${eureka-server:eureka-server}:8761/eureka/
+      defaultZone: http://${app.eureka-username}:${app.eureka-password}@localhost:8761/eureka/
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 5
   instance:
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 5
 
@@ -56,16 +24,17 @@ mybatis-plus:
       id-type: ASSIGN_ID
 
 spring.redis:
+  host: localhost
   port: 6379
-  host: ${redis:redis}
   timeout: 3000
   password: dev-pwd
 
 spring.rabbitmq:
-  host: ${rabbitmq:rabbitmq}
+  host: localhost
   port: 5672
   username: dev-usr
   password: dev-pwd
+management.health.rabbit.enabled: true
 
 feign:
   client:
@@ -86,22 +55,24 @@ feign:
   circuitbreaker:
     enabled: true
 
-spring.zipkin.base-url: http://${zipkin:zipkin}:9411/
+spring.zipkin.base-url: http://localhost:9411/
 spring.cloud.sleuth:
-  sampler:
-    probability: 1
+  sampler.probability: 1
 
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
 management.info.git.enabled: true
 management.info.git.mode: full
-
 management.endpoint.health.probes.enabled: true
-management.health.rabbit.enabled: true
 
-server.shutdown: graceful
-spring.lifecycle.timeout-per-shutdown-phase: 10s
 
-logging.level:
-  org.apache.coyote.http11.Http11InputBuffer: DEBUG
-  org.springframework.web.client.RestTemplate: DEBUG
+---
+spring.config.activate.on-profile: docker
+
+eureka.client.serviceUrl.defaultZone: http://${app.eureka-username}:${app.eureka-password}@eureka-server:8761/eureka/
+
+spring.redis.host: redis
+
+spring.rabbitmq.host: rabbitmq
+
+spring.zipkin.base-url: http://zipkin:9411/

@@ -12,3 +12,8 @@ sentinel:
   dashboard:
     # 配置 sentinel 控制台版本号
     version: 1.8.0
+
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080

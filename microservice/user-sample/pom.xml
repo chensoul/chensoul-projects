@@ -13,7 +13,7 @@
   <artifactId>user-sample</artifactId>
   <version>${revision}</version>
 
-  <name>Chensoul :: User Sample</name>
+  <name>MicroService :: User Sample</name>
   <description>${project.name}</description>
 
   <dependencies>

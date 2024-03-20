@@ -8,10 +8,6 @@
 
 Spring Cloud每个业务领域都有多个可供选择的组件，这里也列出了微服务章节中将要用到的组件+中间件的技术选型，这也是当前主流的选型。
 
-注意：
-- ⚠️JDK 使用的是 1.8，Spring Boot 只能使用 2.x 版本。
-- ⚠️开发环境，用户名/密码统一为：dev-usr/dev-pwd。
-
 | 模块名称   | 技术选型                               | 使用版本       | 最新版本                                                                                                                                                                                                                                   | 端口         | web 访问地址               |
 |--------|------------------------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|------------------------|
 | 语言     | Java                               | 1.8        |                                                                                                                                                                                                                                        |            |                        |
@@ -34,6 +30,10 @@ Spring Cloud每个业务领域都有多个可供选择的组件，这里也列�
 | 分布式锁   | Redisson                           | 3.27.2     | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/org/redisson/redisson/maven-metadata.xml">                                                      |            |                        |
 | 验证码    | Easy Captcha                       | 1.6.2      | <img src="https://img.shields.io/maven-metadata/v?label=&color=blue&metadataUrl=https://oss.sonatype.org/content/repositories/releases/com/github/whvcse/easy-captcha/maven-metadata.xml">                                             |            |                        |
 
+
+注意：
+- ⚠️JDK 使用的是 1.8，Spring Boot 只能使用 2.x 版本。
+- ⚠️开发环境，用户名/密码统一为：dev-usr/dev-pwd。
 
 ## 快速开始
 
@@ -92,34 +92,9 @@ istioctl version --remote=false
 
 ### Idea 中运行
 
-首先需要配置 hosts 文件
-```bash
-127.0.0.1 mysql
-127.0.0.1 mysql-master
-127.0.0.1 mysql-slave
+首先，启动 mysql、redis、rabbitmq、zipkin。
 
-127.0.0.1 redis
-127.0.0.1 rabbitmq
-127.0.0.1 zipkin
-
-127.0.0.1 config-server
-127.0.0.1 auth-server
-127.0.0.1 eureka-server
-127.0.0.1 gateway
-127.0.0.1 nacos
-```
-
-~/.bash_profile 添加环境变量:
-
-```bash
-export CONFIG_SERVER_ENCRYPT_KEY=my-very-secure-encrypt-key
-export CONFIG_SERVER_USR=dev-usr
-export CONFIG_SERVER_PWD=dev-pwd
-```
-
-其次，启动 mysql、redis、rabbitmq、zipkin 服务。
-
-然后，依次启动 `chensoul-cloud` 项目中的以下模块：
+然后，依次启动 `spring-cloud` 中的以下模块：
 
 - config-server
 - eureka-server
@@ -128,7 +103,7 @@ export CONFIG_SERVER_PWD=dev-pwd
 
 ### 通过 docker 运行
 
-运行 docker compose 文件：
+运行 docker compose 文件并查看日志：
 
 ```bash
 mvn clean package -DskipTests=true

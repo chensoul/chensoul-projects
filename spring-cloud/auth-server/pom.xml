@@ -32,11 +32,6 @@
       <artifactId>chensoul-redis-spring-boot-starter</artifactId>
       <version>${revision}</version>
     </dependency>
-    <dependency>
-      <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-spring-cloud-loadbalancer</artifactId>
-      <version>${revision}</version>
-    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>

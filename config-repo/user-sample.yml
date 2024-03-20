@@ -6,3 +6,8 @@ spring.security.oauth2.resourceserver.jwt.public-key-location: classpath:public.
 logging:
   level:
     root: INFO
+
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080

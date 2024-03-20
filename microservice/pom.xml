@@ -15,7 +15,7 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
 
-  <name>Chensoul :: Microservice</name>
+  <name>Microservice</name>
   <description>${project.name}</description>
 
   <modules>

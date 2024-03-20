@@ -1,7 +1,6 @@
 package com.chensoul.configserver;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -14,7 +13,10 @@ public class SecurityConfiguration {
         http.authorizeRequests(auth -> auth.antMatchers("/actuator/**").permitAll().anyRequest().authenticated());
 
         // Disable CSRF to allow POST to /encrypt and /decrypt endpoins
-        http.csrf(csrf -> csrf.disable()).httpBasic(Customizer.withDefaults());
+        http.csrf(csrf -> csrf
+            .ignoringAntMatchers("/encrypt/**")
+            .ignoringAntMatchers("/decrypt/**")
+        ).httpBasic();
 
         return http.build();
     }

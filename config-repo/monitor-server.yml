@@ -11,3 +11,7 @@ spring.boot.admin:
   ui:
     title: ${spring.application.name}
 
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080
