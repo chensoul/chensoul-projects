@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.chensoul</groupId>
-    <artifactId>chensoul-cloud</artifactId>
+    <artifactId>chensoul-projects</artifactId>
     <version>${revision}</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
