@@ -3,22 +3,8 @@ package com.chensoul.lang.function;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-
-/**
- * A {@link java.util.function.Supplier}-like interface which allows throwing Error.
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 @FunctionalInterface
 public interface CheckedSupplier<T> {
-    /**
-     * <p>get.</p>
-     *
-     * @return a T object
-     * @throws java.lang.Throwable if any.
-     */
     T get() throws Throwable;
 
     /**

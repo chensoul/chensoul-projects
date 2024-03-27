@@ -2,30 +2,14 @@ package com.chensoul.lang.function;
 
 import static com.chensoul.lang.function.Predicates.and;
 import static com.chensoul.lang.function.Predicates.or;
-import static java.util.stream.Collectors.toList;
-
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
+import static java.util.stream.Collectors.toList;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
-/**
- * <p>Streams interface.</p>
- *
- * @author chensoul
- * @version $Id: $Id
- */
 public interface Streams {
-
-    /**
-     * <p>stream.</p>
-     *
-     * @param iterable a {@link java.lang.Iterable} object
-     * @param <T> a T class
-     * @return a {@link java.util.stream.Stream} object
-     */
     static <T> Stream<T> stream(Iterable<T> iterable) {
         return StreamSupport.stream(iterable.spliterator(), false);
     }

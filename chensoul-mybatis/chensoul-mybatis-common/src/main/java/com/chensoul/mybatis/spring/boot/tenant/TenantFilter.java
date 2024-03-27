@@ -2,7 +2,6 @@ package com.chensoul.mybatis.spring.boot.tenant;
 
 import static com.baomidou.mybatisplus.core.toolkit.StringPool.NULL;
 import static com.chensoul.mybatis.spring.boot.MybatisConstants.HEADER_TENANT_ID;
-
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -11,10 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-/**
- *
- */
 @Slf4j
 public class TenantFilter extends OncePerRequestFilter {
 

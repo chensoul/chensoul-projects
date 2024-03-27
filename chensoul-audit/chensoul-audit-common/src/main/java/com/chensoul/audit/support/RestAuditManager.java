@@ -5,13 +5,6 @@ import com.chensoul.audit.AuditManager;
 import java.util.Map;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
-
-/**
- * RestAuditManager is responsible for recording AuditActionContext instances to RESTful API.
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 public class RestAuditManager extends AbstractAsyncAuditManager {
     public RestAuditManager(final boolean asynchronous) {

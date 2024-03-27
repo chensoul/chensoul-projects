@@ -12,11 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 @AllArgsConstructor
 public class SimpleWebSocketMessageSender implements WebSocketMessageSender {

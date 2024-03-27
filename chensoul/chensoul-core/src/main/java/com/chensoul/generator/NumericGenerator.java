@@ -1,19 +1,5 @@
 package com.chensoul.generator;
-
-/**
- * Interface to return a new sequential number for each call.
- *
- * @author Scott Battaglia
- * @since 3.0.0
- * @version $Id: $Id
- */
 public interface NumericGenerator {
-
-    /**
-     * Method to retrieve the next number as a String.
-     *
-     * @return the String representation of the next number in the sequence
-     */
     String getNextNumberAsString();
 
     /**

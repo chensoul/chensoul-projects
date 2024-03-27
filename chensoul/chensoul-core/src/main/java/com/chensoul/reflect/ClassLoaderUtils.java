@@ -5,17 +5,7 @@ import com.chensoul.util.ShutdownHookUtils;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-/**
- * The utilities class of {@link java.lang.ClassLoader}
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 1.0.0
- * @version $Id: $Id
- */
 public class ClassLoaderUtils {
-    /**
-     * The cache of loaded classes
-     */
     private static final ConcurrentMap<String, Class<?>> loadedClassesCache = initLoadedClassesCache();
 
     /**

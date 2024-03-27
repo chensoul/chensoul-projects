@@ -1,11 +1,8 @@
 package com.chensoul.spring.util;
 
+import static com.chensoul.constant.SymbolConstants.EMPTY;
 import static com.chensoul.constant.SymbolConstants.STAR_THREE;
-import static com.chensoul.util.StringUtils.EMPTY;
-
-import com.chensoul.collection.ArrayUtils;
 import com.chensoul.net.InetAddressUtils;
-import com.chensoul.util.StringUtils;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
@@ -23,6 +20,8 @@ import javax.servlet.http.HttpSession;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;

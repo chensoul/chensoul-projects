@@ -4,11 +4,6 @@ import java.security.Principal;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 import org.springframework.web.socket.WebSocketSession;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 public interface UserSessionManager {
 
     /**

@@ -5,10 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
-
-/**
- * This is {@link ServerProperties}.
- */
 @Getter
 @Setter
 @Accessors(chain = true)

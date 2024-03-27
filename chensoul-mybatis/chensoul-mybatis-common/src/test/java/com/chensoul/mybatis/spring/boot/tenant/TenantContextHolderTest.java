@@ -2,13 +2,6 @@ package com.chensoul.mybatis.spring.boot.tenant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-
-/**
- * Test for TenantContextHolder
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 class TenantContextHolderTest {
     private String TEST = "TEST";
 

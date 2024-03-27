@@ -4,7 +4,7 @@ package com.chensoul.constant;
  * <p>HtmlConstants interface.</p>
  *
  * @author chensoul
- * @version $Id: $Id
+ *
  */
 public interface HtmlConstants {
 

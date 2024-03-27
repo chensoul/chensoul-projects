@@ -1,22 +1,18 @@
 package com.chensoul.date;
 
-import com.chensoul.util.StringUtils;
 import java.io.Serializable;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 日期区间格式化类，用于格式化输出两个日期相差的时间长度
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public final class BetweenFormatter implements Serializable {
 
     private static final long serialVersionUID = 1446611117930620343L;
-
-    /**
-     * 格式化级别的最大个数
-     */
     private final int levelMaxCount;
 
     /**

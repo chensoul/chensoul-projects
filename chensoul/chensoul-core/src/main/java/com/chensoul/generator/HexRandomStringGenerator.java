@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  *
  * @author Timur Duehr
  * @since 5.2.0
- * @version $Id: $Id
+ *
  */
 @NoArgsConstructor
 public class HexRandomStringGenerator extends AbstractRandomStringGenerator {

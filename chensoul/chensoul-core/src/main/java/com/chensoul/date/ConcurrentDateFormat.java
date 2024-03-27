@@ -1,6 +1,5 @@
 package com.chensoul.date;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -14,7 +13,7 @@ import lombok.SneakyThrows;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public final class ConcurrentDateFormat {
 

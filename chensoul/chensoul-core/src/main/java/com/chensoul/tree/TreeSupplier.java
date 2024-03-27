@@ -7,14 +7,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 import java.util.function.Supplier;
-
-/**
- * TODO
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 1.0.0
- * @version $Id: $Id
- */
 public class TreeSupplier<E> implements Supplier<Tree<E>> {
 
     private final Tree<E> root;
@@ -22,13 +14,6 @@ public class TreeSupplier<E> implements Supplier<Tree<E>> {
     private final Map<E, Tree<E>> idTreeMap;
 
     private boolean isBuild;
-
-    /**
-     * <p>Constructor for TreeSupplier.</p>
-     *
-     * @param rootId a E object
-     * @param config a {@link com.chensoul.tree.TreeNodeConfig} object
-     */
     public TreeSupplier(final E rootId, final TreeNodeConfig config) {
         root = new Tree<>(config);
         root.setId(rootId);

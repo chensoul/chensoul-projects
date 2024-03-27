@@ -2,17 +2,7 @@ package com.chensoul.constant;
 
 import static com.chensoul.constant.SymbolConstants.DOT;
 
-/**
- * TODO Comment
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 public interface FileConstants {
-    /**
-     * Xml file
-     */
     String XML = "xml";
 
     /**

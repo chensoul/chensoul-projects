@@ -5,14 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-/**
- * Pojo for response with code, message and data
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 @Data
 @Accessors(chain = true)
 public class R<T> implements Serializable {
@@ -21,10 +13,6 @@ public class R<T> implements Serializable {
     private int code;
     private String message;
     private T data;
-
-    /**
-     * <p>Constructor for R.</p>
-     */
     public R() {
     }
 

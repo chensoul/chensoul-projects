@@ -1,6 +1,5 @@
 package com.chensoul.lang.function;
 
-import com.chensoul.util.StringUtils;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.function.Consumer;
@@ -8,17 +7,9 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import lombok.extern.slf4j.Slf4j;
-
-/**
- * TODO
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 1.0.0
- * @version $Id: $Id
- */
+import org.apache.commons.lang3.StringUtils;
 @Slf4j
 public class FunctionUtils {
-    /** Constant <code>SNEAKY_THROW</code> */
     public static final Consumer<Throwable> SNEAKY_THROW = FunctionUtils::sneakyThrow;
 
     /** Constant <code>CHECKED_THROW</code> */

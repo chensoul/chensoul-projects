@@ -11,10 +11,6 @@ import java.nio.file.Files;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.core.io.FileSystemResource;
-
-/**
- * This is {@link TemporaryFileSystemResource}.
- */
 @Slf4j
 public class TemporaryFileSystemResource extends FileSystemResource {
 

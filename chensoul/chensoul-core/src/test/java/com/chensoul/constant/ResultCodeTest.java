@@ -1,18 +1,10 @@
 package com.chensoul.constant;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import com.chensoul.util.Enumerable;
 import com.chensoul.util.ResultCode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.Test;
-
-/**
- * TODO Comment
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 class ResultCodeTest {
 
     @Test

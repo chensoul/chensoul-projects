@@ -1,18 +1,16 @@
 package com.chensoul.reflect;
 
-import static com.chensoul.lang.function.Streams.filterAll;
-import static java.util.Collections.emptySet;
-import static java.util.Collections.unmodifiableSet;
-
-import com.chensoul.collection.ArrayUtils;
 import com.chensoul.collection.SetUtils;
 import com.chensoul.lang.function.CheckedSupplier;
+import static com.chensoul.lang.function.Streams.filterAll;
 import com.chensoul.text.FormatUtils;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
+import static java.util.Collections.emptySet;
+import static java.util.Collections.unmodifiableSet;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -21,13 +19,13 @@ import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
 import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * The utilities class of {@link java.lang.Class}
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
  */
 public class ClassUtils {
     /** Constant <code>SIMPLE_TYPES</code> */
@@ -194,7 +192,7 @@ public class ClassUtils {
      * @return a T object
      */
     public static <T> T newInstance(Class<T> type, Object... args) {
-        int length = ArrayUtils.length(args);
+        int length = ArrayUtils.getLength(args);
 
         List<Constructor<?>> constructors = ConstructorUtils.getDeclaredConstructors(type, constructor -> {
             Class<?>[] parameterTypes = constructor.getParameterTypes();

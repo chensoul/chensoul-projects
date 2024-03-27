@@ -1,33 +1,19 @@
 package com.chensoul.util;
 
 import static com.chensoul.lang.Prioritized.COMPARATOR;
-import static java.lang.ClassLoader.getSystemClassLoader;
-import static java.util.Collections.emptySet;
-import static java.util.Collections.unmodifiableCollection;
-import static java.util.stream.Collectors.toSet;
-
 import com.chensoul.reflect.ClassLoaderUtils;
 import com.chensoul.reflect.FieldUtils;
+import static java.lang.ClassLoader.getSystemClassLoader;
 import java.lang.reflect.Field;
 import java.util.Collection;
+import static java.util.Collections.emptySet;
+import static java.util.Collections.unmodifiableCollection;
 import java.util.IdentityHashMap;
 import java.util.Set;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.function.Predicate;
-
-/**
- * The utilities class for ShutdownHook
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @see java.lang.ApplicationShutdownHooks
- * @since 0.0.1
- * @version $Id: $Id
- */
+import static java.util.stream.Collectors.toSet;
 public abstract class ShutdownHookUtils {
-
-    /**
-     * The System property name of the capacity of ShutdownHook callbacks
-     */
     public static final String SHUTDOWN_HOOK_CALLBACKS_CAPACITY_PROPERTY_NAME = "chensoul.shutdown-hook.callbacks-capacity";
 
     /**

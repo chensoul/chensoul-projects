@@ -9,14 +9,10 @@ import lombok.NoArgsConstructor;
  *
  * @author Scott Battaglia
  * @since 3.0.0
- * @version $Id: $Id
+ *
  */
 @NoArgsConstructor
 public class DefaultRandomStringGenerator extends AbstractRandomStringGenerator {
-
-    /**
-     * The array of printable characters to be used in our random string.
-     */
     private static final char[] PRINTABLE_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345679".toCharArray();
 
     /**

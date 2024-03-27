@@ -2,7 +2,6 @@ package com.chensoul.spring.support.bean;
 
 import com.chensoul.lang.function.CheckedConsumer;
 import com.chensoul.lang.function.CheckedSupplier;
-import com.chensoul.util.StringUtils;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.Expiry;
@@ -11,6 +10,7 @@ import java.time.Duration;
 import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import org.apache.commons.lang3.StringUtils;
 
 
 /**

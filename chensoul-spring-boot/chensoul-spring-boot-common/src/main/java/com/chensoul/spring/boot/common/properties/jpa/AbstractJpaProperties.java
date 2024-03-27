@@ -1,20 +1,14 @@
 package com.chensoul.spring.boot.common.properties.jpa;
 
-import com.chensoul.util.StringUtils;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
-/**
- * Common properties for all jpa configs.
- *
- * @author Dmitriy Kopylenko
- * @since 5.0.0
- */
 @Getter
 @Setter
 @Accessors(chain = true)
@@ -22,11 +16,6 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 public abstract class AbstractJpaProperties implements Serializable {
 
     private static final long serialVersionUID = 761486823496930920L;
-
-    /**
-     * The database dialect is a oauth2 setting for platform independent software (JPA, Hibernate, etc)
-     * which allows such software to translate its generic SQL statements into vendor specific DDL, DML.
-     */
     private String dialect = "org.hibernate.dialect.HSQLDialect";
 
     /**

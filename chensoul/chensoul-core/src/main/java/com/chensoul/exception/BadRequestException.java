@@ -4,7 +4,7 @@ package com.chensoul.exception;
  * <p>BadRequestException class.</p>
  *
  * @author chensoul
- * @version $Id: $Id
+ *
  */
 public class BadRequestException extends RuntimeException {
     /**

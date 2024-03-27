@@ -7,13 +7,9 @@ import java.time.temporal.ChronoUnit;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public enum DateUnit {
-
-    /**
-     * 一毫秒
-     */
     MS(1),
     /**
      * 一秒的毫秒数

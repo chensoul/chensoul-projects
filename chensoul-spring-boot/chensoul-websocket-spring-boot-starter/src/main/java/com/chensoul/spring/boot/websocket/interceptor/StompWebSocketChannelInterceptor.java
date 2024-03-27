@@ -5,11 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.ChannelInterceptor;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 @Setter
 public class StompWebSocketChannelInterceptor implements ChannelInterceptor {

@@ -11,13 +11,6 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
-
-/**
- * TODO
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 @Getter
 @ToString(of = "resource")

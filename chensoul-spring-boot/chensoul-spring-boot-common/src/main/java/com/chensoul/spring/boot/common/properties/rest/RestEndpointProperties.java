@@ -3,10 +3,6 @@ package com.chensoul.spring.boot.common.properties.rest;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-/**
- * This is {@link RestEndpointProperties}.
- */
 @Getter
 @Setter
 @Accessors(chain = true)

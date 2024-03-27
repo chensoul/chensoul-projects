@@ -1,16 +1,13 @@
 package com.chensoul.spring.util.io;
 
-import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
-import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
-import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
-
 import com.chensoul.lang.function.CheckedConsumer;
 import com.chensoul.lang.function.CheckedSupplier;
-import com.chensoul.util.BooleanUtils;
-import com.chensoul.util.StringUtils;
 import java.io.File;
 import java.nio.file.ClosedWatchServiceException;
 import java.nio.file.Path;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
@@ -21,11 +18,9 @@ import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.DisposableBean;
-
-/**
- * Control watch operations on paths and files as a service.
- */
 @Slf4j
 public class PathWatcherService implements WatcherService, Runnable, DisposableBean {
     private static final String PROPERTY_DISABLE_WATCHER = PathWatcherService.class.getName();
@@ -127,7 +122,7 @@ public class PathWatcherService implements WatcherService, Runnable, DisposableB
     }
 
     protected boolean shouldEnableWatchService() {
-        val watchServiceEnabled = StringUtils.defaultIfBlank(System.getenv(PROPERTY_DISABLE_WATCHER), System.getProperty(PROPERTY_DISABLE_WATCHER));
+        String watchServiceEnabled = StringUtils.defaultIfBlank(System.getenv(PROPERTY_DISABLE_WATCHER), System.getProperty(PROPERTY_DISABLE_WATCHER));
         return StringUtils.isBlank(watchServiceEnabled) || BooleanUtils.toBoolean(watchServiceEnabled);
     }
 

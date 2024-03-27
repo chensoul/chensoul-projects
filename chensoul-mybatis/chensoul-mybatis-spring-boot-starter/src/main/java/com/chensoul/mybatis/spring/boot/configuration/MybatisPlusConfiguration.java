@@ -16,12 +16,12 @@ import com.chensoul.mybatis.spring.boot.interceptor.CustomPaginationInnerInterce
 import com.chensoul.mybatis.spring.boot.tenant.CustomTenantInterceptor;
 import com.chensoul.mybatis.spring.boot.tenant.CustomTenantLineHandler;
 import com.chensoul.mybatis.spring.boot.tenant.TenantFilter;
-import com.chensoul.util.BooleanUtils;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 import javax.servlet.DispatcherType;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

@@ -1,9 +1,8 @@
 package com.chensoul.collection;
 
 
-import static java.util.Collections.unmodifiableList;
-
 import java.util.ArrayList;
+import static java.util.Collections.unmodifiableList;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,16 +16,9 @@ import java.util.function.Consumer;
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @see List
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public abstract class ListUtils {
-
-    /**
-     * <p>isList.</p>
-     *
-     * @param values a {@link java.lang.Object} object
-     * @return a boolean
-     */
     public static boolean isList(Object values) {
         return values instanceof List;
     }

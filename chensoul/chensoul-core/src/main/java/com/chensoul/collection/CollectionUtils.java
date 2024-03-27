@@ -1,12 +1,11 @@
 package com.chensoul.collection;
 
-import static com.chensoul.collection.ArrayUtils.length;
-import java.util.AbstractSet;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * The utilities class for Java Collection
@@ -16,13 +15,6 @@ import java.util.List;
  * @see Collections
  */
 public abstract class CollectionUtils {
-
-    /**
-     * <p>isEmpty.</p>
-     *
-     * @param collection a {@link java.util.Collection} object
-     * @return a boolean
-     */
     public static boolean isEmpty(Collection<?> collection) {
         return collection == null || collection.isEmpty();
     }
@@ -159,7 +151,7 @@ public abstract class CollectionUtils {
      * @return the effected count after added
      */
     public static <T> int addAll(Collection<T> collection, T... values) {
-        int size = length(values);
+        int size = ArrayUtils.getLength(values);
         if (size < 1) {
             return 0;
         }

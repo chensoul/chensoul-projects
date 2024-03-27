@@ -6,17 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * <p>Abstract TreeUtils class.</p>
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 public abstract class TreeUtils {
-    /**
-     *
-     */
     private TreeUtils() {
     }
 

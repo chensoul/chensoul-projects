@@ -1,29 +1,25 @@
 package com.chensoul.reflect;
 
 
-import static com.chensoul.lang.function.Predicates.EMPTY_PREDICATE_ARRAY;
-import static java.lang.Integer.getInteger;
-import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.emptySet;
-import static java.util.Collections.singleton;
-import static java.util.Collections.unmodifiableList;
-import static java.util.Collections.unmodifiableSet;
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
-import static java.util.stream.StreamSupport.stream;
-
 import com.chensoul.collection.ListUtils;
 import com.chensoul.collection.MapUtils;
 import com.chensoul.lang.function.Predicates;
+import static com.chensoul.lang.function.Predicates.EMPTY_PREDICATE_ARRAY;
 import com.chensoul.lang.function.Streams;
+import static java.lang.Integer.getInteger;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.lang.reflect.WildcardType;
 import java.util.Arrays;
+import static java.util.Arrays.asList;
 import java.util.Collection;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.emptySet;
+import static java.util.Collections.singleton;
+import static java.util.Collections.unmodifiableList;
+import static java.util.Collections.unmodifiableSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,17 +29,10 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-/**
- * The utilities class for {@link java.lang.reflect.Type}
- *
- * @since 0.0.1
- * @author chensoul
- * @version $Id: $Id
- */
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
+import static java.util.stream.StreamSupport.stream;
 public abstract class TypeUtils {
-
-    /** Constant <code>NON_OBJECT_TYPE_FILTER</code> */
     public static final Predicate<Type> NON_OBJECT_TYPE_FILTER = t -> t != null && !isObjectType(t);
 
     /** Constant <code>NON_OBJECT_CLASS_FILTER</code> */

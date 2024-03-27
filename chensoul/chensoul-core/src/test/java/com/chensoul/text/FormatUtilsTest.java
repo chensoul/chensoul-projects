@@ -1,16 +1,8 @@
 package com.chensoul.text;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.chensoul.collection.MapUtils;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-
-/**
- * {@link FormatUtils} Test
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 class FormatUtilsTest {
 
     @Test

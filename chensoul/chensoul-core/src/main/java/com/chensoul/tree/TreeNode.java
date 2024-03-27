@@ -2,20 +2,9 @@ package com.chensoul.tree;
 
 import java.util.Map;
 import java.util.Objects;
-
-/**
- * TODO
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 1.0.0
- * @version $Id: $Id
- */
 public class TreeNode<T> implements Node<T> {
 
     private static final long serialVersionUID = 8397997835881121953L;
-    /**
-     * ID
-     */
     private T id;
 
     /**

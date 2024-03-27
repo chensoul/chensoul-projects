@@ -1,27 +1,10 @@
 package com.chensoul.collection;
 
 import static com.chensoul.constant.SymbolConstants.DOT;
-
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Properties;
-
-/**
- * The utilities class for {@link java.util.Properties}
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 public abstract class PropertiesUtils {
-
-    /**
-     * Get the flatten the specified {@link Map properties}
-     *
-     * @param properties the specified {@link Map properties}
-     * @return the read-only flatten {@link Map properties} if present
-     */
     public static Map<String, Object> flatProperties(Map<String, Object> properties) {
         if (MapUtils.isEmpty(properties)) {
             return properties;

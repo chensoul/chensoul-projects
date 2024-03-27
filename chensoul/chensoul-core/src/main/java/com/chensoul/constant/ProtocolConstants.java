@@ -1,16 +1,5 @@
 package com.chensoul.constant;
-
-/**
- * <p>ProtocolConstants interface.</p>
- *
- * @author chensoul
- * @version $Id: $Id
- */
 public interface ProtocolConstants {
-
-    /**
-     * Local host
-     */
     String LOCAL_HOST = "localhost";
     /**
      * Local IP

@@ -1,22 +1,8 @@
 package com.chensoul.lang;
 
 import static java.lang.Integer.compare;
-
 import java.util.Comparator;
-
-/**
- * {@code Prioritized} interface can be implemented by objects that
- * should be sorted, for example the tasks in executable queue.
- *
- * @since 0.0.1
- * @author chensoul
- * @version $Id: $Id
- */
 public interface Prioritized extends Comparable<Prioritized> {
-
-    /**
-     * The maximum priority
-     */
     int MAX_PRIORITY = Integer.MIN_VALUE;
     /**
      * The minimum priority

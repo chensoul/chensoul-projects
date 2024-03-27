@@ -1,12 +1,11 @@
 package com.chensoul.reflect;
 
+import com.chensoul.lang.function.CheckedSupplier;
 import static com.chensoul.lang.function.Predicates.and;
 import static com.chensoul.lang.function.Streams.filter;
 import static com.chensoul.reflect.AccessibleObjectUtils.execute;
-import static java.util.Arrays.asList;
-
-import com.chensoul.lang.function.CheckedSupplier;
 import java.lang.reflect.Field;
+import static java.util.Arrays.asList;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -17,7 +16,7 @@ import java.util.function.Predicate;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public abstract class FieldUtils {
 

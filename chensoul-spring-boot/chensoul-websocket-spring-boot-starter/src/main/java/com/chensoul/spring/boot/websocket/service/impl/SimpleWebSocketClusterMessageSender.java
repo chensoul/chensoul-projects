@@ -10,11 +10,6 @@ import org.redisson.api.RTopic;
 import org.redisson.api.RedissonClient;
 import org.redisson.api.listener.MessageListener;
 import org.springframework.beans.factory.InitializingBean;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 public class SimpleWebSocketClusterMessageSender extends SimpleWebSocketMessageSender
         implements InitializingBean, WebSocketMessageSender {

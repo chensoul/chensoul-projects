@@ -1,13 +1,6 @@
 package com.chensoul.audit.spi;
 
 import org.aspectj.lang.JoinPoint;
-
-/**
- * A spi interface for resolving the principal from the {@link JoinPoint} argument and return value.
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 public interface PrincipalResolver {
 
     /**

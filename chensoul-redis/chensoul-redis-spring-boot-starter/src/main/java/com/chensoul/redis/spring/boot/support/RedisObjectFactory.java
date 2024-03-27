@@ -5,10 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-
-/**
- * This is {@link RedisObjectFactory}.
- */
 @Slf4j
 @UtilityClass
 public class RedisObjectFactory {

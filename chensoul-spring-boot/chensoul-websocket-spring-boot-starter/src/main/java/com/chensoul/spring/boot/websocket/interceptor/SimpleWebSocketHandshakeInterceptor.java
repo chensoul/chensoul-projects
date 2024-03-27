@@ -1,22 +1,16 @@
 package com.chensoul.spring.boot.websocket.interceptor;
 
 import static com.chensoul.constant.StringPool.NULL;
-
 import com.chensoul.spring.util.HttpRequestUtils;
-import com.chensoul.util.StringUtils;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 @AllArgsConstructor
 public class SimpleWebSocketHandshakeInterceptor extends HttpSessionHandshakeInterceptor {

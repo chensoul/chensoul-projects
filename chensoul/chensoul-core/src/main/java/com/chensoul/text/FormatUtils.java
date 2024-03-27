@@ -1,20 +1,18 @@
 package com.chensoul.text;
 
 import com.chensoul.constant.StringPool;
-import com.chensoul.util.StringUtils;
 import java.util.Map;
 import java.util.Objects;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * The utility class of text format
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy<a/>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public abstract class FormatUtils {
-
-    /** Constant <code>DEFAULT_PLACEHOLDER="{}"</code> */
     public static final String DEFAULT_PLACEHOLDER = "{}";
 
     /**

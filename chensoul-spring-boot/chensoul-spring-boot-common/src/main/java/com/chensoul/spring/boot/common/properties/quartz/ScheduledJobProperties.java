@@ -6,10 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
-
-/**
- * This is {@link ScheduledJobProperties}.
- */
 @Getter
 @Setter
 @NoArgsConstructor

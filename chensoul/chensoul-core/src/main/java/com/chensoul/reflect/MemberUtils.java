@@ -1,7 +1,5 @@
 package com.chensoul.reflect;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -12,7 +10,6 @@ import java.util.function.Predicate;
  *
  * @since 0.0.1
  * @author chensoul
- * @version $Id: $Id
  */
 public abstract class MemberUtils {
 

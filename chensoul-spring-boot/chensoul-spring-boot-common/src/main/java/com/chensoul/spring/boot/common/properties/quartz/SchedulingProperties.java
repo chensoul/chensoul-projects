@@ -4,10 +4,6 @@ import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-/**
- * This is {@link SchedulingProperties}.
- */
 @Getter
 @Setter
 @Accessors(chain = true)

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  * length of the random part.
  *
  * @author chensoul
- * @version $Id: $Id
+ *
  */
 @NoArgsConstructor
 public class Base64RandomStringGenerator extends AbstractRandomStringGenerator {

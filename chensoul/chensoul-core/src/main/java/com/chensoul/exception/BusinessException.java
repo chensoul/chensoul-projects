@@ -4,7 +4,7 @@ package com.chensoul.exception;
  * <p>BusinessException class.</p>
  *
  * @author chensoul
- * @version $Id: $Id
+ *
  */
 public class BusinessException extends RuntimeException {
     private static final long serialVersionUID = 9053957949691426855L;

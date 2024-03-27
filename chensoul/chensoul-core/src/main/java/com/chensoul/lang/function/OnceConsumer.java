@@ -2,14 +2,6 @@ package com.chensoul.lang.function;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
-
-/**
- * Apply a computation only once.
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 public final class OnceConsumer<T> {
 
     final T t;
@@ -18,14 +10,6 @@ public final class OnceConsumer<T> {
     private OnceConsumer(final T t) {
         this.t = t;
     }
-
-    /**
-     * Create a do once consumer.
-     *
-     * @param t   input which is passed to operation
-     * @param <T> type of input on which operation is applied.
-     * @return a {@link com.chensoul.lang.function.OnceConsumer} object
-     */
     public static <T> OnceConsumer<T> of(final T t) {
         return new OnceConsumer<>(t);
     }

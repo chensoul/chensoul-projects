@@ -6,10 +6,6 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-/**
- * This is {@link FunctionUtilsTest}.
- */
 class FunctionUtilsTest {
 
     @Test

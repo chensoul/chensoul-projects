@@ -6,10 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.springframework.core.io.Resource;
-
-/**
- * This is {@link SpringResourceProperties}.
- */
 @Getter
 @Setter
 @Accessors(chain = true)

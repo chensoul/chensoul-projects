@@ -1,9 +1,6 @@
 package com.chensoul.groovy.scripting;
 
-import com.chensoul.collection.ArrayUtils;
 import com.chensoul.lang.function.CheckedSupplier;
-import com.chensoul.util.RegexUtils;
-import com.chensoul.util.StringUtils;
 import groovy.lang.Binding;
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
@@ -22,19 +19,14 @@ import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;
 import org.codehaus.groovy.control.customizers.ImportCustomizer;
 import org.codehaus.groovy.runtime.InvokerInvocationException;
 import org.springframework.core.io.Resource;
 import org.springframework.util.ResourceUtils;
-
-/**
- * TODO
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 
 @Slf4j
 public abstract class ScriptingUtils {
@@ -112,13 +104,13 @@ public abstract class ScriptingUtils {
     /**
      * Pattern indicating groovy script is inlined.
      */
-    private static final Pattern INLINE_GROOVY_PATTERN = RegexUtils.createPattern(String.format(INLINE_PATTERN, "groovy"),
+    private static final Pattern INLINE_GROOVY_PATTERN = Pattern.compile(String.format(INLINE_PATTERN, "groovy"),
         Pattern.DOTALL | Pattern.MULTILINE);
 
     /**
      * Pattern indicating groovy script is a file/resource.
      */
-    private static final Pattern FILE_GROOVY_PATTERN = RegexUtils.createPattern(String.format(FILE_PATTERN, "groovy"));
+    private static final Pattern FILE_GROOVY_PATTERN = Pattern.compile(String.format(FILE_PATTERN, "groovy"));
 
     /**
      * Is groovy script?.

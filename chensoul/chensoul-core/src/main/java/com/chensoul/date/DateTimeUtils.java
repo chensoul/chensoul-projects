@@ -25,14 +25,13 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-import lombok.val;
 
 /**
  * TODO
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 @SuppressWarnings("JavaUtilDate")
 public abstract class DateTimeUtils {
@@ -102,7 +101,7 @@ public abstract class DateTimeUtils {
 
         if (result == null) {
             try {
-                val ld = LocalDate.parse(value, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                LocalDate ld = LocalDate.parse(value, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
                 result = LocalDateTime.of(ld, LocalTime.now(ZoneId.systemDefault()));
             } catch (final Exception e) {
                 result = null;
@@ -111,7 +110,7 @@ public abstract class DateTimeUtils {
 
         if (result == null) {
             try {
-                val ld = LocalDate.parse(value);
+                LocalDate ld = LocalDate.parse(value);
                 result = LocalDateTime.of(ld, LocalTime.now(ZoneId.systemDefault()));
             } catch (final Exception e) {
                 result = null;
@@ -169,7 +168,7 @@ public abstract class DateTimeUtils {
      * @return the date/time instance
      */
     public static ZonedDateTime zonedDateTimeOf(final String value) {
-        val parsers = Arrays.asList(DateTimeFormatter.ISO_ZONED_DATE_TIME, DateTimeFormatter.RFC_1123_DATE_TIME);
+        List<DateTimeFormatter> parsers = Arrays.asList(DateTimeFormatter.ISO_ZONED_DATE_TIME, DateTimeFormatter.RFC_1123_DATE_TIME);
         return parsers
             .stream()
             .map(parser -> FunctionUtils.tryGet(() -> ZonedDateTime.parse(value, parser), throwable -> null).get())

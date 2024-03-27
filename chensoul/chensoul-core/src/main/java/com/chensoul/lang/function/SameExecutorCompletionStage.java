@@ -7,13 +7,6 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
-
-/**
- * SameExecutorCompletionStage
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 final class SameExecutorCompletionStage<T> implements CompletionStage<T> {
     private final CompletionStage<T> delegate;
     private final Executor defaultExecutor;
@@ -26,8 +19,6 @@ final class SameExecutorCompletionStage<T> implements CompletionStage<T> {
         this.delegate = delegate;
         this.defaultExecutor = defaultExecutor;
     }
-
-    /** {@inheritDoc} */
     @Override
     public final <U> CompletionStage<U> thenApply(final Function<? super T, ? extends U> fn) {
         return of(delegate.thenApply(fn), defaultExecutor);

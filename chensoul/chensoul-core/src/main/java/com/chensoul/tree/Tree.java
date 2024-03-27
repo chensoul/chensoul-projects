@@ -1,29 +1,17 @@
 package com.chensoul.tree;
 
 import com.chensoul.collection.CollectionUtils;
-import com.chensoul.util.ObjectUtils;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-
-/**
- * TODO
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 1.0.0
- * @version $Id: $Id
- */
+import org.apache.commons.lang3.ObjectUtils;
 public class Tree<T> extends LinkedHashMap<String, Object> implements Node<T> {
 
     private static final long serialVersionUID = 7620659626383442013L;
     private final TreeNodeConfig treeNodeConfig;
 
     private Tree<T> parent;
-
-    /**
-     * <p>Constructor for Tree.</p>
-     */
     public Tree() {
         this(null);
     }

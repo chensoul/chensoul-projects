@@ -12,13 +12,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 import lombok.SneakyThrows;
-
-/**
- * <p>
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 public class StringSanitizerSerialize extends JsonSerializer<String> implements ContextualSerializer {
     private static Map<Sanitizer.SanitizerType, Function<String, String>> processMap = new HashMap<>();
 

@@ -13,11 +13,6 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 @Data
 @Setter

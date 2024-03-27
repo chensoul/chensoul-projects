@@ -6,7 +6,6 @@ import static com.chensoul.constant.StringPool.LOCAL_HOST;
 import static com.chensoul.constant.StringPool.LOCAL_IP4;
 import static com.chensoul.constant.StringPool.LOCAL_IP6;
 import com.chensoul.lang.function.FunctionUtils;
-import com.chensoul.util.StringUtils;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -20,13 +19,14 @@ import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 网络相关工具
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 @Slf4j
 public abstract class InetAddressUtils {
@@ -54,13 +54,6 @@ public abstract class InetAddressUtils {
         }
     }
 
-
-    /**
-     * <p>isUnknown.</p>
-     *
-     * @param ipAddress a {@link java.lang.String} object
-     * @return a boolean
-     */
     public static boolean isUnknown(String ipAddress) {
         return StringUtils.isBlank(ipAddress) || StringPool.UNKNOWN.equalsIgnoreCase(ipAddress);
     }

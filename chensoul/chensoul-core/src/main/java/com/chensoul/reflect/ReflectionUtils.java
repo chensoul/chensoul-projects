@@ -1,14 +1,11 @@
 package com.chensoul.reflect;
 
 
-import com.chensoul.collection.ArrayUtils;
-import static com.chensoul.collection.ArrayUtils.EMPTY_CLASS_ARRAY;
 import static com.chensoul.reflect.ClassUtils.isPrimitive;
 import static com.chensoul.reflect.ClassUtils.isSimpleType;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -27,27 +24,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-/**
- * Reflection Utility class , generic methods are defined from {@link com.chensoul.reflect.FieldUtils} , {@link com.chensoul.reflect.MethodUtils} , {@link
- * ConstructorUtils}
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @version 1.0.0
- * @see Method
- * @see Field
- * @see Constructor
- * @see Array
- * @see MethodUtils
- * @see FieldUtils
- * @see ConstructorUtils
- * @since 0.0.1
- */
+import org.apache.commons.lang3.ArrayUtils;
+import static org.apache.commons.lang3.ArrayUtils.EMPTY_CLASS_ARRAY;
 public abstract class ReflectionUtils {
-
-    /**
-     * Sun JDK implementation class: full name of sun.reflect.Reflection
-     */
     public static final String SUN_REFLECT_REFLECTION_CLASS_NAME = "sun.reflect.Reflection";
 
     /**
@@ -498,7 +477,7 @@ public abstract class ReflectionUtils {
      * Resolve the types of the specified values
      *
      * @param values the values
-     * @return If can't be resolved, return {@link com.chensoul.collection.ArrayUtils#EMPTY_CLASS_ARRAY empty class array}
+     * @return If can't be resolved, return {@link ArrayUtils#EMPTY_CLASS_ARRAY empty class array}
      */
     public static Class[] resolveTypes(Object... values) {
 

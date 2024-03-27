@@ -1,16 +1,5 @@
 package com.chensoul.constant;
-
-/**
- * <p>PathConstants interface.</p>
- *
- * @author chensoul
- * @version $Id: $Id
- */
 public interface PathConstants {
-
-    /**
-     * Slash char
-     */
     char SLASH_CHAR = '/';
 
     /**

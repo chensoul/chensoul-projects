@@ -8,11 +8,9 @@ import java.util.Map;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 1.0.0
- * @version $Id: $Id
+ *
  */
 public class DefaultNodeParser<T> implements NodeParser<TreeNode<T>, T> {
-
-    /** {@inheritDoc} */
     @Override
     public void parse(final TreeNode<T> treeNode, final Tree<T> tree) {
         tree.setId(treeNode.getId());

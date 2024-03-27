@@ -1,17 +1,9 @@
 package com.chensoul.collection;
 
 import static com.chensoul.collection.PropertiesUtils.flatProperties;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.Map;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-
-/**
- * {@link PropertiesUtils} Test
- *
- * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since 0.0.1
- */
 public class PropertiesUtilsTest {
 
     @Test

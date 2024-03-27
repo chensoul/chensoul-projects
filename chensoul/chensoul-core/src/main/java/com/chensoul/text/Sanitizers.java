@@ -1,26 +1,11 @@
 package com.chensoul.text;
 
 import com.chensoul.constant.StringPool;
-import com.chensoul.util.StringUtils;
 import java.util.function.Function;
-
-/**
- * Sanitizers is responsible for sanitizing sensitive information.
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
+import org.apache.commons.lang3.StringUtils;
 public abstract class Sanitizers {
     private Sanitizers() {
     }
-
-    /**
-     * <p>address.</p>
-     *
-     * @param str a {@link java.lang.String} object
-     * @return a {@link java.lang.String} object
-     */
     public static String address(final String str) {
         return sensitive(str, 2, 1);
     }

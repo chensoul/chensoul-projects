@@ -1,34 +1,17 @@
 package com.chensoul.collection;
 
-import static com.chensoul.collection.ArrayUtils.length;
 import static com.chensoul.collection.CollectionUtils.size;
+import java.util.Collection;
 import static java.util.Collections.emptySet;
 import static java.util.Collections.singleton;
 import static java.util.Collections.unmodifiableSet;
-
-import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-/**
- * The utilities class for Java {@link java.util.Set}
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @see Set
- * @since 0.0.1
- * @version $Id: $Id
- */
+import org.apache.commons.lang3.ArrayUtils;
 public abstract class SetUtils {
-
-    /**
-     * <p>isSet.</p>
-     *
-     * @param elements a {@link java.lang.Iterable} object
-     * @return a boolean
-     */
     public static boolean isSet(Iterable<?> elements) {
         return elements instanceof Set;
     }
@@ -41,7 +24,7 @@ public abstract class SetUtils {
      * @return read-only {@link java.util.Set}
      */
     public static <E> Set<E> of(E... elements) {
-        int size = length(elements);
+        int size = ArrayUtils.getLength(elements);
         if (size < 1) {
             return emptySet();
         } else if (size == 1) {
@@ -87,7 +70,7 @@ public abstract class SetUtils {
      * @return read-only {@link java.util.Set}
      */
     public static <E> Set<E> asSet(E one, E... others) {
-        int othersSize = length(others);
+        int othersSize = ArrayUtils.getLength(others);
         if (othersSize < 1) {
             return singleton(one);
         }
@@ -118,7 +101,7 @@ public abstract class SetUtils {
             return of(others);
         }
 
-        int othersSize = length(others);
+        int othersSize = ArrayUtils.getLength(others);
 
         if (othersSize < 1) {
             return asSet(elements);

@@ -2,26 +2,11 @@ package com.chensoul.reflect;
 
 import java.lang.reflect.Type;
 import java.util.Objects;
-
-/**
- * {@link java.lang.reflect.Type} Argument
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 public class TypeArgument {
 
     private final Type type;
 
     private final int index;
-
-    /**
-     * <p>Constructor for TypeArgument.</p>
-     *
-     * @param type a {@link java.lang.reflect.Type} object
-     * @param index a int
-     */
     protected TypeArgument(Type type, int index) {
         this.type = type;
         this.index = index;

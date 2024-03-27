@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
  *
  * @author Scott Battaglia
  * @since 3.0.0
- * @version $Id: $Id
+ *
  */
 public class DefaultLongNumericGenerator implements LongNumericGenerator {
 

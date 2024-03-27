@@ -7,11 +7,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Data
 @EqualsAndHashCode(exclude = {"updater", "update_time", "creator", "create_time"})
 public class UpdateEntity extends SaveEntity implements Serializable {

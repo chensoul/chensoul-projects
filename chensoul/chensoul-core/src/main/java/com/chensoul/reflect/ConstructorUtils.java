@@ -1,10 +1,9 @@
 package com.chensoul.reflect;
 
-import static java.util.Arrays.asList;
-
 import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.lang.function.Streams;
 import java.lang.reflect.Constructor;
+import static java.util.Arrays.asList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -13,7 +12,7 @@ import java.util.function.Predicate;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public abstract class ConstructorUtils {
 

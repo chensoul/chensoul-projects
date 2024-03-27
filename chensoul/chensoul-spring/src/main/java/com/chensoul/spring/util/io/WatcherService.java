@@ -1,10 +1,6 @@
 package com.chensoul.spring.util.io;
 
 import java.io.Closeable;
-
-/**
- * This is {@link WatcherService}.
- */
 public interface WatcherService extends Closeable {
 
     /**

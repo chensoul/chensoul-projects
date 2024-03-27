@@ -10,11 +10,6 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.cglib.beans.BeanMap;
 import org.springframework.util.CollectionUtils;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 public class BeanUtils extends org.springframework.beans.BeanUtils {
 
     /**

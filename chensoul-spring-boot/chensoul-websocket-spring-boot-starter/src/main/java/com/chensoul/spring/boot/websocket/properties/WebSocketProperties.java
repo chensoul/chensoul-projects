@@ -7,11 +7,6 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Data
 @ConfigurationProperties(prefix = "rose.websocket")
 public class WebSocketProperties {

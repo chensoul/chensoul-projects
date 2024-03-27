@@ -3,13 +3,6 @@ package com.chensoul.spring.util.io;
 import java.io.File;
 import java.util.function.Consumer;
 import lombok.extern.slf4j.Slf4j;
-
-/**
- * This is {@link FileWatcherService}.
- *
- * @author Misagh Moayyed
- * @since 5.2.0
- */
 @Slf4j
 public class FileWatcherService extends PathWatcherService {
 

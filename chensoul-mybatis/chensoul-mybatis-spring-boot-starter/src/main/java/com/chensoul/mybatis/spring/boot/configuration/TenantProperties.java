@@ -4,11 +4,6 @@ import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @ConfigurationProperties(prefix = "chensoul.tenant")
 public class TenantProperties {
 

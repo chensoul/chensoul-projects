@@ -14,11 +14,6 @@ import org.redisson.api.listener.MessageListener;
 import org.redisson.codec.JsonJacksonCodec;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.socket.WebSocketSession;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 public class StompWebSocketClusterMessageSender implements InitializingBean, WebSocketMessageSender {
 

@@ -3,7 +3,6 @@ package com.chensoul.jackson.support;
 import com.chensoul.jackson.JacksonObjectMapperCustomizer;
 import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.spring.support.SpringExpressionLanguageValueResolver;
-import com.chensoul.util.StringUtils;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -37,6 +36,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import lombok.val;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 
@@ -73,13 +73,6 @@ public class JacksonObjectMapperFactory {
     private final boolean minimal = false;
 
     private final JsonFactory jsonFactory;
-
-    /**
-     * Configure an existing mapper.
-     *
-     * @param applicationContext the application context
-     * @param objectMapper       the mapper
-     */
     public static void configure(
         final ConfigurableApplicationContext applicationContext,
         final ObjectMapper objectMapper) {

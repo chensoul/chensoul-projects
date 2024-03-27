@@ -14,11 +14,6 @@ import org.springframework.messaging.simp.user.SimpUser;
 import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.socket.WebSocketSession;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @Slf4j
 public class StompWebSocketMessageSender implements WebSocketMessageSender {
 

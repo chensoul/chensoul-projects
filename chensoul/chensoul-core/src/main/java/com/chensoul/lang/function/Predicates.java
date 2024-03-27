@@ -1,17 +1,7 @@
 package com.chensoul.lang.function;
 
 import java.util.function.Predicate;
-
-/**
- * The utilities class for Java {@link java.util.function.Predicate}
- *
- * @since 0.0.1
- * @author chensoul
- * @version $Id: $Id
- */
 public abstract class Predicates {
-
-    /** Constant <code>EMPTY_PREDICATE_ARRAY</code> */
     public static Predicate[] EMPTY_PREDICATE_ARRAY = new Predicate[0];
 
     /**

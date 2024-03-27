@@ -6,13 +6,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Set;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.util.DigestUtils;
-
-/**
- * TODO
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 public interface ScriptResourceCacheManager<K extends String, V extends ExecutableScript>
     extends AutoCloseable, DisposableBean {
 

@@ -12,11 +12,6 @@ import org.springframework.web.socket.PongMessage;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @AllArgsConstructor
 @Slf4j
 public class SimpleTextWebSocketHandler extends TextWebSocketHandler {

@@ -4,10 +4,6 @@ import java.io.Serializable;
 import java.util.Arrays;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
-
-/**
- * <p>PrefixedSimpleKey class.</p>
- */
 public class PrefixedSimpleKey implements Serializable {
 
     private final String prefix;

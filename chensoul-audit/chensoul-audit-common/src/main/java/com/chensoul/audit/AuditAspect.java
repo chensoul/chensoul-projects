@@ -9,8 +9,6 @@ import com.chensoul.audit.spi.clientinfo.DefaultClientInfoResolver;
 import com.chensoul.audit.spi.principal.SpringSecurityPrincipalResolver;
 import com.chensoul.audit.spi.resource.RequestAsStringResourceResolver;
 import com.chensoul.spring.client.ClientInfo;
-import com.chensoul.util.ExceptionUtils;
-import com.chensoul.util.StringUtils;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -19,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -118,13 +118,6 @@ public class AuditAspect {
             executeAuditCode(joinPoint, currentPrincipal, action, auditResource, retVal, success, exception, cost);
         }
     }
-
-    /**
-     * Retrieves the {@link Logger} associated to the given {@link JoinPoint}.
-     *
-     * @param joinPoint join point we want the logger for.
-     * @return {@link Logger} associated to the given {@link JoinPoint}.
-     */
     private static Logger logger(final JoinPoint joinPoint) {
         return LoggerFactory.getLogger(joinPoint.getSignature().getDeclaringTypeName());
     }

@@ -11,15 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-/**
- * {@link ReflectionUtils} Test
- *
- * @author <a href="mailto:mercyblitz@gmail.com">Mercy<a/>
- * @version 1.0.0
- * @see ReflectionUtilsTest
- * @since 1.0.0
- */
 @Slf4j
 public class ReflectionUtilsTest {
 

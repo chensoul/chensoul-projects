@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public abstract class Async {
     private Async() {

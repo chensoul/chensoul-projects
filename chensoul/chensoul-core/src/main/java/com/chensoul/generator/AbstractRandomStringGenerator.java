@@ -5,7 +5,6 @@ import java.security.SecureRandom;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
 
 /**
  * This is {@link com.chensoul.generator.AbstractRandomStringGenerator}.
@@ -15,7 +14,7 @@ import lombok.val;
  *
  * @author Timur Duehr
  * @since 5.2.0
- * @version $Id: $Id
+ *
  */
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
@@ -47,7 +46,7 @@ public abstract class AbstractRandomStringGenerator implements RandomStringGener
     /** {@inheritDoc} */
     @Override
     public String getNewString(final int size) {
-        val random = getNewStringAsBytes(size);
+        byte[] random = getNewStringAsBytes(size);
         return convertBytesToString(random);
     }
 
@@ -60,7 +59,7 @@ public abstract class AbstractRandomStringGenerator implements RandomStringGener
     /** {@inheritDoc} */
     @Override
     public byte[] getNewStringAsBytes(final int size) {
-        val random = new byte[size];
+        byte[] random = new byte[size];
         this.randomizer.nextBytes(random);
         return random;
     }

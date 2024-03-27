@@ -8,15 +8,9 @@ import java.io.Serializable;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 1.0.0
- * @version $Id: $Id
+ *
  */
 public interface Node<T> extends Comparable<Node<T>>, Serializable {
-
-    /**
-     * <p>getId.</p>
-     *
-     * @return a T object
-     */
     T getId();
 
     /**

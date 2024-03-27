@@ -2,19 +2,7 @@ package com.chensoul.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-/**
- * <p>Abstract SystemUtils class.</p>
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 public abstract class SystemUtils {
-
-    /**
-     * The System property key for the Java class path.
-     */
     public static final String JAVA_CLASS_PATH_PROPERTY_KEY = "java.class.path";
     /**
      * The System property key for the User's account name.

@@ -1,10 +1,9 @@
 package com.chensoul.collection;
 
+import java.util.Collection;
 import static java.util.Collections.emptyMap;
 import static java.util.Collections.singletonMap;
 import static java.util.Collections.unmodifiableMap;
-
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -24,7 +23,7 @@ import java.util.function.Function;
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public abstract class MapUtils {
 

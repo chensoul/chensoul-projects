@@ -1,17 +1,9 @@
 package com.chensoul.reflect;
 
-import com.chensoul.collection.ArrayUtils;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Objects;
-
-/**
- * Multiple {@link java.lang.reflect.Type}
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
+import org.apache.commons.lang3.ArrayUtils;
 public class MultipleType {
 
     private final Type[] types;
@@ -19,20 +11,11 @@ public class MultipleType {
     private MultipleType(Type... types) {
         this.types = types;
     }
-
-    /**
-     * <p>of.</p>
-     *
-     * @param one a {@link java.lang.reflect.Type} object
-     * @param two a {@link java.lang.reflect.Type} object
-     * @return a {@link com.chensoul.reflect.MultipleType} object
-     */
     public static MultipleType of(Type one, Type two) {
         return new MultipleType(one, two);
     }
 
     /**
-     * <p>of.</p>
      *
      * @param one a {@link java.lang.reflect.Type} object
      * @param two a {@link java.lang.reflect.Type} object
@@ -40,18 +23,18 @@ public class MultipleType {
      * @return a {@link com.chensoul.reflect.MultipleType} object
      */
     public static MultipleType of(Type one, Type two, Type... others) {
-        Type[] oneAndTwo = ArrayUtils.of(one, two);
-        Type[] types = ArrayUtils.combineArray(oneAndTwo, others);
+        Type[] types = new Type[2 + others.length];
+        ArrayUtils.add(types, one);
+        ArrayUtils.add(types, two);
+        ArrayUtils.addAll(types, others);
         return new MultipleType(types);
     }
 
-    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Objects.hash(types);
     }
 
-    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,7 +43,6 @@ public class MultipleType {
         return Arrays.equals(types, that.types);
     }
 
-    /** {@inheritDoc} */
     @Override
     public String toString() {
         return "MultipleType : " + Arrays.toString(types);

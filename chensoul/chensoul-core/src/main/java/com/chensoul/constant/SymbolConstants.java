@@ -1,15 +1,6 @@
 package com.chensoul.constant;
 
-/**
- * <p>SymbolConstants interface.</p>
- *
- * @author chensoul
- * @version $Id: $Id
- */
 public interface SymbolConstants {
-    /**
-     * The comma char : ','
-     */
     char COMMA_CHAR = ',';
 
     /**

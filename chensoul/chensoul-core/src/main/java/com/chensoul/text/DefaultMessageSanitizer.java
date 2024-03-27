@@ -1,16 +1,16 @@
 package com.chensoul.text;
 
-import com.chensoul.util.StringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Default message sanitizer
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 @RequiredArgsConstructor
 public class DefaultMessageSanitizer implements MessageSanitizer {

@@ -23,10 +23,6 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
-
-/**
- * 扩展redis-cache支持注解cacheName添加超时时间
- */
 @EnableCaching
 @AutoConfiguration
 @AutoConfigureAfter({RedisAutoConfiguration.class})

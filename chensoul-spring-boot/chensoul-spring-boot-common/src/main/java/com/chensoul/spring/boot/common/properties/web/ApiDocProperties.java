@@ -27,17 +27,6 @@ public class ApiDocProperties {
     private String license = null;
 
     private String licenseUrl = null;
-
-    private String[] defaultIncludePattern = {"/**"};
-
-    private String[] managementIncludePattern = {"/actuator/**"};
-
-    private Server[] servers = {};
-
-
-    /**
-     *
-     */
     @Data
     public static class Server {
         private String url;

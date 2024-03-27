@@ -1,12 +1,10 @@
 package com.chensoul.util;
 
-import static com.chensoul.collection.ArrayUtils.asArray;
 import com.chensoul.collection.MapUtils;
 import com.chensoul.lang.Prioritized;
 import com.chensoul.reflect.ClassLoaderUtils;
 import static com.chensoul.reflect.ReflectionUtils.toList;
 import static java.lang.Boolean.getBoolean;
-import java.util.Collections;
 import static java.util.Collections.sort;
 import static java.util.Collections.unmodifiableList;
 import java.util.Iterator;
@@ -14,15 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * {@link java.util.ServiceLoader} Utility
- *
- * @see ServiceLoader
- * @since 0.0.1
- * @author chensoul
- * @version $Id: $Id
- */
 public abstract class ServiceLoaderUtils {
 
     private static final Map<ClassLoader, Map<Class<?>, ServiceLoader<?>>> serviceLoadersCache = new ConcurrentHashMap<>();
@@ -33,17 +22,6 @@ public abstract class ServiceLoaderUtils {
         // Clear cache on JVM shutdown
         ShutdownHookUtils.addShutdownHookCallback(serviceLoadersCache::clear);
     }
-
-    /**
-     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
-     * The config file of each service type can define multiple lists of implementation classes.
-     *
-     * @param <S>         service type
-     * @param serviceType service type
-     * @return service type all implementation objects of {@link java.util.Collections#unmodifiableList(List) readonly list}
-     * @throws java.lang.IllegalArgumentException if any.
-     */
     public static <S> List<S> loadServicesList(Class<S> serviceType) throws IllegalArgumentException {
         return loadServicesList(serviceType, ClassLoaderUtils.getClassLoader(serviceType));
     }
@@ -94,66 +72,6 @@ public abstract class ServiceLoaderUtils {
      */
     public static <S> List<S> loadServicesList(Class<S> serviceType, ClassLoader classLoader, boolean cached) throws IllegalArgumentException {
         return unmodifiableList(loadServicesList0(serviceType, classLoader, cached));
-    }
-
-    /**
-     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
-     * The config file of each service type can define multiple lists of implementation classes.
-     *
-     * @param <S>         service type
-     * @param serviceType service type
-     * @return service type all implementation objects
-     * @throws java.lang.IllegalArgumentException if any.
-     */
-    public static <S> S[] loadServices(Class<S> serviceType) throws IllegalArgumentException {
-        return loadServices(serviceType, ClassLoaderUtils.getClassLoader(serviceType));
-    }
-
-    /**
-     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
-     * The config file of each service type can define multiple lists of implementation classes.
-     *
-     * @param <S>         service type
-     * @param serviceType service type
-     * @param classLoader {@link java.lang.ClassLoader}
-     * @return service type all implementation objects
-     * @throws java.lang.IllegalArgumentException if any.
-     */
-    public static <S> S[] loadServices(Class<S> serviceType, ClassLoader classLoader) throws IllegalArgumentException {
-        return loadServices(serviceType, classLoader, serviceLoaderCached);
-    }
-
-    /**
-     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
-     * The config file of each service type can define multiple lists of implementation classes.
-     *
-     * @param <S>         service type
-     * @param serviceType service type
-     * @param cached      the list of services to be cached
-     * @return service type all implementation objects
-     * @throws java.lang.IllegalArgumentException if any.
-     */
-    public static <S> S[] loadServices(Class<S> serviceType, boolean cached) throws IllegalArgumentException {
-        return loadServices(serviceType, ClassLoaderUtils.getClassLoader(serviceType), cached);
-    }
-
-    /**
-     * Using the hierarchy of {@link java.lang.ClassLoader}, each level of ClassLoader ( ClassLoader , its parent ClassLoader and higher)
-     * will be able to load the config file META-INF/services <code>serviceType</code> under its class path.
-     * The config file of each service type can define multiple lists of implementation classes.
-     *
-     * @param <S>         service type
-     * @param serviceType service type
-     * @param classLoader {@link java.lang.ClassLoader}
-     * @param cached      the list of services to be cached
-     * @return service type all implementation objects
-     * @throws java.lang.IllegalArgumentException if any.
-     */
-    public static <S> S[] loadServices(Class<S> serviceType, ClassLoader classLoader, boolean cached) throws IllegalArgumentException {
-        return asArray(loadServicesList0(serviceType, classLoader, cached), serviceType);
     }
 
     /**

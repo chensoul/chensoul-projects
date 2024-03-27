@@ -4,10 +4,6 @@ import com.chensoul.audit.spi.PrincipalResolver;
 import org.aspectj.lang.JoinPoint;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-/**
- * Resolves the principal name to the one provided by Spring Security.
- */
 public class SpringSecurityPrincipalResolver implements PrincipalResolver {
 
     @Override

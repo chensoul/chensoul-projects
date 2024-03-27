@@ -4,10 +4,6 @@ import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-/**
- * This is {@link SimpleCacheProperties}.
- */
 @Getter
 @Setter
 @Accessors(chain = true)

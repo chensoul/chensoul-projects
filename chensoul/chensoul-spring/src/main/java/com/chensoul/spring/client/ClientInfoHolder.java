@@ -1,8 +1,4 @@
 package com.chensoul.spring.client;
-
-/**
- * Makes the {@link ClientInfo} available to the thread.
- */
 public class ClientInfoHolder {
 
     private static final ThreadLocal<ClientInfo> CLIENT_INFO_HOLDER = new InheritableThreadLocal<ClientInfo>();

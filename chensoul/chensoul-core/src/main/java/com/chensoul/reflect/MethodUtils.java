@@ -1,6 +1,5 @@
 package com.chensoul.reflect;
 
-import static com.chensoul.collection.ArrayUtils.EMPTY_CLASS_ARRAY;
 import com.chensoul.collection.SetUtils;
 import com.chensoul.constant.SymbolConstants;
 import static com.chensoul.constant.SymbolConstants.LEFT_PARENTHESIS_CHAR;
@@ -19,19 +18,16 @@ import java.util.function.Predicate;
 import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
+import static org.apache.commons.lang3.ArrayUtils.EMPTY_CLASS_ARRAY;
 
 /**
  * The Java Reflection {@link java.lang.reflect.Method} Utility class
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- * @version $Id: $Id
+ *
  */
 public abstract class MethodUtils {
-
-    /**
-     * The {@link Predicate} reference to {@link MethodUtils#isObjectMethod(Method)}
-     */
     public final static Predicate<? super Method> OBJECT_METHOD_PREDICATE = MethodUtils::isObjectMethod;
 
     /** Constant <code>OBJECT_METHODS</code> */

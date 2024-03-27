@@ -1,11 +1,6 @@
 package com.chensoul.mybatis.spring.boot.datascope;
 
 import net.sf.jsqlparser.statement.Statement;
-
-/**
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- */
 @FunctionalInterface
 public interface Process {
 

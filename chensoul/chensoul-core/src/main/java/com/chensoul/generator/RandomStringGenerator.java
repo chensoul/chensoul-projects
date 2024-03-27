@@ -1,17 +1,5 @@
 package com.chensoul.generator;
-
-/**
- * Interface to return a random String.
- *
- * @author Scott Battaglia
- * @since 3.0.0
- * @version $Id: $Id
- */
 public interface RandomStringGenerator {
-
-    /**
-     * The default length.
-     */
     int DEFAULT_LENGTH = 36;
 
     /**

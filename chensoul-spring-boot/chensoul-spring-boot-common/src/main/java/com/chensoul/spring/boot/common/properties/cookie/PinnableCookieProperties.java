@@ -3,12 +3,6 @@ package com.chensoul.spring.boot.common.properties.cookie;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-/**
- * Base property class for cookie that can be pinned to the HTTP session.
- * Pinned cookie are ignored if they arrive on a request with different attributes, such as IP address or user-agent,
- * than what was present when the cookie was created.
- */
 @Getter
 @Setter
 @Accessors(chain = true)

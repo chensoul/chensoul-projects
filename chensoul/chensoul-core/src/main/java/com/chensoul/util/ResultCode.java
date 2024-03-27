@@ -2,14 +2,6 @@ package com.chensoul.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-/**
- * Result code
- *
- * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
- * @since 0.0.1
- * @version $Id: $Id
- */
 @Getter
 @AllArgsConstructor
 public enum ResultCode implements Enumerable<ResultCode> {
