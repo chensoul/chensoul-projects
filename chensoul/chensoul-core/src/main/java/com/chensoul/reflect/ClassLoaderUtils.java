@@ -5,6 +5,12 @@ import com.chensoul.util.ShutdownHookUtils;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public class ClassLoaderUtils {
     private static final ConcurrentMap<String, Class<?>> loadedClassesCache = initLoadedClassesCache();
 

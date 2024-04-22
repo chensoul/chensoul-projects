@@ -1,10 +1,13 @@
 package com.chensoul.groovy.scripting;
 
 import com.chensoul.concurrent.TryLock;
+import com.chensoul.lang.function.CheckedConsumer;
 import com.chensoul.spring.support.SpringExpressionLanguageValueResolver;
-import com.chensoul.spring.support.bean.Beans;
 import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
+import java.time.Duration;
+import java.util.Objects;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -23,8 +26,27 @@ public class GroovyScriptResourceCacheManager implements ScriptResourceCacheMana
 
     private final Cache<String, ExecutableScript> cache;
 
-    public GroovyScriptResourceCacheManager(final int initialCapacity, int cacheSize, final String duration) {
-        this.cache = Beans.newCacheBuilder(initialCapacity, cacheSize, duration).build();
+    public GroovyScriptResourceCacheManager(final int initialCapacity, int cacheSize, final Duration duration) {
+        this.cache = newCacheBuilder(initialCapacity, cacheSize, duration).build();
+    }
+
+    private Caffeine newCacheBuilder(final int initialCapacity, int cacheSize, final Duration duration) {
+        Caffeine builder = Caffeine.newBuilder()
+            .initialCapacity(initialCapacity)
+            .maximumSize(cacheSize);
+        if (duration != null) {
+            builder.expireAfterWrite(duration);
+        }
+        builder.removalListener((key, value, cause) -> {
+            log.trace("Removing cached value [{}] linked to cache key [{}]; removal cause is [{}]", value, key, cause);
+            CheckedConsumer.unchecked(__ -> {
+                if (value instanceof AutoCloseable) {
+                    AutoCloseable closeable = (AutoCloseable) value;
+                    Objects.requireNonNull(closeable).close();
+                }
+            }).accept(value);
+        });
+        return builder;
     }
 
     @Override

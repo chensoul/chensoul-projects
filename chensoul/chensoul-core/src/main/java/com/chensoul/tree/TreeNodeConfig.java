@@ -3,6 +3,13 @@ package com.chensoul.tree;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 @Data
 @Accessors(chain = true)
 public class TreeNodeConfig implements Serializable {

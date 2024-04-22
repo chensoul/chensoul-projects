@@ -1,9 +1,9 @@
 package com.chensoul.reflect;
 
-import com.chensoul.collection.SetUtils;
 import com.chensoul.constant.SymbolConstants;
 import static com.chensoul.constant.SymbolConstants.LEFT_PARENTHESIS_CHAR;
 import com.chensoul.lang.function.Streams;
+import com.google.common.collect.Sets;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import static java.util.Collections.emptyList;
@@ -31,7 +31,7 @@ public abstract class MethodUtils {
     public final static Predicate<? super Method> OBJECT_METHOD_PREDICATE = MethodUtils::isObjectMethod;
 
     /** Constant <code>OBJECT_METHODS</code> */
-    public final static Set<Method> OBJECT_METHODS = SetUtils.of(Object.class.getMethods());
+    public final static Set<Method> OBJECT_METHODS = Sets.newHashSet(Object.class.getMethods());
 
     private final static ConcurrentMap<MethodKey, Method> methodsCache = new ConcurrentHashMap<>();
 

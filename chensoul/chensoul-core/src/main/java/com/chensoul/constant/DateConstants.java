@@ -1,13 +1,12 @@
-package com.chensoul.date;
+package com.chensoul.constant;
 
 /**
  * 日期格式
  *
  * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
  * @since 0.0.1
- *
  */
-public interface DatePattern {
+public interface DateConstants {
 
     /** Constant <code>NORM_DATE_HH_MM="yyyy-MM-dd HH:mm"</code> */
     String NORM_DATE_HH_MM = "yyyy-MM-dd HH:mm";

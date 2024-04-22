@@ -2,6 +2,13 @@ package com.chensoul.lang.function;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public final class OnceConsumer<T> {
 
     final T t;

@@ -1,22 +1,22 @@
 package com.chensoul.text;
 
-import com.chensoul.collection.MapUtils;
+import com.chensoul.util.Maps;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 class FormatUtilsTest {
 
     @Test
     void formatVariables() {
-        String message = FormatUtils.formatVariables("A,{1},C,{2},E", MapUtils.of("1", "B", "2", "D"));
+        String message = FormatUtils.formatVariables("A,{1},C,{2},E", Maps.of("1", "B", "2", "D"));
         assertEquals("A,B,C,D,E", message);
 
-        message = FormatUtils.formatVariables("A,{1},C,{2},E", MapUtils.of("1", "B"));
+        message = FormatUtils.formatVariables("A,{1},C,{2},E", Maps.of("1", "B"));
         assertEquals("A,B,C,{2},E", message);
 
-        message = FormatUtils.formatVariables("A,{1},C,{2},E", MapUtils.of());
+        message = FormatUtils.formatVariables("A,{1},C,{2},E", Maps.of());
         assertEquals("A,{1},C,{2},E", message);
 
-        message = FormatUtils.formatVariables("A,{1},C,{2},E", MapUtils.of("1", "B", "2", "D", "3", "C"));
+        message = FormatUtils.formatVariables("A,{1},C,{2},E", Maps.of("1", "B", "2", "D", "3", "C"));
         assertEquals("A,B,C,D,E", message);
     }
 

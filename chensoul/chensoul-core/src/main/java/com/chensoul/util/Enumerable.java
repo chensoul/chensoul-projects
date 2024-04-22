@@ -12,7 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  */
 public interface Enumerable<T extends Enum<T> & Enumerable<T>> {
-    /** Constant <code>ENUM_CACHES</code> */
     Map<Class<?>, Enumerable[]> ENUM_CACHES = new ConcurrentHashMap<>();
 
     /**

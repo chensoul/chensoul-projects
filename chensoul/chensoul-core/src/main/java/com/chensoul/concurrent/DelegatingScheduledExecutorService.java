@@ -9,6 +9,13 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public class DelegatingScheduledExecutorService implements ScheduledExecutorService {
     private volatile ScheduledExecutorService delegate;
 

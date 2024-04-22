@@ -27,21 +27,6 @@
         <appender-ref ref="CONSOLE"/>
     </root>
 
-    <!-- 开发环境输出至控制台 -->
-    <springProfile name="dev">
-        <root level="INFO">
-            <appender-ref ref="CONSOLE"/>
-        </root>
-    </springProfile>
-
-    <!-- 非开发环境输出至控制台和文件 -->
-    <springProfile name="!dev">
-        <root level="INFO">
-            <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="ASYNC"/>
-        </root>
-    </springProfile>
-
     <logger name="com.xxl.job.core" level="ERROR"/>
 
 </configuration>

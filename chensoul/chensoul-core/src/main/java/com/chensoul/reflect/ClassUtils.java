@@ -1,9 +1,9 @@
 package com.chensoul.reflect;
 
-import com.chensoul.collection.SetUtils;
 import com.chensoul.lang.function.CheckedSupplier;
 import static com.chensoul.lang.function.Streams.filterAll;
 import com.chensoul.text.FormatUtils;
+import com.google.common.collect.Sets;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
@@ -29,7 +29,7 @@ import org.apache.commons.lang3.ArrayUtils;
  */
 public class ClassUtils {
     /** Constant <code>SIMPLE_TYPES</code> */
-    public static final Set<Class<?>> SIMPLE_TYPES = SetUtils.of(
+    public static final Set<Class<?>> SIMPLE_TYPES = Sets.newHashSet(
         Void.class,
         Boolean.class,
         Character.class,
@@ -46,7 +46,7 @@ public class ClassUtils {
         Object.class);
 
     /** Constant <code>PRIMITIVE_TYPES</code> */
-    public static final Set<Class<?>> PRIMITIVE_TYPES = SetUtils.of(
+    public static final Set<Class<?>> PRIMITIVE_TYPES = Sets.newHashSet(
         Void.TYPE,
         Boolean.TYPE,
         Character.TYPE,

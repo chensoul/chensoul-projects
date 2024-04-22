@@ -2,6 +2,13 @@ package com.chensoul.reflect;
 
 import java.lang.reflect.Type;
 import java.util.Objects;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public class TypeArgument {
 
     private final Type type;

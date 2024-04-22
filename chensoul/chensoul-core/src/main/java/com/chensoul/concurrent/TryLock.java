@@ -5,6 +5,13 @@ import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.lang.function.FunctionUtils;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public class TryLock {
     private static final int LOCK_TIMEOUT_SECONDS = 3;
 

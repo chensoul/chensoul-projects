@@ -9,6 +9,13 @@ import java.util.function.Predicate;
 import static java.util.stream.Collectors.toList;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public interface Streams {
     static <T> Stream<T> stream(Iterable<T> iterable) {
         return StreamSupport.stream(iterable.spliterator(), false);

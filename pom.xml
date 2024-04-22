@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.chensoul</groupId>
     <artifactId>chensoul-parent</artifactId>
-    <version>1.0.44-SNAPSHOT</version>
+    <version>1.0.50-SNAPSHOT</version>
     <relativePath/>
   </parent>
 
@@ -26,8 +26,7 @@
 
   <modules>
     <module>chensoul</module>
-    <module>chensoul-audit</module>
-    <module>chensoul-redis</module>
+    <module>chensoul-cache</module>
     <module>chensoul-mybatis</module>
     <module>chensoul-spring-boot</module>
     <module>chensoul-spring-cloud</module>
@@ -111,12 +110,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
@@ -134,28 +127,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <repositories>
-    <!-- 如果使用浏览器访问时，需要添加 groupId 才显示内容 -->
-    <repository>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <id>oss-snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </repository>
-    <repository>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <id>oss-snapshots-s01</id>
-      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
-    </repository>
-  </repositories>
 </project>

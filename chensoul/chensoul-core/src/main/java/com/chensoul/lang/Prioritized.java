@@ -2,6 +2,13 @@ package com.chensoul.lang;
 
 import static java.lang.Integer.compare;
 import java.util.Comparator;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public interface Prioritized extends Comparable<Prioritized> {
     int MAX_PRIORITY = Integer.MIN_VALUE;
     /**

@@ -34,11 +34,6 @@
     </dependency>
     <dependency>
       <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-jackson</artifactId>
-      <version>${revision}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.chensoul</groupId>
       <artifactId>chensoul-spring-boot-common</artifactId>
       <version>${revision}</version>
     </dependency>

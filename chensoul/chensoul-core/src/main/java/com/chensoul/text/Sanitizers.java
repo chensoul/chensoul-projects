@@ -3,6 +3,13 @@ package com.chensoul.text;
 import com.chensoul.constant.StringPool;
 import java.util.function.Function;
 import org.apache.commons.lang3.StringUtils;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public abstract class Sanitizers {
     private Sanitizers() {
     }

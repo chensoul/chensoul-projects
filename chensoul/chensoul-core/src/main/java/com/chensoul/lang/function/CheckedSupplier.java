@@ -3,6 +3,13 @@ package com.chensoul.lang.function;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 @FunctionalInterface
 public interface CheckedSupplier<T> {
     T get() throws Throwable;

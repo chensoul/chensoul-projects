@@ -26,6 +26,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.ArrayUtils;
 import static org.apache.commons.lang3.ArrayUtils.EMPTY_CLASS_ARRAY;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public abstract class ReflectionUtils {
     public static final String SUN_REFLECT_REFLECTION_CLASS_NAME = "sun.reflect.Reflection";
 

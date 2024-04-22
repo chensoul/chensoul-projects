@@ -28,7 +28,6 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @Lazy(false)
-@SuppressWarnings("all")
 public class SpringContextHolder implements BeanFactoryPostProcessor, ApplicationContextAware {
     private static ConfigurableListableBeanFactory beanFactory;
 
@@ -40,9 +39,6 @@ public class SpringContextHolder implements BeanFactoryPostProcessor, Applicatio
     private SpringContextHolder() {
     }
 
-    /**
-     * @return
-     */
     public static ApplicationContext getApplicationContext() {
         return applicationContext;
     }

@@ -2,6 +2,12 @@ package com.chensoul.constant;
 
 import static com.chensoul.constant.SymbolConstants.DOT;
 
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public interface FileConstants {
     String XML = "xml";
 

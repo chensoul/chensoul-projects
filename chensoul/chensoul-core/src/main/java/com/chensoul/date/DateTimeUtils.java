@@ -1,5 +1,6 @@
 package com.chensoul.date;
 
+import com.chensoul.constant.DateConstants;
 import com.chensoul.lang.function.FunctionUtils;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -33,17 +34,17 @@ import java.util.concurrent.TimeUnit;
  * @since 0.0.1
  *
  */
-@SuppressWarnings("JavaUtilDate")
 public abstract class DateTimeUtils {
+
     static final List<DateTimeFormatter> PARSERS = Arrays.asList(
-        DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME),
-        DateTimeFormatter.ofPattern(DatePattern.PURE_DATETIME),
-        DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_MS),
-        DateTimeFormatter.ofPattern(DatePattern.UTC_DATETIME),
+        DateTimeFormatter.ofPattern(DateConstants.NORM_DATETIME),
+        DateTimeFormatter.ofPattern(DateConstants.PURE_DATETIME),
+        DateTimeFormatter.ofPattern(DateConstants.NORM_DATETIME_MS),
+        DateTimeFormatter.ofPattern(DateConstants.UTC_DATETIME),
         DateTimeFormatter.ISO_LOCAL_DATE_TIME,
         DateTimeFormatter.ISO_ZONED_DATE_TIME,
         DateTimeFormatter.RFC_1123_DATE_TIME,
-        DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME),
+        DateTimeFormatter.ofPattern(DateConstants.NORM_DATETIME),
         DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm")
     );
 
@@ -483,7 +484,7 @@ public abstract class DateTimeUtils {
         }
         List<String> result = new ArrayList<>();
         while (from.isBefore(to) || from.isEqual(to)) {
-            result.add(from.format(DateTimeFormatter.ofPattern(DatePattern.NORM_DATE)));
+            result.add(from.format(DateTimeFormatter.ofPattern(DateConstants.NORM_DATE)));
             from = from.plusDays(1);
         }
         return result;

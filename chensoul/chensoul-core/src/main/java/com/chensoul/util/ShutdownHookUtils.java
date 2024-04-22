@@ -13,6 +13,13 @@ import java.util.Set;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.function.Predicate;
 import static java.util.stream.Collectors.toSet;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public abstract class ShutdownHookUtils {
     public static final String SHUTDOWN_HOOK_CALLBACKS_CAPACITY_PROPERTY_NAME = "chensoul.shutdown-hook.callbacks-capacity";
 

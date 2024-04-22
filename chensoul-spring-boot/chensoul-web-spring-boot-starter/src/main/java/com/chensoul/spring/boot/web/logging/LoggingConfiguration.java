@@ -1,13 +1,12 @@
 package com.chensoul.spring.boot.web.logging;
 
+import ch.qos.logback.classic.LoggerContext;
+import com.chensoul.util.JacksonUtils;
+import com.chensoul.spring.boot.common.properties.CoreProperties;
+import com.chensoul.spring.boot.common.properties.logging.LogstashProperties;
 import static com.chensoul.spring.boot.web.logging.LogbackUtils.addContextListener;
 import static com.chensoul.spring.boot.web.logging.LogbackUtils.addJsonConsoleAppender;
 import static com.chensoul.spring.boot.web.logging.LogbackUtils.addLogstashTcpSocketAppender;
-
-import ch.qos.logback.classic.LoggerContext;
-import com.chensoul.jackson.utils.JsonUtils;
-import com.chensoul.spring.boot.common.properties.CoreProperties;
-import com.chensoul.spring.boot.common.properties.logging.LogstashProperties;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.LoggerFactory;
@@ -33,7 +32,7 @@ public class LoggingConfiguration {
         final Map<String, String> map = new HashMap<>();
         map.put("app_name", env.getProperty("spring.application.name", "application"));
         map.put("app_port", env.getProperty("server.port", "8080"));
-        final String customFields = JsonUtils.toJson(map);
+        final String customFields = JacksonUtils.toString(map);
 
         final LogstashProperties logstashProperties = coreProperties.getLogging().getLogstash();
 

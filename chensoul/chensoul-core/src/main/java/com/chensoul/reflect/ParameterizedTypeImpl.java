@@ -6,6 +6,13 @@ import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.Arrays;
 import java.util.Objects;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public class ParameterizedTypeImpl implements ParameterizedType {
 
     private final Type[] actualTypeArguments;

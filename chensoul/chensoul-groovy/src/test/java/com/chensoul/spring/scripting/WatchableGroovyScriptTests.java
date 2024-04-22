@@ -1,6 +1,5 @@
 package com.chensoul.spring.scripting;
 
-import com.chensoul.collection.ArrayUtils;
 import com.chensoul.groovy.scripting.WatchableGroovyScript;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -8,10 +7,12 @@ import java.nio.file.Files;
 import java.nio.file.attribute.FileTime;
 import java.time.Instant;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.FileSystemResource;
+
 @Tag("Groovy")
 class WatchableGroovyScriptTests {
 

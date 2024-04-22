@@ -1,5 +1,6 @@
 package com.chensoul.date;
 
+import com.chensoul.constant.DateConstants;
 import java.text.ParseException;
 import java.util.Date;
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +11,7 @@ class ConcurrentDateFormatTest {
     public void testParseWithValidSource() {
         String source = "2022-08-01";
 
-        Date result = ConcurrentDateFormat.of(DatePattern.NORM_DATE).parse(source);
+        Date result = ConcurrentDateFormat.of(DateConstants.NORM_DATE).parse(source);
 
         Assertions.assertNotNull(result);
     }
@@ -18,6 +19,6 @@ class ConcurrentDateFormatTest {
     @Test
     public void testParseWithInvalidSource() {
         String source = "Invalid Date";
-        Assertions.assertThrows(ParseException.class, () -> ConcurrentDateFormat.of(DatePattern.NORM_DATE).parse(source));
+        Assertions.assertThrows(ParseException.class, () -> ConcurrentDateFormat.of(DateConstants.NORM_DATE).parse(source));
     }
 }

@@ -1,12 +1,17 @@
 package com.chensoul.tree;
 
-import com.chensoul.collection.CollectionUtils;
-import com.chensoul.collection.MapUtils;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 import java.util.function.Supplier;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public class TreeSupplier<E> implements Supplier<Tree<E>> {
 
     private final Tree<E> root;
@@ -132,7 +137,7 @@ public class TreeSupplier<E> implements Supplier<Tree<E>> {
     }
 
     private void buildFromMap() {
-        if (MapUtils.isEmpty(idTreeMap)) {
+        if (idTreeMap == null || idTreeMap.size() <= 0) {
             return;
         }
 
@@ -176,7 +181,7 @@ public class TreeSupplier<E> implements Supplier<Tree<E>> {
         }
 
         final List<Tree<E>> children = tree.getChildren();
-        if (!CollectionUtils.isEmpty(children)) {
+        if (children != null && children.size() > 0) {
             for (final Tree<E> child : children) {
                 cutTree(child, currentDepp + 1, maxDeep);
             }

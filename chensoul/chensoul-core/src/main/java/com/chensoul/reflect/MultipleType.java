@@ -4,6 +4,13 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Objects;
 import org.apache.commons.lang3.ArrayUtils;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public class MultipleType {
 
     private final Type[] types;

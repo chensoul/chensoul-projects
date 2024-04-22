@@ -1,6 +1,5 @@
 package com.chensoul.tree;
 
-import com.chensoul.collection.MapUtils;
 import java.util.Map;
 
 /**
@@ -20,7 +19,7 @@ public class DefaultNodeParser<T> implements NodeParser<TreeNode<T>, T> {
 
         // 扩展字段
         final Map<String, Object> extra = treeNode.getExtra();
-        if (!MapUtils.isEmpty(extra)) {
+        if (extra != null && extra.size() > 0) {
             extra.forEach(tree::putExtra);
         }
     }

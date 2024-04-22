@@ -10,7 +10,7 @@ import com.alibaba.csp.sentinel.Tracer;
 import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.chensoul.spring.cloud.openfeign.annotation.FeignRetry;
-import com.chensoul.util.R;
+import com.chensoul.util.ResultResponse;
 import feign.Feign;
 import feign.InvocationHandlerFactory;
 import feign.MethodMetadata;
@@ -111,9 +111,9 @@ public class AutoFallbackSentinelInvocationHandler implements InvocationHandler 
                     } else {
                         // 若是Result类型 并且不包含@FeignRetry 执行自动降级返回
                         final FeignRetry feignRetry = AnnotationUtils.findAnnotation(method, FeignRetry.class);
-                        if (R.class == method.getReturnType() && Objects.isNull(feignRetry)) {
+                        if (ResultResponse.class == method.getReturnType() && Objects.isNull(feignRetry)) {
                             log.error("服务调用异常", ex);
-                            return R.error(ex.getMessage());
+                            return ResultResponse.error(ex.getMessage());
                         } else {
                             throw ex;
                         }

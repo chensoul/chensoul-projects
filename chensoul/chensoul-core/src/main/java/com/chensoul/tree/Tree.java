@@ -1,11 +1,17 @@
 package com.chensoul.tree;
 
-import com.chensoul.collection.CollectionUtils;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import org.apache.commons.lang3.ObjectUtils;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public class Tree<T> extends LinkedHashMap<String, Object> implements Node<T> {
 
     private static final long serialVersionUID = 7620659626383442013L;
@@ -169,7 +175,7 @@ public class Tree<T> extends LinkedHashMap<String, Object> implements Node<T> {
     @SafeVarargs
     public final Tree<T> addChildren(final Tree<T>... children) {
         final List<Tree<T>> childrenList = this.getChildren();
-        if (CollectionUtils.isEmpty(childrenList)) {
+        if (childrenList == null || childrenList.size() == 0) {
             this.setChildren(childrenList);
         }
         for (final Tree<T> child : children) {

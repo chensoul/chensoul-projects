@@ -5,6 +5,13 @@ import com.chensoul.lang.function.CheckedFunction;
 import com.chensoul.lang.function.CheckedSupplier;
 import com.chensoul.lang.function.FunctionUtils;
 import java.lang.reflect.AccessibleObject;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public abstract class AccessibleObjectUtils {
     public static <A extends AccessibleObject> void execute(A accessibleObject, CheckedConsumer<A> consumer) {
         execute(accessibleObject, a -> {

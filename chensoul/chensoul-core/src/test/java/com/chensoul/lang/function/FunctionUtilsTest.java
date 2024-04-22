@@ -79,8 +79,6 @@ class FunctionUtilsTest {
         f1 = FunctionUtils.tryApply(function, errorHandler);
         Assertions.assertEquals("Even", f1.apply(4));
         Assertions.assertEquals("Error: Odd number not allowed", f1.apply(3));
-
-
     }
 
     @Test

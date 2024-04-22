@@ -2,7 +2,7 @@ package com.chensoul.spring.util;
 
 import static com.chensoul.constant.SymbolConstants.EMPTY;
 import static com.chensoul.constant.SymbolConstants.STAR_THREE;
-import com.chensoul.net.InetAddressUtils;
+import com.chensoul.util.InetAddressUtils;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;

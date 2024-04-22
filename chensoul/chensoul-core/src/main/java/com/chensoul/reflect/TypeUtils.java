@@ -1,11 +1,11 @@
 package com.chensoul.reflect;
 
 
-import com.chensoul.collection.ListUtils;
-import com.chensoul.collection.MapUtils;
 import com.chensoul.lang.function.Predicates;
 import static com.chensoul.lang.function.Predicates.EMPTY_PREDICATE_ARRAY;
 import com.chensoul.lang.function.Streams;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import static java.lang.Integer.getInteger;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
@@ -26,12 +26,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.StreamSupport.stream;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public abstract class TypeUtils {
     public static final Predicate<Type> NON_OBJECT_TYPE_FILTER = t -> t != null && !isObjectType(t);
 
@@ -58,7 +66,7 @@ public abstract class TypeUtils {
     /** Constant <code>RESOLVED_GENERIC_TYPES_CACHE_SIZE_PROPERTY_NAME="microsphere.reflect.resolved-generic-ty"{trunked}</code> */
     public static final String RESOLVED_GENERIC_TYPES_CACHE_SIZE_PROPERTY_NAME = "microsphere.reflect.resolved-generic-types.cache.size";
 
-    private static final ConcurrentMap<MultipleType, List<Type>> resolvedGenericTypesCache = MapUtils.newConcurrentHashMap(getInteger(RESOLVED_GENERIC_TYPES_CACHE_SIZE_PROPERTY_NAME, 256));
+    private static final ConcurrentMap<MultipleType, List<Type>> resolvedGenericTypesCache = new ConcurrentHashMap<>(getInteger(RESOLVED_GENERIC_TYPES_CACHE_SIZE_PROPERTY_NAME, 256));
 
     /**
      * <p>isClass.</p>
@@ -333,7 +341,7 @@ public abstract class TypeUtils {
         if (pType != null) {
             Type[] actualTypeArguments = pType.getActualTypeArguments();
             int actualTypeArgumentsLength = actualTypeArguments.length;
-            List<Type> actualTypeArgumentsList = ListUtils.newArrayList();
+            List<Type> actualTypeArgumentsList = Lists.newArrayList();
             for (int i = 0; i < actualTypeArgumentsLength; i++) {
                 Type actualTypeArgument = actualTypeArguments[i];
                 if (isActualType(actualTypeArgument)) {
@@ -349,7 +357,7 @@ public abstract class TypeUtils {
 
         int size = hierarchicalTypesSize + 1;
 
-        Map<Class, TypeArgument[]> typeArgumentsMap = MapUtils.newLinkedHashMap(size);
+        Map<Class, TypeArgument[]> typeArgumentsMap = Maps.newLinkedHashMapWithExpectedSize(size);
 
         for (int i = hierarchicalTypesSize - 1; i > -1; i--) {
             Type hierarchicalType = hierarchicalTypes.get(i);
@@ -469,7 +477,7 @@ public abstract class TypeUtils {
      * @return a {@link java.util.List} object
      */
     public static List<Type> findAllTypes(Type type, Predicate<Type>... typeFilters) {
-        List<Type> allGenericTypes = ListUtils.newLinkedList();
+        List<Type> allGenericTypes = Lists.newLinkedList();
         Predicate filter = Predicates.and(typeFilters);
         if (filter.test(type)) {
             // add self
@@ -526,7 +534,7 @@ public abstract class TypeUtils {
             return emptyList();
         }
 
-        LinkedList<Type> types = ListUtils.newLinkedList();
+        LinkedList<Type> types = Lists.newLinkedList();
 
         Predicate<? super Type> filter = Predicates.and(typeFilters);
 
@@ -575,7 +583,7 @@ public abstract class TypeUtils {
      * @return a {@link java.util.LinkedList} object
      */
     protected static LinkedList<Type> doFindAllHierarchicalTypes(Type type, Predicate<Type>... typeFilters) {
-        LinkedList<Type> allTypes = ListUtils.newLinkedList();
+        LinkedList<Type> allTypes = Lists.newLinkedList();
         addAllHierarchicalTypes(allTypes, type, typeFilters);
         return allTypes;
     }

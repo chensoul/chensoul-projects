@@ -1,7 +1,7 @@
 package com.chensoul.spring.cloud.openfeign.codec;
 
-import com.chensoul.jackson.utils.JsonUtils;
-import com.chensoul.util.R;
+import com.chensoul.util.JacksonUtils;
+import com.chensoul.util.ResultResponse;
 import feign.FeignException;
 import feign.RetryableException;
 import feign.codec.ErrorDecoder;
@@ -52,7 +52,7 @@ public class FeignErrorDecoder extends ErrorDecoder.Default {
         }
 
         try {
-            final R result = JsonUtils.fromJson(errorMessage, R.class);
+            final ResultResponse result = JacksonUtils.fromString(errorMessage, ResultResponse.class);
             return result.getMessage();
         } catch (final Exception e) {
             return null;

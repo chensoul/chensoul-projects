@@ -22,11 +22,6 @@
       <artifactId>chensoul-spring</artifactId>
       <version>${revision}</version>
     </dependency>
-    <dependency>
-      <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-jackson</artifactId>
-      <version>${revision}</version>
-    </dependency>
 
     <dependency>
       <groupId>org.springframework.cloud</groupId>

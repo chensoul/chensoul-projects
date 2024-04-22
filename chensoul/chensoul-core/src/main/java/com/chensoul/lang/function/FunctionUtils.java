@@ -8,6 +8,13 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 @Slf4j
 public class FunctionUtils {
     public static final Consumer<Throwable> SNEAKY_THROW = FunctionUtils::sneakyThrow;

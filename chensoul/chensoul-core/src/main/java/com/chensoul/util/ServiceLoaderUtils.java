@@ -1,9 +1,9 @@
 package com.chensoul.util;
 
-import com.chensoul.collection.MapUtils;
 import com.chensoul.lang.Prioritized;
 import com.chensoul.reflect.ClassLoaderUtils;
 import static com.chensoul.reflect.ReflectionUtils.toList;
+import com.google.common.collect.Maps;
 import static java.lang.Boolean.getBoolean;
 import static java.util.Collections.sort;
 import static java.util.Collections.unmodifiableList;
@@ -12,6 +12,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * TODO
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 1.0.0
+ */
 public abstract class ServiceLoaderUtils {
 
     private static final Map<ClassLoader, Map<Class<?>, ServiceLoader<?>>> serviceLoadersCache = new ConcurrentHashMap<>();
@@ -230,7 +237,7 @@ public abstract class ServiceLoaderUtils {
     public static <S> ServiceLoader<S> load(Class<S> serviceType, ClassLoader classLoader, boolean cached) {
         if (cached) {
             Map<Class<?>, ServiceLoader<?>> serviceLoadersMap =
-                serviceLoadersCache.computeIfAbsent(classLoader, cl -> MapUtils.newConcurrentHashMap());
+                serviceLoadersCache.computeIfAbsent(classLoader, cl -> Maps.newConcurrentMap());
             return (ServiceLoader<S>) serviceLoadersMap.computeIfAbsent(serviceType, type ->
                 ServiceLoader.load(serviceType, classLoader));
         }
