@@ -53,7 +53,7 @@
     <spring-boot-admin.version>2.7.15</spring-boot-admin.version>
     <mybatis-plus.version>3.5.6</mybatis-plus.version>
     <redisson.version>3.27.2</redisson.version>
-    <commons-io.version>2.15.1</commons-io.version>
+    <commons-io.version>2.16.1</commons-io.version>
     <jsr305.version>3.0.2</jsr305.version>
   </properties>
 
