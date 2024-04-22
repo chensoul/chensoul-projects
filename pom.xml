@@ -27,7 +27,7 @@
   <modules>
     <module>chensoul</module>
     <module>chensoul-cache</module>
-    <module>chensoul-mybatis</module>
+    <module>chensoul-data</module>
     <module>chensoul-spring-boot</module>
     <module>chensoul-spring-cloud</module>
   </modules>
