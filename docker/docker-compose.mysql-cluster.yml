@@ -1,0 +1,45 @@
+version: '3.0'
+
+services:
+  mysql-master:
+    image: mysql:8.3.0
+    ports:
+      - "3307:3306"
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - MYSQL_DATABASE=chensoul
+      - MYSQL_USER=chensoul
+      - MYSQL_PASSWORD=chensoul
+    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=1
+    volumes:
+      - mysql-data-master:/var/lib/mysql
+    healthcheck:
+      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
+      interval: 5s
+      timeout: 2s
+      retries: 10
+
+  mysql-slave:
+    image: mysql:8.3.0
+    ports:
+      - "3308:3306"
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - MYSQL_DATABASE=chensoul
+      - MYSQL_USER=chensoul
+      - MYSQL_PASSWORD=chensoul
+    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp=true --lower_case_table_names=1 --tls-version='' --log-bin=mysql-bin --server-id=2
+    volumes:
+      - mysql-data-slave:/var/lib/mysql
+    healthcheck:
+      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} -e 'SHOW DATABASES;'"
+      interval: 5s
+      timeout: 2s
+      retries: 10
+
+
+volumes:
+  mysql-data-master: { }
+  mysql-data-slave: { }

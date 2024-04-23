@@ -1,0 +1,20 @@
+version: '3.0'
+
+services:
+# Redis standalone
+  redis:
+    restart: always
+    image: bitnami/redis:7.0
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/bitnami/redis/data
+    command: redis-server --requirepass 123456
+    healthcheck:
+      test: [ "CMD", "redis-cli","-a","123456","--raw", "incr","ping" ]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+
+volumes:
+  redis-data: {}
