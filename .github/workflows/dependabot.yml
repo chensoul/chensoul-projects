@@ -1,5 +1,5 @@
 # https://docs.github.com/zh/enterprise-cloud@latest/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#common-dependabot-automations
-# https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review#dependency-review-enforcement
+# https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
 
 
 name: Dependabot

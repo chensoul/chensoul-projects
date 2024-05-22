@@ -22,3 +22,7 @@
 ## 参考
 
 - https://github.com/microsphere-projects
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/chensoul/chensoul-projects.svg?variant=adaptive)](https://starchart.cc/chensoul/chensoul-projects)
