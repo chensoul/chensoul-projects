@@ -7,8 +7,13 @@
     <version>${revision}</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
+
   <artifactId>chensoul-data</artifactId>
+  <version>${revision}</version>
   <packaging>pom</packaging>
+
+  <name>Chensoul :: Data</name>
+  <description>${project.name}</description>
 
   <modules>
     <module>chensoul-data-common</module>

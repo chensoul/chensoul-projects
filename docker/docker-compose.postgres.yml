@@ -3,9 +3,9 @@ version: '3.0'
 services:
   postgres:
     restart: always
-    image: postgres:15
+    image: postgres:16
     ports:
-    - "5432:5432"
+      - "5432:5432"
     environment:
       POSTGRES_DB: chensoul
       POSTGRES_PASSWORD: postgres
@@ -14,4 +14,4 @@ services:
 
 
 volumes:
-  postgres-data: { }
+  postgres-data:

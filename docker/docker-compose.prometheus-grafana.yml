@@ -26,5 +26,5 @@ services:
     restart: always
 
 volumes:
-  prometheus_data: {}
-  grafana_data: {}
+  prometheus_data:
+  grafana_data:

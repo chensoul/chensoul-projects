@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '8', '11', '17', '21' ]
+        java: [ '8', '17', '21' ]
     steps:
       - uses: actions/checkout@v4
       - name: Java ${{ matrix.Java }}
@@ -29,4 +29,4 @@ jobs:
           java-version: ${{ matrix.java }}
           cache: maven
       - name: Build with Maven
-        run: mvn -B -ntp -U --file pom.xml clean install -DskipTests=true
+        run: mvn -B -U clean install -DskipTests=true

@@ -9,7 +9,10 @@
   </parent>
 
   <artifactId>chensoul-data-common</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
 
-  <name>chensoul-data-common</name>
+  <name>Chensoul :: Data Common</name>
+  <description>${project.name}</description>
 
 </project>

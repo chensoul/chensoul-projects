@@ -22,27 +22,22 @@
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-core</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
       </dependency>
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-spring</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
       </dependency>
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-validation</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
       </dependency>
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-groovy</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.chensoul</groupId>
-        <artifactId>chensoul-oauth2</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

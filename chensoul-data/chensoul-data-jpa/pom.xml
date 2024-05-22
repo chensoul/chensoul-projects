@@ -11,5 +11,10 @@
   </parent>
 
   <artifactId>chensoul-data-jpa</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+
+  <name>Chensoul :: Data Jpa</name>
+  <description>${project.name}</description>
 
 </project>

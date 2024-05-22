@@ -22,50 +22,39 @@
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-spring-boot-common</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.chensoul</groupId>
-        <artifactId>chensoul-audit-spring-boot-starter</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
       </dependency>
 
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-web-spring-boot-starter</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
       </dependency>
 
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-data-mybatis-spring-boot-starter</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
       </dependency>
 
 <!--      <dependency>-->
       <!--        <groupId>com.chensoul</groupId>-->
       <!--        <artifactId>chensoul-loadbalancer-spring-boot-starter</artifactId>-->
-      <!--        <version>${project.version}</version>-->
+      <!--        <version>${revision}</version>-->
       <!--      </dependency>-->
 
       <!--      <dependency>-->
       <!--        <groupId>com.chensoul</groupId>-->
       <!--        <artifactId>chensoul-openfeign-spring-boot-starter</artifactId>-->
-      <!--        <version>${project.version}</version>-->
+      <!--        <version>${revision}</version>-->
       <!--      </dependency>-->
 
       <dependency>
         <groupId>com.chensoul</groupId>
         <artifactId>chensoul-cache-spring-boot-starter</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
       </dependency>
 
-      <dependency>
-        <groupId>com.chensoul</groupId>
-        <artifactId>chensoul-websocket-spring-boot-starter</artifactId>
-        <version>${project.version}</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>

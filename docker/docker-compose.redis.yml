@@ -1,7 +1,7 @@
 version: '3.0'
 
 services:
-# Redis standalone
+  # Redis standalone
   redis:
     restart: always
     image: bitnami/redis:7.0
@@ -17,4 +17,4 @@ services:
       retries: 10
 
 volumes:
-  redis-data: {}
+  redis-data:
