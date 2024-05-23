@@ -16,82 +16,88 @@
 package com.chensoul.validation;
 
 import com.chensoul.exception.BusinessException;
-import com.chensoul.exception.NotFoundException;
+import com.chensoul.exception.IncorrectParameterException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 
-public class Validator {
+/**
+ * Validators
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 0.0.1
+ */
+public class Validators {
     /**
      * This method validate <code>String</code> string. If string is invalid than throw
-     * <code>BusinessException</code> exception
+     * <code>IncorrectParameterException</code> exception
      *
      * @param val          the val
      * @param errorMessage the error message for exception
      */
     public static void validateString(String val, String errorMessage) {
         if (val == null || val.isEmpty()) {
-            throw new BusinessException(errorMessage);
+            throw new IncorrectParameterException(errorMessage);
         }
     }
 
     /*
      * This method validate <code>String</code> string. If string is invalid than throw
-     * <code>BusinessException</code> exception
+     * <code>IncorrectParameterException</code> exception
      *
      * @param val                       the value
      * @param errorMessageFunction      the error message function that apply value
      */
     public static void validateString(String val, Function<String, String> errorMessageFunction) {
         if (val == null || val.isEmpty()) {
-            throw new BusinessException(errorMessageFunction.apply(val));
+            throw new IncorrectParameterException(errorMessageFunction.apply(val));
         }
     }
 
     /**
      * This method validate <code>long</code> value. If value isn't positive than throw
-     * <code>BusinessException</code> exception
+     * <code>IncorrectParameterException</code> exception
      *
      * @param val          the val
      * @param errorMessage the error message for exception
      */
     public static void validatePositiveNumber(long val, String errorMessage) {
         if (val <= 0) {
-            throw new BusinessException(errorMessage);
+            throw new IncorrectParameterException(errorMessage);
         }
     }
 
     /**
      * This method validate <code>UUID</code> id. If id is null than throw
-     * <code>BusinessException</code> exception
+     * <code>IncorrectParameterException</code> exception
      *
      * @param id           the id
      * @param errorMessage the error message for exception
      */
     public static void validateId(Serializable id, String errorMessage) {
         if (id == null) {
-            throw new BusinessException(errorMessage);
+            throw new IncorrectParameterException(errorMessage);
         }
     }
 
     public static void validateId(Serializable id, Function<Serializable, String> errorMessageFunction) {
         if (id == null) {
-            throw new BusinessException(errorMessageFunction.apply(id));
+            throw new IncorrectParameterException(errorMessageFunction.apply(id));
         }
     }
 
     /**
      * This method validate list of <code>UUIDBased</code> ids. If at least one of the ids is null than throw
-     * <code>BusinessException</code> exception
+     * <code>IncorrectParameterException</code> exception
      *
      * @param ids          the list of ids
      * @param errorMessage the error message for exception
      */
     public static void validateIds(List<? extends Serializable> ids, String errorMessage) {
         if (ids == null || ids.isEmpty()) {
-            throw new BusinessException(errorMessage);
+            throw new DataValidationException(errorMessage);
         } else {
             for (Serializable id : ids) {
                 validateId(id, errorMessage);
@@ -99,40 +105,38 @@ public class Validator {
         }
     }
 
-    public static <T> T checkNotNull(T reference) {
+    public static <T> T checkNotNull(T reference) throws BusinessException {
         return checkNotNull(reference, "Requested item wasn't found!");
     }
 
-    public static <T> T checkNotNull(T reference, String notFoundMessage) {
+    public static <T> T checkNotNull(T reference, String notFoundMessage) throws BusinessException {
         if (reference == null) {
-            throw new NotFoundException(notFoundMessage);
+            throw new IncorrectParameterException(notFoundMessage);
         }
         return reference;
     }
 
-    public static <T> T checkNotNull(Optional<T> reference) {
+    public static <T> T checkNotNull(Optional<T> reference) throws BusinessException {
         return checkNotNull(reference, "Requested item wasn't found!");
     }
 
-    public static <T> T checkNotNull(Optional<T> reference, String notFoundMessage) {
+    public static <T> T checkNotNull(Optional<T> reference, String notFoundMessage) throws BusinessException {
         if (reference.isPresent()) {
             return reference.get();
         } else {
-            throw new NotFoundException(notFoundMessage);
+            throw new IncorrectParameterException(notFoundMessage);
         }
     }
 
     public static void checkParameter(String name, String param) {
         if (StringUtils.isEmpty(param)) {
-            throw new BusinessException("Parameter '" + name + "' can't be empty!");
+            throw new IncorrectParameterException("Parameter '" + name + "' can't be empty!");
         }
     }
 
-    public static void checkParameter(String name, Long param) {
+    public static void checkParameter(String name, Long param) throws BusinessException {
         if (param == null) {
-            throw new BusinessException("Parameter '" + name + "' can't be empty!");
+            throw new IncorrectParameterException("Parameter '" + name + "' can't be empty!");
         }
     }
-
-
 }

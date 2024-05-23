@@ -1,6 +1,7 @@
 package com.chensoul.exception;
 
 import com.chensoul.util.Enumerable;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -20,12 +21,8 @@ public enum ErrorCode implements Enumerable<ErrorCode> {
     FORBIDDEN(403, "FORBIDDEN"),
     NOT_FOUND(404, "NOT_FOUND"),
     TOO_MANY_REQUESTS(429, "TOO_MANY_REQUESTS"),
-
     SYSTEM_ERROR(500, "INTERNAL_ERROR"),
-    SERVICE_ERROR(501, "SERVICE_ERROR"),
-    SERVICE_UNAVAILABLE(502, "SERVICE_UNAVAILABLE"),
     ;
-
     private int code;
     private String name;
 

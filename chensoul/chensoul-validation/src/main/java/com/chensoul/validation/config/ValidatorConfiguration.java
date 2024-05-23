@@ -13,14 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.chensoul.validation;
+package com.chensoul.validation.config;
 
-import com.chensoul.validation.anntotation.Length;
-import com.chensoul.validation.anntotation.NoXss;
-import com.chensoul.validation.anntotation.NoXssValidator;
-import com.chensoul.validation.anntotation.StringLengthValidator;
-import com.chensoul.validation.exception.DataValidationException;
-import com.google.common.collect.Iterators;
+import com.chensoul.validation.DataValidationException;
+import com.chensoul.validation.Length;
+import com.chensoul.validation.NoXss;
+import com.chensoul.validation.validator.LengthValidator;
+import com.chensoul.validation.validator.NoXssValidator;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -40,23 +39,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+/**
+ * Validator Configuration
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 0.0.1
+ */
 @Slf4j
 @Configuration
-public class ConstraintValidator {
+public class ValidatorConfiguration {
 
-    private static Validator fieldsValidator;
+    private static Validator fieldsValidators;
 
     static {
         initializeValidators();
-    }
-
-    @Bean
-    public LocalValidatorFactoryBean validatorFactoryBean() {
-        LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
-        localValidatorFactoryBean.setConfigurationInitializer(configuration -> {
-            ((ConfigurationImpl) configuration).addMapping(getCustomConstraintMapping());
-        });
-        return localValidatorFactoryBean;
     }
 
     public static void validateFields(Object data) {
@@ -64,7 +60,7 @@ public class ConstraintValidator {
     }
 
     public static void validateFields(Object data, String errorPrefix) {
-        Set<ConstraintViolation<Object>> constraintsViolations = fieldsValidator.validate(data);
+        Set<ConstraintViolation<Object>> constraintsViolations = fieldsValidators.validate(data);
         if (!constraintsViolations.isEmpty()) {
             throw new DataValidationException(errorPrefix + getErrorMessage(constraintsViolations));
         }
@@ -72,7 +68,7 @@ public class ConstraintValidator {
 
     public static String getErrorMessage(Collection<ConstraintViolation<Object>> constraintsViolations) {
         return constraintsViolations.stream()
-            .map(ConstraintValidator::getErrorMessage)
+            .map(ValidatorConfiguration::getErrorMessage)
             .distinct().sorted().collect(Collectors.joining(", "));
     }
 
@@ -80,7 +76,7 @@ public class ConstraintValidator {
         ConstraintDescriptor<?> constraintDescriptor = constraintViolation.getConstraintDescriptor();
         String property = (String) constraintDescriptor.getAttributes().get("fieldName");
         if (StringUtils.isEmpty(property) && !(constraintDescriptor.getAnnotation() instanceof AssertTrue)) {
-            property = Iterators.getLast(constraintViolation.getPropertyPath().iterator()).toString();
+            property = constraintViolation.getPropertyPath().iterator().next().toString();
         }
 
         String error = "";
@@ -97,13 +93,22 @@ public class ConstraintValidator {
         ConstraintMapping constraintMapping = getCustomConstraintMapping();
         validatorConfiguration.addMapping(constraintMapping);
 
-        fieldsValidator = validatorConfiguration.buildValidatorFactory().getValidator();
+        fieldsValidators = validatorConfiguration.buildValidatorFactory().getValidator();
+    }
+
+    @Bean
+    public LocalValidatorFactoryBean validatorFactoryBean() {
+        LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
+        localValidatorFactoryBean.setConfigurationInitializer(configuration -> {
+            ((ConfigurationImpl) configuration).addMapping(getCustomConstraintMapping());
+        });
+        return localValidatorFactoryBean;
     }
 
     private static ConstraintMapping getCustomConstraintMapping() {
         ConstraintMapping constraintMapping = new DefaultConstraintMapping(null);
         constraintMapping.constraintDefinition(NoXss.class).validatedBy(NoXssValidator.class);
-        constraintMapping.constraintDefinition(Length.class).validatedBy(StringLengthValidator.class);
+        constraintMapping.constraintDefinition(Length.class).validatedBy(LengthValidator.class);
         return constraintMapping;
     }
 

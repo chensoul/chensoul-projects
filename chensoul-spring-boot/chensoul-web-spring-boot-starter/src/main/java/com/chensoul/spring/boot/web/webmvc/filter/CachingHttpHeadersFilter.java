@@ -26,7 +26,6 @@ public class CachingHttpHeadersFilter implements Filter {
 
     private long cacheTimeToLive = DEFAULT_SECONDS_TO_LIVE;
 
-
     /**
      * <p>Constructor for CachingHttpHeadersFilter.</p>
      *
@@ -34,11 +33,6 @@ public class CachingHttpHeadersFilter implements Filter {
      */
     public CachingHttpHeadersFilter(long cacheTimeToLive) {
         this.cacheTimeToLive = cacheTimeToLive;
-    }
-
-    @Override
-    public void destroy() {
-        // Nothing to destroy
     }
 
     /**

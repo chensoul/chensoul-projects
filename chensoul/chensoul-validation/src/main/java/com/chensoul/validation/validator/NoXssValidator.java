@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.chensoul.validation.anntotation;
+package com.chensoul.validation.validator;
 
+import com.chensoul.validation.NoXss;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.Optional;
 import javax.validation.ConstraintValidator;
@@ -25,6 +26,12 @@ import org.owasp.validator.html.Policy;
 import org.owasp.validator.html.PolicyException;
 import org.owasp.validator.html.ScanException;
 
+/**
+ * NoXss Validator
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 0.0.1
+ */
 @Slf4j
 public class NoXssValidator implements ConstraintValidator<NoXss, Object> {
     private static final AntiSamy xssChecker = new AntiSamy();

@@ -13,16 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.chensoul.validation.anntotation;
+package com.chensoul.validation.validator;
 
+import com.chensoul.validation.Length;
 import com.fasterxml.jackson.databind.JsonNode;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * Length Validator
+ *
+ * @author <a href="mailto:ichensoul@gmail.com">chensoul</a>
+ * @since 0.0.1
+ */
 @Slf4j
-public class StringLengthValidator implements ConstraintValidator<Length, Object> {
+public class LengthValidator implements ConstraintValidator<Length, Object> {
     private int max;
 
     @Override

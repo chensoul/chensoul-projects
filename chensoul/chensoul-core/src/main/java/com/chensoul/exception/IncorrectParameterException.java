@@ -13,17 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.chensoul.validation.exception;
+package com.chensoul.exception;
 
-public class DataValidationException extends RuntimeException {
 
-    private static final long serialVersionUID = 7659985660312721830L;
+public class IncorrectParameterException extends RuntimeException {
 
-    public DataValidationException(String message) {
+    private static final long serialVersionUID = 601995650578985289L;
+
+    public IncorrectParameterException(String message) {
         super(message);
     }
 
-    public DataValidationException(String message, Throwable cause) {
+    public IncorrectParameterException(String message, Throwable cause) {
         super(message, cause);
     }
 }
