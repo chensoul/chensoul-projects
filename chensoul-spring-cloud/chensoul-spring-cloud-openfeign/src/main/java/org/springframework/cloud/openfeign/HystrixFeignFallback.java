@@ -20,11 +20,9 @@ import org.springframework.cglib.proxy.MethodProxy;
 @Slf4j
 @AllArgsConstructor
 public class HystrixFeignFallback<T> implements MethodInterceptor {
-
     private final Class<T> targetType;
     private final String targetName;
     private final Throwable cause;
-
 
     @Override
     @SneakyThrows
@@ -44,7 +42,7 @@ public class HystrixFeignFallback<T> implements MethodInterceptor {
             result = JacksonUtils.fromString(content, new TypeReference<ResultResponse<?>>() {
             });
         } else {
-            result = ResultResponse.error(ErrorCode.SERVICE_UNAVAILABLE.getName());
+            result = ResultResponse.error(ErrorCode.SYSTEM_ERROR.getName());
         }
 
         return result;
