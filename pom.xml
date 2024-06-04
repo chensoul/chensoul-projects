@@ -93,9 +93,6 @@
     <redisson.version>3.31.0</redisson.version>
     <commons-io.version>2.16.1</commons-io.version>
     <jsr305.version>3.0.2</jsr305.version>
-
-    <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
-
   </properties>
 
   <dependencyManagement>
