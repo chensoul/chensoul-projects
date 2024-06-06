@@ -9,52 +9,23 @@
 
 version: 2
 updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    target-branch: main
+    open-pull-requests-limit: 3
+    schedule:
+      interval: weekly
+    labels:
+      - DEPENDABOT
+    commit-message:
+      prefix: "[DEPENDABOT]"
+
   - package-ecosystem: "maven"
     directory: "/"
-    #    target-branch: "main"
+    target-branch: "main"
     open-pull-requests-limit: 50
     schedule:
       interval: "daily"
       time: "00:00"
       timezone: "Asia/Shanghai"
-    ignore:
-      - dependency-name: org.springframework.boot:spring-boot-dependencies
-        versions:
-          - ">= 3"
-      - dependency-name: org.springframework.boot:spring-boot-starter-parent
-        versions:
-          - ">= 3"
-      - dependency-name: org.springframework.boot:spring-boot-maven-plugin
-        versions:
-          - ">= 3"
-      - dependency-name: org.springframework.cloud:spring-cloud-dependencies
-        versions:
-          - ">= 2022"
-      - dependency-name: org.springframework.cloud:spring-cloud-sleuth-dependencies
-        versions:
-          - ">= 3"
-      - dependency-name: de.codecentric:spring-boot-admin-dependencies
-        versions:
-          - ">= 3"
-      - dependency-name: org.springframework.security:spring-security-oauth2-authorization-server
-        versions:
-          - ">= 1"
-      - dependency-name: com.alibaba.cloud:spring-cloud-alibaba-dependencies
-        versions:
-          - "= 2021.1"
-          - ">= 2022"
-      - dependency-name: org.mybatis.spring.boot:mybatis-spring-boot-starter
-        versions:
-          - ">= 3"
-      - dependency-name: org.springdoc:springdoc-openapi
-        versions:
-          - ">= 2"
-      - dependency-name: mysql:mysql-connector-java
-        versions:
-          - ">= 8"
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "00:00"
-      timezone: "Asia/Shanghai"
+  #    ignore:
