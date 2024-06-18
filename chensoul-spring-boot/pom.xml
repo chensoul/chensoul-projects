@@ -21,5 +21,6 @@
     <module>chensoul-spring-boot-common</module>
     <module>chensoul-spring-boot-dependencies</module>
     <module>chensoul-web-spring-boot-starter</module>
+    <module>chensoul-cache-spring-boot-starter</module>
   </modules>
 </project>

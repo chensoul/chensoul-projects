@@ -21,7 +21,6 @@
 
   <modules>
     <module>chensoul</module>
-    <module>chensoul-cache</module>
     <module>chensoul-data</module>
     <module>chensoul-spring-boot</module>
     <module>chensoul-spring-cloud</module>
@@ -92,7 +91,6 @@
     <mybatis-plus.version>3.5.6</mybatis-plus.version>
     <redisson.version>3.31.0</redisson.version>
     <commons-io.version>2.16.1</commons-io.version>
-    <jsr305.version>3.0.2</jsr305.version>
   </properties>
 
   <dependencyManagement>
@@ -137,12 +135,6 @@
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
         <version>${commons-io.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.google.code.findbugs</groupId>
-        <artifactId>jsr305</artifactId>
-        <version>${jsr305.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

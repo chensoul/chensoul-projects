@@ -17,4 +17,25 @@
   <name>Chensoul :: Data Jpa</name>
   <description>${project.name}</description>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.chensoul</groupId>
+      <artifactId>chensoul-data-common</artifactId>
+      <version>${revision}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>io.vavr</groupId>
+      <artifactId>vavr</artifactId>
+      <version>1.0.0-alpha-4</version>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
 </project>

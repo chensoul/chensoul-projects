@@ -29,7 +29,7 @@
     </dependency>
     <dependency>
       <groupId>com.chensoul</groupId>
-      <artifactId>chensoul-validation</artifactId>
+      <artifactId>chensoul-data-common</artifactId>
       <version>${revision}</version>
     </dependency>
     <dependency>

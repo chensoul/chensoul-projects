@@ -3,7 +3,7 @@ package com.chensoul.spring.cloud.openfeign.sentinel.handle;
 
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.chensoul.util.ResultResponse;
+import com.chensoul.util.RestResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +30,6 @@ public class JsonBlockExceptionHandler implements BlockExceptionHandler {
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
-        response.getWriter().print(objectMapper.writeValueAsString(ResultResponse.error("系统繁忙，请稍后再试")));
+        response.getWriter().print(objectMapper.writeValueAsString(RestResponse.error("系统繁忙，请稍后再试")));
     }
 }

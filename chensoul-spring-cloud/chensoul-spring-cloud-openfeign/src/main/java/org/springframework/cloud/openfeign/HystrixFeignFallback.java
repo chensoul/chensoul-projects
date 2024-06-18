@@ -1,8 +1,8 @@
 package org.springframework.cloud.openfeign;
 
 import com.chensoul.util.JacksonUtils;
-import com.chensoul.util.ResultResponse;
-import com.chensoul.exception.ErrorCode;
+import com.chensoul.util.RestResponse;
+import com.chensoul.exception.ResultCode;
 import com.fasterxml.jackson.core.type.TypeReference;
 import feign.FeignException;
 import java.lang.reflect.Method;
@@ -28,21 +28,21 @@ public class HystrixFeignFallback<T> implements MethodInterceptor {
     @SneakyThrows
     public Object intercept(final Object o, final Method method, final Object[] objects, final MethodProxy methodProxy) {
         final Class<?> returnType = method.getReturnType();
-        if (ResultResponse.class != returnType) {
+        if (RestResponse.class != returnType) {
             return null;
         }
 
         log.warn("{} 服务的 {}.{} 接口降级", this.targetName, this.targetType.getName(), method.getName(), this.cause);
 
-        ResultResponse result = null;
+        RestResponse result = null;
         if (this.cause instanceof FeignException) {
             final FeignException exception = (FeignException) this.cause;
 
             final String content = new String(exception.content(), StandardCharsets.UTF_8);
-            result = JacksonUtils.fromString(content, new TypeReference<ResultResponse<?>>() {
+            result = JacksonUtils.fromString(content, new TypeReference<RestResponse<?>>() {
             });
         } else {
-            result = ResultResponse.error(ErrorCode.SYSTEM_ERROR.getName());
+            result = RestResponse.error(ResultCode.SYSTEM_ERROR.getName());
         }
 
         return result;

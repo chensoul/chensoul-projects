@@ -41,9 +41,7 @@ public class CachingHttpHeadersFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-
         httpResponse.setHeader("Cache-Control", "max-age=" + cacheTimeToLive + ", public");
         httpResponse.setHeader("Pragma", "cache");
 

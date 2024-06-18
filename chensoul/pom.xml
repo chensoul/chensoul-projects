@@ -20,7 +20,6 @@
   <modules>
     <module>chensoul-dependencies</module>
     <module>chensoul-core</module>
-    <module>chensoul-validation</module>
     <module>chensoul-groovy</module>
     <module>chensoul-spring</module>
   </modules>
