@@ -42,7 +42,7 @@ public class HystrixFeignFallback<T> implements MethodInterceptor {
             result = JacksonUtils.fromString(content, new TypeReference<RestResponse<?>>() {
             });
         } else {
-            result = RestResponse.error(ResultCode.SYSTEM_ERROR.getName());
+            result = RestResponse.error(ResultCode.INTERNAL_ERROR.getName());
         }
 
         return result;
