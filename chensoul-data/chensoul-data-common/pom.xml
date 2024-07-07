@@ -40,7 +40,7 @@
     <dependency>
       <groupId>org.owasp.antisamy</groupId>
       <artifactId>antisamy</artifactId>
-      <version>1.7.5</version>
+      <version>1.7.6</version>
       <optional>true</optional>
     </dependency>
   </dependencies>
