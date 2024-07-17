@@ -30,8 +30,9 @@ updates:
       timezone: "Asia/Shanghai"
       ignore:
         - dependency-name: "org.springframework.boot:spring-boot-dependencies"
-          versions: 3.x
+          versions:
+            - ">= 3.x"
         - dependency-name: "com.alibaba.cloud:spring-cloud-alibaba-dependencies"
-          versions: 2023.x
+          versions: ">= 2023.x"
         - dependency-name: "org.springframework.cloud:spring-cloud-dependencies"
-          versions: 2023.x
+          versions: ">= 2023.x"
