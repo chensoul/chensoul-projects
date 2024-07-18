@@ -31,8 +31,11 @@ updates:
       ignore:
         - dependency-name: "org.springframework.boot:spring-boot-dependencies"
           versions:
-            - ">= 3.x"
+            - ">= 3"
         - dependency-name: "com.alibaba.cloud:spring-cloud-alibaba-dependencies"
-          versions: ">= 2023.x"
+          versions:
+            - "= 2021.1"
+            - ">= 2022"
         - dependency-name: "org.springframework.cloud:spring-cloud-dependencies"
-          versions: ">= 2023.x"
+          versions:
+            - ">= 2022"
