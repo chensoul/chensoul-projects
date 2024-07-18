@@ -38,4 +38,4 @@ updates:
             - ">= 2022"
         - dependency-name: "org.springframework.cloud:spring-cloud-dependencies"
           versions:
-            - ">= 2022"
+            - ">= 2023"
