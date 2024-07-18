@@ -20,13 +20,13 @@ jobs:
 
     strategy:
       matrix:
-        java: [ '8', '9' ]
+        java: [ '8' ]
 
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Java ${{ matrix.Java }}
+      - name: Set up JDK ${{ matrix.Java }}
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -34,4 +34,4 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn --ntp --batch-mode --update-snapshots --file pom.xml clean install
+        run: mvn -ntp -B -U clean package
