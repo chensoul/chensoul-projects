@@ -1,4 +1,3 @@
 com.chensoul.spring.boot.web.async.AsyncConfiguration
 com.chensoul.spring.boot.web.webmvc.WebMvcConfiguration
 com.chensoul.spring.boot.web.webmvc.ErrorConfiguration
-com.chensoul.spring.boot.web.logging.LoggingConfiguration
