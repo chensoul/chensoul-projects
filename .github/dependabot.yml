@@ -29,13 +29,26 @@ updates:
       time: "00:00"
       timezone: "Asia/Shanghai"
       ignore:
-        - dependency-name: "org.springframework.boot:spring-boot-dependencies"
+        - dependency-name: org.springframework.cloud:spring-cloud-dependencies
           versions:
-            - ">= 3"
-        - dependency-name: "com.alibaba.cloud:spring-cloud-alibaba-dependencies"
+            - ">= 2022"
+        - dependency-name: com.alibaba.cloud:spring-cloud-alibaba-dependencies
           versions:
             - "= 2021.1"
             - ">= 2022"
-        - dependency-name: "org.springframework.cloud:spring-cloud-dependencies"
+        - dependency-name: org.springframework.security:spring-security-oauth2-authorization-server
           versions:
-            - ">= 2023"
+            - ">= 1"
+            - ">= 1.1"
+        - dependency-name: org.springframework.boot:spring-boot-dependencies
+          versions:
+            - ">= 3"
+        - dependency-name: org.springframework.boot:spring-boot-starter-security
+          versions:
+            - ">= 3"
+        - dependency-name: org.springframework.boot:spring-boot-maven-plugin
+          versions:
+            - ">= 3"
+        - dependency-name: de.codecentric:spring-boot-admin-dependencies
+          versions:
+            - ">= 3"
